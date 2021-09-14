@@ -152,4 +152,7 @@
   (lib (name sx1262)(type Legacy)(uri /home/markn/Kicad-Projects/lib/IC_Semtech_SX1262IMLTRT/eec.lib)(options "")(descr ""))
   (lib (name sx1261)(type Legacy)(uri /home/markn/Kicad-Projects/lib/IC_Semtech_SX1261IMLTRT/eec.lib)(options "")(descr ""))
   (lib (name SX1262IMLTRT)(type Legacy)(uri /home/markn/Kicad-Projects/lib/SX1262IMLTRT/SX1262IMLTRT.lib)(options "")(descr ""))
+  (lib (name xilinx7)(type Legacy)(uri /home/markn/Kicad-Projects/lib/KiCad-fpga-Schematic-Symbol-Libraries-master/xilinx7.lib)(options "")(descr ""))
+  (lib (name LoRaDongle)(type Legacy)(uri ${KIPRJMOD}/LoRaDongle.lib)(options "")(descr ""))
+  (lib (name MCP1725-ADJE_MC)(type Legacy)(uri /home/markn/Kicad-Projects/lib/MCP1725-ADJEMC_Library/MCP1725-ADJE_MC.lib)(options "")(descr ""))
 )
