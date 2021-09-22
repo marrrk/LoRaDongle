@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 1 3
+Sheet 1 5
 Title "LoRa Dongle"
 Date ""
 Rev ""
@@ -51,7 +51,7 @@ U 1 1 6134135C
 P 1000 3100
 F 0 "J?" H 1057 3567 50  0000 C CNN
 F 1 "USB_A" H 1057 3476 50  0000 C CNN
-F 2 "" H 1150 3050 50  0001 C CNN
+F 2 "Connector_USB:USB_A_CNCTech_1001-011-01101_Horizontal" H 1150 3050 50  0001 C CNN
 F 3 " ~" H 1150 3050 50  0001 C CNN
 	1    1000 3100
 	1    0    0    -1  
@@ -68,9 +68,21 @@ F4 "MOSI" O L 8200 1600 50
 F5 "!SS" O L 8200 1700 50 
 $EndSheet
 $Sheet
-S 8200 3150 1450 800 
+S 8000 3000 1450 800 
 U 6141DFDA
 F0 "Power Management" 50
 F1 "power_management.sch" 50
+$EndSheet
+$Sheet
+S 7850 4400 1250 700 
+U 6149E236
+F0 "fpga_power" 50
+F1 "fpga_power.sch" 50
+$EndSheet
+$Sheet
+S 4400 6450 850  600 
+U 618D30E5
+F0 "fpga_configuration" 50
+F1 "fpga_configurarion.sch" 50
 $EndSheet
 $EndSCHEMATC

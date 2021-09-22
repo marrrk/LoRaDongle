@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 3 3
+Sheet 3 5
 Title "LoRa Dongle"
 Date ""
 Rev ""
@@ -280,7 +280,7 @@ Wire Wire Line
 Wire Wire Line
 	4700 2050 4500 2050
 Text GLabel 3400 2050 0    50   Input ~ 0
-3v3
+3V3
 $Comp
 L Device:R R?
 U 1 1 61449BFF
