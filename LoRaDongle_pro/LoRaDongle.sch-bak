@@ -85,4 +85,15 @@ U 618D30E5
 F0 "fpga_configuration" 50
 F1 "fpga_configurarion.sch" 50
 $EndSheet
+$Comp
+L Device:C C?
+U 1 1 614B773E
+P 3700 3950
+F 0 "C?" H 3815 3996 50  0000 L CNN
+F 1 "C" H 3815 3905 50  0000 L CNN
+F 2 "" H 3738 3800 50  0001 C CNN
+F 3 "~" H 3700 3950 50  0001 C CNN
+	1    3700 3950
+	1    0    0    -1  
+$EndComp
 $EndSCHEMATC
