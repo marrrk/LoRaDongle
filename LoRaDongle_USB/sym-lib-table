@@ -155,4 +155,5 @@
   (lib (name xilinx7)(type Legacy)(uri /home/markn/Kicad-Projects/lib/KiCad-fpga-Schematic-Symbol-Libraries-master/xilinx7.lib)(options "")(descr ""))
   (lib (name LoRaDongle)(type Legacy)(uri ${KIPRJMOD}/LoRaDongle.lib)(options "")(descr ""))
   (lib (name MCP1725-ADJE_MC)(type Legacy)(uri /home/markn/Kicad-Projects/lib/MCP1725-ADJEMC_Library/MCP1725-ADJE_MC.lib)(options "")(descr ""))
+  (lib (name 93LC56BT-I_OT)(type Legacy)(uri /home/markn/Kicad-Projects/LoRaDongle/lib/93LC56B-I_OT_KiCad/93LC56BT-I_OT.lib)(options "")(descr ""))
 )

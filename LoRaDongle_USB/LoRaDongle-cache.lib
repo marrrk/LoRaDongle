@@ -1,6 +1,32 @@
 EESchema-LIBRARY Version 2.4
 #encoding utf-8
 #
+# 93LC56BT-I_OT_93LC56BT-I_OT
+#
+DEF 93LC56BT-I_OT_93LC56BT-I_OT IC 0 30 Y Y 1 F N
+F0 "IC" -300 350 50 H V L CNN
+F1 "93LC56BT-I_OT_93LC56BT-I_OT" -300 250 50 H V L CNN
+F2 "SOT95P270X145-6N" 750 400 50 H I L CNN
+F3 "http://ww1.microchip.com/downloads/en/DeviceDoc/21794G.pdf" 750 300 50 H I L CNN
+F4 "2K,128 X 16,Serial EE,SOT23" 750 200 50 H I L CNN "Description"
+F5 "1.45" 750 100 50 H I L CNN "Height"
+F6 "Microchip" 750 0 50 H I L CNN "Manufacturer_Name"
+F7 "93LC56BT-I/OT" 750 -100 50 H I L CNN "Manufacturer_Part_Number"
+F8 "579-93LC56BT-I/OT" 750 -200 50 H I L CNN "Mouser Part Number"
+F9 "https://www.mouser.co.uk/ProductDetail/Microchip-Technology/93LC56BT-I-OT?qs=lQv0JY93vrc7B5Rh5LPW8g%3D%3D" 750 -300 50 H I L CNN "Mouser Price/Stock"
+F10 "93LC56BT-I/OT" 750 -400 50 H I L CNN "Arrow Part Number"
+F11 "https://www.arrow.com/en/products/93lc56bt-iot/microchip-technology" 750 -500 50 H I L CNN "Arrow Price/Stock"
+DRAW
+S -300 200 300 -200 0 1 6 f
+X DO 1 500 -150 200 L 50 50 0 0 P
+X VSS 2 -500 -150 200 R 50 50 0 0 P
+X DI 3 500 -50 200 L 50 50 0 0 P
+X CLK 4 500 50 200 L 50 50 0 0 P
+X CS 5 500 150 200 L 50 50 0 0 P
+X VCC 6 -500 150 200 R 50 50 0 0 P
+ENDDRAW
+ENDDEF
+#
 # Connector_USB_A
 #
 DEF Connector_USB_A J 0 40 Y Y 1 F N
@@ -49,6 +75,27 @@ P 2 0 1 20 -80 -30 80 -30 N
 P 2 0 1 20 -80 30 80 30 N
 X ~ 1 0 150 110 D 50 50 1 1 P
 X ~ 2 0 -150 110 U 50 50 1 1 P
+ENDDRAW
+ENDDEF
+#
+# Device_Crystal
+#
+DEF Device_Crystal Y 0 40 N N 1 F N
+F0 "Y" 0 150 50 H V C CNN
+F1 "Device_Crystal" 0 -150 50 H V C CNN
+F2 "" 0 0 50 H I C CNN
+F3 "" 0 0 50 H I C CNN
+$FPLIST
+ Crystal*
+$ENDFPLIST
+DRAW
+S -45 100 45 -100 0 1 12 N
+P 2 0 1 0 -100 0 -75 0 N
+P 2 0 1 20 -75 -50 -75 50 N
+P 2 0 1 20 75 -50 75 50 N
+P 2 0 1 0 100 0 75 0 N
+X 1 1 -150 0 50 R 50 50 1 1 P
+X 2 2 150 0 50 L 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
