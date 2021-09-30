@@ -1,0 +1,201 @@
+EESchema Schematic File Version 4
+EELAYER 30 0
+EELAYER END
+$Descr A4 11693 8268
+encoding utf-8
+Sheet 1 6
+Title "LoRa Dongle"
+Date ""
+Rev ""
+Comp "Mark Njoroge"
+Comment1 ""
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+$Comp
+L power:+5V #PWR0101
+U 1 1 6133EA17
+P 1250 2350
+F 0 "#PWR0101" H 1250 2200 50  0001 C CNN
+F 1 "+5V" H 1265 2523 50  0000 C CNN
+F 2 "" H 1250 2350 50  0001 C CNN
+F 3 "" H 1250 2350 50  0001 C CNN
+	1    1250 2350
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	1150 2550 1250 2550
+Wire Wire Line
+	1250 2550 1250 2350
+Wire Wire Line
+	850  3150 850  3300
+$Comp
+L power:GND #PWR0102
+U 1 1 613473D1
+P 850 3300
+F 0 "#PWR0102" H 850 3050 50  0001 C CNN
+F 1 "GND" H 855 3127 50  0000 C CNN
+F 2 "" H 850 3300 50  0001 C CNN
+F 3 "" H 850 3300 50  0001 C CNN
+	1    850  3300
+	1    0    0    -1  
+$EndComp
+$Comp
+L Connector:USB_A J?
+U 1 1 6134135C
+P 850 2750
+F 0 "J?" H 907 3217 50  0000 C CNN
+F 1 "USB_A" H 907 3126 50  0000 C CNN
+F 2 "Connector_USB:USB_A_CNCTech_1001-011-01101_Horizontal" H 1000 2700 50  0001 C CNN
+F 3 " ~" H 1000 2700 50  0001 C CNN
+	1    850  2750
+	1    0    0    -1  
+$EndComp
+NoConn ~ 750  3150
+$Sheet
+S 9550 4050 1400 750 
+U 614F0720
+F0 "RF Circuitry" 50
+F1 "sx1262_circuitry.sch" 50
+F2 "SCK" I L 9550 4200 50 
+F3 "MISO" I L 9550 4300 50 
+F4 "MOSI" I L 9550 4400 50 
+F5 "!SS" I L 9550 4500 50 
+$EndSheet
+$Sheet
+S 2650 6650 1450 800 
+U 6141DFDA
+F0 "Power Management" 50
+F1 "power_management.sch" 50
+$EndSheet
+$Sheet
+S 1150 6600 1250 700 
+U 6149E236
+F0 "fpga_power" 50
+F1 "fpga_power.sch" 50
+$EndSheet
+$Sheet
+S 7350 4050 1450 650 
+U 61611C59
+F0 "FPGA Bank 14 and 15" 50
+F1 "bank_14_15.sch" 50
+F2 "Din" I L 7350 4200 50 
+$EndSheet
+$Sheet
+S 8300 2050 1350 750 
+U 618D30E5
+F0 "fpga_configuration" 50
+F1 "fpga_configurarion.sch" 50
+F2 "CLOCK" I L 8300 2200 50 
+F3 "TDI" I L 8300 2400 50 
+F4 "TDO" I L 8300 2500 50 
+F5 "TMS" I L 8300 2600 50 
+F6 "TCK" I L 8300 2700 50 
+$EndSheet
+$Comp
+L Interface_USB:FT232H U?
+U 1 1 6166AA18
+P 4100 3350
+F 0 "U?" H 4100 5031 50  0000 C CNN
+F 1 "FT232H" H 4100 4940 50  0000 C CNN
+F 2 "" H 4100 3350 50  0001 C CNN
+F 3 "https://www.ftdichip.com/Support/Documents/DataSheets/ICs/DS_FT232H.pdf" H 4100 3350 50  0001 C CNN
+	1    4100 3350
+	1    0    0    -1  
+$EndComp
+Text GLabel 3050 2050 1    50   Output ~ 0
+3V3
+Wire Wire Line
+	3200 2150 3150 2150
+Wire Wire Line
+	3050 2150 3050 2050
+$Comp
+L Device:C C?
+U 1 1 6154CDD7
+P 2650 2550
+F 0 "C?" V 2600 2650 50  0000 C CNN
+F 1 "0.1uF" V 2600 2400 50  0000 C CNN
+F 2 "" H 2688 2400 50  0001 C CNN
+F 3 "~" H 2650 2550 50  0001 C CNN
+	1    2650 2550
+	0    1    1    0   
+$EndComp
+$Comp
+L power:GND #PWR?
+U 1 1 6154E9CD
+P 2300 2550
+F 0 "#PWR?" H 2300 2300 50  0001 C CNN
+F 1 "GND" V 2305 2377 50  0000 C CNN
+F 2 "" H 2300 2550 50  0001 C CNN
+F 3 "" H 2300 2550 50  0001 C CNN
+	1    2300 2550
+	0    1    1    0   
+$EndComp
+$Comp
+L Device:C C?
+U 1 1 615505C6
+P 2950 2450
+F 0 "C?" V 2900 2550 50  0000 C CNN
+F 1 "0.1uF" V 2900 2300 50  0000 C CNN
+F 2 "" H 2988 2300 50  0001 C CNN
+F 3 "~" H 2950 2450 50  0001 C CNN
+	1    2950 2450
+	0    1    1    0   
+$EndComp
+$Comp
+L power:GND #PWR?
+U 1 1 61550B8E
+P 2350 2450
+F 0 "#PWR?" H 2350 2200 50  0001 C CNN
+F 1 "GND" V 2355 2277 50  0000 C CNN
+F 2 "" H 2350 2450 50  0001 C CNN
+F 3 "" H 2350 2450 50  0001 C CNN
+	1    2350 2450
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	2300 2550 2500 2550
+Wire Wire Line
+	2350 2450 2800 2450
+Wire Wire Line
+	2800 2550 3200 2550
+Wire Wire Line
+	3100 2450 3200 2450
+Wire Wire Line
+	3200 2350 3150 2350
+Wire Wire Line
+	3150 2350 3150 2150
+Connection ~ 3150 2150
+Wire Wire Line
+	3150 2150 3050 2150
+Wire Wire Line
+	1150 2850 1300 2850
+Wire Wire Line
+	1150 2750 1300 2750
+Text Label 1300 2750 0    50   ~ 0
+DP
+Text Label 1300 2850 0    50   ~ 0
+DM
+Wire Wire Line
+	3200 2850 3100 2850
+Wire Wire Line
+	3200 2750 3100 2750
+Text Label 3100 2850 2    50   ~ 0
+DP
+Text Label 3100 2750 2    50   ~ 0
+DM
+$Comp
+L power:GND #PWR?
+U 1 1 61560A08
+P 3050 4450
+F 0 "#PWR?" H 3050 4200 50  0001 C CNN
+F 1 "GND" V 3055 4277 50  0000 C CNN
+F 2 "" H 3050 4450 50  0001 C CNN
+F 3 "" H 3050 4450 50  0001 C CNN
+	1    3050 4450
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	3200 4450 3050 4450
+$EndSCHEMATC

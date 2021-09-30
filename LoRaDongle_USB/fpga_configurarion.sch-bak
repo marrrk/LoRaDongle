@@ -1,0 +1,347 @@
+EESchema Schematic File Version 4
+EELAYER 30 0
+EELAYER END
+$Descr A4 11693 8268
+encoding utf-8
+Sheet 6 6
+Title ""
+Date ""
+Rev ""
+Comp ""
+Comment1 ""
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+Wire Wire Line
+	4050 1650 4050 1600
+Text GLabel 4050 1500 1    50   Output ~ 0
+3V3
+$Comp
+L Device:C C?
+U 1 1 618E8CC6
+P 4350 1600
+F 0 "C?" V 4098 1600 50  0000 C CNN
+F 1 "47uF" V 4189 1600 50  0000 C CNN
+F 2 "Capacitor_SMD:C_1210_3225Metric" H 4388 1450 50  0001 C CNN
+F 3 "~" H 4350 1600 50  0001 C CNN
+F 4 "GRM32ER70J476ME20L" V 4350 1600 50  0001 C CNN "Part Number"
+	1    4350 1600
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	4050 1600 4200 1600
+Connection ~ 4050 1600
+Wire Wire Line
+	4050 1600 4050 1500
+$Comp
+L power:GND #PWR?
+U 1 1 618EB86C
+P 4600 1700
+F 0 "#PWR?" H 4600 1450 50  0001 C CNN
+F 1 "GND" H 4605 1527 50  0000 C CNN
+F 2 "" H 4600 1700 50  0001 C CNN
+F 3 "" H 4600 1700 50  0001 C CNN
+	1    4600 1700
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4500 1600 4600 1600
+Wire Wire Line
+	4600 1600 4600 1700
+$Comp
+L FPGA_Xilinx_Artix7:XC7A100T-CSG324 U?
+U 4 1 618D3242
+P 2950 3250
+F 0 "U?" H 1671 3303 50  0000 R CNN
+F 1 "XC7A100T-CSG324" H 1671 3212 50  0000 R CNN
+F 2 "" H 2950 3250 50  0001 C CNN
+F 3 "" H 2950 3250 50  0000 C CNN
+	4    2950 3250
+	1    0    0    -1  
+$EndComp
+Text GLabel 5000 3850 2    50   Output ~ 0
+3V3
+Wire Wire Line
+	4450 3850 4600 3850
+$Comp
+L Device:R R?
+U 1 1 614D70D1
+P 4750 3850
+F 0 "R?" V 4650 3850 50  0000 C CNN
+F 1 "4.7K" V 4750 3850 50  0000 C CNN
+F 2 "Resistor_SMD:R_0402_1005Metric" V 4680 3850 50  0001 C CNN
+F 3 "~" H 4750 3850 50  0001 C CNN
+F 4 "0402" V 4750 3850 50  0001 C CNN "Phsyical Size"
+	1    4750 3850
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	4900 3850 5000 3850
+$Comp
+L Device:R R?
+U 1 1 614FAF2F
+P 5100 3050
+F 0 "R?" V 5050 2900 50  0000 C CNN
+F 1 "470" V 5100 3050 50  0000 C CNN
+F 2 "Resistor_SMD:R_0402_1005Metric" V 5030 3050 50  0001 C CNN
+F 3 "~" H 5100 3050 50  0001 C CNN
+F 4 "0402" V 5100 3050 50  0001 C CNN "Physical Size"
+	1    5100 3050
+	0    1    1    0   
+$EndComp
+$Comp
+L Device:R R?
+U 1 1 615109D2
+P 4950 3150
+F 0 "R?" V 4900 3000 50  0000 C CNN
+F 1 "470" V 4950 3150 50  0000 C CNN
+F 2 "Resistor_SMD:R_0402_1005Metric" V 4880 3150 50  0001 C CNN
+F 3 "~" H 4950 3150 50  0001 C CNN
+F 4 "0402" V 4950 3150 50  0001 C CNN "Physical Size"
+	1    4950 3150
+	0    1    1    0   
+$EndComp
+$Comp
+L Device:R R?
+U 1 1 61511713
+P 4800 3250
+F 0 "R?" V 4750 3100 50  0000 C CNN
+F 1 "470" V 4800 3250 50  0000 C CNN
+F 2 "Resistor_SMD:R_0402_1005Metric" V 4730 3250 50  0001 C CNN
+F 3 "~" H 4800 3250 50  0001 C CNN
+F 4 "0402" V 4800 3250 50  0001 C CNN "Physical Size"
+	1    4800 3250
+	0    1    1    0   
+$EndComp
+Text GLabel 5350 2950 1    50   Output ~ 0
+3V3
+Text Label 4450 3650 0    50   ~ 0
+PROGRAM_B
+Text Label 4450 3550 0    50   ~ 0
+INIT_B
+Text Label 4450 3450 0    50   ~ 0
+DONE
+Text Label 7400 2500 2    50   ~ 0
+PROGRAM_B
+$Comp
+L Device:R R?
+U 1 1 61567C3E
+P 7500 2200
+F 0 "R?" H 7570 2246 50  0000 L CNN
+F 1 "4.7K" H 7570 2155 50  0000 L CNN
+F 2 "Resistor_SMD:R_0402_1005Metric" V 7430 2200 50  0001 C CNN
+F 3 "~" H 7500 2200 50  0001 C CNN
+F 4 "0402" H 7500 2200 50  0001 C CNN "Physical Size"
+	1    7500 2200
+	1    0    0    -1  
+$EndComp
+$Comp
+L Switch:SW_Push SW?
+U 1 1 6156C2BD
+P 7500 2800
+F 0 "SW?" V 7454 2948 50  0000 L CNN
+F 1 "SW_Push" V 7545 2948 50  0000 L CNN
+F 2 "" H 7500 3000 50  0001 C CNN
+F 3 "~" H 7500 3000 50  0001 C CNN
+	1    7500 2800
+	0    1    1    0   
+$EndComp
+$Comp
+L power:GND #PWR?
+U 1 1 61577AAB
+P 7500 3100
+F 0 "#PWR?" H 7500 2850 50  0001 C CNN
+F 1 "GND" H 7505 2927 50  0000 C CNN
+F 2 "" H 7500 3100 50  0001 C CNN
+F 3 "" H 7500 3100 50  0001 C CNN
+	1    7500 3100
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	7500 2600 7500 2500
+Text GLabel 7500 1900 1    50   Output ~ 0
+3V3
+Wire Wire Line
+	7400 2500 7500 2500
+$Comp
+L power:GND #PWR?
+U 1 1 6159DBD9
+P 4600 4850
+F 0 "#PWR?" H 4600 4600 50  0001 C CNN
+F 1 "GND" H 4605 4677 50  0000 C CNN
+F 2 "" H 4600 4850 50  0001 C CNN
+F 3 "" H 4600 4850 50  0001 C CNN
+	1    4600 4850
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	7500 1900 7500 2050
+Text Label 8050 2500 2    50   ~ 0
+INIT_B
+Text GLabel 8100 1900 1    50   Output ~ 0
+3V3
+Wire Wire Line
+	8100 1900 8100 2050
+Wire Wire Line
+	8100 2350 8100 2500
+Wire Wire Line
+	8100 2500 8050 2500
+Text Label 8500 2500 2    50   ~ 0
+DONE
+$Comp
+L Device:R R?
+U 1 1 615CD160
+P 8600 2200
+F 0 "R?" H 8670 2246 50  0000 L CNN
+F 1 "220" H 8670 2155 50  0000 L CNN
+F 2 "Resistor_SMD:R_0402_1005Metric" V 8530 2200 50  0001 C CNN
+F 3 "~" H 8600 2200 50  0001 C CNN
+	1    8600 2200
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R R?
+U 1 1 615D0604
+P 8600 2750
+F 0 "R?" H 8670 2796 50  0000 L CNN
+F 1 "100" H 8670 2705 50  0000 L CNN
+F 2 "Resistor_SMD:R_0402_1005Metric" V 8530 2750 50  0001 C CNN
+F 3 "~" H 8600 2750 50  0001 C CNN
+F 4 "0402" H 8600 2750 50  0001 C CNN "Physical Size"
+	1    8600 2750
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:LED D?
+U 1 1 615D1C40
+P 8600 3150
+F 0 "D?" V 8639 3032 50  0000 R CNN
+F 1 "LED" V 8548 3032 50  0000 R CNN
+F 2 "" H 8600 3150 50  0001 C CNN
+F 3 "~" H 8600 3150 50  0001 C CNN
+	1    8600 3150
+	0    -1   -1   0   
+$EndComp
+$Comp
+L power:GND #PWR?
+U 1 1 615D4F6C
+P 8600 3450
+F 0 "#PWR?" H 8600 3200 50  0001 C CNN
+F 1 "GND" H 8605 3277 50  0000 C CNN
+F 2 "" H 8600 3450 50  0001 C CNN
+F 3 "" H 8600 3450 50  0001 C CNN
+	1    8600 3450
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	8600 3450 8600 3300
+Wire Wire Line
+	8600 3000 8600 2900
+Wire Wire Line
+	8600 2600 8600 2500
+Text GLabel 8600 1900 1    50   Output ~ 0
+3V3
+Wire Wire Line
+	8600 2050 8600 1900
+Wire Wire Line
+	8500 2500 8600 2500
+Connection ~ 8600 2500
+Wire Wire Line
+	8600 2500 8600 2350
+$Comp
+L Device:R R?
+U 1 1 615E6895
+P 8100 2200
+F 0 "R?" H 8170 2246 50  0000 L CNN
+F 1 "4.7K" H 8170 2155 50  0000 L CNN
+F 2 "Resistor_SMD:R_0402_1005Metric" V 8030 2200 50  0001 C CNN
+F 3 "~" H 8100 2200 50  0001 C CNN
+F 4 "0402" H 8100 2200 50  0001 C CNN "Physical Size"
+	1    8100 2200
+	1    0    0    -1  
+$EndComp
+Text HLabel 4550 2950 2    50   Output ~ 0
+CLOCK
+Wire Wire Line
+	4450 2950 4550 2950
+Wire Wire Line
+	4450 3150 4800 3150
+Wire Wire Line
+	4450 3050 4950 3050
+Wire Wire Line
+	4450 3250 4650 3250
+Text HLabel 4800 2450 2    50   Output ~ 0
+TDI
+Wire Wire Line
+	4800 2450 4450 2450
+Text HLabel 4800 2550 2    50   Output ~ 0
+TDO
+Text HLabel 4800 2650 2    50   Output ~ 0
+TMS
+Text HLabel 4800 2750 2    50   Output ~ 0
+TCK
+Wire Wire Line
+	4450 2550 4800 2550
+Wire Wire Line
+	4450 2650 4800 2650
+Wire Wire Line
+	4450 2750 4800 2750
+Wire Wire Line
+	4450 4750 4600 4750
+Wire Wire Line
+	4600 4750 4600 4850
+Wire Wire Line
+	4600 4650 4600 4750
+Connection ~ 4600 4750
+Wire Wire Line
+	7500 3000 7500 3100
+Connection ~ 7500 2500
+Wire Wire Line
+	7500 2350 7500 2500
+Wire Wire Line
+	5250 3050 5350 3050
+Wire Wire Line
+	5350 3050 5350 2950
+Wire Wire Line
+	5100 3150 5400 3150
+$Comp
+L power:GND #PWR?
+U 1 1 615A0F9D
+P 5400 3150
+F 0 "#PWR?" H 5400 2900 50  0001 C CNN
+F 1 "GND" V 5405 2977 50  0000 C CNN
+F 2 "" H 5400 3150 50  0001 C CNN
+F 3 "" H 5400 3150 50  0001 C CNN
+	1    5400 3150
+	0    -1   -1   0   
+$EndComp
+Text GLabel 5100 3250 2    50   Output ~ 0
+3V3
+Wire Wire Line
+	4950 3250 5100 3250
+Text Notes 5450 3050 0    50   ~ 0
+M[2:0] = 101\n(JTAG Only Configuration)\n
+Wire Wire Line
+	4450 4650 4600 4650
+Wire Wire Line
+	4450 4450 4600 4450
+Wire Wire Line
+	4600 4450 4600 4650
+Connection ~ 4600 4650
+Wire Wire Line
+	4450 4350 4600 4350
+Wire Wire Line
+	4600 4350 4600 4450
+Connection ~ 4600 4450
+Wire Wire Line
+	4450 4150 4600 4150
+Wire Wire Line
+	4600 4150 4600 4350
+Connection ~ 4600 4350
+Wire Wire Line
+	4450 4050 4600 4050
+Wire Wire Line
+	4600 4050 4600 4150
+Connection ~ 4600 4150
+$EndSCHEMATC
