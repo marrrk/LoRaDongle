@@ -1,6 +1,0 @@
-(fp_lib_table
-  (lib (name digikey-footprints)(type KiCad)(uri /home/markn/Kicad-Projects/lib/digikey-kicad-library/digikey-footprints.pretty)(options "")(descr ""))
-  (lib (name sx1262-footprint)(type KiCad)(uri /home/markn/Kicad-Projects/lib/IC_Semtech_SX1262IMLTRT/eec.pretty)(options "")(descr ""))
-  (lib (name sx1261-footprint)(type KiCad)(uri /home/markn/Kicad-Projects/lib/IC_Semtech_SX1261IMLTRT/eec.pretty)(options "")(descr ""))
-  (lib (name SX1262IMLTRT)(type KiCad)(uri /home/markn/Kicad-Projects/lib/SX1262IMLTRT)(options "")(descr ""))
-)
