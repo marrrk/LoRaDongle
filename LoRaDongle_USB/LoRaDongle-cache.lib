@@ -27,6 +27,33 @@ X VCC 6 -500 150 200 R 50 50 0 0 P
 ENDDRAW
 ENDDEF
 #
+# Connector_Generic_Conn_01x06
+#
+DEF Connector_Generic_Conn_01x06 J 0 40 Y N 1 F N
+F0 "J" 0 300 50 H V C CNN
+F1 "Connector_Generic_Conn_01x06" 0 -400 50 H V C CNN
+F2 "" 0 0 50 H I C CNN
+F3 "" 0 0 50 H I C CNN
+$FPLIST
+ Connector*:*_1x??_*
+$ENDFPLIST
+DRAW
+S -50 -295 0 -305 1 1 6 N
+S -50 -195 0 -205 1 1 6 N
+S -50 -95 0 -105 1 1 6 N
+S -50 5 0 -5 1 1 6 N
+S -50 105 0 95 1 1 6 N
+S -50 205 0 195 1 1 6 N
+S -50 250 50 -350 1 1 10 f
+X Pin_1 1 -200 200 150 R 50 50 1 1 P
+X Pin_2 2 -200 100 150 R 50 50 1 1 P
+X Pin_3 3 -200 0 150 R 50 50 1 1 P
+X Pin_4 4 -200 -100 150 R 50 50 1 1 P
+X Pin_5 5 -200 -200 150 R 50 50 1 1 P
+X Pin_6 6 -200 -300 150 R 50 50 1 1 P
+ENDDRAW
+ENDDEF
+#
 # Connector_USB_A
 #
 DEF Connector_USB_A J 0 40 Y Y 1 F N
@@ -120,20 +147,21 @@ X ~ 2 0 -100 50 U 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
-# Device_Jumper_NO_Small
+# Device_Jumper_NC_Small
 #
-DEF Device_Jumper_NO_Small JP 0 30 N N 1 F N
+DEF Device_Jumper_NC_Small JP 0 30 N N 1 F N
 F0 "JP" 0 80 50 H V C CNN
-F1 "Device_Jumper_NO_Small" 10 -60 50 H V C CNN
+F1 "Device_Jumper_NC_Small" 10 -60 50 H V C CNN
 F2 "" 0 0 50 H I C CNN
 F3 "" 0 0 50 H I C CNN
 $FPLIST
- SolderJumper*Open*
+ SolderJumper*Bridged*
  Jumper*
  TestPoint*2Pads*
  TestPoint*Bridge*
 $ENDFPLIST
 DRAW
+A 0 -10 57 450 1350 0 1 0 N 40 30 -40 30
 C -40 0 20 0 1 0 N
 C 40 0 20 0 1 0 N
 X 1 1 -100 0 40 R 50 50 0 1 P
@@ -541,6 +569,34 @@ X GND T7 1000 -1500 250 L 50 50 5 1 W
 X GND U10 1000 -1700 250 L 50 50 5 1 W
 X GND V13 1000 -1900 250 L 50 50 5 1 W
 X GND V3 1000 -1800 250 L 50 50 5 1 W
+ENDDRAW
+ENDDEF
+#
+# IS25LP032D-JBLE_IS25LP032D-JBLE
+#
+DEF IS25LP032D-JBLE_IS25LP032D-JBLE IC 0 30 Y Y 1 F N
+F0 "IC" -350 400 50 H V L CNN
+F1 "IS25LP032D-JBLE_IS25LP032D-JBLE" -350 300 50 H V L CNN
+F2 "SOIC127P790X216-8N" 950 250 50 H I L CNN
+F3 "http://www.issi.com/WW/pdf/25LP-WP032D.pdf" 950 150 50 H I L CNN
+F4 "INTEGRATED SILICON SOLUTION (ISSI) - IS25LP032D-JBLE - NOR FLASH MEMORY 32MBIT, 133MHZ, SOIC-8" 950 50 50 H I L CNN "Description"
+F5 "2.16" 950 -50 50 H I L CNN "Height"
+F6 "Integrated Silicon Solution Inc." 950 -150 50 H I L CNN "Manufacturer_Name"
+F7 "IS25LP032D-JBLE" 950 -250 50 H I L CNN "Manufacturer_Part_Number"
+F8 "870-IS25LP032D-JBLE" 950 -350 50 H I L CNN "Mouser Part Number"
+F9 "https://www.mouser.co.uk/ProductDetail/ISSI/IS25LP032D-JBLE?qs=DXv0QSHKF4z3SdPPZ2kyPw%3D%3D" 950 -450 50 H I L CNN "Mouser Price/Stock"
+F10 "IS25LP032D-JBLE" 950 -550 50 H I L CNN "Arrow Part Number"
+F11 "https://www.arrow.com/en/products/is25lp032d-jble/integrated-silicon-solution-inc" 950 -650 50 H I L CNN "Arrow Price/Stock"
+DRAW
+S -550 250 550 -350 0 1 6 f
+X CE# 1 750 50 200 L 50 50 0 0 P
+X SO_(IO1) 2 -750 50 200 R 50 50 0 0 P
+X WP#_(IO2) 3 -750 -50 200 R 50 50 0 0 P
+X GND 4 750 -250 200 L 50 50 0 0 P
+X SI_(IO0) 5 -750 150 200 R 50 50 0 0 P
+X SCK 6 750 -50 200 L 50 50 0 0 P
+X HOLD#_OR_RESET#_(IO3) 7 -750 -150 200 R 50 50 0 0 P
+X VCC 8 750 150 200 L 50 50 0 0 P
 ENDDRAW
 ENDDEF
 #

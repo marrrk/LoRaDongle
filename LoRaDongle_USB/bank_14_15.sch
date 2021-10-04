@@ -24,10 +24,6 @@ F 3 "" H 5200 3700 50  0000 C CNN
 	1    5200 3700
 	1    0    0    -1  
 $EndComp
-Text HLabel 2700 1800 0    50   Input ~ 0
-Din
-Wire Wire Line
-	2700 1800 3200 1800
 Text GLabel 5150 700  1    50   Output ~ 0
 3V3
 Wire Wire Line
@@ -61,32 +57,6 @@ Wire Wire Line
 Connection ~ 4000 750 
 Wire Wire Line
 	4000 750  4100 750 
-Wire Wire Line
-	6300 800  6300 750 
-Wire Wire Line
-	6400 800  6400 750 
-Wire Wire Line
-	6400 750  6300 750 
-Wire Wire Line
-	6500 800  6500 750 
-Wire Wire Line
-	6500 750  6400 750 
-Connection ~ 6400 750 
-Wire Wire Line
-	6600 800  6600 750 
-Wire Wire Line
-	6600 750  6500 750 
-Connection ~ 6500 750 
-Wire Wire Line
-	6700 800  6700 750 
-Wire Wire Line
-	6700 750  6600 750 
-Connection ~ 6600 750 
-Wire Wire Line
-	6800 800  6800 750 
-Wire Wire Line
-	6800 750  6700 750 
-Connection ~ 6700 750 
 Wire Wire Line
 	3600 750  2650 750 
 Connection ~ 3600 750 
@@ -225,4 +195,67 @@ Wire Wire Line
 Connection ~ 1500 1150
 Wire Wire Line
 	1500 1150 1750 1150
+Wire Wire Line
+	3200 1700 2700 1700
+Text HLabel 2700 1700 0    50   Input ~ 0
+DO0_MOSI
+Wire Wire Line
+	3200 2200 2700 2200
+Text HLabel 2700 2200 0    50   Input ~ 0
+Clock
+$Comp
+L Device:R R?
+U 1 1 6181A6CA
+P 2950 2100
+F 0 "R?" V 2900 2250 50  0000 C CNN
+F 1 "1K" V 2950 2100 50  0000 C CNN
+F 2 "Resistor_SMD:R_0402_1005Metric" V 2880 2100 50  0001 C CNN
+F 3 "~" H 2950 2100 50  0001 C CNN
+F 4 "0402" V 2950 2100 50  0001 C CNN "Physical Size"
+	1    2950 2100
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	3100 2100 3200 2100
+Wire Wire Line
+	2800 2100 2700 2100
+Text GLabel 2700 2100 0    50   Output ~ 0
+3V3
+Wire Wire Line
+	2000 2350 2000 2250
+Text GLabel 2000 2250 1    50   Output ~ 0
+3V3
+$Comp
+L Device:R R?
+U 1 1 6184BE91
+P 2000 2500
+F 0 "R?" H 2100 2500 50  0000 C CNN
+F 1 "1K" H 1900 2500 50  0000 C CNN
+F 2 "Resistor_SMD:R_0402_1005Metric" V 1930 2500 50  0001 C CNN
+F 3 "~" H 2000 2500 50  0001 C CNN
+F 4 "0402" V 2000 2500 50  0001 C CNN "Physical Size"
+	1    2000 2500
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	2000 2700 2000 2650
+Wire Wire Line
+	2000 2700 1900 2700
+Text HLabel 1900 2700 0    50   Input ~ 0
+~CE
+Connection ~ 2000 2700
+Wire Wire Line
+	3200 1800 2700 1800
+Text HLabel 2700 1800 0    50   Input ~ 0
+DO1_DIN
+Wire Wire Line
+	3200 1900 2700 1900
+Wire Wire Line
+	3200 2000 2700 2000
+Text HLabel 2700 1900 0    50   Input ~ 0
+DO2
+Text HLabel 2700 2000 0    50   Input ~ 0
+DO3
+Wire Wire Line
+	2000 2700 3200 2700
 $EndSCHEMATC

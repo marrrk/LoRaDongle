@@ -4,4 +4,5 @@
   (lib (name sx1261-footprint)(type KiCad)(uri /home/markn/Kicad-Projects/lib/IC_Semtech_SX1261IMLTRT/eec.pretty)(options "")(descr ""))
   (lib (name SX1262IMLTRT)(type KiCad)(uri /home/markn/Kicad-Projects/lib/SX1262IMLTRT)(options "")(descr ""))
   (lib (name 93LC56B-I_OT_KiCad)(type KiCad)(uri /home/markn/Kicad-Projects/LoRaDongle/lib/93LC56B-I_OT_KiCad)(options "")(descr ""))
+  (lib (name IS25LP032D-JBLE_KiCad)(type KiCad)(uri /home/markn/Kicad-Projects/LoRaDongle/lib/IS25LP032D-JBLE_KiCad)(options "")(descr ""))
 )
