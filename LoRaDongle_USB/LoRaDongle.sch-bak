@@ -14,16 +14,6 @@ Comment3 ""
 Comment4 ""
 $EndDescr
 $Sheet
-S 8700 2750 1350 750 
-U 614F0720
-F0 "RF Circuitry" 50
-F1 "sx1262_circuitry.sch" 50
-F2 "SCK" I L 8700 2900 50 
-F3 "MISO" I L 8700 3000 50 
-F4 "MOSI" I L 8700 3100 50 
-F5 "!SS" I L 8700 3200 50 
-$EndSheet
-$Sheet
 S 7300 5300 1350 750 
 U 6141DFDA
 F0 "Power Management" 50
@@ -34,18 +24,6 @@ S 9000 5300 1350 750
 U 6149E236
 F0 "fpga_power" 50
 F1 "fpga_power.sch" 50
-$EndSheet
-$Sheet
-S 6900 2750 1350 750 
-U 61611C59
-F0 "FPGA Bank 14 and 15" 50
-F1 "bank_14_15.sch" 50
-F2 "DO0_MOSI" I L 6900 3050 50 
-F3 "Clock" I L 6900 2800 50 
-F4 "~CE" I L 6900 2900 50 
-F5 "DO1_DIN" I L 6900 3150 50 
-F6 "DO2" I L 6900 3250 50 
-F7 "DO3" I L 6900 3350 50 
 $EndSheet
 Text Notes 8600 800  0    50   ~ 10
 Connector For the USB tinge
@@ -197,6 +175,7 @@ F7 "DO1_MISO" I R 6650 3150 50
 F8 "DO2" I R 6650 3250 50 
 F9 "DO3" I R 6650 3350 50 
 F10 "~CE" I R 6650 2900 50 
+F11 "Clock" I R 6650 2800 50 
 $EndSheet
 Wire Wire Line
 	4550 3150 4900 3150
@@ -285,4 +264,53 @@ Wire Wire Line
 	6650 3050 6900 3050
 Wire Wire Line
 	6650 2900 6900 2900
+Wire Wire Line
+	6650 2800 6900 2800
+Text Notes 4100 4850 0    50   ~ 0
+To be Confirmed
+$Comp
+L dk_Ferrite-Beads-and-Chips:BLM18AG601SN1D FB?
+U 1 1 615E0B04
+P 1400 2150
+F 0 "FB?" H 1400 2300 60  0000 C CNN
+F 1 "600R/0.5A" H 1400 1950 60  0000 C CNN
+F 2 "digikey-footprints:0603" H 1600 2350 60  0001 L CNN
+F 3 "https://www.murata.com/en-us/products/productdata/8796738650142/ENFA0003.pdf" H 1600 2450 60  0001 L CNN
+F 4 "490-1014-1-ND" H 1600 2550 60  0001 L CNN "Digi-Key_PN"
+F 5 "BLM18AG601SN1D" H 1600 2650 60  0001 L CNN "MPN"
+F 6 "Filters" H 1600 2750 60  0001 L CNN "Category"
+F 7 "Ferrite Beads and Chips" H 1600 2850 60  0001 L CNN "Family"
+F 8 "https://www.murata.com/en-us/products/productdata/8796738650142/ENFA0003.pdf" H 1600 2950 60  0001 L CNN "DK_Datasheet_Link"
+F 9 "/product-detail/en/murata-electronics-north-america/BLM18AG601SN1D/490-1014-1-ND/584462" H 1600 3050 60  0001 L CNN "DK_Detail_Page"
+F 10 "FERRITE BEAD 600 OHM 0603 1LN" H 1600 3150 60  0001 L CNN "Description"
+F 11 "Murata Electronics North America" H 1600 3250 60  0001 L CNN "Manufacturer"
+F 12 "Active" H 1600 3350 60  0001 L CNN "Status"
+	1    1400 2150
+	1    0    0    -1  
+$EndComp
+$Sheet
+S 8700 2600 1350 1050
+U 614F0720
+F0 "RF Circuitry" 50
+F1 "sx1262_circuitry.sch" 50
+F2 "SCK" I L 8700 3250 50 
+F3 "MISO" I L 8700 3350 50 
+F4 "MOSI" I L 8700 3450 50 
+F5 "!SS" I L 8700 3550 50 
+F6 "ANT_SW" I L 8700 2700 50 
+F7 "~RESET" I L 8700 2950 50 
+F8 "BUSY" I L 8700 3050 50 
+$EndSheet
+$Sheet
+S 6900 2600 1400 1050
+U 61611C59
+F0 "FPGA Bank 14 and 15" 50
+F1 "bank_14_15.sch" 50
+F2 "DO0_MOSI" I L 6900 3050 50 
+F3 "Clock" I L 6900 2800 50 
+F4 "~CE" I L 6900 2900 50 
+F5 "DO1_DIN" I L 6900 3150 50 
+F6 "DO2" I L 6900 3250 50 
+F7 "DO3" I L 6900 3350 50 
+$EndSheet
 $EndSCHEMATC

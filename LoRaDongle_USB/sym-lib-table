@@ -157,4 +157,6 @@
   (lib (name MCP1725-ADJE_MC)(type Legacy)(uri /home/markn/Kicad-Projects/lib/MCP1725-ADJEMC_Library/MCP1725-ADJE_MC.lib)(options "")(descr ""))
   (lib (name 93LC56BT-I_OT)(type Legacy)(uri /home/markn/Kicad-Projects/LoRaDongle/lib/93LC56B-I_OT_KiCad/93LC56BT-I_OT.lib)(options "")(descr ""))
   (lib (name IS25LP032D-JBLE)(type Legacy)(uri /home/markn/Kicad-Projects/LoRaDongle/lib/IS25LP032D-JBLE_KiCad/IS25LP032D-JBLE.lib)(options "")(descr ""))
+  (lib (name VLS201610CX-150M-1)(type Legacy)(uri /home/markn/Kicad-Projects/LoRaDongle/lib/KiCad_VLS201610CX-150M-1/VLS201610CX-150M-1.lib)(options "")(descr ""))
+  (lib (name TYETBCSANF-32.000000)(type Legacy)(uri /home/markn/Kicad-Projects/LoRaDongle/lib/TYETBCSANF-32.000000_KiCad/TYETBCSANF-32.000000.lib)(options "")(descr ""))
 )

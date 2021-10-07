@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 2 7
+Sheet 6 7
 Title "LoRa Dongle"
 Date ""
 Rev ""
@@ -13,38 +13,10 @@ Comment2 ""
 Comment3 ""
 Comment4 ""
 $EndDescr
-Text Notes 6300 1800 0    50   Italic 10
-TODO
-Text Notes 3400 3150 0    50   Italic 10
-TODO
-Text Notes 5500 4650 0    50   Italic 10
-TODO
-Text Label 2800 3000 2    50   ~ 0
+Text Label 2250 3100 2    50   ~ 0
 DIO3
 Wire Wire Line
-	3000 3000 2800 3000
-$Comp
-L dk_Ferrite-Beads-and-Chips:BLM18AG601SN1D FB?
-U 1 1 6152F4E5
-P 3200 3000
-AR Path="/6152F4E5" Ref="FB?"  Part="1" 
-AR Path="/614F0720/6152F4E5" Ref="FB?"  Part="1" 
-F 0 "FB?" H 3200 3287 60  0000 C CNN
-F 1 "BLM18AG601SN1D" H 3200 3181 60  0000 C CNN
-F 2 "digikey-footprints:0603" H 3400 3200 60  0001 L CNN
-F 3 "https://www.murata.com/en-us/products/productdata/8796738650142/ENFA0003.pdf" H 3400 3300 60  0001 L CNN
-F 4 "490-1014-1-ND" H 3400 3400 60  0001 L CNN "Digi-Key_PN"
-F 5 "BLM18AG601SN1D" H 3400 3500 60  0001 L CNN "MPN"
-F 6 "Filters" H 3400 3600 60  0001 L CNN "Category"
-F 7 "Ferrite Beads and Chips" H 3400 3700 60  0001 L CNN "Family"
-F 8 "https://www.murata.com/en-us/products/productdata/8796738650142/ENFA0003.pdf" H 3400 3800 60  0001 L CNN "DK_Datasheet_Link"
-F 9 "/product-detail/en/murata-electronics-north-america/BLM18AG601SN1D/490-1014-1-ND/584462" H 3400 3900 60  0001 L CNN "DK_Detail_Page"
-F 10 "FERRITE BEAD 600 OHM 0603 1LN" H 3400 4000 60  0001 L CNN "Description"
-F 11 "Murata Electronics North America" H 3400 4100 60  0001 L CNN "Manufacturer"
-F 12 "Active" H 3400 4200 60  0001 L CNN "Status"
-	1    3200 3000
-	1    0    0    -1  
-$EndComp
+	2450 3100 2250 3100
 Wire Wire Line
 	5950 4900 5950 5600
 NoConn ~ 5000 3300
@@ -52,8 +24,6 @@ Wire Wire Line
 	5100 3300 5000 3300
 Text Label 6450 2700 0    50   ~ 0
 DIO3
-Text Label 6450 2500 0    50   ~ 0
-DIO1
 Text Label 6450 2600 0    50   ~ 0
 DIO2
 Wire Wire Line
@@ -81,19 +51,6 @@ Text Label 6800 5600 0    50   ~ 0
 DIO2
 Wire Wire Line
 	6600 5600 6800 5600
-$Comp
-L Device:R R?
-U 1 1 6152F4FD
-P 6450 5600
-AR Path="/6152F4FD" Ref="R?"  Part="1" 
-AR Path="/614F0720/6152F4FD" Ref="R?"  Part="1" 
-F 0 "R?" V 6400 5750 50  0000 C CNN
-F 1 "R" V 6400 5450 50  0000 C CNN
-F 2 "" V 6380 5600 50  0001 C CNN
-F 3 "~" H 6450 5600 50  0001 C CNN
-	1    6450 5600
-	0    1    1    0   
-$EndComp
 Wire Wire Line
 	5850 4900 5950 4900
 Wire Wire Line
@@ -107,10 +64,11 @@ U 1 1 6152F507
 P 6100 5750
 AR Path="/6152F507" Ref="C?"  Part="1" 
 AR Path="/614F0720/6152F507" Ref="C?"  Part="1" 
-F 0 "C?" H 6150 5650 50  0000 L CNN
-F 1 "C" H 6000 5650 50  0000 L CNN
-F 2 "" H 6138 5600 50  0001 C CNN
+F 0 "C?" H 6150 5850 50  0000 L CNN
+F 1 "1nF" H 5950 5650 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0402_1005Metric" H 6138 5600 50  0001 C CNN
 F 3 "~" H 6100 5750 50  0001 C CNN
+F 4 "GRM155R72A102KA01D" H 6100 5750 50  0001 C CNN "Part Number"
 	1    6100 5750
 	1    0    0    -1  
 $EndComp
@@ -176,9 +134,10 @@ P 4000 5550
 AR Path="/6152F529" Ref="C?"  Part="1" 
 AR Path="/614F0720/6152F529" Ref="C?"  Part="1" 
 F 0 "C?" H 4050 5650 50  0000 L CNN
-F 1 "C" H 3850 5650 50  0000 L CNN
-F 2 "" H 4038 5400 50  0001 C CNN
+F 1 "1.8F" H 4050 5450 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0402_1005Metric" H 4038 5400 50  0001 C CNN
 F 3 "~" H 4000 5550 50  0001 C CNN
+F 4 "GRM1555C1H1R8BA01D" H 4000 5550 50  0001 C CNN "part Number"
 	1    4000 5550
 	1    0    0    -1  
 $EndComp
@@ -188,10 +147,11 @@ U 1 1 6152F52F
 P 4000 5150
 AR Path="/6152F52F" Ref="L?"  Part="1" 
 AR Path="/614F0720/6152F52F" Ref="L?"  Part="1" 
-F 0 "L?" H 3950 5250 50  0000 C CNN
-F 1 "L" H 3950 5050 50  0000 C CNN
-F 2 "" H 4000 5150 50  0001 C CNN
+F 0 "L?" H 4100 5150 50  0000 C CNN
+F 1 "15nH" H 3900 5150 50  0000 C CNN
+F 2 "Inductor_SMD:L_0402_1005Metric" H 4000 5150 50  0001 C CNN
 F 3 "~" H 4000 5150 50  0001 C CNN
+F 4 "LQW15AN15NH00D" H 4000 5150 50  0001 C CNN "part Number"
 	1    4000 5150
 	1    0    0    -1  
 $EndComp
@@ -202,9 +162,10 @@ P 4400 4900
 AR Path="/6152F535" Ref="C?"  Part="1" 
 AR Path="/614F0720/6152F535" Ref="C?"  Part="1" 
 F 0 "C?" V 4350 4800 50  0000 C CNN
-F 1 "C" V 4350 5000 50  0000 C CNN
-F 2 "" H 4438 4750 50  0001 C CNN
+F 1 "2.4pF" V 4550 4900 50  0000 C CNN
+F 2 "Capacitor_SMD:C_0402_1005Metric" H 4438 4750 50  0001 C CNN
 F 3 "~" H 4400 4900 50  0001 C CNN
+F 4 "GRM1555C1H2R4WA01D" V 4400 4900 50  0001 C CNN "Part Number"
 	1    4400 4900
 	0    1    1    0   
 $EndComp
@@ -227,8 +188,8 @@ U 1 1 6152F54A
 P 5450 4800
 AR Path="/6152F54A" Ref="U?"  Part="1" 
 AR Path="/614F0720/6152F54A" Ref="U?"  Part="1" 
-F 0 "U?" H 5450 5203 60  0000 C CNN
-F 1 "4259-63" H 5450 5097 60  0000 C CNN
+F 0 "U?" H 5700 4950 60  0000 C CNN
+F 1 "4259-63" H 5250 4250 60  0000 C CNN
 F 2 "digikey-footprints:SOT-363" H 5650 5000 60  0001 L CNN
 F 3 "http://www.psemi.com/pdf/datasheets/pe4259ds.pdf" H 5650 5100 60  0001 L CNN
 F 4 "1046-1011-1-ND" H 5650 5200 60  0001 L CNN "Digi-Key_PN"
@@ -261,54 +222,16 @@ F 3 "" H 5350 5300 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L Device:C C?
-U 1 1 6152F558
-P 6300 4800
-AR Path="/6152F558" Ref="C?"  Part="1" 
-AR Path="/614F0720/6152F558" Ref="C?"  Part="1" 
-F 0 "C?" V 6250 4700 50  0000 C CNN
-F 1 "C" V 6250 4900 50  0000 C CNN
-F 2 "" H 6338 4650 50  0001 C CNN
-F 3 "~" H 6300 4800 50  0001 C CNN
-	1    6300 4800
-	0    1    1    0   
-$EndComp
-$Comp
-L Device:C C?
-U 1 1 6152F55E
-P 6600 5050
-AR Path="/6152F55E" Ref="C?"  Part="1" 
-AR Path="/614F0720/6152F55E" Ref="C?"  Part="1" 
-F 0 "C?" H 6650 5150 50  0000 L CNN
-F 1 "C" H 6450 5150 50  0000 L CNN
-F 2 "" H 6638 4900 50  0001 C CNN
-F 3 "~" H 6600 5050 50  0001 C CNN
-	1    6600 5050
-	1    0    0    -1  
-$EndComp
-$Comp
-L Device:C C?
-U 1 1 6152F564
-P 7100 5050
-AR Path="/6152F564" Ref="C?"  Part="1" 
-AR Path="/614F0720/6152F564" Ref="C?"  Part="1" 
-F 0 "C?" H 7150 5150 50  0000 L CNN
-F 1 "C" H 6950 5150 50  0000 L CNN
-F 2 "" H 7138 4900 50  0001 C CNN
-F 3 "~" H 7100 5050 50  0001 C CNN
-	1    7100 5050
-	1    0    0    -1  
-$EndComp
-$Comp
 L Device:L L?
 U 1 1 6152F56A
 P 6850 4800
 AR Path="/6152F56A" Ref="L?"  Part="1" 
 AR Path="/614F0720/6152F56A" Ref="L?"  Part="1" 
-F 0 "L?" V 6900 4950 50  0000 C CNN
-F 1 "L" V 6900 4650 50  0000 C CNN
-F 2 "" H 6850 4800 50  0001 C CNN
+F 0 "L?" V 6950 4800 50  0000 C CNN
+F 1 "9.1nH" V 6800 4800 50  0000 C CNN
+F 2 "Inductor_SMD:L_0402_1005Metric" H 6850 4800 50  0001 C CNN
 F 3 "~" H 6850 4800 50  0001 C CNN
+F 4 "LQW15AN9N1H00D" V 6850 4800 50  0001 C CNN "Part Number"
 	1    6850 4800
 	0    -1   -1   0   
 $EndComp
@@ -391,16 +314,14 @@ F 3 "" H 7500 5100 50  0001 C CNN
 	1    7500 5100
 	1    0    0    -1  
 $EndComp
-Text Label 9450 2300 2    50   ~ 0
+Text Label 9700 2300 2    50   ~ 0
 RF1
 Wire Wire Line
 	7800 2300 7900 2300
 Wire Wire Line
 	7800 2000 7900 2000
 Wire Wire Line
-	8700 2300 8800 2300
-Wire Wire Line
-	8400 2300 8300 2300
+	8450 2300 8300 2300
 Wire Wire Line
 	8300 2300 8300 2400
 Connection ~ 8300 2300
@@ -439,60 +360,49 @@ Wire Wire Line
 $Comp
 L Device:L L?
 U 1 1 6152F5B1
-P 8950 2300
+P 9200 2300
 AR Path="/6152F5B1" Ref="L?"  Part="1" 
 AR Path="/614F0720/6152F5B1" Ref="L?"  Part="1" 
-F 0 "L?" V 9000 2450 50  0000 C CNN
-F 1 "L" V 9000 2150 50  0000 C CNN
-F 2 "" H 8950 2300 50  0001 C CNN
-F 3 "~" H 8950 2300 50  0001 C CNN
-	1    8950 2300
+F 0 "L?" V 9300 2300 50  0000 C CNN
+F 1 "4.7nH" V 9150 2300 50  0000 C CNN
+F 2 "Inductor_SMD:L_0402_1005Metric" H 9200 2300 50  0001 C CNN
+F 3 "~" H 9200 2300 50  0001 C CNN
+F 4 "LQW15AN4N7C00D" V 9200 2300 50  0001 C CNN "Part Number"
+	1    9200 2300
 	0    -1   -1   0   
 $EndComp
-$Comp
-L Device:C C?
-U 1 1 6152F5B7
-P 9200 2550
-AR Path="/6152F5B7" Ref="C?"  Part="1" 
-AR Path="/614F0720/6152F5B7" Ref="C?"  Part="1" 
-F 0 "C?" H 9250 2650 50  0000 L CNN
-F 1 "C" H 9250 2450 50  0000 L CNN
-F 2 "" H 9238 2400 50  0001 C CNN
-F 3 "~" H 9200 2550 50  0001 C CNN
-	1    9200 2550
-	1    0    0    -1  
-$EndComp
 Wire Wire Line
-	9200 2300 9450 2300
+	9450 2300 9700 2300
 Wire Wire Line
-	9100 2300 9200 2300
-Connection ~ 9200 2300
+	9350 2300 9450 2300
+Connection ~ 9450 2300
 Wire Wire Line
-	9200 2300 9200 2400
+	9450 2300 9450 2400
 $Comp
 L power:GND #PWR?
 U 1 1 6152F5C1
-P 9200 2700
+P 9450 2700
 AR Path="/6152F5C1" Ref="#PWR?"  Part="1" 
 AR Path="/614F0720/6152F5C1" Ref="#PWR0112"  Part="1" 
-F 0 "#PWR0112" H 9200 2450 50  0001 C CNN
-F 1 "GND" H 9205 2527 50  0000 C CNN
-F 2 "" H 9200 2700 50  0001 C CNN
-F 3 "" H 9200 2700 50  0001 C CNN
-	1    9200 2700
+F 0 "#PWR0112" H 9450 2450 50  0001 C CNN
+F 1 "GND" H 9455 2527 50  0000 C CNN
+F 2 "" H 9450 2700 50  0001 C CNN
+F 3 "" H 9450 2700 50  0001 C CNN
+	1    9450 2700
 	1    0    0    -1  
 $EndComp
 $Comp
 L Device:C C?
 U 1 1 6152F5C7
-P 8550 2300
+P 8600 2300
 AR Path="/6152F5C7" Ref="C?"  Part="1" 
 AR Path="/614F0720/6152F5C7" Ref="C?"  Part="1" 
-F 0 "C?" V 8500 2200 50  0000 C CNN
-F 1 "C" V 8500 2400 50  0000 C CNN
-F 2 "" H 8588 2150 50  0001 C CNN
-F 3 "~" H 8550 2300 50  0001 C CNN
-	1    8550 2300
+F 0 "C?" V 8550 2200 50  0000 C CNN
+F 1 "39pF" V 8650 2450 50  0000 C CNN
+F 2 "Capacitor_SMD:C_0402_1005Metric" H 8638 2150 50  0001 C CNN
+F 3 "~" H 8600 2300 50  0001 C CNN
+F 4 "GRM1555C1H390JA01D" V 8600 2300 50  0001 C CNN "Part Number"
+	1    8600 2300
 	0    1    1    0   
 $EndComp
 $Comp
@@ -534,10 +444,11 @@ U 1 1 6152F5DD
 P 8050 2300
 AR Path="/6152F5DD" Ref="L?"  Part="1" 
 AR Path="/614F0720/6152F5DD" Ref="L?"  Part="1" 
-F 0 "L?" V 8100 2450 50  0000 C CNN
-F 1 "L" V 8100 2150 50  0000 C CNN
-F 2 "" H 8050 2300 50  0001 C CNN
+F 0 "L?" V 8150 2300 50  0000 C CNN
+F 1 "2.5nH" V 8000 2300 50  0000 C CNN
+F 2 "Inductor_SMD:L_0402_1005Metric" H 8050 2300 50  0001 C CNN
 F 3 "~" H 8050 2300 50  0001 C CNN
+F 4 "LQW15AN2N5B00D" V 8050 2300 50  0001 C CNN "Part Number"
 	1    8050 2300
 	0    -1   -1   0   
 $EndComp
@@ -548,9 +459,10 @@ P 8050 2000
 AR Path="/6152F5E3" Ref="C?"  Part="1" 
 AR Path="/614F0720/6152F5E3" Ref="C?"  Part="1" 
 F 0 "C?" V 8000 1900 50  0000 C CNN
-F 1 "C" V 8000 2100 50  0000 C CNN
-F 2 "" H 8088 1850 50  0001 C CNN
+F 1 "3.3pF" V 8000 2150 50  0000 C CNN
+F 2 "Capacitor_SMD:C_0402_1005Metric" H 8088 1850 50  0001 C CNN
 F 3 "~" H 8050 2000 50  0001 C CNN
+F 4 "GJM1555C1H3R3DB01D" V 8050 2000 50  0001 C CNN "Part Number"
 	1    8050 2000
 	0    1    1    0   
 $EndComp
@@ -561,9 +473,10 @@ P 8300 2550
 AR Path="/6152F5E9" Ref="C?"  Part="1" 
 AR Path="/614F0720/6152F5E9" Ref="C?"  Part="1" 
 F 0 "C?" H 8350 2650 50  0000 L CNN
-F 1 "C" H 8350 2450 50  0000 L CNN
-F 2 "" H 8338 2400 50  0001 C CNN
+F 1 "5.6pF" H 8350 2450 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0402_1005Metric" H 8338 2400 50  0001 C CNN
 F 3 "~" H 8300 2550 50  0001 C CNN
+F 4 "GRM1555C1H5R6CA01J" H 8300 2550 50  0001 C CNN "Part Number"
 	1    8300 2550
 	1    0    0    -1  
 $EndComp
@@ -600,18 +513,17 @@ U 1 1 6152F600
 P 7600 2000
 AR Path="/6152F600" Ref="L?"  Part="1" 
 AR Path="/614F0720/6152F600" Ref="L?"  Part="1" 
-F 0 "L?" H 7550 2100 50  0000 C CNN
-F 1 "L" H 7550 1900 50  0000 C CNN
-F 2 "" H 7600 2000 50  0001 C CNN
+F 0 "L?" H 7700 2000 50  0000 C CNN
+F 1 "47nH" H 7500 2000 50  0000 C CNN
+F 2 "Inductor_SMD:L_0402_1005Metric" H 7600 2000 50  0001 C CNN
 F 3 "~" H 7600 2000 50  0001 C CNN
+F 4 "LQW15AN47NJ00D" H 7600 2000 50  0001 C CNN "Part Number"
 	1    7600 2000
 	1    0    0    -1  
 $EndComp
 Connection ~ 7600 2300
 Wire Wire Line
 	7600 2300 7400 2300
-Text GLabel 6750 1350 1    50   Input ~ 0
-VR_PA
 Wire Wire Line
 	6750 1550 6900 1550
 Connection ~ 6900 1550
@@ -624,8 +536,6 @@ Wire Wire Line
 Connection ~ 7200 1550
 Wire Wire Line
 	7200 1550 7200 1600
-Text GLabel 5050 2000 0    50   Output ~ 0
-VR_PA
 $Comp
 L Device:C C?
 U 1 1 6152F611
@@ -633,9 +543,10 @@ P 7200 1750
 AR Path="/6152F611" Ref="C?"  Part="1" 
 AR Path="/614F0720/6152F611" Ref="C?"  Part="1" 
 F 0 "C?" H 7250 1850 50  0000 L CNN
-F 1 "C" H 7250 1650 50  0000 L CNN
-F 2 "" H 7238 1600 50  0001 C CNN
+F 1 "47pF" H 7250 1650 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0402_1005Metric" H 7238 1600 50  0001 C CNN
 F 3 "~" H 7200 1750 50  0001 C CNN
+F 4 "GRM1555C1H470JA01D" H 7200 1750 50  0001 C CNN "Part Number"
 	1    7200 1750
 	1    0    0    -1  
 $EndComp
@@ -646,9 +557,10 @@ P 6900 1750
 AR Path="/6152F617" Ref="C?"  Part="1" 
 AR Path="/614F0720/6152F617" Ref="C?"  Part="1" 
 F 0 "C?" H 6950 1850 50  0000 L CNN
-F 1 "C" H 6950 1650 50  0000 L CNN
-F 2 "" H 6938 1600 50  0001 C CNN
+F 1 "47nF" H 6950 1650 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0402_1005Metric" H 6938 1600 50  0001 C CNN
 F 3 "~" H 6900 1750 50  0001 C CNN
+F 4 "GRM155R71C473KA01J" H 6900 1750 50  0001 C CNN "Part Number"
 	1    6900 1750
 	1    0    0    -1  
 $EndComp
@@ -701,27 +613,15 @@ F 3 "" H 1700 1550 50  0001 C CNN
 $EndComp
 $Comp
 L Device:C C?
-U 1 1 6152F641
-P 1950 1300
-AR Path="/6152F641" Ref="C?"  Part="1" 
-AR Path="/614F0720/6152F641" Ref="C?"  Part="1" 
-F 0 "C?" H 2050 1400 50  0000 C CNN
-F 1 "C" H 2050 1200 50  0000 C CNN
-F 2 "" H 1988 1150 50  0001 C CNN
-F 3 "~" H 1950 1300 50  0001 C CNN
-	1    1950 1300
-	-1   0    0    1   
-$EndComp
-$Comp
-L Device:C C?
 U 1 1 6152F647
 P 1700 1300
 AR Path="/6152F647" Ref="C?"  Part="1" 
 AR Path="/614F0720/6152F647" Ref="C?"  Part="1" 
-F 0 "C?" H 1800 1400 50  0000 C CNN
-F 1 "C" H 1800 1200 50  0000 C CNN
-F 2 "" H 1738 1150 50  0001 C CNN
+F 0 "C?" H 1650 1200 50  0000 C CNN
+F 1 "1uF" H 1600 1400 50  0000 C CNN
+F 2 "Capacitor_SMD:C_0402_1005Metric" H 1738 1150 50  0001 C CNN
 F 3 "~" H 1700 1300 50  0001 C CNN
+F 4 "GRM188R61A105KA61D" H 1700 1300 50  0001 C CNN "part Number"
 	1    1700 1300
 	-1   0    0    1   
 $EndComp
@@ -731,10 +631,11 @@ U 1 1 6152F64D
 P 1450 1300
 AR Path="/6152F64D" Ref="C?"  Part="1" 
 AR Path="/614F0720/6152F64D" Ref="C?"  Part="1" 
-F 0 "C?" H 1550 1400 50  0000 C CNN
-F 1 "C" H 1550 1200 50  0000 C CNN
-F 2 "" H 1488 1150 50  0001 C CNN
+F 0 "C?" H 1400 1200 50  0000 C CNN
+F 1 "100nF" H 1550 1400 50  0000 C CNN
+F 2 "Capacitor_SMD:C_0402_1005Metric" H 1488 1150 50  0001 C CNN
 F 3 "~" H 1450 1300 50  0001 C CNN
+F 4 "GRM155R71C104KA88D" H 1450 1300 50  0001 C CNN "Part Number"
 	1    1450 1300
 	-1   0    0    1   
 $EndComp
@@ -769,7 +670,7 @@ Wire Wire Line
 	5100 1700 4950 1700
 Wire Wire Line
 	6300 2100 6600 2100
-Text Label 4250 2100 3    50   ~ 0
+Text Label 4250 2100 1    50   ~ 0
 DCC_SW
 Wire Wire Line
 	4150 2100 4350 2100
@@ -817,23 +718,11 @@ AR Path="/6152F678" Ref="C?"  Part="1"
 AR Path="/614F0720/6152F678" Ref="C?"  Part="1" 
 F 0 "C?" V 3850 2100 50  0000 C CNN
 F 1 "470nF" V 4150 2100 50  0000 C CNN
-F 2 "" H 4038 1950 50  0001 C CNN
+F 2 "Capacitor_SMD:C_0402_1005Metric" H 4038 1950 50  0001 C CNN
 F 3 "~" H 4000 2100 50  0001 C CNN
+F 4 "GRM155R61A474KE15D" V 4000 2100 50  0001 C CNN "Part Number"
 	1    4000 2100
 	0    1    1    0   
-$EndComp
-$Comp
-L Device:L L?
-U 1 1 6152F67E
-P 4500 2100
-AR Path="/6152F67E" Ref="L?"  Part="1" 
-AR Path="/614F0720/6152F67E" Ref="L?"  Part="1" 
-F 0 "L?" V 4550 2200 50  0000 C CNN
-F 1 "15uH" V 4450 2100 50  0000 C CNN
-F 2 "" H 4500 2100 50  0001 C CNN
-F 3 "~" H 4500 2100 50  0001 C CNN
-	1    4500 2100
-	0    -1   -1   0   
 $EndComp
 Connection ~ 6400 3000
 Wire Wire Line
@@ -905,4 +794,308 @@ Text GLabel 4950 1600 1    50   Input ~ 0
 3v3
 Text GLabel 1700 1000 1    50   Input ~ 0
 3v3
+Text Label 5050 2000 2    50   ~ 0
+VR_PA
+Text Label 6750 1350 2    50   ~ 0
+VR_PA
+Wire Wire Line
+	5450 4600 5450 4400
+Wire Wire Line
+	5450 4400 5500 4400
+Wire Wire Line
+	5050 4400 4950 4400
+Text HLabel 4950 4400 0    50   Input ~ 0
+ANT_SW
+$Comp
+L Device:R R?
+U 1 1 6160F852
+P 5200 4400
+AR Path="/6160F852" Ref="R?"  Part="1" 
+AR Path="/614F0720/6160F852" Ref="R?"  Part="1" 
+F 0 "R?" V 5150 4550 50  0000 C CNN
+F 1 "100R" V 5200 4400 50  0000 C CNN
+F 2 "Resistor_SMD:R_0402_1005Metric" V 5130 4400 50  0001 C CNN
+F 3 "~" H 5200 4400 50  0001 C CNN
+F 4 "CRCW0402100RFKED" V 5200 4400 50  0001 C CNN "Part Number"
+	1    5200 4400
+	0    1    1    0   
+$EndComp
+$Comp
+L power:GND #PWR?
+U 1 1 616125ED
+P 5900 4400
+AR Path="/616125ED" Ref="#PWR?"  Part="1" 
+AR Path="/614F0720/616125ED" Ref="#PWR?"  Part="1" 
+F 0 "#PWR?" H 5900 4150 50  0001 C CNN
+F 1 "GND" V 5905 4227 50  0000 C CNN
+F 2 "" H 5900 4400 50  0001 C CNN
+F 3 "" H 5900 4400 50  0001 C CNN
+	1    5900 4400
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	5800 4400 5900 4400
+Wire Wire Line
+	5350 4400 5450 4400
+Connection ~ 5450 4400
+Text Notes 7650 2700 0    50   ~ 0
+Needed?\n
+$Comp
+L Device:C C?
+U 1 1 615F2583
+P 7100 5050
+AR Path="/615F2583" Ref="C?"  Part="1" 
+AR Path="/614F0720/615F2583" Ref="C?"  Part="1" 
+F 0 "C?" H 7050 4950 50  0000 C CNN
+F 1 "3.3pF" H 6950 5150 50  0000 C CNN
+F 2 "Capacitor_SMD:C_0402_1005Metric" H 7138 4900 50  0001 C CNN
+F 3 "~" H 7100 5050 50  0001 C CNN
+F 4 "GJM1555C1H3R3DB01D" V 7100 5050 50  0001 C CNN "Part Number"
+	1    7100 5050
+	-1   0    0    1   
+$EndComp
+$Comp
+L Device:C C?
+U 1 1 6152F5B7
+P 9450 2550
+AR Path="/6152F5B7" Ref="C?"  Part="1" 
+AR Path="/614F0720/6152F5B7" Ref="C?"  Part="1" 
+F 0 "C?" H 9500 2650 50  0000 L CNN
+F 1 "2.2pF" H 9500 2450 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0402_1005Metric" H 9488 2400 50  0001 C CNN
+F 3 "~" H 9450 2550 50  0001 C CNN
+F 4 "GRM1555C1H2R2BA01D" H 9450 2550 50  0001 C CNN "Part Number"
+	1    9450 2550
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:C C?
+U 1 1 6160203C
+P 6600 5050
+AR Path="/6160203C" Ref="C?"  Part="1" 
+AR Path="/614F0720/6160203C" Ref="C?"  Part="1" 
+F 0 "C?" H 6550 4950 50  0000 C CNN
+F 1 "3.3pF" H 6450 5150 50  0000 C CNN
+F 2 "Capacitor_SMD:C_0402_1005Metric" H 6638 4900 50  0001 C CNN
+F 3 "~" H 6600 5050 50  0001 C CNN
+F 4 "GJM1555C1H3R3DB01D" V 6600 5050 50  0001 C CNN "Part Number"
+	1    6600 5050
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	8750 2300 9050 2300
+$Comp
+L Device:C C?
+U 1 1 61614F1B
+P 6300 4800
+AR Path="/61614F1B" Ref="C?"  Part="1" 
+AR Path="/614F0720/61614F1B" Ref="C?"  Part="1" 
+F 0 "C?" V 6250 4700 50  0000 C CNN
+F 1 "39pF" V 6350 4950 50  0000 C CNN
+F 2 "Capacitor_SMD:C_0402_1005Metric" H 6338 4650 50  0001 C CNN
+F 3 "~" H 6300 4800 50  0001 C CNN
+F 4 "GRM1555C1H390JA01D" V 6300 4800 50  0001 C CNN "Part Number"
+	1    6300 4800
+	0    1    1    0   
+$EndComp
+Text Notes 4600 5350 0    50   ~ 0
+Needed?\n
+$Comp
+L Device:C C?
+U 1 1 616288B3
+P 5650 4400
+AR Path="/616288B3" Ref="C?"  Part="1" 
+AR Path="/614F0720/616288B3" Ref="C?"  Part="1" 
+F 0 "C?" V 5600 4450 50  0000 L CNN
+F 1 "1nF" V 5700 4450 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0402_1005Metric" H 5688 4250 50  0001 C CNN
+F 3 "~" H 5650 4400 50  0001 C CNN
+F 4 "GRM155R72A102KA01D" H 5650 4400 50  0001 C CNN "Part Number"
+	1    5650 4400
+	0    1    1    0   
+$EndComp
+Text Notes 1300 1900 0    50   ~ 0
+VDD & Vbat Decoupling Caps
+$Comp
+L Device:C C?
+U 1 1 61632122
+P 1950 1300
+AR Path="/61632122" Ref="C?"  Part="1" 
+AR Path="/614F0720/61632122" Ref="C?"  Part="1" 
+F 0 "C?" H 1900 1200 50  0000 C CNN
+F 1 "1uF" H 1850 1400 50  0000 C CNN
+F 2 "Capacitor_SMD:C_0402_1005Metric" H 1988 1150 50  0001 C CNN
+F 3 "~" H 1950 1300 50  0001 C CNN
+F 4 "GRM188R61A105KA61D" H 1950 1300 50  0001 C CNN "part Number"
+	1    1950 1300
+	-1   0    0    1   
+$EndComp
+Text Notes 7050 2400 0    50   ~ 0
+0R resistor?
+$Comp
+L VLS201610CX-150M-1:VLS201610CX-150M-1 L?
+U 1 1 61661D80
+P 4500 2100
+F 0 "L?" H 4500 2200 50  0000 C CNN
+F 1 "15uH" H 4500 2050 50  0000 C CNN
+F 2 "VLS2016" H 5150 2150 50  0001 L CNN
+F 3 "https://product.tdk.com/system/files/dam/doc/product/inductor/inductor/smd/catalog/inductor_commercial_power_vls201610cx-1_en.pdf" H 5150 2050 50  0001 L CNN
+F 4 "Inductors for power circuits, Wound ferrite" H 5150 1950 50  0001 L CNN "Description"
+F 5 "" H 5150 1850 50  0001 L CNN "Height"
+F 6 "TDK" H 5150 1750 50  0001 L CNN "Manufacturer_Name"
+F 7 "VLS201610CX-150M-1" H 5150 1650 50  0001 L CNN "Manufacturer_Part_Number"
+F 8 "810-VLS201610CX150M1" H 5150 1550 50  0001 L CNN "Mouser Part Number"
+F 9 "https://www.mouser.co.uk/ProductDetail/TDK/VLS201610CX-150M-1?qs=1mbolxNpo8cDxpAAQe7QDA%3D%3D" H 5150 1450 50  0001 L CNN "Mouser Price/Stock"
+F 10 "" H 5150 1350 50  0001 L CNN "Arrow Part Number"
+F 11 "" H 5150 1250 50  0001 L CNN "Arrow Price/Stock"
+	1    4500 2100
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:Ferrite_Bead_Small FB?
+U 1 1 6167BC3F
+P 2550 3100
+F 0 "FB?" V 2313 3100 50  0000 C CNN
+F 1 "10R/100MHz" V 2404 3100 50  0000 C CNN
+F 2 "Inductor_SMD:L_0402_1005Metric" V 2480 3100 50  0001 C CNN
+F 3 "~" H 2550 3100 50  0001 C CNN
+F 4 "BLM15PG100SN1D" V 2550 3100 50  0001 C CNN "Part Number"
+	1    2550 3100
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	6300 1700 6450 1700
+Text HLabel 6450 1700 2    50   Input ~ 0
+~RESET
+Text HLabel 6450 1900 2    50   Input ~ 0
+BUSY
+Wire Wire Line
+	6300 1900 6450 1900
+$Comp
+L TYETBCSANF-32.000000:TYETBCSANF-32.000000 Y?
+U 1 1 61698E39
+P 3600 3150
+F 0 "Y?" H 3600 3350 50  0000 C CNN
+F 1 "TYETBCSANF-32.000000" H 3600 2900 50  0000 C CNN
+F 2 "TY" H 4750 3250 50  0001 L CNN
+F 3 "http://www.taitien.com/wp-content/uploads/2015/12/XO-0081_TY.pdf" H 4750 3150 50  0001 L CNN
+F 4 "OSC TCXO 32MHZ 3.3V CLP SW SMD" H 4750 3050 50  0001 L CNN "Description"
+F 5 "" H 4750 2950 50  0001 L CNN "Height"
+F 6 "TAITIEN" H 4750 2850 50  0001 L CNN "Manufacturer_Name"
+F 7 "TYETBCSANF-32.000000" H 4750 2750 50  0001 L CNN "Manufacturer_Part_Number"
+F 8 "" H 4750 2650 50  0001 L CNN "Mouser Part Number"
+F 9 "" H 4750 2550 50  0001 L CNN "Mouser Price/Stock"
+F 10 "" H 4750 2450 50  0001 L CNN "Arrow Part Number"
+F 11 "" H 4750 2350 50  0001 L CNN "Arrow Price/Stock"
+	1    3600 3150
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:C C?
+U 1 1 616B271E
+P 2850 3350
+AR Path="/616B271E" Ref="C?"  Part="1" 
+AR Path="/614F0720/616B271E" Ref="C?"  Part="1" 
+F 0 "C?" H 2800 3250 50  0000 C CNN
+F 1 "100nF" H 3050 3350 50  0000 C CNN
+F 2 "Capacitor_SMD:C_0402_1005Metric" H 2888 3200 50  0001 C CNN
+F 3 "~" H 2850 3350 50  0001 C CNN
+F 4 "GRM155R71C104KA88D" H 2850 3350 50  0001 C CNN "Part Number"
+	1    2850 3350
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	3100 3250 3050 3250
+Wire Wire Line
+	3050 3250 3050 3500
+Wire Wire Line
+	3050 3500 2850 3500
+Wire Wire Line
+	2850 3500 2850 3600
+$Comp
+L power:GND #PWR?
+U 1 1 616C24D5
+P 2850 3600
+AR Path="/616C24D5" Ref="#PWR?"  Part="1" 
+AR Path="/614F0720/616C24D5" Ref="#PWR?"  Part="1" 
+F 0 "#PWR?" H 2850 3350 50  0001 C CNN
+F 1 "GND" H 2855 3427 50  0000 C CNN
+F 2 "" H 2850 3600 50  0001 C CNN
+F 3 "" H 2850 3600 50  0001 C CNN
+	1    2850 3600
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4100 3250 4250 3250
+Wire Wire Line
+	4250 3250 4250 3600
+$Comp
+L power:GND #PWR?
+U 1 1 616C69F7
+P 4250 3600
+AR Path="/616C69F7" Ref="#PWR?"  Part="1" 
+AR Path="/614F0720/616C69F7" Ref="#PWR?"  Part="1" 
+F 0 "#PWR?" H 4250 3350 50  0001 C CNN
+F 1 "GND" H 4255 3427 50  0000 C CNN
+F 2 "" H 4250 3600 50  0001 C CNN
+F 3 "" H 4250 3600 50  0001 C CNN
+	1    4250 3600
+	1    0    0    -1  
+$EndComp
+Connection ~ 2850 3500
+Wire Wire Line
+	2650 3100 2850 3100
+Wire Wire Line
+	2850 3200 2850 3100
+Connection ~ 2850 3100
+Wire Wire Line
+	2850 3100 3100 3100
+$Comp
+L Device:C C?
+U 1 1 617146ED
+P 4400 3100
+F 0 "C?" V 4250 3100 50  0000 C CNN
+F 1 "10pF" V 4550 3100 50  0000 C CNN
+F 2 "Capacitor_SMD:C_0402_1005Metric" H 4438 2950 50  0001 C CNN
+F 3 "~" H 4400 3100 50  0001 C CNN
+F 4 "GRM1555C1H100JA01J" V 4400 3100 50  0001 C CNN "Part Number"
+	1    4400 3100
+	0    1    1    0   
+$EndComp
+$Comp
+L Device:R R?
+U 1 1 617171F3
+P 4800 3100
+F 0 "R?" V 4700 3100 50  0000 C CNN
+F 1 "220R" V 4800 3100 50  0000 C CNN
+F 2 "Resistor_SMD:R_0402_1005Metric" V 4730 3100 50  0001 C CNN
+F 3 "~" H 4800 3100 50  0001 C CNN
+F 4 "CRCW0402220RJNED" V 4800 3100 50  0001 C CNN "Part Number"
+	1    4800 3100
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	4100 3100 4250 3100
+Wire Wire Line
+	4550 3100 4650 3100
+Wire Wire Line
+	4950 3100 5100 3100
+$Comp
+L Device:R R?
+U 1 1 617351DE
+P 6450 5600
+AR Path="/617351DE" Ref="R?"  Part="1" 
+AR Path="/614F0720/617351DE" Ref="R?"  Part="1" 
+F 0 "R?" V 6400 5750 50  0000 C CNN
+F 1 "100R" V 6450 5600 50  0000 C CNN
+F 2 "Resistor_SMD:R_0402_1005Metric" V 6380 5600 50  0001 C CNN
+F 3 "~" H 6450 5600 50  0001 C CNN
+F 4 "CRCW0402100RFKED" V 6450 5600 50  0001 C CNN "Part Number"
+	1    6450 5600
+	0    1    1    0   
+$EndComp
+Text Notes 5500 4700 0    50   ~ 0
+Out of Stock
+Text HLabel 6450 2500 2    50   Input ~ 0
+DIO1
 $EndSCHEMATC

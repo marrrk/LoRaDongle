@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 6 7
+Sheet 4 7
 Title ""
 Date ""
 Rev ""
@@ -841,4 +841,24 @@ Text HLabel 5550 2200 0    50   Input ~ 0
 DM
 Text HLabel 5550 2300 0    50   Input ~ 0
 DP
+$Comp
+L dk_Ferrite-Beads-and-Chips:BLM18AG601SN1D FB?
+U 1 1 615D8A3B
+P 1700 4000
+F 0 "FB?" H 1700 4150 60  0000 C CNN
+F 1 "600R/0.5A" H 1700 3850 60  0000 C CNN
+F 2 "digikey-footprints:0603" H 1900 4200 60  0001 L CNN
+F 3 "https://www.murata.com/en-us/products/productdata/8796738650142/ENFA0003.pdf" H 1900 4300 60  0001 L CNN
+F 4 "490-1014-1-ND" H 1900 4400 60  0001 L CNN "Digi-Key_PN"
+F 5 "BLM18AG601SN1D" H 1900 4500 60  0001 L CNN "MPN"
+F 6 "Filters" H 1900 4600 60  0001 L CNN "Category"
+F 7 "Ferrite Beads and Chips" H 1900 4700 60  0001 L CNN "Family"
+F 8 "https://www.murata.com/en-us/products/productdata/8796738650142/ENFA0003.pdf" H 1900 4800 60  0001 L CNN "DK_Datasheet_Link"
+F 9 "/product-detail/en/murata-electronics-north-america/BLM18AG601SN1D/490-1014-1-ND/584462" H 1900 4900 60  0001 L CNN "DK_Detail_Page"
+F 10 "FERRITE BEAD 600 OHM 0603 1LN" H 1900 5000 60  0001 L CNN "Description"
+F 11 "Murata Electronics North America" H 1900 5100 60  0001 L CNN "Manufacturer"
+F 12 "Active" H 1900 5200 60  0001 L CNN "Status"
+	1    1700 4000
+	1    0    0    -1  
+$EndComp
 $EndSCHEMATC
