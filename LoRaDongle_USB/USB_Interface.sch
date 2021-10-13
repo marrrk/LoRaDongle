@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 4 7
+Sheet 5 7
 Title ""
 Date ""
 Rev ""
@@ -395,86 +395,56 @@ Text Label 6450 1150 1    50   ~ 0
 VPLL
 Text Notes 2850 4900 0    50   ~ 0
 Connect the LC circuits for VPHY and VLL
-Text GLabel 2650 5200 1    50   Input ~ 0
+Text GLabel 1650 5200 1    50   Input ~ 0
 3V3
-$Comp
-L Device:Ferrite_Bead_Small FB?
-U 1 1 6191A257
-P 2850 5300
-AR Path="/6191A257" Ref="FB?"  Part="1" 
-AR Path="/618AACD4/6191A257" Ref="FB?"  Part="1" 
-F 0 "FB?" V 2750 5250 50  0000 L CNN
-F 1 "600R/0.5A" V 3000 5050 50  0000 L CNN
-F 2 "digikey-footprints:0603" V 2780 5300 50  0001 C CNN
-F 3 "~" H 2850 5300 50  0001 C CNN
-F 4 "742863160" H 2850 5300 50  0001 C CNN "Part Number"
-	1    2850 5300
-	0    1    1    0   
-$EndComp
 $Comp
 L Device:C C?
 U 1 1 6191A25D
-P 3150 5550
+P 2500 5550
 AR Path="/6191A25D" Ref="C?"  Part="1" 
 AR Path="/618AACD4/6191A25D" Ref="C?"  Part="1" 
-F 0 "C?" H 3200 5650 50  0000 L CNN
-F 1 "4.7uF" H 3200 5450 50  0000 L CNN
-F 2 "Capacitor_SMD:C_0603_1608Metric" H 3188 5400 50  0001 C CNN
-F 3 "~" H 3150 5550 50  0001 C CNN
-	1    3150 5550
+F 0 "C?" H 2550 5650 50  0000 L CNN
+F 1 "4.7uF" H 2550 5450 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0603_1608Metric" H 2538 5400 50  0001 C CNN
+F 3 "~" H 2500 5550 50  0001 C CNN
+	1    2500 5550
 	1    0    0    -1  
 $EndComp
 $Comp
 L power:GND #PWR?
 U 1 1 6191A263
-P 3350 5800
+P 2700 5800
 AR Path="/6191A263" Ref="#PWR?"  Part="1" 
 AR Path="/618AACD4/6191A263" Ref="#PWR?"  Part="1" 
-F 0 "#PWR?" H 3350 5550 50  0001 C CNN
-F 1 "GND" H 3355 5627 50  0000 C CNN
-F 2 "" H 3350 5800 50  0001 C CNN
-F 3 "" H 3350 5800 50  0001 C CNN
-	1    3350 5800
+F 0 "#PWR?" H 2700 5550 50  0001 C CNN
+F 1 "GND" H 2705 5627 50  0000 C CNN
+F 2 "" H 2700 5800 50  0001 C CNN
+F 3 "" H 2700 5800 50  0001 C CNN
+	1    2700 5800
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	2650 5200 2650 5300
+	1650 5200 1650 5300
 Wire Wire Line
-	2650 5300 2750 5300
+	2300 5300 2500 5300
 Wire Wire Line
-	2950 5300 3150 5300
+	2500 5300 2500 5400
 Wire Wire Line
-	3150 5300 3150 5400
+	2500 5700 2700 5700
 Wire Wire Line
-	3150 5700 3350 5700
+	2700 5700 2700 5800
 Wire Wire Line
-	3350 5700 3350 5800
+	2850 5700 2700 5700
+Connection ~ 2700 5700
 Wire Wire Line
-	3500 5700 3350 5700
-Connection ~ 3350 5700
+	2850 5400 2850 5300
 Wire Wire Line
-	3500 5400 3500 5300
+	2850 5300 2500 5300
+Connection ~ 2500 5300
 Wire Wire Line
-	3500 5300 3150 5300
-Connection ~ 3150 5300
-Wire Wire Line
-	3150 5300 3150 5200
-Text GLabel 3950 5200 1    50   Input ~ 0
+	2500 5300 2500 5200
+Text GLabel 3600 5200 1    50   Input ~ 0
 3V3
-$Comp
-L Device:Ferrite_Bead_Small FB?
-U 1 1 6191A277
-P 4150 5300
-AR Path="/6191A277" Ref="FB?"  Part="1" 
-AR Path="/618AACD4/6191A277" Ref="FB?"  Part="1" 
-F 0 "FB?" V 4050 5250 50  0000 L CNN
-F 1 "600R/0.5A" V 4300 5050 50  0000 L CNN
-F 2 "digikey-footprints:0603" V 4080 5300 50  0001 C CNN
-F 3 "~" H 4150 5300 50  0001 C CNN
-F 4 "742863160" H 4150 5300 50  0001 C CNN "Part Number"
-	1    4150 5300
-	0    1    1    0   
-$EndComp
 $Comp
 L Device:C C?
 U 1 1 6191A27D
@@ -502,9 +472,7 @@ F 3 "" H 4650 5800 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	3950 5200 3950 5300
-Wire Wire Line
-	3950 5300 4050 5300
+	3600 5200 3600 5300
 Wire Wire Line
 	4250 5300 4450 5300
 Wire Wire Line
@@ -523,7 +491,7 @@ Wire Wire Line
 Connection ~ 4450 5300
 Wire Wire Line
 	4450 5300 4450 5200
-Text Label 3150 5200 0    50   ~ 0
+Text Label 2500 5200 0    50   ~ 0
 VPHY
 Text Label 4450 5200 0    50   ~ 0
 VPLL
@@ -589,15 +557,15 @@ Connection ~ 2550 3200
 $Comp
 L Device:C C?
 U 1 1 6191A2B6
-P 3500 5550
+P 2850 5550
 AR Path="/6191A2B6" Ref="C?"  Part="1" 
 AR Path="/618AACD4/6191A2B6" Ref="C?"  Part="1" 
-F 0 "C?" H 3400 5450 50  0000 C CNN
-F 1 "0.1uF" H 3350 5650 50  0000 C CNN
-F 2 "Capacitor_SMD:C_0402_1005Metric" H 3538 5400 50  0001 C CNN
-F 3 "~" H 3500 5550 50  0001 C CNN
-F 4 "GCM155R71C104KA55J" V 3500 5550 50  0001 C CNN "Part Number"
-	1    3500 5550
+F 0 "C?" H 2750 5450 50  0000 C CNN
+F 1 "0.1uF" H 2700 5650 50  0000 C CNN
+F 2 "Capacitor_SMD:C_0402_1005Metric" H 2888 5400 50  0001 C CNN
+F 3 "~" H 2850 5550 50  0001 C CNN
+F 4 "GCM155R71C104KA55J" V 2850 5550 50  0001 C CNN "Part Number"
+	1    2850 5550
 	-1   0    0    1   
 $EndComp
 $Comp
@@ -612,20 +580,6 @@ F 2 "Capacitor_SMD:C_0402_1005Metric" H 4838 5400 50  0001 C CNN
 F 3 "~" H 4800 5550 50  0001 C CNN
 F 4 "GCM155R71C104KA55J" V 4800 5550 50  0001 C CNN "Part Number"
 	1    4800 5550
-	-1   0    0    1   
-$EndComp
-$Comp
-L Device:C C?
-U 1 1 6191A2C4
-P 6100 5500
-AR Path="/6191A2C4" Ref="C?"  Part="1" 
-AR Path="/618AACD4/6191A2C4" Ref="C?"  Part="1" 
-F 0 "C?" H 6000 5400 50  0000 C CNN
-F 1 "0.1uF" H 5950 5600 50  0000 C CNN
-F 2 "Capacitor_SMD:C_0402_1005Metric" H 6138 5350 50  0001 C CNN
-F 3 "~" H 6100 5500 50  0001 C CNN
-F 4 "GCM155R71C104KA55J" V 6100 5500 50  0001 C CNN "Part Number"
-	1    6100 5500
 	-1   0    0    1   
 $EndComp
 $Comp
@@ -844,21 +798,61 @@ DP
 $Comp
 L dk_Ferrite-Beads-and-Chips:BLM18AG601SN1D FB?
 U 1 1 615D8A3B
-P 1700 4000
-F 0 "FB?" H 1700 4150 60  0000 C CNN
-F 1 "600R/0.5A" H 1700 3850 60  0000 C CNN
-F 2 "digikey-footprints:0603" H 1900 4200 60  0001 L CNN
-F 3 "https://www.murata.com/en-us/products/productdata/8796738650142/ENFA0003.pdf" H 1900 4300 60  0001 L CNN
-F 4 "490-1014-1-ND" H 1900 4400 60  0001 L CNN "Digi-Key_PN"
-F 5 "BLM18AG601SN1D" H 1900 4500 60  0001 L CNN "MPN"
-F 6 "Filters" H 1900 4600 60  0001 L CNN "Category"
-F 7 "Ferrite Beads and Chips" H 1900 4700 60  0001 L CNN "Family"
-F 8 "https://www.murata.com/en-us/products/productdata/8796738650142/ENFA0003.pdf" H 1900 4800 60  0001 L CNN "DK_Datasheet_Link"
-F 9 "/product-detail/en/murata-electronics-north-america/BLM18AG601SN1D/490-1014-1-ND/584462" H 1900 4900 60  0001 L CNN "DK_Detail_Page"
-F 10 "FERRITE BEAD 600 OHM 0603 1LN" H 1900 5000 60  0001 L CNN "Description"
-F 11 "Murata Electronics North America" H 1900 5100 60  0001 L CNN "Manufacturer"
-F 12 "Active" H 1900 5200 60  0001 L CNN "Status"
-	1    1700 4000
+P 2100 5300
+F 0 "FB?" H 2100 5600 60  0000 C CNN
+F 1 "600R/0.5A" H 2100 5500 60  0000 C CNN
+F 2 "digikey-footprints:0603" H 2300 5500 60  0001 L CNN
+F 3 "https://www.murata.com/en-us/products/productdata/8796738650142/ENFA0003.pdf" H 2300 5600 60  0001 L CNN
+F 4 "490-1014-1-ND" H 2300 5700 60  0001 L CNN "Digi-Key_PN"
+F 5 "BLM18AG601SN1D" H 2300 5800 60  0001 L CNN "MPN"
+F 6 "Filters" H 2300 5900 60  0001 L CNN "Category"
+F 7 "Ferrite Beads and Chips" H 2300 6000 60  0001 L CNN "Family"
+F 8 "https://www.murata.com/en-us/products/productdata/8796738650142/ENFA0003.pdf" H 2300 6100 60  0001 L CNN "DK_Datasheet_Link"
+F 9 "/product-detail/en/murata-electronics-north-america/BLM18AG601SN1D/490-1014-1-ND/584462" H 2300 6200 60  0001 L CNN "DK_Detail_Page"
+F 10 "FERRITE BEAD 600 OHM 0603 1LN" H 2300 6300 60  0001 L CNN "Description"
+F 11 "Murata Electronics North America" H 2300 6400 60  0001 L CNN "Manufacturer"
+F 12 "Active" H 2300 6500 60  0001 L CNN "Status"
+	1    2100 5300
 	1    0    0    -1  
 $EndComp
+Wire Wire Line
+	1650 5300 1900 5300
+$Comp
+L dk_Ferrite-Beads-and-Chips:BLM18AG601SN1D FB?
+U 1 1 616966EF
+P 4050 5300
+F 0 "FB?" H 4050 5600 60  0000 C CNN
+F 1 "600R/0.5A" H 4050 5500 60  0000 C CNN
+F 2 "digikey-footprints:0603" H 4250 5500 60  0001 L CNN
+F 3 "https://www.murata.com/en-us/products/productdata/8796738650142/ENFA0003.pdf" H 4250 5600 60  0001 L CNN
+F 4 "490-1014-1-ND" H 4250 5700 60  0001 L CNN "Digi-Key_PN"
+F 5 "BLM18AG601SN1D" H 4250 5800 60  0001 L CNN "MPN"
+F 6 "Filters" H 4250 5900 60  0001 L CNN "Category"
+F 7 "Ferrite Beads and Chips" H 4250 6000 60  0001 L CNN "Family"
+F 8 "https://www.murata.com/en-us/products/productdata/8796738650142/ENFA0003.pdf" H 4250 6100 60  0001 L CNN "DK_Datasheet_Link"
+F 9 "/product-detail/en/murata-electronics-north-america/BLM18AG601SN1D/490-1014-1-ND/584462" H 4250 6200 60  0001 L CNN "DK_Detail_Page"
+F 10 "FERRITE BEAD 600 OHM 0603 1LN" H 4250 6300 60  0001 L CNN "Description"
+F 11 "Murata Electronics North America" H 4250 6400 60  0001 L CNN "Manufacturer"
+F 12 "Active" H 4250 6500 60  0001 L CNN "Status"
+	1    4050 5300
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3600 5300 3850 5300
+$Comp
+L Device:C C?
+U 1 1 6191A2C4
+P 6100 5500
+AR Path="/6191A2C4" Ref="C?"  Part="1" 
+AR Path="/618AACD4/6191A2C4" Ref="C?"  Part="1" 
+F 0 "C?" H 6000 5400 50  0000 C CNN
+F 1 "0.1uF" H 5950 5600 50  0000 C CNN
+F 2 "Capacitor_SMD:C_0402_1005Metric" H 6138 5350 50  0001 C CNN
+F 3 "~" H 6100 5500 50  0001 C CNN
+F 4 "GCM155R71C104KA55J" V 6100 5500 50  0001 C CNN "Part Number"
+	1    6100 5500
+	-1   0    0    1   
+$EndComp
+Text Notes 8500 2750 0    50   ~ 0
+4.7uF and Resistors don't have Part Numbers/footprints
 $EndSCHEMATC

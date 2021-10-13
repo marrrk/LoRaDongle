@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 6 7
+Sheet 7 7
 Title "LoRa Dongle"
 Date ""
 Rev ""
@@ -523,8 +523,6 @@ F 4 "LQW15AN47NJ00D" H 7600 2000 50  0001 C CNN "Part Number"
 $EndComp
 Connection ~ 7600 2300
 Wire Wire Line
-	7600 2300 7400 2300
-Wire Wire Line
 	6750 1550 6900 1550
 Connection ~ 6900 1550
 Wire Wire Line
@@ -646,21 +644,6 @@ Wire Wire Line
 Connection ~ 4950 1800
 Wire Wire Line
 	5100 1800 4950 1800
-Wire Wire Line
-	6300 2300 7100 2300
-$Comp
-L Device:L L?
-U 1 1 6152F658
-P 7250 2300
-AR Path="/6152F658" Ref="L?"  Part="1" 
-AR Path="/614F0720/6152F658" Ref="L?"  Part="1" 
-F 0 "L?" V 7300 2450 50  0000 C CNN
-F 1 "L" V 7300 2150 50  0000 C CNN
-F 2 "" H 7250 2300 50  0001 C CNN
-F 3 "~" H 7250 2300 50  0001 C CNN
-	1    7250 2300
-	0    -1   -1   0   
-$EndComp
 Wire Wire Line
 	4950 1800 4950 1700
 Wire Wire Line
@@ -930,8 +913,6 @@ F 4 "GRM188R61A105KA61D" H 1950 1300 50  0001 C CNN "part Number"
 	1    1950 1300
 	-1   0    0    1   
 $EndComp
-Text Notes 7050 2400 0    50   ~ 0
-0R resistor?
 $Comp
 L VLS201610CX-150M-1:VLS201610CX-150M-1 L?
 U 1 1 61661D80
@@ -1094,8 +1075,102 @@ F 4 "CRCW0402100RFKED" V 6450 5600 50  0001 C CNN "Part Number"
 	1    6450 5600
 	0    1    1    0   
 $EndComp
-Text Notes 5500 4700 0    50   ~ 0
-Out of Stock
 Text HLabel 6450 2500 2    50   Input ~ 0
 DIO1
+$Comp
+L Device:R R?
+U 1 1 61687A29
+P 8800 4500
+AR Path="/61687A29" Ref="R?"  Part="1" 
+AR Path="/614F0720/61687A29" Ref="R?"  Part="1" 
+F 0 "R?" H 8870 4546 50  0000 L CNN
+F 1 "R" H 8870 4455 50  0000 L CNN
+F 2 "" V 8730 4500 50  0001 C CNN
+F 3 "~" H 8800 4500 50  0001 C CNN
+	1    8800 4500
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:LED D?
+U 1 1 61687A2F
+P 8800 4850
+AR Path="/61687A2F" Ref="D?"  Part="1" 
+AR Path="/614F0720/61687A2F" Ref="D?"  Part="1" 
+F 0 "D?" V 8839 4732 50  0000 R CNN
+F 1 "TX_LED" V 8748 4732 50  0000 R CNN
+F 2 "" H 8800 4850 50  0001 C CNN
+F 3 "~" H 8800 4850 50  0001 C CNN
+	1    8800 4850
+	0    -1   -1   0   
+$EndComp
+$Comp
+L power:GND #PWR?
+U 1 1 61687A35
+P 8800 5100
+AR Path="/61687A35" Ref="#PWR?"  Part="1" 
+AR Path="/614F0720/61687A35" Ref="#PWR?"  Part="1" 
+F 0 "#PWR?" H 8800 4850 50  0001 C CNN
+F 1 "GND" H 8805 4927 50  0000 C CNN
+F 2 "" H 8800 5100 50  0001 C CNN
+F 3 "" H 8800 5100 50  0001 C CNN
+	1    8800 5100
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	8800 5100 8800 5000
+Wire Wire Line
+	8800 4700 8800 4650
+Wire Wire Line
+	8800 4350 8800 4250
+$Comp
+L Device:R R?
+U 1 1 6168CCFD
+P 9350 4500
+AR Path="/6168CCFD" Ref="R?"  Part="1" 
+AR Path="/614F0720/6168CCFD" Ref="R?"  Part="1" 
+F 0 "R?" H 9420 4546 50  0000 L CNN
+F 1 "R" H 9420 4455 50  0000 L CNN
+F 2 "" V 9280 4500 50  0001 C CNN
+F 3 "~" H 9350 4500 50  0001 C CNN
+	1    9350 4500
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:LED D?
+U 1 1 6168CD03
+P 9350 4850
+AR Path="/6168CD03" Ref="D?"  Part="1" 
+AR Path="/614F0720/6168CD03" Ref="D?"  Part="1" 
+F 0 "D?" V 9389 4732 50  0000 R CNN
+F 1 "RX_LED" V 9298 4732 50  0000 R CNN
+F 2 "" H 9350 4850 50  0001 C CNN
+F 3 "~" H 9350 4850 50  0001 C CNN
+	1    9350 4850
+	0    -1   -1   0   
+$EndComp
+$Comp
+L power:GND #PWR?
+U 1 1 6168CD09
+P 9350 5100
+AR Path="/6168CD09" Ref="#PWR?"  Part="1" 
+AR Path="/614F0720/6168CD09" Ref="#PWR?"  Part="1" 
+F 0 "#PWR?" H 9350 4850 50  0001 C CNN
+F 1 "GND" H 9355 4927 50  0000 C CNN
+F 2 "" H 9350 5100 50  0001 C CNN
+F 3 "" H 9350 5100 50  0001 C CNN
+	1    9350 5100
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	9350 5100 9350 5000
+Wire Wire Line
+	9350 4700 9350 4650
+Wire Wire Line
+	9350 4350 9350 4250
+Text HLabel 8800 4250 1    50   Input ~ 0
+TX_LED
+Text HLabel 9350 4250 1    50   Input ~ 0
+RX_LED
+Wire Wire Line
+	6300 2300 7600 2300
 $EndSCHEMATC

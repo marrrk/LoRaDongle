@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 5 7
+Sheet 6 7
 Title ""
 Date ""
 Rev ""
@@ -502,7 +502,7 @@ U 1 1 6176EA99
 P 8950 4800
 F 0 "JP?" V 8904 4875 50  0000 L CNN
 F 1 "Jumper" V 8995 4875 50  0000 L CNN
-F 2 "" H 8950 4800 50  0001 C CNN
+F 2 "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical" H 8950 4800 50  0001 C CNN
 F 3 "~" H 8950 4800 50  0001 C CNN
 	1    8950 4800
 	0    1    1    0   
@@ -511,4 +511,8 @@ Text HLabel 9400 2500 2    50   Input ~ 0
 Clock
 Wire Wire Line
 	9050 2500 9400 2500
+Text Notes 5450 7400 0    50   ~ 0
+LED, Resistors and FPGA
+Text Notes 5050 7500 0    50   ~ 0
+Switch Button has no footprint, part number
 $EndSCHEMATC
