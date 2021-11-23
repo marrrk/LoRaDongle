@@ -1,0 +1,8 @@
+EESchema-DOCLIB  Version 2.0
+#
+$CMP N25Q032A13ESC40F
+D FLASH - NOR Memory IC 32Mb (8M x 4) SPI 108MHz  8-SO
+F https://media-www.micron.com/-/media/client/global/documents/products/data-sheet/nor-flash/serial-nor/n25q/n25q_32mb_3v_65nm.pdf?rev=27fc6016fc5249adb4bb8f221e72b395
+$ENDCMP
+#
+#End Doc Library

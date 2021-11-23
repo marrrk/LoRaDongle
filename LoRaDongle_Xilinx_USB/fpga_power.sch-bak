@@ -1,0 +1,963 @@
+EESchema Schematic File Version 4
+EELAYER 30 0
+EELAYER END
+$Descr A4 11693 8268
+encoding utf-8
+Sheet 4 7
+Title ""
+Date ""
+Rev ""
+Comp ""
+Comment1 ""
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+$Comp
+L FPGA_Xilinx_Artix7:XC7A100T-CSG324 U?
+U 5 1 6149E44A
+P 3000 3300
+F 0 "U?" H 3000 5467 50  0000 C CNN
+F 1 "XC7A100T-CSG324" H 3000 5376 50  0000 C CNN
+F 2 "" H 3000 3300 50  0001 C CNN
+F 3 "" H 3000 3300 50  0000 C CNN
+	5    3000 3300
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR?
+U 1 1 614A8075
+P 1850 5400
+F 0 "#PWR?" H 1850 5150 50  0001 C CNN
+F 1 "GND" H 1855 5227 50  0000 C CNN
+F 2 "" H 1850 5400 50  0001 C CNN
+F 3 "" H 1850 5400 50  0001 C CNN
+	1    1850 5400
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR?
+U 1 1 614ADAEB
+P 4150 5400
+F 0 "#PWR?" H 4150 5150 50  0001 C CNN
+F 1 "GND" H 4155 5227 50  0000 C CNN
+F 2 "" H 4150 5400 50  0001 C CNN
+F 3 "" H 4150 5400 50  0001 C CNN
+	1    4150 5400
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	1850 5400 1850 5200
+Wire Wire Line
+	1850 5200 2000 5200
+Wire Wire Line
+	1850 5200 1850 5100
+Wire Wire Line
+	1850 5100 2000 5100
+Connection ~ 1850 5200
+Wire Wire Line
+	1850 5100 1850 5000
+Wire Wire Line
+	1850 5000 2000 5000
+Connection ~ 1850 5100
+Wire Wire Line
+	1850 5000 1850 4900
+Wire Wire Line
+	1850 4900 2000 4900
+Connection ~ 1850 5000
+Wire Wire Line
+	4150 5400 4150 5200
+Wire Wire Line
+	4150 5200 4000 5200
+Wire Wire Line
+	4150 5200 4150 5100
+Wire Wire Line
+	4150 5100 4000 5100
+Connection ~ 4150 5200
+Wire Wire Line
+	4150 5100 4150 5000
+Wire Wire Line
+	4150 5000 4000 5000
+Connection ~ 4150 5100
+Wire Wire Line
+	4000 4900 4150 4900
+Wire Wire Line
+	4150 4900 4150 5000
+Connection ~ 4150 5000
+Wire Wire Line
+	4150 4900 4150 4800
+Wire Wire Line
+	4150 4800 4000 4800
+Connection ~ 4150 4900
+Wire Wire Line
+	1850 4900 1850 4800
+Wire Wire Line
+	1850 4800 2000 4800
+Connection ~ 1850 4900
+Wire Wire Line
+	1850 4800 1850 4700
+Wire Wire Line
+	1850 4700 2000 4700
+Connection ~ 1850 4800
+Wire Wire Line
+	1850 4700 1850 4600
+Wire Wire Line
+	1850 4600 2000 4600
+Connection ~ 1850 4700
+Wire Wire Line
+	1850 4600 1850 4500
+Wire Wire Line
+	1850 4500 2000 4500
+Connection ~ 1850 4600
+Wire Wire Line
+	1850 4500 1850 4400
+Wire Wire Line
+	1850 4400 2000 4400
+Connection ~ 1850 4500
+Wire Wire Line
+	1850 4400 1850 4300
+Wire Wire Line
+	1850 4300 2000 4300
+Connection ~ 1850 4400
+Wire Wire Line
+	1850 4300 1850 4200
+Wire Wire Line
+	1850 4200 2000 4200
+Connection ~ 1850 4300
+Wire Wire Line
+	1850 4200 1850 4100
+Wire Wire Line
+	1850 4100 2000 4100
+Connection ~ 1850 4200
+Wire Wire Line
+	1850 4100 1850 4000
+Wire Wire Line
+	1850 4000 2000 4000
+Connection ~ 1850 4100
+Wire Wire Line
+	1850 4000 1850 3900
+Wire Wire Line
+	1850 3900 2000 3900
+Connection ~ 1850 4000
+Wire Wire Line
+	1850 3900 1850 3800
+Wire Wire Line
+	1850 3800 2000 3800
+Connection ~ 1850 3900
+Wire Wire Line
+	1850 3800 1850 3700
+Wire Wire Line
+	1850 3700 2000 3700
+Connection ~ 1850 3800
+Wire Wire Line
+	1850 3700 1850 3600
+Wire Wire Line
+	1850 3600 2000 3600
+Connection ~ 1850 3700
+Wire Wire Line
+	1850 3600 1850 3500
+Wire Wire Line
+	1850 3500 2000 3500
+Connection ~ 1850 3600
+Wire Wire Line
+	1850 3500 1850 3400
+Wire Wire Line
+	1850 3400 2000 3400
+Connection ~ 1850 3500
+Wire Wire Line
+	1850 3400 1850 3300
+Wire Wire Line
+	1850 3300 2000 3300
+Connection ~ 1850 3400
+Wire Wire Line
+	1850 3300 1850 3200
+Wire Wire Line
+	1850 3200 2000 3200
+Connection ~ 1850 3300
+Wire Wire Line
+	1850 3200 1850 3100
+Wire Wire Line
+	1850 3100 2000 3100
+Connection ~ 1850 3200
+Wire Wire Line
+	1850 3100 1850 3000
+Wire Wire Line
+	1850 3000 2000 3000
+Connection ~ 1850 3100
+Wire Wire Line
+	1850 3000 1850 2900
+Wire Wire Line
+	1850 2900 2000 2900
+Connection ~ 1850 3000
+Wire Wire Line
+	4000 4700 4150 4700
+Wire Wire Line
+	4150 4700 4150 4800
+Connection ~ 4150 4800
+Wire Wire Line
+	4000 4600 4150 4600
+Wire Wire Line
+	4150 4600 4150 4700
+Connection ~ 4150 4700
+Wire Wire Line
+	4000 4500 4150 4500
+Wire Wire Line
+	4150 4500 4150 4600
+Connection ~ 4150 4600
+Wire Wire Line
+	4000 4400 4150 4400
+Wire Wire Line
+	4150 4400 4150 4500
+Connection ~ 4150 4500
+Wire Wire Line
+	4000 4300 4150 4300
+Wire Wire Line
+	4150 4300 4150 4400
+Connection ~ 4150 4400
+Wire Wire Line
+	4000 4200 4150 4200
+Wire Wire Line
+	4150 4200 4150 4300
+Connection ~ 4150 4300
+Wire Wire Line
+	4000 4100 4150 4100
+Wire Wire Line
+	4150 4100 4150 4200
+Connection ~ 4150 4200
+Wire Wire Line
+	4000 4000 4150 4000
+Wire Wire Line
+	4150 4000 4150 4100
+Connection ~ 4150 4100
+Wire Wire Line
+	4000 3900 4150 3900
+Wire Wire Line
+	4150 3900 4150 4000
+Connection ~ 4150 4000
+Wire Wire Line
+	4000 3800 4150 3800
+Wire Wire Line
+	4150 3800 4150 3900
+Connection ~ 4150 3900
+Wire Wire Line
+	4000 3700 4150 3700
+Wire Wire Line
+	4150 3700 4150 3800
+Connection ~ 4150 3800
+Wire Wire Line
+	4000 3600 4150 3600
+Wire Wire Line
+	4150 3600 4150 3700
+Connection ~ 4150 3700
+Wire Wire Line
+	4000 3500 4150 3500
+Wire Wire Line
+	4150 3500 4150 3600
+Connection ~ 4150 3600
+Wire Wire Line
+	4000 3400 4150 3400
+Wire Wire Line
+	4150 3400 4150 3500
+Connection ~ 4150 3500
+Wire Wire Line
+	4000 3300 4150 3300
+Wire Wire Line
+	4150 3300 4150 3400
+Connection ~ 4150 3400
+Wire Wire Line
+	4000 3200 4150 3200
+Wire Wire Line
+	4150 3200 4150 3300
+Connection ~ 4150 3300
+Wire Wire Line
+	4000 3100 4150 3100
+Wire Wire Line
+	4150 3100 4150 3200
+Connection ~ 4150 3200
+Wire Wire Line
+	4000 3000 4150 3000
+Wire Wire Line
+	4150 3000 4150 3100
+Connection ~ 4150 3100
+Text GLabel 4200 1250 1    50   Output ~ 0
+1V
+Wire Wire Line
+	4000 1400 4200 1400
+Wire Wire Line
+	4200 1400 4200 1250
+Wire Wire Line
+	4000 1500 4200 1500
+Wire Wire Line
+	4200 1500 4200 1400
+Connection ~ 4200 1400
+Wire Wire Line
+	4000 1600 4200 1600
+Wire Wire Line
+	4200 1600 4200 1500
+Connection ~ 4200 1500
+Wire Wire Line
+	4000 1700 4200 1700
+Wire Wire Line
+	4200 1700 4200 1600
+Connection ~ 4200 1600
+Wire Wire Line
+	4000 1800 4200 1800
+Wire Wire Line
+	4200 1800 4200 1700
+Connection ~ 4200 1700
+Wire Wire Line
+	4000 1900 4200 1900
+Wire Wire Line
+	4200 1900 4200 1800
+Connection ~ 4200 1800
+Wire Wire Line
+	4000 2000 4200 2000
+Wire Wire Line
+	4200 2000 4200 1900
+Connection ~ 4200 1900
+Wire Wire Line
+	4000 2100 4200 2100
+Connection ~ 4200 2000
+Wire Wire Line
+	4000 2200 4200 2200
+Wire Wire Line
+	4200 2000 4200 2100
+Connection ~ 4200 2100
+Wire Wire Line
+	4000 2300 4200 2300
+Wire Wire Line
+	4200 2100 4200 2200
+Connection ~ 4200 2200
+Wire Wire Line
+	4200 2200 4200 2300
+Wire Wire Line
+	4000 2400 4200 2400
+Wire Wire Line
+	4200 2400 4200 2300
+Connection ~ 4200 2300
+Wire Wire Line
+	4000 2500 4200 2500
+Wire Wire Line
+	4200 2500 4200 2400
+Connection ~ 4200 2400
+Wire Wire Line
+	4000 2600 4200 2600
+Wire Wire Line
+	4200 2600 4200 2500
+Connection ~ 4200 2500
+Wire Wire Line
+	4000 2700 4200 2700
+Wire Wire Line
+	4200 2700 4200 2600
+Connection ~ 4200 2600
+$Comp
+L Device:C C?
+U 1 1 61563ACF
+P 5350 1700
+F 0 "C?" H 5400 1800 50  0000 L CNN
+F 1 "330uF" H 5400 1600 50  0000 L CNN
+F 2 "" H 5388 1550 50  0001 C CNN
+F 3 "~" H 5350 1700 50  0001 C CNN
+	1    5350 1700
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:C C?
+U 1 1 61567B04
+P 5700 1700
+F 0 "C?" H 5750 1800 50  0000 L CNN
+F 1 "4.7uF" H 5750 1600 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0805_2012Metric" H 5738 1550 50  0001 C CNN
+F 3 "~" H 5700 1700 50  0001 C CNN
+F 4 "C2012X7R1C475K125AB" H 5700 1700 50  0001 C CNN "Part Number"
+	1    5700 1700
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:C C?
+U 1 1 615685A8
+P 5350 2300
+F 0 "C?" H 5400 2400 50  0000 L CNN
+F 1 "0.47uF" H 5400 2200 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0603_1608Metric" H 5388 2150 50  0001 C CNN
+F 3 "~" H 5350 2300 50  0001 C CNN
+F 4 "GRM188R71E474KA12D" H 5350 2300 50  0001 C CNN "Part Number"
+	1    5350 2300
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:C C?
+U 1 1 615781CD
+P 6000 1700
+F 0 "C?" H 6050 1800 50  0000 L CNN
+F 1 "4.7uF" H 6050 1600 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0805_2012Metric" H 6038 1550 50  0001 C CNN
+F 3 "~" H 6000 1700 50  0001 C CNN
+F 4 "C2012X7R1C475K125AB" H 6000 1700 50  0001 C CNN "Part Number"
+	1    6000 1700
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:C C?
+U 1 1 61578A30
+P 6300 1700
+F 0 "C?" H 6350 1800 50  0000 L CNN
+F 1 "4.7uF" H 6350 1600 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0805_2012Metric" H 6338 1550 50  0001 C CNN
+F 3 "~" H 6300 1700 50  0001 C CNN
+F 4 "C2012X7R1C475K125AB" H 6300 1700 50  0001 C CNN "Part Number"
+	1    6300 1700
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:C C?
+U 1 1 61579207
+P 6600 1700
+F 0 "C?" H 6650 1800 50  0000 L CNN
+F 1 "4.7uF" H 6650 1600 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0805_2012Metric" H 6638 1550 50  0001 C CNN
+F 3 "~" H 6600 1700 50  0001 C CNN
+F 4 "C2012X7R1C475K125AB" H 6600 1700 50  0001 C CNN "Part Number"
+	1    6600 1700
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:C C?
+U 1 1 615799B8
+P 6900 1700
+F 0 "C?" H 6950 1800 50  0000 L CNN
+F 1 "4.7uF" H 6950 1600 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0805_2012Metric" H 6938 1550 50  0001 C CNN
+F 3 "~" H 6900 1700 50  0001 C CNN
+F 4 "C2012X7R1C475K125AB" H 6900 1700 50  0001 C CNN "Part Number"
+	1    6900 1700
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:C C?
+U 1 1 6157A1C1
+P 7200 1700
+F 0 "C?" H 7250 1800 50  0000 L CNN
+F 1 "4.7uF" H 7250 1600 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0805_2012Metric" H 7238 1550 50  0001 C CNN
+F 3 "~" H 7200 1700 50  0001 C CNN
+F 4 "C2012X7R1C475K125AB" H 7200 1700 50  0001 C CNN "Part Number"
+	1    7200 1700
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:C C?
+U 1 1 6157AFD9
+P 5750 2300
+F 0 "C?" H 5800 2400 50  0000 L CNN
+F 1 "0.47uF" H 5800 2200 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0603_1608Metric" H 5788 2150 50  0001 C CNN
+F 3 "~" H 5750 2300 50  0001 C CNN
+F 4 "GRM188R71E474KA12D" H 5750 2300 50  0001 C CNN "Part Number"
+	1    5750 2300
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:C C?
+U 1 1 6157C013
+P 6450 2300
+F 0 "C?" H 6500 2400 50  0000 L CNN
+F 1 "0.47uF" H 6500 2200 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0603_1608Metric" H 6488 2150 50  0001 C CNN
+F 3 "~" H 6450 2300 50  0001 C CNN
+F 4 "GRM188R71E474KA12D" H 6450 2300 50  0001 C CNN "Part Number"
+	1    6450 2300
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:C C?
+U 1 1 6157C8B6
+P 6800 2300
+F 0 "C?" H 6850 2400 50  0000 L CNN
+F 1 "0.47uF" H 6850 2200 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0603_1608Metric" H 6838 2150 50  0001 C CNN
+F 3 "~" H 6800 2300 50  0001 C CNN
+F 4 "GRM188R71E474KA12D" H 6800 2300 50  0001 C CNN "Part Number"
+	1    6800 2300
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:C C?
+U 1 1 6157D13B
+P 7150 2300
+F 0 "C?" H 7200 2400 50  0000 L CNN
+F 1 "0.47uF" H 7200 2200 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0603_1608Metric" H 7188 2150 50  0001 C CNN
+F 3 "~" H 7150 2300 50  0001 C CNN
+F 4 "GRM188R71E474KA12D" H 7150 2300 50  0001 C CNN "Part Number"
+	1    7150 2300
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:C C?
+U 1 1 6157D950
+P 7500 2300
+F 0 "C?" H 7550 2400 50  0000 L CNN
+F 1 "0.47uF" H 7550 2200 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0603_1608Metric" H 7538 2150 50  0001 C CNN
+F 3 "~" H 7500 2300 50  0001 C CNN
+F 4 "GRM188R71E474KA12D" H 7500 2300 50  0001 C CNN "Part Number"
+	1    7500 2300
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:C C?
+U 1 1 6157E39D
+P 7850 2300
+F 0 "C?" H 7900 2400 50  0000 L CNN
+F 1 "0.47uF" H 7900 2200 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0603_1608Metric" H 7888 2150 50  0001 C CNN
+F 3 "~" H 7850 2300 50  0001 C CNN
+F 4 "GRM188R71E474KA12D" H 7850 2300 50  0001 C CNN "Part Number"
+	1    7850 2300
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4200 1400 4850 1400
+Wire Wire Line
+	4850 1400 4850 1550
+Wire Wire Line
+	4850 1550 5350 1550
+Connection ~ 5350 1550
+Wire Wire Line
+	5350 1550 5700 1550
+Connection ~ 5700 1550
+Wire Wire Line
+	5700 1550 6000 1550
+Connection ~ 6000 1550
+Wire Wire Line
+	6000 1550 6300 1550
+Connection ~ 6300 1550
+Wire Wire Line
+	6300 1550 6600 1550
+Connection ~ 6600 1550
+Wire Wire Line
+	6600 1550 6900 1550
+Connection ~ 6900 1550
+Wire Wire Line
+	6900 1550 7200 1550
+$Comp
+L power:GND #PWR?
+U 1 1 61594A47
+P 7850 2500
+F 0 "#PWR?" H 7850 2250 50  0001 C CNN
+F 1 "GND" H 7855 2327 50  0000 C CNN
+F 2 "" H 7850 2500 50  0001 C CNN
+F 3 "" H 7850 2500 50  0001 C CNN
+	1    7850 2500
+	1    0    0    -1  
+$EndComp
+Connection ~ 5700 1850
+Wire Wire Line
+	5700 1850 5350 1850
+Connection ~ 6000 1850
+Wire Wire Line
+	6000 1850 5700 1850
+Connection ~ 6300 1850
+Wire Wire Line
+	6300 1850 6000 1850
+Connection ~ 6600 1850
+Wire Wire Line
+	6600 1850 6300 1850
+Connection ~ 6900 1850
+Wire Wire Line
+	6900 1850 6600 1850
+Wire Wire Line
+	7200 1850 6900 1850
+Wire Wire Line
+	4850 1550 4850 2150
+Wire Wire Line
+	4850 2150 5350 2150
+Connection ~ 4850 1550
+Wire Wire Line
+	5350 2150 5750 2150
+Connection ~ 5350 2150
+Connection ~ 5750 2150
+Connection ~ 6450 2150
+Wire Wire Line
+	6450 2150 6800 2150
+Connection ~ 6800 2150
+Wire Wire Line
+	6800 2150 7150 2150
+Connection ~ 7150 2150
+Wire Wire Line
+	7150 2150 7500 2150
+Connection ~ 7500 2150
+Wire Wire Line
+	7500 2150 7850 2150
+Wire Wire Line
+	5350 2450 5750 2450
+Connection ~ 5750 2450
+Connection ~ 6450 2450
+Wire Wire Line
+	6450 2450 6800 2450
+Connection ~ 6800 2450
+Wire Wire Line
+	6800 2450 7150 2450
+Connection ~ 7150 2450
+Wire Wire Line
+	7150 2450 7500 2450
+Connection ~ 7500 2450
+Wire Wire Line
+	7500 2450 7850 2450
+Wire Wire Line
+	7850 2450 7850 2500
+Connection ~ 7850 2450
+$Comp
+L power:GND #PWR?
+U 1 1 615CAF71
+P 7200 1900
+F 0 "#PWR?" H 7200 1650 50  0001 C CNN
+F 1 "GND" H 7205 1727 50  0000 C CNN
+F 2 "" H 7200 1900 50  0001 C CNN
+F 3 "" H 7200 1900 50  0001 C CNN
+	1    7200 1900
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	7200 1850 7200 1900
+Connection ~ 7200 1850
+Text GLabel 1800 1250 1    50   Output ~ 0
+1V8
+Wire Wire Line
+	2000 1400 1800 1400
+Wire Wire Line
+	1800 1400 1800 1250
+Wire Wire Line
+	2000 1500 1800 1500
+Wire Wire Line
+	1800 1500 1800 1400
+Connection ~ 1800 1400
+Wire Wire Line
+	2000 1600 1800 1600
+Wire Wire Line
+	1800 1600 1800 1500
+Connection ~ 1800 1500
+Wire Wire Line
+	2000 1700 1800 1700
+Wire Wire Line
+	1800 1700 1800 1600
+Connection ~ 1800 1600
+$Comp
+L Device:C C?
+U 1 1 61619A47
+P 5600 3500
+F 0 "C?" H 5650 3600 50  0000 L CNN
+F 1 "4.7uF" H 5650 3400 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0805_2012Metric" H 5638 3350 50  0001 C CNN
+F 3 "~" H 5600 3500 50  0001 C CNN
+F 4 "C2012X7R1C475K125AB" H 5600 3500 50  0001 C CNN "Part Number"
+	1    5600 3500
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:C C?
+U 1 1 6161A3CC
+P 5900 3500
+F 0 "C?" H 5950 3600 50  0000 L CNN
+F 1 "4.7uF" H 5950 3400 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0805_2012Metric" H 5938 3350 50  0001 C CNN
+F 3 "~" H 5900 3500 50  0001 C CNN
+F 4 "C2012X7R1C475K125AB" H 5900 3500 50  0001 C CNN "Part Number"
+	1    5900 3500
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:C C?
+U 1 1 6161B001
+P 6200 3500
+F 0 "C?" H 6250 3600 50  0000 L CNN
+F 1 "0.47uF" H 6250 3400 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0603_1608Metric" H 6238 3350 50  0001 C CNN
+F 3 "~" H 6200 3500 50  0001 C CNN
+F 4 "GRM188R71E474KA12D" H 6200 3500 50  0001 C CNN "Part Number"
+	1    6200 3500
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:C C?
+U 1 1 6161BC0A
+P 6550 3500
+F 0 "C?" H 6600 3600 50  0000 L CNN
+F 1 "0.47uF" H 6600 3400 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0603_1608Metric" H 6588 3350 50  0001 C CNN
+F 3 "~" H 6550 3500 50  0001 C CNN
+F 4 "GRM188R71E474KA12D" H 6550 3500 50  0001 C CNN "Part Number"
+	1    6550 3500
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:C C?
+U 1 1 6161C789
+P 6900 3500
+F 0 "C?" H 6950 3600 50  0000 L CNN
+F 1 "0.47uF" H 6950 3400 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0603_1608Metric" H 6938 3350 50  0001 C CNN
+F 3 "~" H 6900 3500 50  0001 C CNN
+F 4 "GRM188R71E474KA12D" H 6900 3500 50  0001 C CNN "Part Number"
+	1    6900 3500
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:C C?
+U 1 1 61627590
+P 7250 3500
+F 0 "C?" H 7300 3600 50  0000 L CNN
+F 1 "0.47uF" H 7300 3400 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0603_1608Metric" H 7288 3350 50  0001 C CNN
+F 3 "~" H 7250 3500 50  0001 C CNN
+F 4 "GRM188R71E474KA12D" H 7250 3500 50  0001 C CNN "Part Number"
+	1    7250 3500
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:C C?
+U 1 1 6162A006
+P 5300 3500
+F 0 "C?" H 5350 3600 50  0000 L CNN
+F 1 "47uF" H 5350 3400 50  0000 L CNN
+F 2 "Capacitor_SMD:C_1210_3225Metric" H 5338 3350 50  0001 C CNN
+F 3 "~" H 5300 3500 50  0001 C CNN
+F 4 "GRM32ER70J476ME20L" H 5300 3500 50  0001 C CNN "Part Number"
+	1    5300 3500
+	1    0    0    -1  
+$EndComp
+Text GLabel 5300 3200 1    50   Output ~ 0
+1V8
+$Comp
+L power:GND #PWR?
+U 1 1 6164BE5C
+P 7250 3750
+F 0 "#PWR?" H 7250 3500 50  0001 C CNN
+F 1 "GND" H 7255 3577 50  0000 C CNN
+F 2 "" H 7250 3750 50  0001 C CNN
+F 3 "" H 7250 3750 50  0001 C CNN
+	1    7250 3750
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5300 3200 5300 3300
+Wire Wire Line
+	5300 3300 5600 3300
+Wire Wire Line
+	5600 3300 5600 3350
+Connection ~ 5300 3300
+Wire Wire Line
+	5300 3300 5300 3350
+Wire Wire Line
+	5600 3300 5900 3300
+Wire Wire Line
+	5900 3300 5900 3350
+Connection ~ 5600 3300
+Wire Wire Line
+	5900 3300 6200 3300
+Wire Wire Line
+	6200 3300 6200 3350
+Connection ~ 5900 3300
+Wire Wire Line
+	6200 3300 6550 3300
+Wire Wire Line
+	6550 3300 6550 3350
+Connection ~ 6200 3300
+Wire Wire Line
+	6550 3300 6900 3300
+Wire Wire Line
+	6900 3300 6900 3350
+Connection ~ 6550 3300
+Wire Wire Line
+	6900 3300 7250 3300
+Wire Wire Line
+	7250 3300 7250 3350
+Connection ~ 6900 3300
+Wire Wire Line
+	7250 3750 7250 3700
+Wire Wire Line
+	7250 3700 6900 3700
+Wire Wire Line
+	6900 3700 6900 3650
+Connection ~ 7250 3700
+Wire Wire Line
+	7250 3700 7250 3650
+Wire Wire Line
+	6900 3700 6550 3700
+Wire Wire Line
+	6550 3700 6550 3650
+Connection ~ 6900 3700
+Wire Wire Line
+	6550 3700 6200 3700
+Wire Wire Line
+	6200 3700 6200 3650
+Connection ~ 6550 3700
+Wire Wire Line
+	6200 3700 5900 3700
+Wire Wire Line
+	5900 3700 5900 3650
+Connection ~ 6200 3700
+Wire Wire Line
+	5900 3700 5600 3700
+Wire Wire Line
+	5600 3700 5600 3650
+Connection ~ 5900 3700
+Wire Wire Line
+	5600 3700 5300 3700
+Wire Wire Line
+	5300 3700 5300 3650
+Connection ~ 5600 3700
+Wire Wire Line
+	2000 2200 1900 2200
+Wire Wire Line
+	750  2200 750  2100
+Wire Wire Line
+	2000 2300 1900 2300
+Wire Wire Line
+	1900 2300 1900 2200
+Connection ~ 1900 2200
+Text GLabel 750  2100 1    50   Output ~ 0
+1V
+Text GLabel 8300 1400 1    50   Output ~ 0
+1V
+$Comp
+L Device:C C?
+U 1 1 617DB0B7
+P 8300 1700
+F 0 "C?" H 8350 1800 50  0000 L CNN
+F 1 "100uF" H 8350 1600 50  0000 L CNN
+F 2 "" H 8338 1550 50  0001 C CNN
+F 3 "~" H 8300 1700 50  0001 C CNN
+	1    8300 1700
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:C C?
+U 1 1 617E831B
+P 8600 1700
+F 0 "C?" H 8650 1800 50  0000 L CNN
+F 1 "0.47uF" H 8650 1600 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0603_1608Metric" H 8638 1550 50  0001 C CNN
+F 3 "~" H 8600 1700 50  0001 C CNN
+F 4 "GRM188R71E474KA12D" H 8600 1700 50  0001 C CNN "Part Number"
+	1    8600 1700
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:C C?
+U 1 1 617E91BE
+P 8950 1700
+F 0 "C?" H 9000 1800 50  0000 L CNN
+F 1 "0.47uF" H 9000 1600 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0603_1608Metric" H 8988 1550 50  0001 C CNN
+F 3 "~" H 8950 1700 50  0001 C CNN
+F 4 "GRM188R71E474KA12D" H 8950 1700 50  0001 C CNN "Part Number"
+	1    8950 1700
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR?
+U 1 1 617E9C4A
+P 8950 2000
+F 0 "#PWR?" H 8950 1750 50  0001 C CNN
+F 1 "GND" H 8955 1827 50  0000 C CNN
+F 2 "" H 8950 2000 50  0001 C CNN
+F 3 "" H 8950 2000 50  0001 C CNN
+	1    8950 2000
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	8300 1400 8300 1500
+Wire Wire Line
+	8300 1500 8600 1500
+Wire Wire Line
+	8600 1500 8600 1550
+Connection ~ 8300 1500
+Wire Wire Line
+	8300 1500 8300 1550
+Wire Wire Line
+	8600 1500 8950 1500
+Wire Wire Line
+	8950 1500 8950 1550
+Connection ~ 8600 1500
+Wire Wire Line
+	8950 2000 8950 1950
+Wire Wire Line
+	8950 1950 8600 1950
+Wire Wire Line
+	8600 1950 8600 1850
+Connection ~ 8950 1950
+Wire Wire Line
+	8950 1950 8950 1850
+Wire Wire Line
+	8600 1950 8300 1950
+Wire Wire Line
+	8300 1950 8300 1850
+Connection ~ 8600 1950
+$Comp
+L power:GND #PWR?
+U 1 1 61936289
+P 1550 1900
+F 0 "#PWR?" H 1550 1650 50  0001 C CNN
+F 1 "GND" V 1550 1750 50  0000 R CNN
+F 2 "" H 1550 1900 50  0001 C CNN
+F 3 "" H 1550 1900 50  0001 C CNN
+	1    1550 1900
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	2000 2000 1800 2000
+Wire Wire Line
+	2000 2100 1800 2100
+Wire Wire Line
+	1800 2100 1800 2000
+Text Notes 750  2550 0    50   Italic 0
+TODO: VCCADC Decoupling Caps
+Connection ~ 6100 2450
+Wire Wire Line
+	6100 2450 6450 2450
+Wire Wire Line
+	5750 2450 6100 2450
+Connection ~ 6100 2150
+Wire Wire Line
+	6100 2150 6450 2150
+Wire Wire Line
+	5750 2150 6100 2150
+$Comp
+L Device:C C?
+U 1 1 6157B68A
+P 6100 2300
+F 0 "C?" H 6150 2400 50  0000 L CNN
+F 1 "0.47uF" H 6150 2200 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0603_1608Metric" H 6138 2150 50  0001 C CNN
+F 3 "~" H 6100 2300 50  0001 C CNN
+F 4 "GRM188R71E474KA12D" H 6100 2300 50  0001 C CNN "Part Number"
+	1    6100 2300
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:Ferrite_Bead_Small FB?
+U 1 1 615C5547
+P 1800 1900
+F 0 "FB?" V 1750 1750 50  0000 C CNN
+F 1 "Ferrite_Bead" V 1700 2100 50  0000 C CNN
+F 2 "" V 1730 1900 50  0001 C CNN
+F 3 "~" H 1800 1900 50  0001 C CNN
+	1    1800 1900
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	1550 1900 1700 1900
+Wire Wire Line
+	1900 1900 2000 1900
+Text GLabel 1050 1750 1    50   Output ~ 0
+1V8
+Wire Wire Line
+	1050 1750 1050 2100
+Wire Wire Line
+	1050 2100 1800 2100
+Connection ~ 1800 2100
+Wire Wire Line
+	750  2200 1900 2200
+$EndSCHEMATC

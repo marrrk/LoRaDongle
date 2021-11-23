@@ -1,0 +1,8 @@
+EESchema-DOCLIB  Version 2.0
+#
+$CMP ICE40HX4K-BG121
+D IC FPGA 93 I/O 121CABGA
+F http://www.latticesemi.com/iCE40
+$ENDCMP
+#
+#End Doc Library
