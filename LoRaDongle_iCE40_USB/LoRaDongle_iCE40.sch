@@ -33,17 +33,6 @@ $EndComp
 Wire Wire Line
 	5050 1700 5150 1700
 $Comp
-L power:GND #PWR?
-U 1 1 617E7D35
-P 5150 1700
-F 0 "#PWR?" H 5150 1450 50  0001 C CNN
-F 1 "GND" V 5155 1527 50  0000 C CNN
-F 2 "" H 5150 1700 50  0001 C CNN
-F 3 "" H 5150 1700 50  0001 C CNN
-	1    5150 1700
-	0    -1   -1   0   
-$EndComp
-$Comp
 L Connector_Generic:Conn_01x06 J?
 U 1 1 617E562D
 P 4850 1400
@@ -56,14 +45,6 @@ F 3 "~" H 4850 1400 50  0001 C CNN
 $EndComp
 Wire Wire Line
 	5050 1600 5150 1600
-Text Label 5150 1500 0    50   ~ 0
-TMS
-Text Label 5150 1400 0    50   ~ 0
-TDO
-Text Label 5150 1300 0    50   ~ 0
-TDI
-Text Label 5150 1200 0    50   ~ 0
-TCK
 Wire Wire Line
 	3900 1700 3900 1800
 $Comp
@@ -112,8 +93,6 @@ F 3 "~" H 6600 1550 50  0001 C CNN
 	1    6600 1550
 	-1   0    0    1   
 $EndComp
-Text Label 5150 1600 0    50   ~ 0
-V_conn
 Text Label 7050 1550 0    50   ~ 0
 V_conn
 Text Label 6200 1550 2    50   ~ 0
@@ -242,4 +221,8 @@ F1 "USB_Interface.sch" 50
 F2 "DP" I L 3150 3850 50 
 F3 "DM" I L 3150 3950 50 
 $EndSheet
+Text Notes 4450 900  0    50   ~ 0
+Connector from External FTDI Breakout
+Text Notes 5950 1950 0    50   ~ 0
+Choose between external connector or USB connector
 $EndSCHEMATC

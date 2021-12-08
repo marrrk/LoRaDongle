@@ -783,14 +783,6 @@ Wire Wire Line
 	7450 1800 7900 1800
 Wire Wire Line
 	7450 1900 7900 1900
-Text HLabel 7900 1600 2    50   Output ~ 0
-TCK
-Text HLabel 7900 1700 2    50   Output ~ 0
-TDI
-Text HLabel 7900 1800 2    50   Output ~ 0
-TDO
-Text HLabel 7900 1900 2    50   Output ~ 0
-TMS
 Text HLabel 5550 2200 0    50   Input ~ 0
 DM
 Text HLabel 5550 2300 0    50   Input ~ 0

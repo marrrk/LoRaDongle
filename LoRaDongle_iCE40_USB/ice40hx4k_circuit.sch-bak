@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A3 16535 11693
 encoding utf-8
-Sheet 6 6
+Sheet 4 5
 Title ""
 Date ""
 Rev ""
@@ -35,12 +35,12 @@ $EndComp
 $Comp
 L FPGA_Lattice:ICE40HX4K-TQ144 U?
 U 5 1 619BAE82
-P 4950 2950
-F 0 "U?" H 5694 2996 50  0000 L CNN
-F 1 "ICE40HX4K-TQ144" H 5694 2905 50  0000 L CNN
-F 2 "Package_QFP:TQFP-144_20x20mm_P0.5mm" H 5950 1050 50  0001 R CNN
-F 3 "http://www.latticesemi.com/Products/FPGAandCPLD/iCE40" H 3950 5450 50  0001 C CNN
-	5    4950 2950
+P 3700 2350
+F 0 "U?" H 4444 2396 50  0000 L CNN
+F 1 "ICE40HX4K-TQ144" H 4444 2305 50  0000 L CNN
+F 2 "Package_QFP:TQFP-144_20x20mm_P0.5mm" H 4700 450 50  0001 R CNN
+F 3 "http://www.latticesemi.com/Products/FPGAandCPLD/iCE40" H 2700 4850 50  0001 C CNN
+	5    3700 2350
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
@@ -66,4 +66,54 @@ F 11 "" H 14900 1400 50  0001 L CNN "Arrow Price/Stock"
 	1    13350 2200
 	1    0    0    -1  
 $EndComp
+Wire Wire Line
+	8800 8450 9050 8450
+Text Label 9050 8450 0    50   ~ 0
+CRESET_B
+Text Label 13850 7850 2    50   ~ 0
+CRESET_B
+Text Notes 13550 8000 0    50   ~ 0
+Have a push button to ground?
+Wire Wire Line
+	14050 7850 13850 7850
+Wire Wire Line
+	14700 7850 14700 7750
+Wire Wire Line
+	14350 7850 14700 7850
+$Comp
+L Device:R R?
+U 1 1 619E1A4D
+P 14200 7850
+F 0 "R?" V 13993 7850 50  0000 C CNN
+F 1 "10K" V 14084 7850 50  0000 C CNN
+F 2 "" V 14130 7850 50  0001 C CNN
+F 3 "~" H 14200 7850 50  0001 C CNN
+	1    14200 7850
+	0    1    1    0   
+$EndComp
+Text Notes 13300 6950 0    50   ~ 0
+Connect to an LED to indicate done configuring?
+Text Label 13850 6750 2    50   ~ 0
+CDONE
+$Comp
+L Device:R R?
+U 1 1 619F47BF
+P 14200 6750
+F 0 "R?" V 13993 6750 50  0000 C CNN
+F 1 "R" V 14084 6750 50  0000 C CNN
+F 2 "" V 14130 6750 50  0001 C CNN
+F 3 "~" H 14200 6750 50  0001 C CNN
+	1    14200 6750
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	14350 6750 14700 6750
+Wire Wire Line
+	14700 6750 14700 6650
+Text GLabel 14700 6650 1    50   Output ~ 0
+3V3
+Wire Wire Line
+	14050 6750 13850 6750
+Text GLabel 14700 7750 1    50   Output ~ 0
+3V3
 $EndSCHEMATC

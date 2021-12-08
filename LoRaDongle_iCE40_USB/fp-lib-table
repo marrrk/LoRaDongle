@@ -9,4 +9,5 @@
   (lib (name TYETBCSANF-32)(type KiCad)(uri /home/markn/Kicad-Projects/LoRaDongle/lib/TYETBCSANF-32.000000_KiCad)(options "")(descr ""))
   (lib (name ICE40HX4K-BG121)(type Legacy)(uri /home/markn/Kicad-Projects/LoRaDongle/lib/ICE40HX4K-BG121_KiCad/ICE40HX4K-BG121.mod)(options "")(descr ""))
   (lib (name N25Q032A13ESC40F)(type Legacy)(uri /home/markn/Kicad-Projects/LoRaDongle/lib/N25Q032A13ESC40F/N25Q032A13ESC40F.mod)(options "")(descr ""))
+  (lib (name ICE40UP5K-UWG30ITR1K_KiCad)(type KiCad)(uri /home/markn/Kicad-Projects/LoRaDongle/lib/ICE40UP5K-UWG30ITR1K_KiCad)(options "")(descr ""))
 )
