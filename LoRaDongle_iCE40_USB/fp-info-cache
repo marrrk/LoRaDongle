@@ -1,4 +1,4 @@
-760832528043041
+772285804935651
 93LC56B-I_OT_KiCad
 SOT95P270X145-6N
 6-Lead (OT) SOT-23
@@ -51673,6 +51673,27 @@ heatsink
 0
 2
 1
+ICE40HX4K-BG121
+BGA121C80P11X11_900X900X110
+121-Ball caBGA Package (9x9 mm Body)
+Integrated Circuit
+0
+121
+121
+ICE40UP5K-UWG30ITR1K_KiCad
+BGA30C40P5X6_211X254X60
+ICE40UP5K-UWG30ITR1K
+Integrated Circuit
+0
+30
+30
+IS25LP032D-JBLE_KiCad
+SOIC127P790X216-8N
+8L 208ml SOP
+Integrated Circuit
+0
+8
+8
 Inductor_SMD
 L_6.3x6.3_H3
 Choke, SMD, 6.3x6.3mm 3mm height
@@ -55096,6 +55117,13 @@ solder jumper open
 0
 5
 3
+KiCad_VLS201610CX-150M-1
+VLS2016
+VLS2016
+Inductor
+0
+2
+2
 LED_SMD
 LED-APA102-2020
 http://www.led-color.com/upload/201604/APA102-2020%20SMD%20LED.pdf
@@ -58673,6 +58701,13 @@ Mounting 4.5mm 9774100982
 0
 8
 1
+N25Q032A13ESC40F
+SOIC127P600X175-8N
+SOP2-8 (150 mils body width) – Package Code: SC
+Integrated Circuit
+0
+8
+8
 NetTie
 NetTie-2_SMD_Pad0.5mm
 Net tie, 2 pin, 0.5mm square SMD pads
@@ -76299,6 +76334,13 @@ rotary encoder
 0
 5
 4
+SW_SKYA21012
+SW_SKYA21012
+
+
+0
+8
+8
 SX1262IMLTRT
 QFN50P400X400X100-25N
 
@@ -77734,6 +77776,13 @@ Logo WEEE
 0
 0
 0
+TYETBCSANF-32
+TY
+TY
+Crystal or Oscillator
+0
+4
+4
 TerminalBlock
 TerminalBlock_Altech_AK300-2_P5.00mm
 Altech AK300 terminal block, pitch 5.0mm, 45 degree angled, see http://www.mouser.com/ds/2/16/PCBMETRC-24178.pdf

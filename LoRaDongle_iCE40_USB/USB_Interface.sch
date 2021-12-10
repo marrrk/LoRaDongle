@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 5 5
+Sheet 4 5
 Title ""
 Date ""
 Rev ""
@@ -779,10 +779,6 @@ Wire Wire Line
 	7450 1600 7900 1600
 Wire Wire Line
 	7450 1700 7900 1700
-Wire Wire Line
-	7450 1800 7900 1800
-Wire Wire Line
-	7450 1900 7900 1900
 Text HLabel 5550 2200 0    50   Input ~ 0
 DM
 Text HLabel 5550 2300 0    50   Input ~ 0
@@ -847,4 +843,40 @@ F 4 "GCM155R71C104KA55J" V 6100 5500 50  0001 C CNN "Part Number"
 $EndComp
 Text Notes 8500 2750 0    50   ~ 0
 4.7uF and Resistors don't have Part Numbers/footprints
+Text HLabel 7900 1600 2    50   Output ~ 0
+SPI_SCK
+Text HLabel 7900 1700 2    50   Output ~ 0
+SPI_MOSI
+Text HLabel 7900 1800 2    50   Output ~ 0
+SPI_MISO
+Text HLabel 7900 2000 2    50   Output ~ 0
+SPI_SS
+Text HLabel 7900 2200 2    50   Output ~ 0
+iCE_CDONE
+Text HLabel 7900 2300 2    50   Output ~ 0
+iCE_CRESET
+Wire Wire Line
+	7450 1800 7900 1800
+Wire Wire Line
+	7450 2000 7900 2000
+Wire Wire Line
+	7450 2200 7900 2200
+Wire Wire Line
+	7450 2300 7900 2300
+NoConn ~ 7450 2100
+NoConn ~ 7450 1900
+NoConn ~ 7450 2500
+NoConn ~ 7450 2600
+NoConn ~ 7450 2700
+NoConn ~ 7450 2800
+NoConn ~ 7450 2900
+NoConn ~ 7450 3000
+NoConn ~ 7450 3100
+NoConn ~ 7450 3200
+NoConn ~ 7450 3300
+NoConn ~ 7450 3400
+Text Label 6750 1200 0    50   ~ 0
+FT232
+Text Label 5850 5300 0    50   ~ 0
+FT232
 $EndSCHEMATC

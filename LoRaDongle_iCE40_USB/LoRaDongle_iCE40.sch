@@ -31,21 +31,6 @@ F 3 "" H 1700 4450 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	5050 1700 5150 1700
-$Comp
-L Connector_Generic:Conn_01x06 J?
-U 1 1 617E562D
-P 4850 1400
-F 0 "J?" H 4768 1817 50  0000 C CNN
-F 1 "Conn_01x06" H 4768 1726 50  0000 C CNN
-F 2 "" H 4850 1400 50  0001 C CNN
-F 3 "~" H 4850 1400 50  0001 C CNN
-	1    4850 1400
-	-1   0    0    -1  
-$EndComp
-Wire Wire Line
-	5050 1600 5150 1600
-Wire Wire Line
 	3900 1700 3900 1800
 $Comp
 L power:GND #PWR?
@@ -58,30 +43,6 @@ F 3 "" H 3900 1800 50  0001 C CNN
 	1    3900 1800
 	1    0    0    -1  
 $EndComp
-$Sheet
-S 7900 3300 1900 1350
-U 614F0720
-F0 "RF Circuitry" 50
-F1 "sx1262_circuitry.sch" 50
-F2 "SCK" I L 7900 3950 50 
-F3 "MISO" I L 7900 4050 50 
-F4 "MOSI" I L 7900 4150 50 
-F5 "!SS" I L 7900 4250 50 
-F6 "ANT_SW" I L 7900 3400 50 
-F7 "~RESET" I L 7900 3600 50 
-F8 "BUSY" I L 7900 3700 50 
-F9 "DIO1" I L 7900 3800 50 
-F10 "TX_LED" I L 7900 4450 50 
-F11 "RX_LED" I L 7900 4550 50 
-$EndSheet
-Wire Wire Line
-	5050 1200 5150 1200
-Wire Wire Line
-	5050 1300 5150 1300
-Wire Wire Line
-	5050 1400 5150 1400
-Wire Wire Line
-	5050 1500 5150 1500
 $Comp
 L Device:Jumper_NC_Dual JP?
 U 1 1 616C0AFF
@@ -208,21 +169,62 @@ Wire Wire Line
 Wire Wire Line
 	2000 3850 2350 3850
 $Sheet
-S 5400 3300 1900 1350
-U 618D30E5
-F0 "ice40hx4k_circuit" 50
-F1 "ice40hx4k_circuit.sch" 50
-$EndSheet
-$Sheet
 S 3150 3550 1350 750 
 U 618AACD4
 F0 "USB_Interface" 50
 F1 "USB_Interface.sch" 50
 F2 "DP" I L 3150 3850 50 
 F3 "DM" I L 3150 3950 50 
+F4 "SPI_SCK" O R 4500 3650 50 
+F5 "SPI_MOSI" O R 4500 3750 50 
+F6 "SPI_MISO" O R 4500 3850 50 
+F7 "SPI_SS" O R 4500 3950 50 
+F8 "iCE_CDONE" O R 4500 4100 50 
+F9 "iCE_CRESET" O R 4500 4200 50 
 $EndSheet
 Text Notes 4450 900  0    50   ~ 0
 Connector from External FTDI Breakout
 Text Notes 5950 1950 0    50   ~ 0
 Choose between external connector or USB connector
+$Sheet
+S 5400 3300 1900 1350
+U 618D30E5
+F0 "ice40up5k_circuit" 50
+F1 "ice40up5k_circuit.sch" 50
+F2 "iCE_CDONE" I L 5400 4100 50 
+F3 "iCE_CRESET_B" I L 5400 4200 50 
+F4 "iCE_SCK" I L 5400 3650 50 
+F5 "iCE_SS_B" I L 5400 3950 50 
+F6 "FLASH_MOSI" I L 5400 3750 50 
+F7 "FLASH_MISO" I L 5400 3850 50 
+$EndSheet
+Text Notes 2800 4550 0    50   ~ 0
+Need a Dip Switch to choose between this or the external ting.
+$Comp
+L Connector_Generic:Conn_01x08 J?
+U 1 1 61B8EE64
+P 4700 1500
+F 0 "J?" H 4618 2017 50  0000 C CNN
+F 1 "Conn_01x08" H 4618 1926 50  0000 C CNN
+F 2 "Connector_PinHeader_1.00mm:PinHeader_1x08_P1.00mm_Vertical" H 4700 1500 50  0001 C CNN
+F 3 "~" H 4700 1500 50  0001 C CNN
+	1    4700 1500
+	-1   0    0    -1  
+$EndComp
+$Sheet
+S 7900 3300 1900 1350
+U 614F0720
+F0 "RF Circuitry" 50
+F1 "sx1261_circuitry.sch" 50
+F2 "ANT_SW" I L 7900 3400 50 
+F3 "~RESET" I L 7900 3600 50 
+F4 "BUSY" I L 7900 3700 50 
+F5 "DIO1" I L 7900 3800 50 
+F6 "TX_LED" I L 7900 4450 50 
+F7 "RX_LED" I L 7900 4550 50 
+F8 "LoRa_!SS" I L 7900 4250 50 
+F9 "LoRa_MISO" I L 7900 4150 50 
+F10 "LoRa_MOSI" I L 7900 4050 50 
+F11 "LoRa_SCK" I L 7900 3950 50 
+$EndSheet
 $EndSCHEMATC
