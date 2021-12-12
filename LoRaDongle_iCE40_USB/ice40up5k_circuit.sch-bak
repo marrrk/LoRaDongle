@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 5 5
+Sheet 4 5
 Title ""
 Date ""
 Rev ""
@@ -156,13 +156,11 @@ Wire Wire Line
 Wire Wire Line
 	5350 5750 5350 5600
 Wire Wire Line
-	2650 3950 2050 3950
-Wire Wire Line
 	4850 3950 5050 3950
 Wire Wire Line
 	5050 3450 4850 3450
 Wire Wire Line
-	4850 2950 5300 2950
+	4850 2950 5200 2950
 Wire Wire Line
 	9550 3100 9650 3100
 Text GLabel 9650 2400 1    50   Output ~ 0
@@ -362,11 +360,7 @@ F 3 "~" H 8650 4600 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	8050 4700 8450 4700
-Wire Wire Line
 	8050 4600 8450 4600
-Wire Wire Line
-	8950 4600 9300 4600
 Wire Wire Line
 	8950 4700 9300 4700
 $Comp
@@ -671,4 +665,55 @@ Wire Wire Line
 Connection ~ 2450 6500
 Wire Wire Line
 	2450 6500 2450 6450
+Text HLabel 5300 3750 2    50   Input ~ 0
+Rx_LED
+Wire Wire Line
+	5300 3750 4850 3750
+Wire Wire Line
+	2650 3250 2050 3250
+Text HLabel 2050 3250 0    50   Input ~ 0
+ANTENNA_SW
+Text HLabel 5300 3850 2    50   Input ~ 0
+LoRa_~RESET
+Wire Wire Line
+	5300 3850 4850 3850
+Text HLabel 5300 3350 2    50   Input ~ 0
+LoRa_Busy
+Wire Wire Line
+	5300 3350 4850 3350
+Wire Wire Line
+	2650 4150 2050 4150
+Text HLabel 2050 4150 0    50   Input ~ 0
+LoRa_DIO1
+Wire Wire Line
+	8050 4700 8450 4700
+Wire Wire Line
+	8950 4600 9300 4600
+Wire Wire Line
+	2650 3950 2050 3950
+Wire Wire Line
+	5200 2950 5200 2850
+Wire Wire Line
+	5200 2850 5300 2850
+Connection ~ 5200 2950
+Wire Wire Line
+	5200 2950 5300 2950
+Text HLabel 5300 2850 2    50   Input ~ 0
+LoRa_SCK
+Wire Wire Line
+	2650 3450 2050 3450
+Text HLabel 2050 3450 0    50   Input ~ 0
+LoRa_MOSI
+Wire Wire Line
+	2650 3050 2050 3050
+Text HLabel 2050 3050 0    50   Input ~ 0
+LoRa_MISO
+Wire Wire Line
+	4850 3650 5300 3650
+Text HLabel 5300 3650 2    50   Input ~ 0
+LoRa_!SS
+Wire Wire Line
+	5300 4250 4850 4250
+Text HLabel 5300 4250 2    50   Input ~ 0
+Tx_LED
 $EndSCHEMATC

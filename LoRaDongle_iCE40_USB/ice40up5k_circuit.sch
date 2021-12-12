@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 5 5
+Sheet 4 5
 Title ""
 Date ""
 Rev ""
@@ -58,25 +58,6 @@ Text GLabel 4850 5600 1    50   Output ~ 0
 3V3
 Text GLabel 5350 5600 1    50   Output ~ 0
 3V3
-$Comp
-L ICE40UP5K-UWG30ITR1K:ICE40UP5K-UWG30ITR1K IC?
-U 1 1 61AF95E0
-P 2650 2950
-F 0 "IC?" H 3750 3215 50  0000 C CNN
-F 1 "ICE40UP5K-UWG30ITR1K" H 3750 3124 50  0000 C CNN
-F 2 "BGA30C40P5X6_211X254X60" H 4700 3050 50  0001 L CNN
-F 3 "http://www.latticesemi.com/-/media/LatticeSemi/Documents/DataSheets/iCE/FPGA-DS-02008-1-6-iCE40-UltraPlus-Family-Data-Sheet.ashx?document_id=51968" H 4700 2950 50  0001 L CNN
-F 4 "FPGA - Field Programmable Gate Array iCE40-UltraPlus, 5280 LUTs, 1.2V" H 4700 2850 50  0001 L CNN "Description"
-F 5 "0.6" H 4700 2750 50  0001 L CNN "Height"
-F 6 "Lattice Semiconductor" H 4700 2650 50  0001 L CNN "Manufacturer_Name"
-F 7 "ICE40UP5K-UWG30ITR1K" H 4700 2550 50  0001 L CNN "Manufacturer_Part_Number"
-F 8 "842-40UP5KUWG30ITR1K" H 4700 2450 50  0001 L CNN "Mouser Part Number"
-F 9 "https://www.mouser.co.uk/ProductDetail/Lattice/ICE40UP5K-UWG30ITR1K?qs=Rp3RbKSfAt0rwndd2oX17g%3D%3D" H 4700 2350 50  0001 L CNN "Mouser Price/Stock"
-F 10 "ICE40UP5K-UWG30ITR1K" H 4700 2250 50  0001 L CNN "Arrow Part Number"
-F 11 "https://www.arrow.com/en/products/ice40up5k-uwg30itr1k/lattice-semiconductor?region=nac" H 4700 2150 50  0001 L CNN "Arrow Price/Stock"
-	1    2650 2950
-	1    0    0    -1  
-$EndComp
 Wire Wire Line
 	4850 3150 5300 3150
 Wire Wire Line
@@ -156,13 +137,11 @@ Wire Wire Line
 Wire Wire Line
 	5350 5750 5350 5600
 Wire Wire Line
-	2650 3950 2050 3950
-Wire Wire Line
 	4850 3950 5050 3950
 Wire Wire Line
 	5050 3450 4850 3450
 Wire Wire Line
-	4850 2950 5300 2950
+	4850 2950 5200 2950
 Wire Wire Line
 	9550 3100 9650 3100
 Text GLabel 9650 2400 1    50   Output ~ 0
@@ -362,11 +341,7 @@ F 3 "~" H 8650 4600 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	8050 4700 8450 4700
-Wire Wire Line
 	8050 4600 8450 4600
-Wire Wire Line
-	8950 4600 9300 4600
 Wire Wire Line
 	8950 4700 9300 4700
 $Comp
@@ -671,4 +646,80 @@ Wire Wire Line
 Connection ~ 2450 6500
 Wire Wire Line
 	2450 6500 2450 6450
+Text HLabel 5300 3750 2    50   Input ~ 0
+Rx_LED
+Wire Wire Line
+	5300 3750 4850 3750
+Wire Wire Line
+	2650 3250 2050 3250
+Text HLabel 2050 3250 0    50   Input ~ 0
+ANTENNA_SW
+Text HLabel 5300 3850 2    50   Input ~ 0
+LoRa_~RESET
+Wire Wire Line
+	5300 3850 4850 3850
+Text HLabel 5300 3350 2    50   Input ~ 0
+LoRa_Busy
+Wire Wire Line
+	5300 3350 4850 3350
+Wire Wire Line
+	2650 4150 2050 4150
+Text HLabel 2050 4150 0    50   Input ~ 0
+LoRa_DIO1
+Wire Wire Line
+	8050 4700 8450 4700
+Wire Wire Line
+	8950 4600 9300 4600
+Wire Wire Line
+	2650 3950 2050 3950
+Wire Wire Line
+	5200 2950 5200 2850
+Wire Wire Line
+	5200 2850 5300 2850
+Connection ~ 5200 2950
+Wire Wire Line
+	5200 2950 5300 2950
+Text HLabel 5300 2850 2    50   Input ~ 0
+LoRa_SCK
+Wire Wire Line
+	2650 3450 2050 3450
+Text HLabel 2050 3450 0    50   Input ~ 0
+LoRa_MOSI
+Wire Wire Line
+	2650 3050 2050 3050
+Text HLabel 2050 3050 0    50   Input ~ 0
+LoRa_MISO
+Wire Wire Line
+	4850 3650 5300 3650
+Text HLabel 5300 3650 2    50   Input ~ 0
+LoRa_!SS
+Wire Wire Line
+	5300 4250 4850 4250
+Text HLabel 5300 4250 2    50   Input ~ 0
+Tx_LED
+$Comp
+L ICE40UP5K-UWG30ITR1K:ICE40UP5K-UWG30ITR1K IC?
+U 1 1 61AF95E0
+P 2650 2950
+F 0 "IC?" H 3750 3215 50  0000 C CNN
+F 1 "ICE40UP5K-UWG30ITR1K" H 3750 3124 50  0000 C CNN
+F 2 "BGA30C40P5X6_211X254X60" H 4700 3050 50  0001 L CNN
+F 3 "http://www.latticesemi.com/-/media/LatticeSemi/Documents/DataSheets/iCE/FPGA-DS-02008-1-6-iCE40-UltraPlus-Family-Data-Sheet.ashx?document_id=51968" H 4700 2950 50  0001 L CNN
+F 4 "FPGA - Field Programmable Gate Array iCE40-UltraPlus, 5280 LUTs, 1.2V" H 4700 2850 50  0001 L CNN "Description"
+F 5 "0.6" H 4700 2750 50  0001 L CNN "Height"
+F 6 "Lattice Semiconductor" H 4700 2650 50  0001 L CNN "Manufacturer_Name"
+F 7 "ICE40UP5K-UWG30ITR1K" H 4700 2550 50  0001 L CNN "Manufacturer_Part_Number"
+F 8 "842-40UP5KUWG30ITR1K" H 4700 2450 50  0001 L CNN "Mouser Part Number"
+F 9 "https://www.mouser.co.uk/ProductDetail/Lattice/ICE40UP5K-UWG30ITR1K?qs=Rp3RbKSfAt0rwndd2oX17g%3D%3D" H 4700 2350 50  0001 L CNN "Mouser Price/Stock"
+F 10 "ICE40UP5K-UWG30ITR1K" H 4700 2250 50  0001 L CNN "Arrow Part Number"
+F 11 "https://www.arrow.com/en/products/ice40up5k-uwg30itr1k/lattice-semiconductor?region=nac" H 4700 2150 50  0001 L CNN "Arrow Price/Stock"
+	1    2650 2950
+	1    0    0    -1  
+$EndComp
+NoConn ~ 2650 2950
+NoConn ~ 2650 3350
+NoConn ~ 2650 3850
+NoConn ~ 2650 4350
+NoConn ~ 4850 4050
+NoConn ~ 4850 4350
 $EndSCHEMATC
