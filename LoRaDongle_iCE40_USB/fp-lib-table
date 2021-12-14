@@ -11,4 +11,5 @@
   (lib (name N25Q032A13ESC40F)(type Legacy)(uri /home/markn/Kicad-Projects/LoRaDongle/lib/N25Q032A13ESC40F/N25Q032A13ESC40F.mod)(options "")(descr ""))
   (lib (name ICE40UP5K-UWG30ITR1K_KiCad)(type KiCad)(uri /home/markn/Kicad-Projects/LoRaDongle/lib/ICE40UP5K-UWG30ITR1K_KiCad)(options "")(descr ""))
   (lib (name SW_SKYA21012)(type KiCad)(uri /home/markn/Kicad-Projects/LoRaDongle/lib/SW_SKYA21012)(options "")(descr ""))
+  (lib (name RP550K001A-TR_KiCad)(type KiCad)(uri /home/markn/Kicad-Projects/LoRaDongle/lib/RP550K001A-TR_KiCad)(options "")(descr ""))
 )

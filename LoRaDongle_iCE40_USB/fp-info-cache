@@ -1,4 +1,4 @@
-772285804935651
+773925187025002
 93LC56B-I_OT_KiCad
 SOT95P270X145-6N
 6-Lead (OT) SOT-23
@@ -74430,6 +74430,13 @@ WiFi IEEE802.11 b/g/n
 0
 44
 44
+RP550K001A-TR_KiCad
+SON50P270X300X60-13N
+DFN(PLP)2730-12
+Integrated Circuit
+0
+13
+13
 Relay_SMD
 Relay_DPDT_AXICOM_IMSeries_JLeg
 http://www.te.com/commerce/DocumentDelivery/DDEController?Action=showdoc&DocId=Specification+Or+Standard%7F108-98001%7FW5%7Fpdf%7FEnglish%7FENG_SS_108-98001_W5.pdf
