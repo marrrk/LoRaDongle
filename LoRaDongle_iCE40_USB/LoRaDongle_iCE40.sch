@@ -44,24 +44,20 @@ F 3 "" H 2250 2100 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L Device:Jumper_NC_Dual JP1
+L Device:Jumper_NC_Dual J4
 U 1 1 616C0AFF
 P 3950 1800
-F 0 "JP1" H 3950 1947 50  0000 C CNN
+F 0 "J4" H 3950 1947 50  0000 C CNN
 F 1 "Jumper" H 3950 2038 50  0000 C CNN
 F 2 "Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical" H 3950 1800 50  0001 C CNN
 F 3 "~" H 3950 1800 50  0001 C CNN
 	1    3950 1800
 	-1   0    0    1   
 $EndComp
-Text Label 4400 1800 0    50   ~ 0
-V_conn
-Text Label 3550 1800 2    50   ~ 0
+Text Label 4350 1800 0    50   ~ 0
 V_USB
 Wire Wire Line
-	3550 1800 3700 1800
-Wire Wire Line
-	4200 1800 4400 1800
+	4350 1800 4200 1800
 $Comp
 L power:+5V #PWR03
 U 1 1 616C435A
@@ -88,7 +84,7 @@ U 1 1 61593DC4
 P 2250 1850
 F 0 "C1" H 2150 1750 50  0000 C CNN
 F 1 "0.1uF" H 2100 2000 50  0000 C CNN
-F 2 "Capacitor_SMD:C_0402_1005Metric" H 2288 1700 50  0001 C CNN
+F 2 "Capacitor_SMD:C_0402_1005Metric_Pad0.74x0.62mm_HandSolder" H 2288 1700 50  0001 C CNN
 F 3 "~" H 2250 1850 50  0001 C CNN
 F 4 "GCM155R71C104KA55J" V 2250 1850 50  0001 C CNN "Part Number"
 	1    2250 1850
@@ -132,7 +128,7 @@ U 1 1 6163C2A1
 P 2000 3950
 F 0 "R2" V 2100 3950 50  0000 C CNN
 F 1 "10R" V 2000 3950 50  0000 C CNN
-F 2 "Resistor_SMD:R_0402_1005Metric" V 1930 3950 50  0001 C CNN
+F 2 "Resistor_SMD:R_0402_1005Metric_Pad0.72x0.64mm_HandSolder" V 1930 3950 50  0001 C CNN
 F 3 "~" H 2000 3950 50  0001 C CNN
 	1    2000 3950
 	0    1    1    0   
@@ -143,7 +139,7 @@ U 1 1 6163BC45
 P 2000 3850
 F 0 "R1" V 1900 3850 50  0000 C CNN
 F 1 "10R" V 2000 3850 50  0000 C CNN
-F 2 "Resistor_SMD:R_0402_1005Metric" V 1930 3850 50  0001 C CNN
+F 2 "Resistor_SMD:R_0402_1005Metric_Pad0.72x0.64mm_HandSolder" V 1930 3850 50  0001 C CNN
 F 3 "~" H 2000 3850 50  0001 C CNN
 	1    2000 3850
 	0    1    1    0   
@@ -171,14 +167,14 @@ S 2300 3550 1350 750
 U 618AACD4
 F0 "USB_Interface" 50
 F1 "USB_Interface.sch" 50
-F2 "DP" I L 2300 3850 50 
-F3 "DM" I L 2300 3950 50 
-F4 "SPI_SCK" O R 3650 3650 50 
-F5 "SPI_MOSI" O R 3650 3750 50 
-F6 "SPI_MISO" O R 3650 3850 50 
-F7 "SPI_SS" O R 3650 3950 50 
-F8 "iCE_CDONE" O R 3650 4100 50 
-F9 "iCE_CRESET" O R 3650 4200 50 
+F2 "SPI_SCK" O R 3650 3650 50 
+F3 "SPI_MOSI" O R 3650 3750 50 
+F4 "SPI_MISO" O R 3650 3850 50 
+F5 "SPI_SS" O R 3650 3950 50 
+F6 "iCE_CDONE" O R 3650 4100 50 
+F7 "iCE_CRESET" O R 3650 4200 50 
+F8 "USB_D-" I L 2300 3950 50 
+F9 "UBS_D+" I L 2300 3850 50 
 $EndSheet
 Text Notes 5900 1250 0    50   ~ 0
 Connector from External FTDI Breakout
@@ -242,17 +238,15 @@ Wire Wire Line
 Wire Wire Line
 	6350 2150 6500 2150
 Wire Wire Line
-	6350 2050 6450 2050
-Wire Wire Line
-	6350 1950 6450 1950
-Wire Wire Line
-	6350 1850 6450 1850
-Wire Wire Line
-	6350 1750 6900 1750
-Wire Wire Line
-	6350 1650 6900 1650
-Wire Wire Line
 	6350 1550 6450 1550
+Wire Wire Line
+	6350 1650 6450 1650
+Wire Wire Line
+	6350 1750 6450 1750
+Wire Wire Line
+	6350 1850 6900 1850
+Wire Wire Line
+	6350 1950 6900 1950
 Text Label 6500 2250 0    50   ~ 0
 V_conn
 $Comp
@@ -266,17 +260,17 @@ F 3 "" H 6500 2150 50  0001 C CNN
 	1    6500 2150
 	0    -1   -1   0   
 $EndComp
-Text Label 6900 1550 0    50   ~ 0
-SPI_SCK
-Text Label 6900 1650 0    50   ~ 0
-SPI_MOSI
-Text Label 6900 1750 0    50   ~ 0
-SPI_MISO
-Text Label 6900 1850 0    50   ~ 0
-SPI_SS
-Text Label 6900 1950 0    50   ~ 0
-ICE_CDONE
 Text Label 6900 2050 0    50   ~ 0
+SPI_SCK
+Text Label 6900 1950 0    50   ~ 0
+SPI_MOSI
+Text Label 6900 1850 0    50   ~ 0
+SPI_MISO
+Text Label 6900 1750 0    50   ~ 0
+SPI_SS
+Text Label 6900 1650 0    50   ~ 0
+ICE_CDONE
+Text Label 6900 1550 0    50   ~ 0
 ICE_CRESET
 Wire Wire Line
 	3650 3650 4850 3650
@@ -319,12 +313,12 @@ F10 "LoRa_MOSI" I L 8750 4050 50
 F11 "LoRa_SCK" I L 8750 3950 50 
 $EndSheet
 $Comp
-L Connector:TestPoint_Small TP12
+L Connector:TestPoint_Small L_SS1
 U 1 1 61D568D0
 P 6950 4250
-F 0 "TP12" H 6998 4296 50  0000 L CNN
-F 1 "LoRa!_SS" H 6998 4205 50  0000 L CNN
-F 2 "TestPoint:TestPoint_Pad_D2.5mm" H 7150 4250 50  0001 C CNN
+F 0 "L_SS1" H 6998 4296 50  0000 L CNN
+F 1 "LoRa_!SS" H 6998 4205 50  0000 L CNN
+F 2 "TestPoint:TestPoint_Pad_D1.0mm" H 7150 4250 50  0001 C CNN
 F 3 "~" H 7150 4250 50  0001 C CNN
 	1    6950 4250
 	1    0    0    -1  
@@ -333,12 +327,12 @@ Connection ~ 6950 4250
 Wire Wire Line
 	6950 4250 8750 4250
 $Comp
-L Connector:TestPoint_Small TP15
+L Connector:TestPoint_Small MISO1
 U 1 1 61D57118
 P 8050 4150
-F 0 "TP15" H 8098 4196 50  0000 L CNN
+F 0 "MISO1" H 8098 4196 50  0000 L CNN
 F 1 "LoRA_MISO" H 8098 4105 50  0000 L CNN
-F 2 "TestPoint:TestPoint_Pad_D2.5mm" H 8250 4150 50  0001 C CNN
+F 2 "TestPoint:TestPoint_Pad_D1.0mm" H 8250 4150 50  0001 C CNN
 F 3 "~" H 8250 4150 50  0001 C CNN
 	1    8050 4150
 	1    0    0    -1  
@@ -347,12 +341,12 @@ Connection ~ 8050 4150
 Wire Wire Line
 	8050 4150 8750 4150
 $Comp
-L Connector:TestPoint_Small TP11
+L Connector:TestPoint_Small MOSI1
 U 1 1 61D572CB
 P 6950 4050
-F 0 "TP11" H 6998 4096 50  0000 L CNN
+F 0 "MOSI1" H 6998 4096 50  0000 L CNN
 F 1 "LoRa_MOSI" H 6998 4005 50  0000 L CNN
-F 2 "TestPoint:TestPoint_Pad_D2.5mm" H 7150 4050 50  0001 C CNN
+F 2 "TestPoint:TestPoint_Pad_D1.0mm" H 7150 4050 50  0001 C CNN
 F 3 "~" H 7150 4050 50  0001 C CNN
 	1    6950 4050
 	1    0    0    -1  
@@ -361,12 +355,12 @@ Connection ~ 6950 4050
 Wire Wire Line
 	6950 4050 8750 4050
 $Comp
-L Connector:TestPoint_Small TP14
+L Connector:TestPoint_Small SCK1
 U 1 1 61D57576
 P 8050 3950
-F 0 "TP14" H 8098 3996 50  0000 L CNN
+F 0 "SCK1" H 8098 3996 50  0000 L CNN
 F 1 "LoRa_SCK" H 8098 3905 50  0000 L CNN
-F 2 "TestPoint:TestPoint_Pad_D2.5mm" H 8250 3950 50  0001 C CNN
+F 2 "TestPoint:TestPoint_Pad_D1.0mm" H 8250 3950 50  0001 C CNN
 F 3 "~" H 8250 3950 50  0001 C CNN
 	1    8050 3950
 	1    0    0    -1  
@@ -375,12 +369,12 @@ Connection ~ 8050 3950
 Wire Wire Line
 	8050 3950 8750 3950
 $Comp
-L Connector:TestPoint_Small TP10
+L Connector:TestPoint_Small DIO1
 U 1 1 61D57700
 P 6950 3800
-F 0 "TP10" H 6998 3846 50  0000 L CNN
+F 0 "DIO1" H 6998 3846 50  0000 L CNN
 F 1 "Radio_DIO1" H 6998 3755 50  0000 L CNN
-F 2 "TestPoint:TestPoint_Pad_D2.5mm" H 7150 3800 50  0001 C CNN
+F 2 "TestPoint:TestPoint_Pad_D1.0mm" H 7150 3800 50  0001 C CNN
 F 3 "~" H 7150 3800 50  0001 C CNN
 	1    6950 3800
 	1    0    0    -1  
@@ -389,12 +383,12 @@ Connection ~ 6950 3800
 Wire Wire Line
 	6950 3800 8750 3800
 $Comp
-L Connector:TestPoint_Small TP13
+L Connector:TestPoint_Small BUSY1
 U 1 1 61D57954
 P 8050 3700
-F 0 "TP13" H 8098 3746 50  0000 L CNN
+F 0 "BUSY1" H 8098 3746 50  0000 L CNN
 F 1 "Radio_Busy" H 8098 3655 50  0000 L CNN
-F 2 "TestPoint:TestPoint_Pad_D2.5mm" H 8250 3700 50  0001 C CNN
+F 2 "TestPoint:TestPoint_Pad_D1.0mm" H 8250 3700 50  0001 C CNN
 F 3 "~" H 8250 3700 50  0001 C CNN
 	1    8050 3700
 	1    0    0    -1  
@@ -403,12 +397,12 @@ Connection ~ 8050 3700
 Wire Wire Line
 	8050 3700 8750 3700
 $Comp
-L Connector:TestPoint_Small TP9
+L Connector:TestPoint_Small RESET1
 U 1 1 61D57B0F
 P 6950 3600
-F 0 "TP9" H 6998 3652 50  0000 L CNN
-F 1 "LoRa_~RESET" H 6998 3554 50  0000 L CNN
-F 2 "TestPoint:TestPoint_Pad_D2.5mm" H 7150 3600 50  0001 C CNN
+F 0 "RESET1" H 6998 3652 50  0000 L CNN
+F 1 "LoRA_~RESET" H 6998 3554 50  0000 L CNN
+F 2 "TestPoint:TestPoint_Pad_D1.0mm" H 7150 3600 50  0001 C CNN
 F 3 "~" H 7150 3600 50  0001 C CNN
 	1    6950 3600
 	1    0    0    -1  
@@ -418,27 +412,44 @@ Wire Wire Line
 	6950 3600 8750 3600
 Text Label 4250 3650 0    50   ~ 0
 SPI_SCK
-$Comp
-L Connector:TestPoint TP4
-U 1 1 61DA3031
-P 3950 1550
-F 0 "TP4" V 3904 1738 50  0000 L CNN
-F 1 "5V" V 3995 1738 50  0000 L CNN
-F 2 "TestPoint:TestPoint_Pad_D2.5mm" H 4150 1550 50  0001 C CNN
-F 3 "~" H 4150 1550 50  0001 C CNN
-	1    3950 1550
-	0    1    1    0   
-$EndComp
 Connection ~ 3950 1550
 Wire Wire Line
 	3950 1550 3950 1500
 $Comp
-L Connector:TestPoint_Small TP5
-U 1 1 61DA426C
+L Connector:TestPoint_Small SS_B1
+U 1 1 61DA4E99
+P 6450 1750
+F 0 "SS_B1" H 6500 1800 50  0000 L CNN
+F 1 "iCE_SS_B" H 6498 1705 50  0001 L CNN
+F 2 "TestPoint:TestPoint_Pad_D1.0mm" H 6650 1750 50  0001 C CNN
+F 3 "~" H 6650 1750 50  0001 C CNN
+	1    6450 1750
+	1    0    0    -1  
+$EndComp
+Connection ~ 6450 1750
+Wire Wire Line
+	6450 1750 6900 1750
+$Comp
+L Connector:TestPoint_Small CDNE1
+U 1 1 61DB206F
+P 6450 1650
+F 0 "CDNE1" H 6500 1700 50  0000 L CNN
+F 1 "iCE_CDONE" H 6498 1605 50  0001 L CNN
+F 2 "TestPoint:TestPoint_Pad_D1.0mm" H 6650 1650 50  0001 C CNN
+F 3 "~" H 6650 1650 50  0001 C CNN
+	1    6450 1650
+	1    0    0    -1  
+$EndComp
+Connection ~ 6450 1650
+Wire Wire Line
+	6450 1650 6900 1650
+$Comp
+L Connector:TestPoint_Small CRST1
+U 1 1 61DB235D
 P 6450 1550
-F 0 "TP5" H 6500 1600 50  0000 L CNN
-F 1 "iCE_SCK" H 6498 1505 50  0001 L CNN
-F 2 "TestPoint:TestPoint_Pad_D2.5mm" H 6650 1550 50  0001 C CNN
+F 0 "CRST1" H 6500 1600 50  0000 L CNN
+F 1 "iCE_CRESET" H 6498 1505 50  0001 L CNN
+F 2 "TestPoint:TestPoint_Pad_D1.0mm" H 6650 1550 50  0001 C CNN
 F 3 "~" H 6650 1550 50  0001 C CNN
 	1    6450 1550
 	1    0    0    -1  
@@ -446,46 +457,25 @@ $EndComp
 Connection ~ 6450 1550
 Wire Wire Line
 	6450 1550 6900 1550
-$Comp
-L Connector:TestPoint_Small TP6
-U 1 1 61DA4E99
-P 6450 1850
-F 0 "TP6" H 6500 1900 50  0000 L CNN
-F 1 "iCE_SS_B" H 6498 1805 50  0001 L CNN
-F 2 "TestPoint:TestPoint_Pad_D2.5mm" H 6650 1850 50  0001 C CNN
-F 3 "~" H 6650 1850 50  0001 C CNN
-	1    6450 1850
-	1    0    0    -1  
-$EndComp
-Connection ~ 6450 1850
+Text Label 1650 3850 0    50   ~ 0
+D+
+Text Label 1650 3950 0    50   ~ 0
+D-
 Wire Wire Line
-	6450 1850 6900 1850
-$Comp
-L Connector:TestPoint_Small TP7
-U 1 1 61DB206F
-P 6450 1950
-F 0 "TP7" H 6500 2000 50  0000 L CNN
-F 1 "iCE_CDONE" H 6498 1905 50  0001 L CNN
-F 2 "TestPoint:TestPoint_Pad_D2.5mm" H 6650 1950 50  0001 C CNN
-F 3 "~" H 6650 1950 50  0001 C CNN
-	1    6450 1950
-	1    0    0    -1  
-$EndComp
-Connection ~ 6450 1950
+	6350 2050 6900 2050
 Wire Wire Line
-	6450 1950 6900 1950
+	3700 1800 3500 1800
+Text Label 3500 1800 2    50   ~ 0
+V_conn
 $Comp
-L Connector:TestPoint_Small TP8
-U 1 1 61DB235D
-P 6450 2050
-F 0 "TP8" H 6500 2100 50  0000 L CNN
-F 1 "iCE_CRESET" H 6498 2005 50  0001 L CNN
-F 2 "TestPoint:TestPoint_Pad_D2.5mm" H 6650 2050 50  0001 C CNN
-F 3 "~" H 6650 2050 50  0001 C CNN
-	1    6450 2050
-	1    0    0    -1  
+L Connector:TestPoint 5V0
+U 1 1 61DA3031
+P 3950 1550
+F 0 "5V0" V 3904 1738 50  0000 L CNN
+F 1 "5V" V 3995 1738 50  0000 L CNN
+F 2 "TestPoint:TestPoint_Pad_D1.0mm" H 4150 1550 50  0001 C CNN
+F 3 "~" H 4150 1550 50  0001 C CNN
+	1    3950 1550
+	0    1    1    0   
 $EndComp
-Connection ~ 6450 2050
-Wire Wire Line
-	6450 2050 6900 2050
 $EndSCHEMATC
