@@ -468,10 +468,10 @@ Wire Wire Line
 Text Label 3500 1800 2    50   ~ 0
 V_conn
 $Comp
-L Connector:TestPoint TP4
+L Connector:TestPoint 5V0
 U 1 1 61DA3031
 P 3950 1550
-F 0 "TP4" V 3904 1738 50  0000 L CNN
+F 0 "5V0" V 3904 1738 50  0000 L CNN
 F 1 "5V" V 3995 1738 50  0000 L CNN
 F 2 "TestPoint:TestPoint_Pad_D1.0mm" H 4150 1550 50  0001 C CNN
 F 3 "~" H 4150 1550 50  0001 C CNN
