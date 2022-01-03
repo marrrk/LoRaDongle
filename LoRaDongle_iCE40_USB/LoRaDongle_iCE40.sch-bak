@@ -234,44 +234,42 @@ Wire Wire Line
 Wire Wire Line
 	6750 4550 8750 4550
 Wire Wire Line
-	6350 2250 6500 2250
+	6350 2250 6750 2250
 Wire Wire Line
-	6350 2150 6500 2150
-Wire Wire Line
-	6350 1550 6450 1550
+	6350 2050 6700 2050
 Wire Wire Line
 	6350 1650 6450 1650
 Wire Wire Line
-	6350 1750 6450 1750
+	6350 1850 6450 1850
 Wire Wire Line
-	6350 1850 6900 1850
+	6350 2150 6450 2150
 Wire Wire Line
 	6350 1950 6900 1950
-Text Label 6500 2250 0    50   ~ 0
+Wire Wire Line
+	6350 1750 6900 1750
+Text Label 6750 2250 0    50   ~ 0
 V_conn
 $Comp
 L power:GND #PWR02
 U 1 1 61B86EAD
-P 6500 2150
-F 0 "#PWR02" H 6500 1900 50  0001 C CNN
-F 1 "GND" V 6505 1977 50  0000 C CNN
-F 2 "" H 6500 2150 50  0001 C CNN
-F 3 "" H 6500 2150 50  0001 C CNN
-	1    6500 2150
+P 6700 2050
+F 0 "#PWR02" H 6700 1800 50  0001 C CNN
+F 1 "GND" V 6705 1877 50  0000 C CNN
+F 2 "" H 6700 2050 50  0001 C CNN
+F 3 "" H 6700 2050 50  0001 C CNN
+	1    6700 2050
 	0    -1   -1   0   
 $EndComp
-Text Label 6900 2050 0    50   ~ 0
-SPI_SCK
-Text Label 6900 1950 0    50   ~ 0
-SPI_MOSI
-Text Label 6900 1850 0    50   ~ 0
-SPI_MISO
-Text Label 6900 1750 0    50   ~ 0
-SPI_SS
-Text Label 6900 1650 0    50   ~ 0
-ICE_CDONE
 Text Label 6900 1550 0    50   ~ 0
-ICE_CRESET
+SPI_SCK
+Text Label 6900 1750 0    50   ~ 0
+SPI_MOSI
+Text Label 6900 1950 0    50   ~ 0
+SPI_MISO
+Text Label 6900 2150 0    50   ~ 0
+SPI_SS
+Text Label 6900 1850 0    50   ~ 0
+ICE_CDONE
 Wire Wire Line
 	3650 3650 4850 3650
 Wire Wire Line
@@ -418,51 +416,48 @@ Wire Wire Line
 $Comp
 L Connector:TestPoint_Small SS_B1
 U 1 1 61DA4E99
-P 6450 1750
-F 0 "SS_B1" H 6500 1800 50  0000 L CNN
-F 1 "iCE_SS_B" H 6498 1705 50  0001 L CNN
-F 2 "TestPoint:TestPoint_Pad_D1.0mm" H 6650 1750 50  0001 C CNN
-F 3 "~" H 6650 1750 50  0001 C CNN
-	1    6450 1750
+P 6450 2150
+F 0 "SS_B1" H 6500 2200 50  0000 L CNN
+F 1 "iCE_SS_B" H 6498 2105 50  0001 L CNN
+F 2 "TestPoint:TestPoint_Pad_D1.0mm" H 6650 2150 50  0001 C CNN
+F 3 "~" H 6650 2150 50  0001 C CNN
+	1    6450 2150
 	1    0    0    -1  
 $EndComp
-Connection ~ 6450 1750
+Connection ~ 6450 2150
 Wire Wire Line
-	6450 1750 6900 1750
+	6450 2150 6900 2150
 $Comp
 L Connector:TestPoint_Small CDNE1
 U 1 1 61DB206F
+P 6450 1850
+F 0 "CDNE1" H 6500 1900 50  0000 L CNN
+F 1 "iCE_CDONE" H 6498 1805 50  0001 L CNN
+F 2 "TestPoint:TestPoint_Pad_D1.0mm" H 6650 1850 50  0001 C CNN
+F 3 "~" H 6650 1850 50  0001 C CNN
+	1    6450 1850
+	1    0    0    -1  
+$EndComp
+Connection ~ 6450 1850
+Wire Wire Line
+	6450 1850 6900 1850
+$Comp
+L Connector:TestPoint_Small CRST1
+U 1 1 61DB235D
 P 6450 1650
-F 0 "CDNE1" H 6500 1700 50  0000 L CNN
-F 1 "iCE_CDONE" H 6498 1605 50  0001 L CNN
+F 0 "CRST1" H 6500 1700 50  0000 L CNN
+F 1 "iCE_CRESET" H 6498 1605 50  0001 L CNN
 F 2 "TestPoint:TestPoint_Pad_D1.0mm" H 6650 1650 50  0001 C CNN
 F 3 "~" H 6650 1650 50  0001 C CNN
 	1    6450 1650
 	1    0    0    -1  
 $EndComp
-Connection ~ 6450 1650
-Wire Wire Line
-	6450 1650 6900 1650
-$Comp
-L Connector:TestPoint_Small CRST1
-U 1 1 61DB235D
-P 6450 1550
-F 0 "CRST1" H 6500 1600 50  0000 L CNN
-F 1 "iCE_CRESET" H 6498 1505 50  0001 L CNN
-F 2 "TestPoint:TestPoint_Pad_D1.0mm" H 6650 1550 50  0001 C CNN
-F 3 "~" H 6650 1550 50  0001 C CNN
-	1    6450 1550
-	1    0    0    -1  
-$EndComp
-Connection ~ 6450 1550
-Wire Wire Line
-	6450 1550 6900 1550
 Text Label 1650 3850 0    50   ~ 0
 D+
 Text Label 1650 3950 0    50   ~ 0
 D-
 Wire Wire Line
-	6350 2050 6900 2050
+	6350 1550 6900 1550
 Wire Wire Line
 	3700 1800 3500 1800
 Text Label 3500 1800 2    50   ~ 0
@@ -478,4 +473,9 @@ F 3 "~" H 4150 1550 50  0001 C CNN
 	1    3950 1550
 	0    1    1    0   
 $EndComp
+Connection ~ 6450 1650
+Wire Wire Line
+	6450 1650 6900 1650
+Text Label 6900 1650 0    50   ~ 0
+ICE_CRESET
 $EndSCHEMATC
