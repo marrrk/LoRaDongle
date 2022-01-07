@@ -1933,9 +1933,6 @@
     (path "/00000000-0000-0000-0000-00006141dfda/00000000-0000-0000-0000-000061c1d032"
       (reference "GND2") (unit 1) (value "GND") (footprint "TestPoint:TestPoint_Pad_D1.0mm")
     )
-    (path "/00000000-0000-0000-0000-0000618d30e5/00000000-0000-0000-0000-000061e62027"
-      (reference "GND3") (unit 1) (value "GND") (footprint "TestPoint:TestPoint_Pad_D1.0mm")
-    )
     (path "/00000000-0000-0000-0000-0000618aacd4/00000000-0000-0000-0000-00006191a1f9"
       (reference "IC1") (unit 1) (value "93LC56BT-I_OT") (footprint "93LC56B-I_OT_KiCad:SOT95P270X145-6N")
     )
