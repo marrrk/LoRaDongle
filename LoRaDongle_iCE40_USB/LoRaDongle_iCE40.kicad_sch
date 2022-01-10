@@ -1458,7 +1458,7 @@
       (effects (font (size 1.27 1.27)) (justify left))
       (uuid d69a5fdf-de15-4ec9-94f6-f9ee2f4b69fa)
     )
-    (pin "UBS_D+" input (at 58.42 97.79 180)
+    (pin "USB_D+" input (at 58.42 97.79 180)
       (effects (font (size 1.27 1.27)) (justify left))
       (uuid 917920ab-0c6e-4927-974d-ef342cdd4f63)
     )
