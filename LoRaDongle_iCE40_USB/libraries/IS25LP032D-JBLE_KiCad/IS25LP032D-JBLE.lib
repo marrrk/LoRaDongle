@@ -1,0 +1,32 @@
+EESchema-LIBRARY Version 2.4
+#encoding utf-8
+#
+# IS25LP032D-JBLE
+#
+DEF IS25LP032D-JBLE IC 0 30 Y Y 1 F N
+F0 "IC" -350 400 50 H V L CNN
+F1 "IS25LP032D-JBLE" -350 300 50 H V L CNN
+F2 "SOIC127P790X216-8N" 950 250 50 H I L CNN
+F3 "http://www.issi.com/WW/pdf/25LP-WP032D.pdf" 950 150 50 H I L CNN
+F4 "INTEGRATED SILICON SOLUTION (ISSI) - IS25LP032D-JBLE - NOR FLASH MEMORY 32MBIT, 133MHZ, SOIC-8" 950 50 50 H I L CNN "Description"
+F5 "2.16" 950 -50 50 H I L CNN "Height"
+F6 "Integrated Silicon Solution Inc." 950 -150 50 H I L CNN "Manufacturer_Name"
+F7 "IS25LP032D-JBLE" 950 -250 50 H I L CNN "Manufacturer_Part_Number"
+F8 "870-IS25LP032D-JBLE" 950 -350 50 H I L CNN "Mouser Part Number"
+F9 "https://www.mouser.co.uk/ProductDetail/ISSI/IS25LP032D-JBLE?qs=DXv0QSHKF4z3SdPPZ2kyPw%3D%3D" 950 -450 50 H I L CNN "Mouser Price/Stock"
+F10 "IS25LP032D-JBLE" 950 -550 50 H I L CNN "Arrow Part Number"
+F11 "https://www.arrow.com/en/products/is25lp032d-jble/integrated-silicon-solution-inc" 950 -650 50 H I L CNN "Arrow Price/Stock"
+DRAW
+S -550 250 550 -350 0 1 6 f
+X CE# 1 750 50 200 L 50 50 0 0 P
+X SO_(IO1) 2 -750 50 200 R 50 50 0 0 P
+X WP#_(IO2) 3 -750 -50 200 R 50 50 0 0 P
+X GND 4 750 -250 200 L 50 50 0 0 P
+X SI_(IO0) 5 -750 150 200 R 50 50 0 0 P
+X SCK 6 750 -50 200 L 50 50 0 0 P
+X HOLD#_OR_RESET#_(IO3) 7 -750 -150 200 R 50 50 0 0 P
+X VCC 8 750 150 200 L 50 50 0 0 P
+ENDDRAW
+ENDDEF
+#
+#End Library

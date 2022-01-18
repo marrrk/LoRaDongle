@@ -1,0 +1,26 @@
+EESchema-LIBRARY Version 2.4
+#encoding utf-8
+#
+# VLS201610CX-150M-1
+#
+DEF VLS201610CX-150M-1 L 0 30 Y Y 1 F N
+F0 "L" 400 300 50 H V L CNN
+F1 "VLS201610CX-150M-1" 400 200 50 H V L CNN
+F2 "VLS2016" 400 100 50 H I L CNN
+F3 "https://product.tdk.com/system/files/dam/doc/product/inductor/inductor/smd/catalog/inductor_commercial_power_vls201610cx-1_en.pdf" 400 0 50 H I L CNN
+F4 "Inductors for power circuits, Wound ferrite" 400 -100 50 H I L CNN "Description"
+F5 "TDK" 400 -300 50 H I L CNN "Manufacturer_Name"
+F6 "VLS201610CX-150M-1" 400 -400 50 H I L CNN "Manufacturer_Part_Number"
+F7 "810-VLS201610CX150M1" 400 -500 50 H I L CNN "Mouser Part Number"
+F8 "https://www.mouser.co.uk/ProductDetail/TDK/VLS201610CX-150M-1?qs=1mbolxNpo8cDxpAAQe7QDA%3D%3D" 400 -600 50 H I L CNN "Mouser Price/Stock"
+DRAW
+A 75 0 25 1 1799 0 1 0 N 100 0 50 0
+A -75 0 25 1 1799 1 1 0 N -50 0 -100 0
+A -25 0 25 1 1799 1 1 0 N 0 0 -50 0
+A 25 0 25 1 1799 1 1 0 N 50 0 0 0
+X ~ 1 -150 0 50 R 50 50 0 0 P
+X ~ 2 150 0 50 L 50 50 0 0 P
+ENDDRAW
+ENDDEF
+#
+#End Library

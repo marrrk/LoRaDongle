@@ -1,0 +1,8 @@
+EESchema-DOCLIB  Version 2.0
+#
+$CMP TYETBCSANF-32.000000
+D OSC TCXO 32MHZ 3.3V CLP SW SMD
+F http://www.taitien.com/wp-content/uploads/2015/12/XO-0081_TY.pdf
+$ENDCMP
+#
+#End Doc Library
