@@ -58,7 +58,7 @@
   (lib (name "dk_Logic-Multivibrators")(type "Legacy")(uri "${KIPRJMOD}/libraries/digikey-kicad-library/digikey-symbols/dk_Logic-Multivibrators.lib")(options "")(descr ""))
   (lib (name "dk_Logic-Shift-Registers")(type "Legacy")(uri "${KIPRJMOD}/libraries/digikey-kicad-library/digikey-symbols/dk_Logic-Shift-Registers.lib")(options "")(descr ""))
   (lib (name "dk_Logic-Signal-Switches-Multiplexers-Decoders")(type "Legacy")(uri "${KIPRJMOD}/libraries/digikey-kicad-library/digikey-symbols/dk_Logic-Signal-Switches-Multiplexers-Decoders.lib")(options "")(descr ""))
-  (lib (name "dk_Logic-Translators-Level-Shifters")(type "Legacy")(uri "${KIPRJMOD}/libraries//digikey-kicad-library/digikey-symbols/dk_Logic-Translators-Level-Shifters.lib")(options "")(descr ""))
+  (lib (name "dk_Logic-Translators-Level-Shifters")(type "Legacy")(uri "${KIPRJMOD}/libraries/digikey-kicad-library/digikey-symbols/dk_Logic-Translators-Level-Shifters.lib")(options "")(descr ""))
   (lib (name "dk_Magnetic-Sensors-Compass-Magnetic-Field-Modules")(type "Legacy")(uri "${KIPRJMOD}/libraries/digikey-kicad-library/digikey-symbols/dk_Magnetic-Sensors-Compass-Magnetic-Field-Modules.lib")(options "")(descr ""))
   (lib (name "dk_Magnetic-Sensors-Linear-Compass-ICs")(type "Legacy")(uri "${KIPRJMOD}/libraries/digikey-kicad-library/digikey-symbols/dk_Magnetic-Sensors-Linear-Compass-ICs.lib")(options "")(descr ""))
   (lib (name "dk_Magnetic-Sensors-Switches-Solid-State")(type "Legacy")(uri "${KIPRJMOD}/libraries/digikey-kicad-library/digikey-symbols/dk_Magnetic-Sensors-Switches-Solid-State.lib")(options "")(descr ""))
