@@ -1,6 +1,6 @@
 (fp_lib_table
   (lib (name "digikey-footprints")(type "KiCad")(uri "${KIPRJMOD}/libraries/digikey-kicad-library/digikey-footprints.pretty")(options "")(descr ""))
-  (lib (name "sx1262-footprint")(type "KiCad")(uri "${KIPRJMOD}/libraries/eec.pretty")(options "")(descr ""))
+  (lib (name "sx1262-footprint")(type "KiCad")(uri "${KIPRJMOD}/librariesI/C_Semtech_SX1262IMLTRT/eec.pretty")(options "")(descr ""))
   (lib (name "sx1261-footprint")(type "KiCad")(uri "${KIPRJMOD}/libraries/IC_Semtech_SX1261IMLTRT/eec.pretty")(options "")(descr ""))
   (lib (name "SX1262IMLTRT")(type "KiCad")(uri "${KIPRJMOD}/libraries/SX1262IMLTRT")(options "")(descr ""))
   (lib (name "93LC56B-I_OT_KiCad")(type "KiCad")(uri "${KIPRJMOD}/libraries/93LC56B-I_OT_KiCad")(options "")(descr ""))
