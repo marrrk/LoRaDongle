@@ -1383,7 +1383,7 @@
     (effects (font (size 1.27 1.27)) (justify left bottom))
     (uuid 41b4f8c6-4973-4fc7-9118-d582bc7f31e7)
   )
-  (text "Note: Connect JP to program Flash" (at 204.47 95.25 0)
+  (text "Note: Connect J7 to program Flash" (at 204.47 95.25 0)
     (effects (font (size 1.27 1.27)) (justify left bottom))
     (uuid 725579dd-9ec6-473d-8843-6a11e99f108c)
   )
