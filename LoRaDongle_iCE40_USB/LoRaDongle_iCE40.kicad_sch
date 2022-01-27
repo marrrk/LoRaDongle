@@ -2152,8 +2152,14 @@
     (path "/00000000-0000-0000-0000-000061db206f"
       (reference "CDNE1") (unit 1) (value "iCE_CDONE") (footprint "TestPoint:TestPoint_Pad_D1.0mm")
     )
+    (path "/00000000-0000-0000-0000-0000618aacd4/fb5a3375-0677-47c7-b364-83d4d20fc9c4"
+      (reference "CLK1") (unit 1) (value "CLK") (footprint "TestPoint:TestPoint_Pad_D1.0mm")
+    )
     (path "/00000000-0000-0000-0000-000061db235d"
       (reference "CRST1") (unit 1) (value "iCE_CRESET") (footprint "TestPoint:TestPoint_Pad_D1.0mm")
+    )
+    (path "/00000000-0000-0000-0000-0000618aacd4/0dc6def0-f04f-404f-85fc-c7ceaedba887"
+      (reference "CS#1") (unit 1) (value "CS#") (footprint "TestPoint:TestPoint_Pad_D1.0mm")
     )
     (path "/00000000-0000-0000-0000-0000614f0720/00000000-0000-0000-0000-000061d47c1e"
       (reference "CTL1") (unit 1) (value "CTL1") (footprint "TestPoint:TestPoint_Pad_D1.0mm")
@@ -2175,6 +2181,9 @@
     )
     (path "/00000000-0000-0000-0000-000061d57700"
       (reference "DIO1") (unit 1) (value "Radio_DIO1") (footprint "TestPoint:TestPoint_Pad_D1.0mm")
+    )
+    (path "/00000000-0000-0000-0000-0000618aacd4/172c5f04-6919-4eab-86f3-ee25ac112011"
+      (reference "Data1") (unit 1) (value "Data") (footprint "TestPoint:TestPoint_Pad_D1.0mm")
     )
     (path "/00000000-0000-0000-0000-0000615e0b04"
       (reference "FB1") (unit 1) (value "600R/0.5A") (footprint "digikey-footprints:0603")
@@ -2226,6 +2235,9 @@
     )
     (path "/00000000-0000-0000-0000-0000618d30e5/00000000-0000-0000-0000-000061cfe624"
       (reference "J9") (unit 1) (value "Conn_02x02_Top_Bottom") (footprint "Connector_PinHeader_2.54mm:PinHeader_2x02_P2.54mm_Vertical")
+    )
+    (path "/00000000-0000-0000-0000-0000618d30e5/52da14ef-b827-4d9a-a6a7-167f390ab542"
+      (reference "J10") (unit 1) (value "Jumper_2_Open") (footprint "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical")
     )
     (path "/00000000-0000-0000-0000-00006141dfda/00000000-0000-0000-0000-000061e5bff9"
       (reference "L1") (unit 1) (value "2.2uH") (footprint "Inductor_SMD:L_0603_1608Metric_Pad1.05x0.95mm_HandSolder")
