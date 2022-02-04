@@ -4,6 +4,13 @@
 
   (paper "A4")
 
+  (title_block
+    (title "RiscVLoRaDongle")
+    (date "2022-02-03")
+    (rev "1.0")
+    (company "Mark Njoroge")
+  )
+
   (lib_symbols
     (symbol "Connector:TestPoint" (pin_numbers hide) (pin_names (offset 0.762) hide) (in_bom yes) (on_board yes)
       (property "Reference" "TP" (id 0) (at 0 6.858 0)
@@ -847,6 +854,7 @@
       )
     )
   )
+
 
   (junction (at 232.41 116.84) (diameter 0) (color 0 0 0 0)
     (uuid 046ca2d8-3ca1-4c64-8090-c45e9adcf30e)
