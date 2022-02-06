@@ -12,4 +12,5 @@
   (lib (name "ICE40UP5K-UWG30ITR1K_KiCad")(type "KiCad")(uri "${KIPRJMOD}/libraries/ICE40UP5K-UWG30ITR1K_KiCad")(options "")(descr ""))
   (lib (name "SW_SKYA21012")(type "KiCad")(uri "${KIPRJMOD}/libraries/SW_SKYA21012")(options "")(descr ""))
   (lib (name "RP550K001A-TR_KiCad")(type "KiCad")(uri "${KIPRJMOD}/libraries/RP550K001A-TR_KiCad")(options "")(descr ""))
+  (lib (name "Logo")(type "KiCad")(uri "${KIPRJMOD}/libraries/Silkscreen/Logo.pretty")(options "")(descr ""))
 )

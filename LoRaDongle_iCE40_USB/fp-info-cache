@@ -1,4 +1,4 @@
-780146979350467
+20605101488101393
 93LC56B-I_OT_KiCad
 SOT95P270X145-6N
 6-Lead (OT) SOT-23
@@ -56741,6 +56741,27 @@ Yellow 5381 Series LED
 0
 2
 2
+Logo
+LoRaDongleLogo
+
+
+0
+0
+0
+Logo
+mark_njoroge
+
+
+0
+0
+0
+Logo
+rev1.0
+
+
+0
+0
+0
 Module
 A20_OLINUXINO_LIME2
 A20 Olinuxino LIME2, 1.2GHz, 512-1024MB RAM, Micro-SD, NAND or eMMC, 1000Mbit Ethernet
@@ -59506,6 +59527,13 @@ Hamamatsu SiPM
 0
 2
 2
+OptoDevice
+Kingbright_KPS-3227
+3.2mmx2.7mm, light sensor, https://www.kingbright.com/attachments/file/psearch/000/00/00/KPS-3227SP1C(Ver.16).pdf
+KPS-3227 Ambient Light Photo Sensor
+0
+4
+4
 OptoDevice
 Kingbright_KPS-5130
 http://www.kingbright.com/attachments/file/psearch/000/00/00/KPS-5130PD7C(Ver.14).pdf
@@ -87794,6 +87822,13 @@ Zigbee_Module_MRF24J40MD
 12
 12
 sx1261-footprint
+Semtech-QFN24-0-0-0
+
+
+0
+25
+25
+sx1262-footprint
 Semtech-QFN24-0-0-0
 
 
