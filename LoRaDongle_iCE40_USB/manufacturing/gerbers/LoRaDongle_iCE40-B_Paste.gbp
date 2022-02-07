@@ -1,0 +1,19 @@
+G04 #@! TF.GenerationSoftware,KiCad,Pcbnew,(6.0.1)*
+G04 #@! TF.CreationDate,2022-02-07T11:20:35+02:00*
+G04 #@! TF.ProjectId,LoRaDongle_iCE40,4c6f5261-446f-46e6-976c-655f69434534,1.0*
+G04 #@! TF.SameCoordinates,Original*
+G04 #@! TF.FileFunction,Paste,Bot*
+G04 #@! TF.FilePolarity,Positive*
+%FSLAX46Y46*%
+G04 Gerber Fmt 4.6, Leading zero omitted, Abs format (unit mm)*
+G04 Created by KiCad (PCBNEW (6.0.1)) date 2022-02-07 11:20:35*
+%MOMM*%
+%LPD*%
+G01*
+G04 APERTURE LIST*
+%ADD10R,5.080000X2.413000*%
+G04 APERTURE END LIST*
+D10*
+X206820000Y-92308500D03*
+X206820000Y-101071500D03*
+M02*
