@@ -681,7 +681,6 @@
     )
   )
 
-
   (junction (at 64.77 81.28) (diameter 0) (color 0 0 0 0)
     (uuid 099473f1-6598-46ff-a50f-4c520832170d)
   )
@@ -1377,11 +1376,6 @@
     (uuid fb35e3b1-aff6-41a7-9cf0-52694b95edeb)
   )
 
-  (text "4.7uF and Resistors don't have Part Numbers/footprints"
-    (at 215.9 69.85 0)
-    (effects (font (size 1.27 1.27)) (justify left bottom))
-    (uuid 82204892-ec79-4d38-a593-52fb9a9b4b87)
-  )
   (text "Connect the LC circuits for VPHY and VLL" (at 72.39 124.46 0)
     (effects (font (size 1.27 1.27)) (justify left bottom))
     (uuid d13b0eae-4711-4325-a6bb-aa8e3646e86e)
