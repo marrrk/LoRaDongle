@@ -1,0 +1,62 @@
+EESchema-LIBRARY Version 2.4
+#encoding utf-8
+#
+# Semtech SX1262IMLTRT
+#
+DEF SX1262IMLTRT U 0 40 Y Y 1 L N
+F0 "U" 0 200 50 H V L CNN 
+F1 "SX1262IMLTRT" 0 300 50 H V L CNN 
+F2 "Semtech-QFN24-0-0-*" 0 400 50 H I L CNN 
+F3 "https://www.semtech.com/uploads/documents/DS_SX1261-2_V1.1.pdf" 0 500 50 H I L CNN 
+F4 "IC" 0 600 50 H I L CNN "category"
+F5 "Integrated Circuits (ICs)" 0 700 50 H I L CNN "device class L1"
+F6 "RF Semiconductors and Devices" 0 800 50 H I L CNN "device class L2"
+F7 "Transceivers" 0 900 50 H I L CNN "device class L3"
+F8 "TXRX LORA SUB-GHZ 22DBM 24MLPQ" 0 1000 50 H I L CNN "digikey description"
+F9 "SX1262IMLTRTCT-ND" 0 1100 50 H I L CNN "digikey part number"
+F10 "1mm" 0 1200 50 H I L CNN "height"
+F11 "SPI" 0 1300 50 H I L CNN "interface"
+F12 "yes" 0 1400 50 H I L CNN "lead free"
+F13 "82c7b71869c902e0" 0 1500 50 H I L CNN "library id"
+F14 "Semtech" 0 1600 50 H I L CNN "manufacturer"
+F15 "960MHz" 0 1700 50 H I L CNN "max frequency"
+F16 "3.7V" 0 1800 50 H I L CNN "max supply voltage"
+F17 "1.8V" 0 1900 50 H I L CNN "min supply voltage"
+F18 "947-SX1262IMLTRT" 0 2000 50 H I L CNN "mouser part number"
+F19 "3" 0 2100 50 H I L CNN "number of GPIO"
+F20 "VFQFN24" 0 2200 50 H I L CNN "package"
+F21 "yes" 0 2300 50 H I L CNN "rohs"
+F22 "0mm" 0 2400 50 H I L CNN "standoff height"
+F23 "+85°C" 0 2500 50 H I L CNN "temperature range high"
+F24 "-40°C" 0 2600 50 H I L CNN "temperature range low"
+DRAW
+X VDD_IN 1 100 0 100 R 40 40 1 1 W 
+X DIO1 13 1300 -800 100 L 40 40 1 1 B 
+X DIO2 12 1300 -900 100 L 40 40 1 1 B 
+X DIO3 6 1300 -1000 100 L 40 40 1 1 B 
+X VBAT 10 100 -100 100 R 40 40 1 1 W 
+X VBAT_IO 11 100 -200 100 R 40 40 1 1 W 
+X RFI_N 22 100 -700 100 R 40 40 1 1 I 
+X RFI_P 21 100 -600 100 R 40 40 1 1 I 
+X ~RESET~ 15 1300 0 100 L 40 40 1 1 B 
+X ~SS~ 19 100 -1200 100 R 40 40 1 1 I 
+X BUSY 14 1300 -200 100 L 40 40 1 1 B 
+X DCC_SW 9 1300 -400 100 L 40 40 1 1 O 
+X MISO 16 100 -1100 100 R 40 40 1 1 O 
+X MOSI 17 100 -1000 100 R 40 40 1 1 I 
+X RFO 23 1300 -600 100 L 40 40 1 1 O 
+X SCK 18 100 -900 100 R 40 40 1 1 I 
+X VR_PA 24 100 -300 100 R 40 40 1 1 W 
+X VREG 7 100 -400 100 R 40 40 1 1 O 
+X XTA 3 100 -1400 100 R 40 40 1 1 P 
+X XTB 4 100 -1600 100 R 40 40 1 1 P 
+X GND 2 1300 -1200 100 L 40 40 1 1 W 
+X GND 5 1300 -1300 100 L 40 40 1 1 W 
+X GND 8 1300 -1400 100 L 40 40 1 1 W 
+X GND 20 1300 -1500 100 L 40 40 1 1 W 
+X GND 25 1300 -1600 100 L 40 40 1 1 W 
+S 200 100 1200 -1700 1 1 0 f
+ENDDRAW
+ENDDEF
+#
+# End Library
