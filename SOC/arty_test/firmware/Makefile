@@ -3,7 +3,19 @@ BUILD_DIR?=../build/
 include $(BUILD_DIR)/software/include/generated/variables.mak
 include $(SOC_DIRECTORY)/software/common.mak
 
-OBJECTS   = main.o crt0.o
+BASE_DIR = .
+LOCAL_INCLUDE = -I$(BASE_DIR)/include
+L_INCLUDE = -L$(BASE_DIR)/include
+
+c_flags = $(LOCAL_INCLUDE) $(CFLAGS)
+l_flags = $(L_INCLUDE) $(LOCAL_INCLUDE) $(LDFLAGS)
+
+
+define comp
+$(CC) -c $(c_flags) $(1) $< -o $@
+endef
+
+OBJECTS   = main.o crt0.o time.o
 
 all: demo.bin
 

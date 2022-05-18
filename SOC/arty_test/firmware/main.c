@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <generated/csr.h>
+#include <time.h>
 
 void isr(void){
 	asm("nop");
@@ -9,7 +10,7 @@ void isr(void){
 int main(void){
 
 //	rgbled_r_enable_write(1);
-
+	time_init();
 
 
 	while (1){
@@ -20,14 +21,22 @@ int main(void){
 		//rgbled_r_period_write(0.5);
 		
 		if (buttons_in_read() == 0x1) {
+			msleep(1000);
 			uart_rxtx_write('a');
 		}
 
 
 		if (buttons_in_read() == 0x2) {
-			SPI_cs_write(0x0);
+			printf(SPI_mosi_read());
+			msleep(500);
+			SPI_mosi_write("0x11");
 		}
 
+		if (buttons_in_read() == 0x3) {
+			printf(SPI_status_done_read());
+			printf("%lx \n", SPI_status_done_read());
+			msleep(1000);
+		}
 		//leds_out_write(0x2);
 		
 
