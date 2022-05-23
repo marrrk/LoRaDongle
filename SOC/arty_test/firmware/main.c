@@ -27,18 +27,37 @@ int main(void){
 
 
 		if (buttons_in_read() == 0x2) {
-			printf(SPI_mosi_read());
+			printf("MOSI Register: 0x%lx\n", SPI_mosi_read());
+			printf("MISO Register: 0x%lx\n", SPI_miso_read());
 			msleep(500);
-			SPI_mosi_write("0x11");
+			SPI_mosi_write(0x11);
 		}
 
-		if (buttons_in_read() == 0x3) {
-			printf(SPI_status_done_read());
-			printf("%lx \n", SPI_status_done_read());
+		if (buttons_in_read() == 0x4) {
+			//printf("Contents of Status Register: %ld\n", SPI_status_done_read());
+			//printf("Contents of Status Register: 0x%lx \n", SPI_status_done_read());
+			printf("Raw reading of CS Register: %lx\n", SPI_cs_read());
+			printf("CS Bit Reading            : %lx\n", SPI_cs_sel_read());
 			msleep(1000);
 		}
-		//leds_out_write(0x2);
-		
+
+		if (buttons_in_read() == 0x8) {
+			printf("Before Transmission: \n");
+			printf("Contents of Control Register: %ld\n", SPI_control_start_read());
+			printf("Contents of Status Register: 0x%lx\n", SPI_status_done_read());
+			
+			printf("Starting transmission \n");
+
+			SPI_control_start_write(0x1);
+			SPI_control_length_write(8);
+			printf("Contents of Status Register: 0x%lx\n", SPI_status_done_read());
+			SPI_mosi_write(0x3E);
+			printf("after writing to mosi, contents of Status Register: 0x%lx\n", SPI_status_done_read());
+
+
+
+			msleep(1000);
+		}
 
 		//printf("Hello World\n");
 	}
