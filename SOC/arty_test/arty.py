@@ -80,10 +80,10 @@ _io = [
 
     #SPI
     ("spi_bus",0,                    #Adding SPIMaster Functionality
-        Subsignal("mosi", Pins("N17")),                 #Silkwcreen Pin IO41
-        Subsignal("miso", Pins("P18")),                 #Silkscreen Pin I040
         Subsignal("clk", Pins("R18")),                  #Silkscreen Pin I039
         Subsignal("cs_n", Pins("T18")),                  #Silkscreen Pin I038
+        Subsignal("mosi", Pins("N17")),                 #Silkwcreen Pin IO41
+        Subsignal("miso", Pins("P18")),                 #Silkscreen Pin I040
         IOStandard("LVCMOS33"),
         ),
 

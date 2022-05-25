@@ -36,7 +36,7 @@ demo.elf: $(OBJECTS)
 	chmod -x $@
 
 main.o: main.c
-	$(compile)
+	$(comp)
 
 crt0.o: $(CPU_DIRECTORY)/crt0.S
 	$(assemble)
@@ -46,7 +46,7 @@ crt0.o: $(CPU_DIRECTORY)/crt0.S
 	$(compilexx)
 
 %.o: %.c
-	$(compile)
+	$(comp)
 
 %.o: %.S
 	$(assemble)
