@@ -31,12 +31,12 @@ int main(void){
 		}
 
 
-		if (buttons_in_read() == 0x2) {
-			printf("MOSI Register: 0x%lx\n", SPI_mosi_read());
-			printf("MISO Register: 0x%lx\n", SPI_miso_read());
-			msleep(500);
+		//if (buttons_in_read() == 0x2) {
+			//printf("MOSI Register: 0x%lx\n", SPI_mosi_read());
+			//printf("MISO Register: 0x%lx\n", SPI_miso_read());
+			//msleep(500);
 			//SPI_mosi_write(0x11);
-		}
+		//}
 
 		if (buttons_in_read() == 0x4) {
 			//printf("Contents of Status Register: %ld\n", SPI_status_done_read());
@@ -58,17 +58,21 @@ int main(void){
 			
 			
 			printf("Starting transmission \n");
-			
+			//SPI_clk_divider_write(2);
 			//SPI_control_length_write(8);
-			SPI_loopback_mode_write(1);
+			SPI_loopback_write(1);
+			//msleep(1000);
 			SPI_mosi_write(0x3E);
+			printf("Contents of MOSI:  0x%lx\n", SPI_mosi_read());
+			//msleep(1000);
 			SPI_cs_write(1);
+			msleep(1000);
 			SPI_control_write(ctrl);
-
+			//msleep(1000);
 			//SPI_control_start_write(0x1);
 			//printf("Contents of Status Register: 0x%lx\n", SPI_status_done_read());
 			//printf("after writing to mosi, contents of Status Register: 0x%lx\n", SPI_status_done_read());
-			while (!SPI_status_read());
+			while (!SPI_status_read()); //wait for transmission to finish
 
 			SPI_cs_write(0);
 
