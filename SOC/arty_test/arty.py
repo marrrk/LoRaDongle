@@ -13,6 +13,8 @@ from litex.soc.integration.soc_core import *
 from litex.soc.integration.builder import *
 from litex.soc.cores import dna
 from litex.soc.cores.spi import SPIMaster #Gonna use this for the LoRA Chip
+from litex.soc.cores.bitbang import I2CMaster
+
 
 from ios import Led, RGBLed, Button, Switch  #Classes that pull GPIOIn, GPIOOut from litex.soc.cores.gpio
 # eg: from litex.soc.cores.gpio import GPIOIn GPIOout GPIOTristate etc etc
@@ -110,7 +112,7 @@ class BaseSoC(SoCCore):
 
         # SoC with CPU
         SoCCore.__init__(self, platform,
-            cpu_type                 = "serv",
+            cpu_type                 = "vexriscv",
             clk_freq                 = 100e6,
             ident                    = "LiteX CPU Test SoC", ident_version=True,
             integrated_rom_size      = 0x8000,
@@ -144,7 +146,14 @@ class BaseSoC(SoCCore):
             data_width = 32,
             sys_clk_freq = sys_clk_freq,
             spi_clk_freq = 1e6)
+        #self.submodules.SPI= SPIMaster(platform.request("spi_bus"))
+        self.SPI.add_clk_divider()
         self.add_csr("spi_bus")
+
+
+        #I2CMaster  #testing i2c
+        #self.submodules.i2c = I2CMaster(platform.request(i2C))
+        #self.add_csr(i2c)
 
         # RGB Led
         #self.submodules.rgbled  = RGBLed(platform.request("rgb_led",  0))
