@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <generated/csr.h>
 #include <time.h>
+#include <irq.h>
 
 unsigned int ctrl;
 
@@ -31,12 +32,15 @@ int main(void){
 		}
 
 
-		//if (buttons_in_read() == 0x2) {
-			//printf("MOSI Register: 0x%lx\n", SPI_mosi_read());
-			//printf("MISO Register: 0x%lx\n", SPI_miso_read());
+		if (buttons_in_read() == 0x2) {
+			//i2c_start();
+		
+			printf("MOSI Register: 0x%lx\n", SPI_mosi_read());
+			msleep(10);
+			printf("MISO Register: 0x%lx\n", SPI_miso_read());
 			//msleep(500);
 			//SPI_mosi_write(0x11);
-		//}
+		}
 
 		if (buttons_in_read() == 0x4) {
 			//printf("Contents of Status Register: %ld\n", SPI_status_done_read());
@@ -48,25 +52,25 @@ int main(void){
 		}
 
 		if (buttons_in_read() == 0x8) {
-			printf("Before Transmission: \n");
+			//printf("Before Transmission: \n");
 			
-			printf("Contents of Control Register: %lx\n", SPI_control_read());
+			//printf("Contents of Control Register: %lx\n", SPI_control_read());
 			//printf("Contents of Status Register: 0x%lx\n", SPI_status_done_read());
 			
 			ctrl = (8 << 8) | (1 << 0);
 			//printf("THE VALUE OF CTRL IS: 0x%x\n" ,ctrl);
 			
 			
-			printf("Starting transmission \n");
+			//printf("Starting transmission \n");
 			//SPI_clk_divider_write(2);
 			//SPI_control_length_write(8);
 			SPI_loopback_write(1);
-			//msleep(1000);
-			SPI_mosi_write(0x3E);
-			printf("Contents of MOSI:  0x%lx\n", SPI_mosi_read());
-			//msleep(1000);
-			SPI_cs_write(1);
-			msleep(1000);
+			msleep(10);
+			SPI_mosi_write(0x55);
+			//printf("Contents of MOSI:  0x%lx\n", SPI_mosi_read());
+			msleep(10);
+			//SPI_cs_write(1);
+			msleep(10);
 			SPI_control_write(ctrl);
 			//msleep(1000);
 			//SPI_control_start_write(0x1);
@@ -74,9 +78,9 @@ int main(void){
 			//printf("after writing to mosi, contents of Status Register: 0x%lx\n", SPI_status_done_read());
 			while (!SPI_status_read()); //wait for transmission to finish
 
-			SPI_cs_write(0);
+			//SPI_cs_write(0);
 
-			printf("Contents of MISO Register: 0x%lx\n",SPI_miso_read());
+			printf("MISO: 0x%lx\n",SPI_miso_read());
 
 
 

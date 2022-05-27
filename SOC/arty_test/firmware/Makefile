@@ -11,7 +11,7 @@ c_flags = $(LOCAL_INCLUDE) $(CFLAGS)
 l_flags = $(L_INCLUDE) $(LOCAL_INCLUDE) $(LDFLAGS)
 
 
-define comp
+define compile
 $(CC) -c $(c_flags) $(1) $< -o $@
 endef
 
@@ -36,7 +36,7 @@ demo.elf: $(OBJECTS)
 	chmod -x $@
 
 main.o: main.c
-	$(comp)
+	$(compile)
 
 crt0.o: $(CPU_DIRECTORY)/crt0.S
 	$(assemble)
@@ -46,7 +46,7 @@ crt0.o: $(CPU_DIRECTORY)/crt0.S
 	$(compilexx)
 
 %.o: %.c
-	$(comp)
+	$(compile)
 
 %.o: %.S
 	$(assemble)
