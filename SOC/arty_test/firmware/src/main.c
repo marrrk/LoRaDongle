@@ -1,27 +1,14 @@
-#include <stdio.h>
 #include <generated/csr.h>
+#include <stdio.h>
 #include <time.h>
-#include <irq.h>
-
-unsigned int ctrl;
-
-void isr(void){
-	asm("nop");
-}
-
+#include <spi.h>
 
 int main(void){
-
-//	rgbled_r_enable_write(1);
 	time_init();
-
 
 	while (1){
 		//uint32_t btn = buttons_in_read();
 		leds_out_write(buttons_in_read());
-
-		//rgbled_r_width_write(0xff);
-		//rgbled_r_period_write(0.5);
 		
 		if (buttons_in_read() == 0x1) {
 			//uart_rxtx_write('a');
@@ -32,9 +19,7 @@ int main(void){
 		}
 
 
-		if (buttons_in_read() == 0x2) {
-			//i2c_start();
-		
+		if (buttons_in_read() == 0x2) {		
 			printf("MOSI Register: 0x%lx\n", SPI_mosi_read());
 			msleep(10);
 			printf("MISO Register: 0x%lx\n", SPI_miso_read());
@@ -52,42 +37,8 @@ int main(void){
 		}
 
 		if (buttons_in_read() == 0x8) {
-			//printf("Before Transmission: \n");
-			
-			//printf("Contents of Control Register: %lx\n", SPI_control_read());
-			//printf("Contents of Status Register: 0x%lx\n", SPI_status_done_read());
-			
-			ctrl = (8 << 8) | (1 << 0);
-			//printf("THE VALUE OF CTRL IS: 0x%x\n" ,ctrl);
-			
-			
-			//printf("Starting transmission \n");
-			//SPI_clk_divider_write(2);
-			//SPI_control_length_write(8);
-			SPI_loopback_write(1);
-			msleep(10);
-			SPI_mosi_write(0x55);
-			//printf("Contents of MOSI:  0x%lx\n", SPI_mosi_read());
-			msleep(10);
-			//SPI_cs_write(1);
-			msleep(10);
-			SPI_control_write(ctrl);
-			//msleep(1000);
-			//SPI_control_start_write(0x1);
-			//printf("Contents of Status Register: 0x%lx\n", SPI_status_done_read());
-			//printf("after writing to mosi, contents of Status Register: 0x%lx\n", SPI_status_done_read());
-			while (!SPI_status_read()); //wait for transmission to finish
-
-			//SPI_cs_write(0);
-
-			printf("MISO: 0x%lx\n",SPI_miso_read());
-
-
-
-			msleep(1000);
+			test_loopback(0xA5);
 		}
-
-		//printf("Hello World\n");
 	}
 
 	return 0;
