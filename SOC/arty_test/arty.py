@@ -13,7 +13,7 @@ from litex.soc.integration.soc_core import *
 from litex.soc.integration.builder import *
 from litex.soc.cores import dna
 from litex.soc.cores.spi import SPIMaster #Gonna use this for the LoRA Chip
-from litex.soc.cores.bitbang import I2CMaster
+#from litex.soc.cores.bitbang import I2CMaster
 
 
 from ios import Led, RGBLed, Button, Switch  #Classes that pull GPIOIn, GPIOOut from litex.soc.cores.gpio
@@ -89,6 +89,12 @@ _io = [
         IOStandard("LVCMOS33"),
         ),
 
+    #I2c
+    #("i2c",0,
+     #   Subsignal("sda", Pins("R16")),              #Silkscreen Pin IO34
+      #  Subsignal("scl", Pins("N16")),                   #Silkscreen Pin IO35
+      #  IOStandard("LVCMOS33")
+      #  ),
 ]
 
 # Platform -----------------------------------------------------------------------------------------
@@ -112,7 +118,7 @@ class BaseSoC(SoCCore):
 
         # SoC with CPU
         SoCCore.__init__(self, platform,
-            cpu_type                 = "vexriscv",
+            cpu_type                 = "serv",
             clk_freq                 = 100e6,
             ident                    = "LiteX CPU Test SoC", ident_version=True,
             integrated_rom_size      = 0x8000,
@@ -142,18 +148,16 @@ class BaseSoC(SoCCore):
 
 
         # SPI Master
-        self.submodules.SPI = SPIMaster(platform.request("spi_bus"),
-            data_width = 32,
+        self.submodules.SPI = SPIMaster(platform.request("spi_bus", 0),
+            data_width = 8,
             sys_clk_freq = sys_clk_freq,
             spi_clk_freq = 1e6)
-        #self.submodules.SPI= SPIMaster(platform.request("spi_bus"))
-        self.SPI.add_clk_divider()
         self.add_csr("spi_bus")
 
 
         #I2CMaster  #testing i2c
-        #self.submodules.i2c = I2CMaster(platform.request(i2C))
-        #self.add_csr(i2c)
+        #self.submodules.i2c = I2CMaster(platform.request("i2c"))
+        #self.add_csr("i2c")
 
         # RGB Led
         #self.submodules.rgbled  = RGBLed(platform.request("rgb_led",  0))

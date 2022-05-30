@@ -38,7 +38,7 @@ int main(void){
 			printf("MOSI Register: 0x%lx\n", SPI_mosi_read());
 			msleep(10);
 			printf("MISO Register: 0x%lx\n", SPI_miso_read());
-			//msleep(500);
+			msleep(500);
 			//SPI_mosi_write(0x11);
 		}
 
