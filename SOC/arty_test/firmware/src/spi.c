@@ -30,5 +30,4 @@ void test_loopback(uint32_t test_value) {
 
     printf("MISO: 0x%lx\n",SPI_miso_read()); // check if transmission has been successful
 
-    msleep(1000);
 }
