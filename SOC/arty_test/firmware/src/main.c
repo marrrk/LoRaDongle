@@ -8,7 +8,7 @@
 
 
 /*
-	Uart Commands for interacting with Console
+	Uart functions for interacting with Console
 */
 static char *readstr(void)
 {

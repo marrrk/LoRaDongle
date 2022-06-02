@@ -13,7 +13,7 @@ from litex.soc.integration.soc_core import *
 from litex.soc.integration.builder import *
 from litex.soc.cores import dna
 from litex.soc.cores.spi import SPIMaster #Gonna use this for the LoRA Chip
-#from litex.soc.cores.bitbang import I2CMaster
+from litex.soc.cores.bitbang import I2CMaster
 
 
 from ios import Led, RGBLed, Button, Switch  #Classes that pull GPIOIn, GPIOOut from litex.soc.cores.gpio
@@ -76,6 +76,8 @@ _io = [
     ("serial", 0,
         Subsignal("tx", Pins("D10")),
         Subsignal("rx", Pins("A9")),
+        #Subsignal("tx", Pins("N17")),
+        #Subsignal("rx", Pins("P18")),
         IOStandard("LVCMOS33"),
     ),
 
@@ -91,10 +93,10 @@ _io = [
 
     #I2c
     #("i2c",0,
-     #   Subsignal("sda", Pins("R16")),              #Silkscreen Pin IO34
-      #  Subsignal("scl", Pins("N16")),                   #Silkscreen Pin IO35
-      #  IOStandard("LVCMOS33")
-      #  ),
+    #    Subsignal("sda", Pins("R16")),              #Silkscreen Pin IO34
+    #    Subsignal("scl", Pins("N16")),                   #Silkscreen Pin IO35
+    #    IOStandard("LVCMOS33")
+    #    ),
 ]
 
 # Platform -----------------------------------------------------------------------------------------
