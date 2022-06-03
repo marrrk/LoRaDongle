@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 from migen import *
 
 from migen.genlib.io import CRG
@@ -25,16 +27,27 @@ platform = Platform()
 
 # Create our soc (fpga description)
 class BaseSoC(SoCCore):
+
+    #SoCCore.mem_map = {
+    #    "sram":             0x10000000,
+    #    "spiflash":         0x20000000,
+    #    "csr":              0xf0000000,
+    #}
+
+
     def __init__(self, platform):
         sys_clk_freq = int(50e6)
+
+        # Clock Reset Generation
+        self.submodules.crg = CRG(platform.request("clk50"))
 
         # SoC with CPU
         SoCCore.__init__(self, platform,
             cpu_type                 = "serv",
-            clk_freq                 = 50e6,
+            clk_freq                 = sys_clk_freq,
             ident                    = "LiteX CPU Test SoC on LoRaDongle", ident_version=True,
             integrated_rom_size      = 0,
-            integrated_sram_size = 0)		#Disable Integrated ROM/SRAM since too large for iCE40 and UP5k has specific SPRAM
+            integrated_sram_size     = 0)	#Disable Integrated ROM/SRAM since too large for iCE40 and UP5k has specific SPRAM
 
 
 
@@ -57,21 +70,28 @@ class BaseSoC(SoCCore):
 
         # Sourced from icebreaker example
         # Use this as CPU RAM.
-        spram_size = 128 * 1024
+        spram_size = 128 * kB
         self.submodules.spram = Up5kSPRAM(size=spram_size)
         self.register_mem("sram", self.mem_map["sram"], self.spram.bus, spram_size)
 
-        self.cpu.set_reset_address(self.bus.regions["sram"].origin)
+
+        # SPI Flash --------------------------------------------------------------------------------
+        from litespi.modules import N25Q032A            #will update to new flash :)
+        from litespi.opcodes import SpiNorFlashOpCodes as Codes
+        self.add_spi_flash(mode="1x", module=N25Q032A(Codes.READ_1_1_1), with_master=False)
+
+        # Add ROM linker region --------------------------------------------------------------------
+        self.bus.add_region("rom", SoCRegion(
+            origin = self.bus.regions["spiflash"].origin + 0x40000, #change the offset value to a callable value, eg: bios_flash_offset
+            size   = 32*kB,
+            linker = True)
+        )
+        self.cpu.set_reset_address(self.bus.regions["rom"].origin)
 
 
-        # Clock Reset Generation
-        self.submodules.crg = CRG(platform.request("clk50"))
 
-        # FPGA identification, Only necessary for Xilinx FPGAs
-        #self.submodules.dna = dna.DNA()
-        #self.add_csr("dna")
 
-        # Led
+        # Leds
         user_leds = Cat(*[platform.request("user_led", i) for i in range(2)])
         self.submodules.leds = gpio.GPIOOut(user_leds)
         self.add_csr("leds")
@@ -86,3 +106,8 @@ builder = Builder(soc, output_dir="build", csr_csv="csr.csv")
 vns = builder.build(build_name="top")
 soc.do_exit(vns)
 generate_docs(soc, "build/documentation")
+
+
+#command to program software
+
+# iceprog -o 0x000400 demo.bin

@@ -23,6 +23,14 @@ _io = [
         IOStandard("LVCMOS33"),
     ),
 
+    #SPIFlash
+    ("spiflash", 0,
+        Subsignal("cs_n", Pins("C1"), IOStandard("LVCMOS33")),
+        Subsignal("clk",  Pins("D1"), IOStandard("LVCMOS33")),
+        Subsignal("miso", Pins("E1"), IOStandard("LVCMOS33")),
+        Subsignal("mosi", Pins("F1"), IOStandard("LVCMOS33")),
+    ),
+
 ]
 
 
