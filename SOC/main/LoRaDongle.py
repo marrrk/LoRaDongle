@@ -22,7 +22,6 @@ from litex.soc.doc import generate_docs
 kB = 1024
 mB = 1024*kB
 
-platform = Platform()
 
 
 # Create our soc (fpga description)
@@ -82,7 +81,7 @@ class BaseSoC(SoCCore):
 
         # Add ROM linker region --------------------------------------------------------------------
         self.bus.add_region("rom", SoCRegion(
-            origin = self.bus.regions["spiflash"].origin + 0x40000, #change the offset value to a callable value, eg: bios_flash_offset
+            origin = self.bus.regions["spiflash"].origin + 0x20000, #change the offset value to a callable value, eg: bios_flash_offset
             size   = 32*kB,
             linker = True)
         )
@@ -98,14 +97,43 @@ class BaseSoC(SoCCore):
 
 
 
-soc = BaseSoC(platform)
+# Flash -------------------------------------------------------------------------------------------
+def flash(build_dir, build_name, flash_offset):
+    from litex.build.lattice.programmer import IceStormProgrammer
+    prog = IceStormProgrammer()
+    prog.flash(flash_offset, f"{build_dir}/software/bios/bios.bin")
+    prog.flash(0x00000000, f"{build_dir}/gateware/{build_name}.bin")
+
 
 # Build --------------------------------------------------------------------------------------------
+def main():
+    parser = argparse.ArgumentParser(description="Litex SoC on LoRaDongle")
+    parser.add_argument("--flash-offset", default=0x20000, help="Boot offset in SPI Flash")
+    parser.add_argument("--flash", action="store_true", help="Load bitstream")
 
-builder = Builder(soc, output_dir="build", csr_csv="csr.csv")
-vns = builder.build(build_name="top")
-soc.do_exit(vns)
-generate_docs(soc, "build/documentation")
+    builder_args(parser)
+    soc_core_args(parser)
+
+    args = parser.parse_args()
+
+    platform = Platform()
+    # Create SOC
+    soc = BaseSoC(platform)
+
+
+    builder = Builder(soc, output_dir="build", csr_csv="csr.csv")
+    vns = builder.build(build_name="LoRaDongle")
+    soc.do_exit(vns)
+    generate_docs(soc, "build/documentation")
+
+
+
+    if args.flash:
+        flash(builder.output_dir, soc.build_name, args.flash_offset)
+
+
+if __name__ == "__main__":
+    main()
 
 
 #command to program software
