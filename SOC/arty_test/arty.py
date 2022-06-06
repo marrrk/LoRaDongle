@@ -76,8 +76,8 @@ _io = [
     ("serial", 0,
         Subsignal("tx", Pins("D10")),
         Subsignal("rx", Pins("A9")),
-        #Subsignal("tx", Pins("N17")),
-        #Subsignal("rx", Pins("P18")),
+        #Subsignal("tx", Pins("N16")),          # Silcksreen Pin IO35  Testing uart with external cable
+        #Subsignal("rx", Pins("N14")),          # Silkscreen Pin IO36
         IOStandard("LVCMOS33"),
     ),
 

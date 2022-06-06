@@ -5,7 +5,7 @@
 #include <string.h>
 #include <time.h>
 #include <spi.h>
-
+#include <led_test.h>
 
 /*
 	Uart functions for interacting with Console
@@ -87,6 +87,7 @@ static void help(void) {
 	puts("help			- Show this command");
 	puts("reboot			- Reboots CPU");
 	puts("spi_test		- SPI Loopback Test");
+	puts("led_demo		- Flickers LEDs");
 }
 
 static void console_service(void) {
@@ -102,6 +103,8 @@ static void console_service(void) {
 		reboot_cmd();
 	else if (strcmp(token, "spi_test") == 0)
 		test_loopback(0xe1);
+	else if (strcmp(token, "led_demo") == 0)
+		flicker();
 #ifdef CSR_LEDS_BASE
 
 #endif
