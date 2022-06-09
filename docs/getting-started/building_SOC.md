@@ -27,15 +27,27 @@ To load the bitstream, no shortcut way has been implemented as of yet. As such y
 2. Open Dummy Project (any project can be used, even an example project)
 3. Connect Digilent Board to computer
 4. Open Hardware Manager (on the bottom left of the screen)
-5. Click Open target and auto connect. 
-6. Click Load Bitsream
+5. Click Open target and then auto connect. 
+6. Click Program Device
 7. Look for where `top.bit` was generated for your SOC
-8. Click Load Bitsream 
+8. Click Program
 
-The SOC will then be loaded successfully into the FPGA.
+The SOC will then be loaded into the FPGA.
 
 You can test it out by calling:
 ```bash
 $ litex_term /dev/ttyUSB1
 ```
 This will launch the liteX bios on the fpga, and you will be able to see some information about the SoC generated.
+
+## Lattice FPGA
+TODO
+
+## Generating Documentation
+The python script to build the SoCs also generate html documentation for the various cores, peripherals, memory regions and registers. the [LiteX Wiki]{https://github.com/enjoy-digital/litex/wiki/SoC-Documentation} outlines what python modules need to be installed with `pip` in order to generate the documentation.
+
+To generate the documentation, run the following command:
+
+```bash
+sphinx-build -M html build/documentation/ build/documentation/_build
+```
