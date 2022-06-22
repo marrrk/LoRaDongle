@@ -8,6 +8,7 @@ void test_loopback(uint32_t test_value) {
     //printf("Contents of Control Register: %lx\n", SPI_control_read());
     //printf("Contents of Status Register: 0x%lx\n", SPI_status_done_read());
     
+    // message_length = (x << 8) where x is the number of bits
     unsigned int ctrl = (8 << 8) | (1 << 0);  // Value to write in the Control Register, 
     //printf("THE VALUE OF CTRL IS: 0x%x\n" ,ctrl);
     

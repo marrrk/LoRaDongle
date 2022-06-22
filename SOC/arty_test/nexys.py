@@ -69,11 +69,11 @@ _io = [
         ),
 
     #I2c
-    #("i2c",0,
-    #    Subsignal("sda", Pins("D17")),                 #Pmod A Pin 7
-    #    Subsignal("scl", Pins("E17")),                 #Pmod A Pin 8
-    #    IOStandard("LVCMOS33")
-    #    ),
+    ("i2c",0,
+        Subsignal("sda", Pins("D17")),                 #Pmod A Pin 7
+        Subsignal("scl", Pins("E17")),                 #Pmod A Pin 8
+        IOStandard("LVCMOS33")
+        ),
 ]
 
 # Platform -----------------------------------------------------------------------------------------
@@ -135,12 +135,8 @@ class BaseSoC(SoCCore):
 
 
         #I2CMaster  #testing i2c
-        #self.submodules.i2c = I2CMaster(platform.request("i2c"))
-        #self.add_csr("i2c")
-
-        # RGB Led
-        #self.submodules.rgbled  = RGBLed(platform.request("rgb_led",  0))
-        #self.add_csr("rgbled")
+        self.submodules.i2c = I2CMaster(platform.request("i2c"))
+        self.add_csr("i2c")
 
 
 soc = BaseSoC(platform)
