@@ -153,9 +153,9 @@ class BaseSoC(SoCCore):
 
         # SPI Master
         self.submodules.SPI = SPIMaster(platform.request("spi_bus", 0),
-            data_width = 8,
+                data_width = 8,
             sys_clk_freq = sys_clk_freq,
-            spi_clk_freq = 1e6)
+            spi_clk_freq = 8e6)
         self.add_csr("spi_bus")
 
 

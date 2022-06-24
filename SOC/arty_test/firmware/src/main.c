@@ -88,6 +88,7 @@ static void help(void) {
 	puts("reboot			- Reboots CPU");
 	puts("spi_test		- SPI Loopback Test");
 	puts("led_demo		- Flickers LEDs");
+	puts("test_message		- Sends more than one byte");
 }
 
 static void console_service(void) {
@@ -105,6 +106,17 @@ static void console_service(void) {
 		test_loopback(0xe1);
 	else if (strcmp(token, "led_demo") == 0)
 		flicker();
+	else if (strcmp(token, "test_message") == 0) {
+		uint16_t length = 4;
+		//uint8_t message[4] = {0x50, 0x49, 0x4e, 0x47}; //P I N G in hex 
+		uint8_t message[4] = {'P', 'I', 'N', 'G'}; 
+		if (!tx_message(length, message))
+			printf("Successful\n");
+		else
+			printf("Error Received\n");
+		
+	}
+		
 #ifdef CSR_LEDS_BASE
 
 #endif
@@ -128,7 +140,16 @@ int main(void){
 		leds_out_write(buttons_in_read());
 		
 		if (buttons_in_read() == 0x1) {
-
+			uint16_t length = 4;
+			//uint8_t message[4] = {0x50, 0x49, 0x4e, 0x47}; //P I N G in hex 
+			uint8_t message[4] = {'P', 'I', 'N', 'G'}; 
+			if (!tx_message(length, message))
+				printf("Successful\n");
+			else
+				printf("Error Received\n");
+			
+			prompt();
+			msleep(500);
 		}
 
 
