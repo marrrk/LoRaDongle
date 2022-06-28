@@ -44,10 +44,11 @@ uint32_t tx_message(const uint8_t buffer_length, const uint8_t* buf){
     //unsigned int ctrl = (buffer_length) | (1 << 0);
 
     //SPI_control_write(ctrl); // set message length and start transmission
-    SPI_control_length_write(8);
-    SPI_cs_mode_write(1);    
-    SPI_cs_sel_write(1);
+    SPI_control_length_write(8);// each transmit has 8 bits/ one byte
+    SPI_cs_mode_write(1);       // User controlled !SS
+    SPI_cs_sel_write(1);        // Set slave select line low
     msleep(0.5);
+    // reads byte as it's sent, could try having additional buffer that is updated as the byte is sent.. possible sequentially?
     for (uint8_t i = 0; i < buffer_length; i++) {
         //printf("Character to send:  0x%lx\n", (uint32_t)*buf);
         //printf("Raw character:      %c\n", *buf);
@@ -57,5 +58,22 @@ uint32_t tx_message(const uint8_t buffer_length, const uint8_t* buf){
     }
     SPI_cs_sel_write(0);
     
+    return wait_tx_rx_done();
+}
+
+uint32_t rx_message(const uint8_t buffer_length, uint8_t* buf){
+    SPI_control_length_write(8);// each transmit has 8 bits/ one byte
+    SPI_cs_mode_write(1);       // User controlled !SS
+    SPI_cs_sel_write(1);        // Set slave select line low
+    msleep(0.5);
+
+    for (uint8_t i = 0; i < buffer_length; i++) {
+        SPI_control_start_write(1);
+        msleep(0.5);   
+        *buf++ = (uint8_t)SPI_miso_read();
+    }
+
+    SPI_cs_sel_write(0);
+
     return wait_tx_rx_done();
 }

@@ -22,8 +22,24 @@ void test_loopback(uint32_t test_value);
  */
 uint32_t wait_tx_rx_done(void);
 
+/**
+ * @brief Transmits bytes
+ * 
+ * @param buffer_length length of the message to be sent
+ * @param buf pointer to the start of the mssage
+ * @return Operation Status
+
+ */
 uint32_t tx_message(const uint8_t buffer_length, const uint8_t* buf);
 
+/**
+ * @brief Receives messages in the MISO poin
+ * 
+ * @param buffer_length length of message to receive
+ * @param buf pointer to location the message should be saved
+ * @return Operation Status 
+ */
+uint32_t rx_message(const uint8_t buffer_length, uint8_t* buf);
 
 
 #ifdef __cplusplus
