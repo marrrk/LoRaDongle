@@ -20,6 +20,9 @@ from litex.soc.cores.bitbang import I2CMaster
 
 from ios import Led, RGBLed, Button, Switch  #Classes that pull GPIOIn, GPIOOut from litex.soc.cores.gpio
 # eg: from litex.soc.cores.gpio import GPIOIn GPIOout GPIOTristate etc etc
+from litex.soc.cores import gpio
+
+
 
 from litex.soc.doc import generate_docs
 
@@ -74,6 +77,28 @@ _io = [
     ("user_btn", 3, Pins("B8"), IOStandard("LVCMOS33")),
 
 
+    #LoRa Configuration Pins
+    #("lora_config", 0, Pins("T11"), IOStandard("LVCMOS33")),           #Silkscreen Pin IO3  - BUSY,  Input
+    ("lora_config", 0, Pins("T14"), IOStandard("LVCMOS33")),           #Silkscreen Pin IO5  - DIO1 ,  Output
+    ("lora_config", 1, Pins("N15"), IOStandard("LVCMOS33")),           #Silkscreen Pin I08 - ANT_SW, Output
+    ("lora_config", 2, Pins("F5"), IOStandard("LVCMOS33")),           #Silkscreen Pin A0   - RESET, Output
+
+    #BusyPin
+    ("lora_busy", 0, Pins("T11"), IOStandard("LVCMOS33")),
+    
+
+    #LoRa SPI
+    ("spi_bus",0,                    
+        Subsignal("clk", Pins("P17")),                  #Silkscreen Pin I013
+        Subsignal("cs_n", Pins("T16")),                  #Silkscreen Pin I07
+        #Subsignal("cs_n", Pins("T15")),                    #Silkscreen Pin I06 - For Logic analyser debugging, change to I07 for sitting hat on top
+        Subsignal("mosi", Pins("U18")),                 #Silkwcreen Pin IO11
+        Subsignal("miso", Pins("R17")),                 #Silkscreen Pin IO12
+        IOStandard("LVCMOS33"),
+        ),
+
+
+
     #UART
     ("serial", 0,
         Subsignal("tx", Pins("D10")),
@@ -85,13 +110,13 @@ _io = [
 
 
     #SPI
-    ("spi_bus",0,                    #Adding SPIMaster Functionality
-        Subsignal("clk", Pins("R18")),                  #Silkscreen Pin I039
-        Subsignal("cs_n", Pins("T18")),                  #Silkscreen Pin I038
-        Subsignal("mosi", Pins("N17")),                 #Silkwcreen Pin IO41
-        Subsignal("miso", Pins("P18")),                 #Silkscreen Pin I040
-        IOStandard("LVCMOS33"),
-        ),
+    #("spi_bus",0,                    #Adding SPIMaster Functionality
+    #    Subsignal("clk", Pins("R18")),                  #Silkscreen Pin I039
+    #    Subsignal("cs_n", Pins("T18")),                  #Silkscreen Pin I038
+    #    Subsignal("mosi", Pins("N17")),                 #Silkwcreen Pin IO41
+    #    Subsignal("miso", Pins("P18")),                 #Silkscreen Pin I040
+    #    IOStandard("LVCMOS33"),
+    #    ),
 
     #I2c
     #("i2c",0,
@@ -149,6 +174,28 @@ class BaseSoC(SoCCore):
         user_buttons = Cat(*[platform.request("user_btn", i) for i in range(4)])
         self.submodules.buttons = Button(user_buttons)
         self.add_csr("buttons")
+
+
+        # LoRa Pins  - Separate Register Names
+        # Can be done in software rather? Using constant variables as opposed to GPIO Pins/registers with separate registers
+        self.submodules.lora_busy = gpio.GPIOIn(platform.request("lora_busy"))
+        self.add_csr("lora_busy")
+
+        #self.submodules.LoRaDIO1 = gpio.GPIOOut(platform.request("dio1"))
+        #self.add_csr("LoRaDIO1")
+
+        #self.submodules.LoRaAnt_SW = gpio.GPIOOut(platform.request("ant_sw"))
+        #self.add_csr("LoRaAnt_SW")
+
+        #self.submodules.LoRaRESET = gpio.GPIOOut(platform.request("reset"))
+        #self.add_csr("LoRaRESET")
+
+
+        #Combined Register names - differentiation of pins in software
+        lora_config = Cat(*[platform.request("lora_config", i) for i in range(3)])
+        #self.submodules.lora_config = gpio.GPIOInOut(lora_config[0], lora_config[1:])
+        self.submodules.lora_config = gpio.GPIOOut(lora_config)
+        self.add_csr("lora_config")
 
 
         # SPI Master

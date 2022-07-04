@@ -35,7 +35,7 @@ void test_loopback(uint32_t test_value) {
 
 
 uint32_t wait_tx_rx_done(void) {
-    while(!SPI_status_read());
+    while(SPI_status_read() != 0x1);
     return 0;
 }
 
