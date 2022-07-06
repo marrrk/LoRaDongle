@@ -35,7 +35,7 @@ sx126x_hal_status_t sx126x_hal_write( const void* context, const uint8_t* comman
     for (uint16_t i; i<command_length; i++) {
         SPI_mosi_write((uint32_t)*command++);
         SPI_control_start_write(0x1);;
-        printf("MISO: 0x%lx\n",SPI_miso_read()); // check if transmission has been successful
+        //printf("MISO: 0x%lx\n",SPI_miso_read()); // check if transmission has been successful
 
         msleep(0.5);
     }
@@ -43,7 +43,7 @@ sx126x_hal_status_t sx126x_hal_write( const void* context, const uint8_t* comman
     for (uint16_t i; i<data_length; i++){
         SPI_mosi_write((uint32_t)*data++);
         SPI_control_start_write(0x1);;
-        printf("MISO: 0x%lx\n",SPI_miso_read()); // check if transmission has been successful
+        //printf("MISO: 0x%lx\n",SPI_miso_read()); // check if transmission has been successful
         msleep(0.5);
     }
 
@@ -68,7 +68,7 @@ sx126x_hal_status_t sx126x_hal_read( const void* context, const uint8_t* command
     for (uint16_t i; i<command_length; i++) {
         SPI_mosi_write((uint32_t)*command++);
         SPI_control_start_write(0x1);;
-        printf("MISO: 0x%lx\n",SPI_miso_read()); // check if transmission has been successful
+        //printf("MISO: 0x%lx\n",SPI_miso_read()); // check if transmission has been successful
         msleep(0.5);
     }
 
@@ -76,7 +76,7 @@ sx126x_hal_status_t sx126x_hal_read( const void* context, const uint8_t* command
         SPI_control_start_write(0x1);;
         msleep(0.5);
         *data++ = (uint8_t)SPI_miso_read();
-        printf("MISO: 0x%lx\n",SPI_miso_read()); // check if transmission has been successful
+        //printf("MISO: 0x%lx\n",SPI_miso_read()); // check if transmission has been successful
 
     }
 
@@ -122,6 +122,7 @@ sx126x_hal_status_t sx126x_hal_wakeup( const void* context ){
         *** looks to be more complex i think ***
     */
     while(lora_busy_in_read() == 0x1);
+    lora_config_out_write(lora_config_out_read() | (1 << LORA_ANT_SW) );     // set reset pin to 1
 
 
 
