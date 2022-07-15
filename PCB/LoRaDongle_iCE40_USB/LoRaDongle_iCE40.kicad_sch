@@ -795,6 +795,10 @@
     (stroke (width 0) (type default) (color 0 0 0 0))
     (uuid 7e1217ba-8a3d-4079-8d7b-b45f90cfbf53)
   )
+  (wire (pts (xy 92.71 112.014) (xy 123.19 112.014))
+    (stroke (width 0) (type default) (color 0 0 0 0))
+    (uuid 820c3da0-77fe-45e6-b963-c95f1a11be4d)
+  )
   (wire (pts (xy 161.29 52.07) (xy 170.18 52.07))
     (stroke (width 0) (type default) (color 0 0 0 0))
     (uuid 9186fd02-f30d-4e17-aa38-378ab73e3908)
@@ -890,6 +894,10 @@
   (wire (pts (xy 93.98 45.72) (xy 88.9 45.72))
     (stroke (width 0) (type default) (color 0 0 0 0))
     (uuid ed8a7f02-cf05-41d0-97b4-4388ef205e73)
+  )
+  (wire (pts (xy 92.71 109.728) (xy 123.19 109.728))
+    (stroke (width 0) (type default) (color 0 0 0 0))
+    (uuid f1a03486-718d-4b23-8dc7-c32c381dec50)
   )
   (wire (pts (xy 100.33 43.18) (xy 100.33 39.37))
     (stroke (width 0) (type default) (color 0 0 0 0))
@@ -1768,14 +1776,14 @@
     )
   )
 
-  (sheet (at 58.42 90.17) (size 34.29 19.05) (fields_autoplaced)
+  (sheet (at 58.42 90.17) (size 34.29 23.622) (fields_autoplaced)
     (stroke (width 0) (type solid) (color 0 0 0 0))
     (fill (color 0 0 0 0.0000))
     (uuid 00000000-0000-0000-0000-0000618aacd4)
     (property "Sheet name" "USB_Interface" (id 0) (at 58.42 89.4584 0)
       (effects (font (size 1.27 1.27)) (justify left bottom))
     )
-    (property "Sheet file" "USB_Interface.kicad_sch" (id 1) (at 58.42 109.8046 0)
+    (property "Sheet file" "USB_Interface.kicad_sch" (id 1) (at 58.42 114.3766 0)
       (effects (font (size 1.27 1.27)) (justify left top))
     )
     (pin "SPI_SCK" output (at 92.71 92.71 0)
@@ -1809,6 +1817,14 @@
     (pin "USB_D+" input (at 58.42 97.79 180)
       (effects (font (size 1.27 1.27)) (justify left))
       (uuid 917920ab-0c6e-4927-974d-ef342cdd4f63)
+    )
+    (pin "UART_USB_TX" output (at 92.71 109.728 0)
+      (effects (font (size 1.27 1.27)) (justify right))
+      (uuid c6f23399-bc30-4d5e-a24a-e835a8a5cdb5)
+    )
+    (pin "UART_USB_RX" output (at 92.71 112.014 0)
+      (effects (font (size 1.27 1.27)) (justify right))
+      (uuid f5b049c9-bf60-44b3-a1aa-f8e9cfd8062a)
     )
   )
 
@@ -1886,6 +1902,14 @@
       (effects (font (size 1.27 1.27)) (justify right))
       (uuid fd3499d5-6fd2-49a4-bdb0-109cee899fde)
     )
+    (pin "UART_TX" output (at 123.19 112.014 180)
+      (effects (font (size 1.27 1.27)) (justify left))
+      (uuid 4b0e5e7f-2fbb-44f2-a8b3-a2d75f3569d3)
+    )
+    (pin "UART_RX" output (at 123.19 109.728 180)
+      (effects (font (size 1.27 1.27)) (justify left))
+      (uuid 23c6185d-0178-4b43-a9a1-4e5fd629e851)
+    )
   )
 
   (sheet_instances
@@ -1942,29 +1966,14 @@
     (path "/00000000-0000-0000-0000-0000618aacd4/00000000-0000-0000-0000-00006191a263"
       (reference "#PWR08") (unit 1) (value "GND") (footprint "")
     )
-    (path "/00000000-0000-0000-0000-0000618aacd4/00000000-0000-0000-0000-00006191a326"
-      (reference "#PWR09") (unit 1) (value "GND") (footprint "")
-    )
     (path "/00000000-0000-0000-0000-0000618aacd4/00000000-0000-0000-0000-00006191a283"
       (reference "#PWR010") (unit 1) (value "GND") (footprint "")
-    )
-    (path "/00000000-0000-0000-0000-0000618aacd4/00000000-0000-0000-0000-00006191a1e2"
-      (reference "#PWR011") (unit 1) (value "GND") (footprint "")
-    )
-    (path "/00000000-0000-0000-0000-0000618aacd4/00000000-0000-0000-0000-00006191a1dc"
-      (reference "#PWR012") (unit 1) (value "GND") (footprint "")
     )
     (path "/00000000-0000-0000-0000-0000618aacd4/00000000-0000-0000-0000-00006191a1ca"
       (reference "#PWR013") (unit 1) (value "GND") (footprint "")
     )
     (path "/00000000-0000-0000-0000-0000618aacd4/00000000-0000-0000-0000-00006191a192"
       (reference "#PWR014") (unit 1) (value "GND") (footprint "")
-    )
-    (path "/00000000-0000-0000-0000-0000618aacd4/00000000-0000-0000-0000-00006191a22d"
-      (reference "#PWR015") (unit 1) (value "GND") (footprint "")
-    )
-    (path "/00000000-0000-0000-0000-0000618aacd4/00000000-0000-0000-0000-00006191a1bd"
-      (reference "#PWR016") (unit 1) (value "GND") (footprint "")
     )
     (path "/00000000-0000-0000-0000-0000618aacd4/00000000-0000-0000-0000-00006191a2d8"
       (reference "#PWR017") (unit 1) (value "GND") (footprint "")
@@ -2092,6 +2101,18 @@
     (path "/00000000-0000-0000-0000-00006141dfda/00000000-0000-0000-0000-0000614c399b"
       (reference "#PWR0134") (unit 1) (value "+5V") (footprint "")
     )
+    (path "/00000000-0000-0000-0000-0000618aacd4/10b8e1fd-044b-4bc6-b830-5b461bf21ff0"
+      (reference "#PWR?") (unit 1) (value "GND") (footprint "")
+    )
+    (path "/00000000-0000-0000-0000-0000618aacd4/6414fe1f-4637-437f-992a-f4c4eaa1e07e"
+      (reference "#PWR?") (unit 1) (value "GND") (footprint "")
+    )
+    (path "/00000000-0000-0000-0000-0000618aacd4/9777b795-c173-41f9-a92c-93fb2249d773"
+      (reference "#PWR?") (unit 1) (value "GND") (footprint "")
+    )
+    (path "/00000000-0000-0000-0000-0000618aacd4/cf9d1709-b91b-4ca7-9144-43920f88370b"
+      (reference "#PWR?") (unit 1) (value "GND") (footprint "")
+    )
     (path "/00000000-0000-0000-0000-00006141dfda/00000000-0000-0000-0000-000061c195b0"
       (reference "1V2") (unit 1) (value "1.2V") (footprint "TestPoint:TestPoint_Pad_D1.0mm")
     )
@@ -2131,26 +2152,17 @@
     (path "/00000000-0000-0000-0000-0000618aacd4/00000000-0000-0000-0000-00006191a2b6"
       (reference "C9") (unit 1) (value "0.1uF") (footprint "Capacitor_SMD:C_0402_1005Metric_Pad0.74x0.62mm_HandSolder")
     )
-    (path "/00000000-0000-0000-0000-0000618aacd4/00000000-0000-0000-0000-00006191a318"
-      (reference "C10") (unit 1) (value "10nF") (footprint "Capacitor_SMD:C_0402_1005Metric_Pad0.74x0.62mm_HandSolder")
-    )
     (path "/00000000-0000-0000-0000-0000618aacd4/00000000-0000-0000-0000-00006191a27d"
       (reference "C11") (unit 1) (value "4.7uF") (footprint "Capacitor_SMD:C_0402_1005Metric_Pad0.74x0.62mm_HandSolder")
     )
     (path "/00000000-0000-0000-0000-0000618aacd4/00000000-0000-0000-0000-00006191a2bd"
       (reference "C12") (unit 1) (value "0.1uF") (footprint "Capacitor_SMD:C_0402_1005Metric_Pad0.74x0.62mm_HandSolder")
     )
-    (path "/00000000-0000-0000-0000-0000618aacd4/00000000-0000-0000-0000-00006191a2a6"
-      (reference "C13") (unit 1) (value "0.1uF") (footprint "Capacitor_SMD:C_0402_1005Metric_Pad0.74x0.62mm_HandSolder")
-    )
     (path "/00000000-0000-0000-0000-0000618aacd4/00000000-0000-0000-0000-00006191a23a"
       (reference "C14") (unit 1) (value "27pF") (footprint "Capacitor_SMD:C_0603_1608Metric_Pad1.08x0.95mm_HandSolder")
     )
     (path "/00000000-0000-0000-0000-0000618aacd4/00000000-0000-0000-0000-00006191a234"
       (reference "C15") (unit 1) (value "27pF") (footprint "Capacitor_SMD:C_0603_1608Metric_Pad1.08x0.95mm_HandSolder")
-    )
-    (path "/00000000-0000-0000-0000-0000618aacd4/00000000-0000-0000-0000-00006191a29f"
-      (reference "C16") (unit 1) (value "0.1uF") (footprint "Capacitor_SMD:C_0402_1005Metric_Pad0.74x0.62mm_HandSolder")
     )
     (path "/00000000-0000-0000-0000-0000618aacd4/00000000-0000-0000-0000-00006191a298"
       (reference "C17") (unit 1) (value "4.7uF") (footprint "Capacitor_SMD:C_0402_1005Metric_Pad0.74x0.62mm_HandSolder")
@@ -2260,6 +2272,18 @@
     (path "/00000000-0000-0000-0000-0000614f0720/00000000-0000-0000-0000-00006152f5c7"
       (reference "C52") (unit 1) (value "12pF") (footprint "Capacitor_SMD:C_0402_1005Metric_Pad0.74x0.62mm_HandSolder")
     )
+    (path "/00000000-0000-0000-0000-0000618aacd4/23fcaf73-694b-4c79-a85b-ce0a2617c5a4"
+      (reference "C?") (unit 1) (value "0.1uF") (footprint "Capacitor_SMD:C_0402_1005Metric_Pad0.74x0.62mm_HandSolder")
+    )
+    (path "/00000000-0000-0000-0000-0000618aacd4/3163215e-d467-491e-868a-315935e83560"
+      (reference "C?") (unit 1) (value "0.1uF") (footprint "Capacitor_SMD:C_0402_1005Metric_Pad0.74x0.62mm_HandSolder")
+    )
+    (path "/00000000-0000-0000-0000-0000618aacd4/61bfbc67-1815-4018-9994-f0ad20f41204"
+      (reference "C?") (unit 1) (value "3.3uF") (footprint "")
+    )
+    (path "/00000000-0000-0000-0000-0000618aacd4/6b878260-6e1f-4b81-9067-ac12523adce1"
+      (reference "C?") (unit 1) (value "0.1uF") (footprint "Capacitor_SMD:C_0402_1005Metric_Pad0.74x0.62mm_HandSolder")
+    )
     (path "/00000000-0000-0000-0000-000061db206f"
       (reference "CDNE1") (unit 1) (value "iCE_CDONE") (footprint "TestPoint:TestPoint_Pad_D1.0mm")
     )
@@ -2316,9 +2340,6 @@
     )
     (path "/00000000-0000-0000-0000-0000618d30e5/00000000-0000-0000-0000-000061af95e0"
       (reference "IC2") (unit 1) (value "ICE40UP5K-UWG30ITR1K") (footprint "ICE40UP5K-UWG30ITR1K_KiCad:BGA30C40P5X6_211X254X60")
-    )
-    (path "/00000000-0000-0000-0000-0000618d30e5/00000000-0000-0000-0000-0000619d2169"
-      (reference "IC3") (unit 1) (value "N25Q032A13ESC40F") (footprint "N25Q032A13ESC40F:SOIC127P600X175-8N")
     )
     (path "/00000000-0000-0000-0000-00006134135c"
       (reference "J1") (unit 1) (value "USB_A") (footprint "Connector_USB:USB_A_CNCTech_1001-011-01101_Horizontal")
@@ -2408,7 +2429,7 @@
       (reference "R7") (unit 1) (value "100K") (footprint "Resistor_SMD:R_0402_1005Metric_Pad0.72x0.64mm_HandSolder")
     )
     (path "/00000000-0000-0000-0000-0000618aacd4/00000000-0000-0000-0000-00006191a312"
-      (reference "R8") (unit 1) (value "10K") (footprint "Resistor_SMD:R_0402_1005Metric_Pad0.72x0.64mm_HandSolder")
+      (reference "R8") (unit 1) (value "1K") (footprint "Resistor_SMD:R_0402_1005Metric_Pad0.72x0.64mm_HandSolder")
     )
     (path "/00000000-0000-0000-0000-0000618aacd4/00000000-0000-0000-0000-00006191a215"
       (reference "R9") (unit 1) (value "2K") (footprint "Resistor_SMD:R_0402_1005Metric_Pad0.72x0.64mm_HandSolder")
@@ -2449,6 +2470,12 @@
     (path "/00000000-0000-0000-0000-0000614f0720/00000000-0000-0000-0000-00006168ccfd"
       (reference "R21") (unit 1) (value "100R") (footprint "Resistor_SMD:R_0402_1005Metric_Pad0.72x0.64mm_HandSolder")
     )
+    (path "/00000000-0000-0000-0000-0000618aacd4/658ac0f3-049c-46e5-8dca-a07e1a9af2c7"
+      (reference "R?") (unit 1) (value "10K") (footprint "Resistor_SMD:R_0402_1005Metric_Pad0.72x0.64mm_HandSolder")
+    )
+    (path "/00000000-0000-0000-0000-0000618aacd4/984e32cc-1554-48f3-8a4a-24a036aec6d1"
+      (reference "R?") (unit 1) (value "10K") (footprint "Resistor_SMD:R_0402_1005Metric_Pad0.72x0.64mm_HandSolder")
+    )
     (path "/00000000-0000-0000-0000-000061d57b0f"
       (reference "RESET1") (unit 1) (value "LoRA_~RESET") (footprint "TestPoint:TestPoint_Pad_D1.0mm")
     )
@@ -2464,14 +2491,17 @@
     (path "/00000000-0000-0000-0000-00006141dfda/00000000-0000-0000-0000-0000614320a1"
       (reference "U1") (unit 1) (value "RP550K001A-TR") (footprint "RP550K001A-TR_KiCad:SON50P270X300X60-13N")
     )
-    (path "/00000000-0000-0000-0000-0000618aacd4/00000000-0000-0000-0000-00006191a1eb"
-      (reference "U2") (unit 1) (value "FT232H") (footprint "Package_QFP:LQFP-48_7x7mm_P0.5mm")
-    )
     (path "/00000000-0000-0000-0000-0000614f0720/00000000-0000-0000-0000-000061cbfd90"
       (reference "U3") (unit 1) (value "SX1261IMLTRT") (footprint "sx1261-footprint:Semtech-QFN24-0-0-0")
     )
     (path "/00000000-0000-0000-0000-0000614f0720/00000000-0000-0000-0000-000061bb94a9"
       (reference "U4") (unit 1) (value "SKY13587-378LF") (footprint "SW_SKYA21012:SW_SKYA21012")
+    )
+    (path "/00000000-0000-0000-0000-0000618d30e5/b4b3688b-80ae-4639-b202-7fe415fc1c6e"
+      (reference "U?") (unit 1) (value "W25Q128JVS") (footprint "Package_SO:SOIC-8_5.23x5.23mm_P1.27mm")
+    )
+    (path "/00000000-0000-0000-0000-0000618aacd4/ea23d709-947e-4855-b185-6cda7c098dbf"
+      (reference "U?") (unit 1) (value "FT2232HL") (footprint "Package_QFP:LQFP-64_10x10mm_P0.5mm")
     )
     (path "/00000000-0000-0000-0000-0000618d30e5/00000000-0000-0000-0000-000061bb2826"
       (reference "X1") (unit 1) (value "ECS-2520MV-500-BL-TR") (footprint "Oscillator:Oscillator_SMD_ECS_2520MV-xxx-xx-4Pin_2.5x2.0mm")

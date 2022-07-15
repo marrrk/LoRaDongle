@@ -1,9 +1,0 @@
-EESchema-DOCLIB  Version 2.0
-#
-$CMP MCP1725-ADJE_MC
-D Microchip MCP1725-ADJE/MC, LDO Voltage Regulator, Adjustable 500mA, 0.8  5 V, 8-Pin DFN
-K
-F http://www.microchip.com/mymicrochip/filehandler.aspx?ddocname=en520352
-$ENDCMP
-#
-#End Doc Library
