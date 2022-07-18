@@ -1,0 +1,30 @@
+EESchema-LIBRARY Version 2.3
+#encoding utf-8
+#SamacSys ECAD Model SGP40-D-R4
+#/12756306/599551/2.49/7/3/Integrated Circuit
+DEF SGP40-D-R4 IC 0 30 Y Y 1 F N
+F0 "IC" 1050 300 50 H V L CNN
+F1 "SGP40-D-R4" 1050 200 50 H V L CNN
+F2 "SON80P244X244X95-7N" 1050 100 50 H I L CNN
+F3 "https://www.mouser.com/datasheet/2/682/Sensirion_Gas_Sensors_SGP40_Datasheet-1888696.pdf" 1050 0 50 H I L CNN
+F4 "Air Quality Sensors Gas Sensor 2.5k pcs IC" 1050 -100 50 H I L CNN "Description"
+F5 "0.95" 1050 -200 50 H I L CNN "Height"
+F6 "Sensirion" 1050 -300 50 H I L CNN "Manufacturer_Name"
+F7 "SGP40-D-R4" 1050 -400 50 H I L CNN "Manufacturer_Part_Number"
+F8 "403-SGP40-D-R4" 1050 -500 50 H I L CNN "Mouser Part Number"
+F9 "https://www.mouser.co.uk/ProductDetail/Sensirion/SGP40-D-R4?qs=yqaQSyyJnNgaRqiZfsbS1Q%3D%3D" 1050 -600 50 H I L CNN "Mouser Price/Stock"
+F10 "SGP40-D-R4" 1050 -700 50 H I L CNN "Arrow Part Number"
+F11 "https://www.arrow.com/en/products/sgp40-d-r4/sensirion-ag?region=asia" 1050 -800 50 H I L CNN "Arrow Price/Stock"
+DRAW
+X VDD 1 0 0 200 R 50 50 0 0 P
+X VSS 2 0 -100 200 R 50 50 0 0 P
+X SDA 3 0 -200 200 R 50 50 0 0 P
+X EP 7 600 -700 200 U 50 50 0 0 P
+X SCL 6 1200 0 200 L 50 50 0 0 P
+X VDDH 5 1200 -100 200 L 50 50 0 0 P
+X N/A 4 1200 -200 200 L 50 50 0 0 P
+P 5 0 1 6 200 100 1000 100 1000 -500 200 -500 200 100 N
+ENDDRAW
+ENDDEF
+#
+#End Library
