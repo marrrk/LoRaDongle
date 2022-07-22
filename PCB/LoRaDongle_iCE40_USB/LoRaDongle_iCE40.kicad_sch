@@ -706,6 +706,10 @@
     (uuid fef37e8b-0ff0-4da2-8a57-acaf19551d1a)
   )
 
+  (text "Add UART PINS to J2" (at 156.718 66.04 0)
+    (effects (font (size 1.27 1.27)) (justify left bottom))
+    (uuid 73f47494-85f7-47e4-ac4a-dd6437700691)
+  )
   (text "Configuration Header/Testpoints" (at 149.86 31.75 0)
     (effects (font (size 1.27 1.27)) (justify left bottom))
     (uuid 8fc062a7-114d-48eb-a8f8-71128838f380)
@@ -1381,9 +1385,6 @@
     (path "/00000000-0000-0000-0000-0000618aacd4/00000000-0000-0000-0000-00006191a2d8"
       (reference "#PWR017") (unit 1) (value "GND") (footprint "")
     )
-    (path "/00000000-0000-0000-0000-0000618d30e5/00000000-0000-0000-0000-000061b1a37c"
-      (reference "#PWR018") (unit 1) (value "GND") (footprint "")
-    )
     (path "/00000000-0000-0000-0000-0000618d30e5/00000000-0000-0000-0000-000061bb6e8b"
       (reference "#PWR019") (unit 1) (value "GND") (footprint "")
     )
@@ -1693,6 +1694,12 @@
     (path "/00000000-0000-0000-0000-0000618d30e5/00441763-3c4f-4d47-821f-e46eee394a21"
       (reference "C55") (unit 1) (value "1uF") (footprint "Capacitor_SMD:C_0402_1005Metric_Pad0.74x0.62mm_HandSolder")
     )
+    (path "/00000000-0000-0000-0000-0000618d30e5/46466808-c3e7-4f98-9aec-1d0c34898718"
+      (reference "C?") (unit 1) (value "100nF") (footprint "Capacitor_SMD:C_0402_1005Metric_Pad0.74x0.62mm_HandSolder")
+    )
+    (path "/00000000-0000-0000-0000-0000618d30e5/798270cd-5a11-4361-915d-f990179c4c4d"
+      (reference "C?") (unit 1) (value "1uF") (footprint "Capacitor_SMD:C_0402_1005Metric_Pad0.74x0.62mm_HandSolder")
+    )
     (path "/00000000-0000-0000-0000-0000614f0720/00000000-0000-0000-0000-000061d45a7d"
       (reference "CTL2") (unit 1) (value "CTL2") (footprint "TestPoint:TestPoint_Pad_D2.5mm")
     )
@@ -1726,9 +1733,6 @@
     (path "/00000000-0000-0000-0000-0000618aacd4/00000000-0000-0000-0000-00006191a1f9"
       (reference "IC1") (unit 1) (value "93LC56BT-I_OT") (footprint "93LC56B-I_OT_KiCad:SOT95P270X145-6N")
     )
-    (path "/00000000-0000-0000-0000-0000618d30e5/00000000-0000-0000-0000-000061af95e0"
-      (reference "IC2") (unit 1) (value "ICE40UP5K-UWG30ITR1K") (footprint "ICE40UP5K-UWG30ITR1K_KiCad:BGA30C40P5X6_211X254X60")
-    )
     (path "/00000000-0000-0000-0000-0000618d30e5/f356286c-5381-4e19-bb6f-5643e839da16"
       (reference "IC3") (unit 1) (value "SGP40-D-R4") (footprint "KiCad_SGP40-D-R4:SON80P244X244X95-7N")
     )
@@ -1755,6 +1759,9 @@
     )
     (path "/00000000-0000-0000-0000-0000614f0720/38a59ad0-648c-4657-86d1-a1314928efbb"
       (reference "J8") (unit 1) (value "Jumper_2_Open") (footprint "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical")
+    )
+    (path "/00000000-0000-0000-0000-0000618d30e5/ce712167-16e9-4787-a679-59dd7042cff8"
+      (reference "J9") (unit 1) (value "Conn_01x17_Male") (footprint "Connector_PinHeader_2.54mm:PinHeader_1x17_P2.54mm_Vertical")
     )
     (path "/00000000-0000-0000-0000-0000618d30e5/671729c9-90fa-4cb2-ac5f-b42b2914af94"
       (reference "JP1") (unit 1) (value "SolderJumper_2_Open") (footprint "Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder")
@@ -1899,6 +1906,18 @@
     )
     (path "/00000000-0000-0000-0000-0000618d30e5/b4b3688b-80ae-4639-b202-7fe415fc1c6e"
       (reference "U5") (unit 1) (value "W25Q128JVS") (footprint "Package_SO:SOIC-8_5.23x5.23mm_P1.27mm")
+    )
+    (path "/00000000-0000-0000-0000-0000618d30e5/1ce0333e-6de8-4616-940b-d476ef4ba385"
+      (reference "U6") (unit 1) (value "ICE40UP5K-SG48ITR") (footprint "Package_DFN_QFN:QFN-48-1EP_7x7mm_P0.5mm_EP5.6x5.6mm")
+    )
+    (path "/00000000-0000-0000-0000-0000618d30e5/4ca096aa-df1d-4e7c-9158-2031ee071920"
+      (reference "U6") (unit 2) (value "ICE40UP5K-SG48ITR") (footprint "Package_DFN_QFN:QFN-48-1EP_7x7mm_P0.5mm_EP5.6x5.6mm")
+    )
+    (path "/00000000-0000-0000-0000-0000618d30e5/aec76c06-f2a1-41fa-89c1-1f27b85458b6"
+      (reference "U6") (unit 3) (value "ICE40UP5K-SG48ITR") (footprint "Package_DFN_QFN:QFN-48-1EP_7x7mm_P0.5mm_EP5.6x5.6mm")
+    )
+    (path "/00000000-0000-0000-0000-0000618d30e5/53fb07c9-cb96-4429-a71b-a426d6ac2c63"
+      (reference "U6") (unit 4) (value "ICE40UP5K-SG48ITR") (footprint "Package_DFN_QFN:QFN-48-1EP_7x7mm_P0.5mm_EP5.6x5.6mm")
     )
     (path "/00000000-0000-0000-0000-0000618d30e5/00000000-0000-0000-0000-000061bb2826"
       (reference "X1") (unit 1) (value "ECS-2520MV-500-BL-TR") (footprint "Oscillator:Oscillator_SMD_ECS_2520MV-xxx-xx-4Pin_2.5x2.0mm")
