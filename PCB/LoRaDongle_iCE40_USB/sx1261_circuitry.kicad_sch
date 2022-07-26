@@ -883,6 +883,7 @@
     )
   )
 
+
   (junction (at 41.91 48.26) (diameter 0) (color 0 0 0 0)
     (uuid 09ab0b5c-3dee-42c8-b9e5-de0673874ccd)
   )
@@ -3330,6 +3331,9 @@
       (effects (font (size 1.524 1.524)) (justify left) hide)
     )
     (property "Manufacturer Part Number" "142-0701-801" (id 13) (at 209.55 111.76 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Package" "Connector" (id 14) (at 209.55 111.76 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (pin "1" (uuid 20460139-8542-43c8-9b2b-cb2234cc23fd))
