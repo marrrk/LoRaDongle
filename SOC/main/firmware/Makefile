@@ -1,4 +1,4 @@
-BUILD_DIR?=../build/
+BUILD_DIR?=../build/LoRaDongle
 
 include $(BUILD_DIR)/software/include/generated/variables.mak
 include $(SOC_DIRECTORY)/software/common.mak
@@ -11,7 +11,7 @@ LD_DIR = $(BASE_DIR)/ld
 
 CSOURCES   := $(wildcard $(SRC_DIR)/*.c) $(wildcard $(THIRD_PARTY)/libbase/*.c) $(wildcard $(THIRD_PARTY)/*.c)
 CPPSOURCES := $(wildcard $(SRC_DIR)/*.cpp) $(wildcard $(THIRD_PARTY)/libbase/*.cpp) $(wildcard $(THIRD_PARTY)/*.cpp)
-ASOURCES   := $(wildcard $(SRC_DIR)/*.S) $(wildcard $(CPU_DIRECTORY)/crt0.S) $(wildcard $(THIRD_PARTY)/libbase/*.S) $(wildcard $(THIRD_PARTY)/*.S)
+ASOURCES   :=  $(wildcard $(CPU_DIRECTORY)/crt0.S) $(wildcard $(THIRD_PARTY)/libbase/*.S) $(wildcard $(THIRD_PARTY)/*.S)
 COBJS      := $(addprefix $(OBJ_DIR)/, $(notdir $(CSOURCES:.c=.o)))
 CXXOBJS    := $(addprefix $(OBJ_DIR)/, $(notdir $(CPPSOURCES:.cpp=.o)))
 AOBJS      := $(addprefix $(OBJ_DIR)/, $(notdir $(ASOURCES:.S=.o)))
@@ -72,7 +72,6 @@ run: demo.bin
 
 prog: demo.bin
 	iceprog -o 0x00020000 $<
-
 
 clean:
 	$(RM) $(OBJECTS) $(OBJECTS:.o=.d) demo.elf demo.bin .*~ *~
