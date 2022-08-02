@@ -69,8 +69,11 @@ sx126x_status_t BufferReadWrite(void);
 void SetConfiguration(RadioConfig_t *config);
 void ConfigureGeneralRadio(RadioConfig_t *config);
 void ConfigureTx(RadioConfig_t *config);
+void ConfigureRx(RadioConfig_t *config);
 void PrepareBuffer(RadioConfig_t *config);
 void transmit(RadioConfig_t *config);
+void receive(RadioConfig_t *config);
+void get_payload(RadioConfig_t *config);
 
 
 void SetAntSW(void);
@@ -206,18 +209,21 @@ int main(void){
 	ConfigureGeneralRadio(&context);
 	//help();
 	//prompt();
-	int i = 0;
+	//int i = 0;
 	
 
 	while (1){
 		console_service();
 		//uint32_t btn = buttons_in_read();
 		leds_out_write(buttons_in_read());
-		printf("Transmitting: %d\n", i++);
-		PrepareBuffer(&context);
-		ConfigureTx(&context);
-		transmit(&context);
+		//printf("Transmitting: %d\n", i++);
+		//PrepareBuffer(&context);
+		//ConfigureTx(&context);
+		//transmit(&context);
 
+		ConfigureTx(&context);
+		receive(&context);
+		get_payload(&context);
 		msleep(1000);
 		
 		
@@ -340,6 +346,10 @@ void ConfigureTx(RadioConfig_t *config){
 	sx126x_set_dio_irq_params(config, config->irqTx, config->irqTx, SX126X_IRQ_NONE, SX126X_IRQ_NONE);
 }
 
+void ConfigureRx(RadioConfig_t *config){
+	sx126x_set_dio_irq_params(config, config->irqRx, config->irqRx, SX126X_IRQ_NONE, SX126X_IRQ_NONE);
+}
+
 void PrepareBuffer(RadioConfig_t *context){
 	uint8_t offset = 0x0;
 	uint8_t size = 4;
@@ -353,6 +363,32 @@ void PrepareBuffer(RadioConfig_t *context){
 void transmit(RadioConfig_t *config){
 	//set fs first?
 	sx126x_set_tx(config, config->txTimeout);
+}
+
+void receive(RadioConfig_t *config){
+	sx126x_set_rx(config, config->rxTimeout);
+}
+
+void get_payload(RadioConfig_t *config){
+	uint8_t ReadMessage[4];
+	uint8_t *pRead = ReadMessage;
+
+	sx126x_rx_buffer_status_t buf_status;
+	sx126x_get_rx_buffer_status(config, &buf_status);
+	sx126x_read_buffer(config, buf_status.buffer_start_pointer, pRead, buf_status.pld_len_in_bytes);
+
+	printf("The read data is: \n");
+	
+	for (uint8_t i = 0; i < 4; i++) {
+        printf("%c\n" ,*pRead++);      // Might bring an error because i'm point to a pointer
+    }   
+
+	// clearing buffer because received message stays in buffer
+	uint8_t clear_message[1] = {""};
+	uint8_t *pWrite = clear_message;
+
+	sx126x_write_buffer(&context, buf_status.buffer_start_pointer, pWrite, buf_status.pld_len_in_bytes);
+
 }
 
 
