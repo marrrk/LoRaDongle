@@ -119,7 +119,7 @@ GEM
     jekyll-feed (0.15.1)
       jekyll (>= 3.7, < 5.0)
     jekyll-gist (1.5.0)
-      octokit (~> 4.2)
+      octokit (~> 4.25)
     jekyll-github-metadata (2.13.0)
       jekyll (>= 3.4, < 5.0)
       octokit (~> 4.0, != 4.4.0)
