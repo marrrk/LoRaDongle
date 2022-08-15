@@ -1,23 +1,27 @@
-BUILD_DIR?=../build/LoRaDongle
+BUILD_DIR?=../SOC/main/build/LoRaDongle
 
 include $(BUILD_DIR)/software/include/generated/variables.mak
 include $(SOC_DIRECTORY)/software/common.mak
 
 BASE_DIR = .
 OBJ_DIR = .obj
-SRC_DIR = $(BASE_DIR)/src
+PERIPHERAL_DIR = $(BASE_DIR)/peripherals
 THIRD_PARTY := $(BASE_DIR)/third_party
+RADIO_DIR := $(BASE_DIR)/Radio
 LD_DIR = $(BASE_DIR)/ld
 
-CSOURCES   := $(wildcard $(SRC_DIR)/*.c) $(wildcard $(THIRD_PARTY)/libbase/*.c) $(wildcard $(THIRD_PARTY)/*.c)
-CPPSOURCES := $(wildcard $(SRC_DIR)/*.cpp) $(wildcard $(THIRD_PARTY)/libbase/*.cpp) $(wildcard $(THIRD_PARTY)/*.cpp)
-ASOURCES   :=  $(wildcard $(CPU_DIRECTORY)/crt0.S) $(wildcard $(THIRD_PARTY)/libbase/*.S) $(wildcard $(THIRD_PARTY)/*.S)
+
+CSOURCES   := $(wildcard *.c) $(wildcard $(PERIPHERAL_DIR)/*.c) $(wildcard $(RADIO_DIR)/*.c)
+CPPSOURCES := $(wildcard $(PERIPHERAL_DIR)/*.cpp)
+ASOURCES   :=  $(wildcard $(CPU_DIRECTORY)/crt0.S)
 COBJS      := $(addprefix $(OBJ_DIR)/, $(notdir $(CSOURCES:.c=.o)))
 CXXOBJS    := $(addprefix $(OBJ_DIR)/, $(notdir $(CPPSOURCES:.cpp=.o)))
 AOBJS      := $(addprefix $(OBJ_DIR)/, $(notdir $(ASOURCES:.S=.o)))
 
-LOCAL_INCLUDE = -I$(BASE_DIR)/include
-L_INCLUDE = -L$(BASE_DIR)/include
+
+
+LOCAL_INCLUDE = -I$(PERIPHERAL_DIR)  -I$(RADIO_DIR)
+L_INCLUDE = -L$(PERIPHERAL_DIR)  -L$(RADIO_DIR)
 
 c_flags = $(LOCAL_INCLUDE) $(CFLAGS)
 l_flags = $(L_INCLUDE) $(LOCAL_INCLUDE) $(LDFLAGS)
@@ -52,13 +56,17 @@ demo.elf: $(OBJECTS)
 		$(LIBS:lib%=-l%)
 	chmod -x $@
 
-$(OBJ_DIR)/main.o: $(SRC_DIR)/main.c
+$(OBJ_DIR)/main.o: main.c
 	$(compile)
 
 $(OBJ_DIR)/crt0.o: $(CPU_DIRECTORY)/crt0.S
 	$(assemble)
 
-$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
+
+$(OBJ_DIR)/%.o: $(PERIPHERAL_DIR)/%.c 
+	$(compile)
+
+$(OBJ_DIR)/%.o: $(RADIO_DIR)/%.c 
 	$(compile)
 
 %.o: %.cpp

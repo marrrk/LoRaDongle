@@ -17,10 +17,8 @@ Navigate to `LoRaDongle/SOC/arty_test/firmware` and run `make`. This will binary
 
 Then call `make run` to load the application code to the SoC. You should see the LiteX bios starting and then loading the application code onto the SoC. See below:
 <div>
-    <img src="../../assets/images/litex_term_running.png" alt="LiteX Term" width="50%" height="auto">
+    <img src="../assets/images/litex_term_running.png" alt="LiteX Term" width="100%" height="auto">
 </div>
-
-![](../../../assets/images/litex_term_running.jpg)
 
 
 Once loaded you will be greeted with the pompt `Arty-SoC-Test>` in which you can run the two to three functions that have been implemented. See below
