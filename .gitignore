@@ -1,3 +1,6 @@
 .vscode/
 SOC/main/build/
 SOC/nexys/
+PCB/LoRaDongle_iCE40_USB/LoRaDongle_iCE40-backups
+PCB/LoRaDongle_iCE40_USB/_autosave-LoRaDongle_iCE40.kicad_prl
+PCB/LoRaDongle_iCE40_USB/_autosave-LoRaDongle_iCE40.kicad_pro
