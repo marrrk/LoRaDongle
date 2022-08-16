@@ -1,6 +1,3 @@
 [submodule "LoRaDongle_iCE40_USB/libraries/digikey-kicad-library"]
 	path = LoRaDongle_iCE40_USB/libraries/digikey-kicad-library
 	url = https://github.com/Digi-Key/digikey-kicad-library.git
-[submodule "LoRaDongle_Xilinx_USB/libraries/digikey-kicad-library"]
-	path = LoRaDongle_Xilinx_USB/libraries/digikey-kicad-library
-	url = https://github.com/Digi-Key/digikey-kicad-library.git
