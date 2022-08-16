@@ -1,13 +1,5 @@
-#include <generated/csr.h>
-#include <libbase/console.h>
-#include <libbase/uart.h>
-#include <stdio.h>
-#include <string.h>
-#include <time.h>
-#include <spi.h>
-#include <led_test.h>
-#include <sx126x.h>
-#include "sx126x_hal.h"
+
+#include "Radio.h"
 
 // Radio Settings
 #define RX_TIMEOUT_US 200000
@@ -46,236 +38,9 @@
 
 
 
-//SX126x Context Stuff :)  Need a configuration function obviously
-
-
-typedef struct{
-	sx126x_pkt_type_t packetType;
-	int8_t txPower;
-	sx126x_ramp_time_t txRampTime;
-	sx126x_mod_params_lora_t  modParams;
-	sx126x_pkt_params_lora_t packetParams;
-	uint32_t rfFrequency;
-    uint16_t irqTx;
-    uint16_t irqRx;
-    uint32_t txTimeout;
-    uint32_t rxTimeout;
-}RadioConfig_t;
-RadioConfig_t context; 
-
-// Sx126x user function Declarations
-void RadioInit(void);
-sx126x_status_t BufferReadWrite(void);
-void SetConfiguration(RadioConfig_t *config);
-void ConfigureGeneralRadio(RadioConfig_t *config);
-void ConfigureTx(RadioConfig_t *config);
-void ConfigureRx(RadioConfig_t *config);
-void PrepareBuffer(RadioConfig_t *config);
-void transmit(RadioConfig_t *config);
-void receive(RadioConfig_t *config);
-void get_payload(RadioConfig_t *config);
-
-
-void SetAntSW(void);
-void ToggleAntSW(void);
-void ToggleDio1(void);
-
-/*
-	Uart functions for interacting with Console
-*/
-static char *readstr(void)
-{
-	char c[2];
-	static char s[64];
-	static int ptr = 0;
-
-	if(readchar_nonblock()) {
-		c[0] = getchar();
-		c[1] = 0;
-		switch(c[0]) {
-			case 0x7f:
-			case 0x08:
-				if(ptr > 0) {
-					ptr--;
-					fputs("\x08 \x08", stdout);
-				}
-				break;
-			case 0x07:
-				break;
-			case '\r':
-			case '\n':
-				s[ptr] = 0x00;
-				fputs("\n", stdout);
-				ptr = 0;
-				return s;
-			default:
-				if(ptr >= (sizeof(s) - 1))
-					break;
-				fputs(c, stdout);
-				s[ptr] = c[0];
-				ptr++;
-				break;
-		}
-	}
-
-	return NULL;
-}
-
-static char *get_token(char **str)
-{
-	char *c, *d;
-
-	c = (char *)strchr(*str, ' ');
-	if(c == NULL) {
-		d = *str;
-		*str = *str+strlen(*str);
-		return d;
-	}
-	*c = 0;
-	d = *str;
-	*str = c+1;
-	return d;
-}
-
-/* 
-terminal like thing
-*/
-static void prompt(void) {
-	printf("\e[92;1mArty-SoC-Test\e[0m> ");
-}
-
-
-/* 
-	Console Commands
-*/
-
-static void reboot_cmd(void){
-	ctrl_reset_soc_rst_write(0x1);
-}
-
-
-static void help(void) {
-	puts("\nLoRaDongle Arty Test");
-	puts("Available Commands:");
-	puts("help			- Show this command");
-	puts("reboot			- Reboots CPU");
-	puts("spi_test		- SPI Loopback Test");
-	puts("led_demo		- Flickers LEDs");
-	puts("test_message		- Sends more than one byte");
-}
-
-static void console_service(void) {
-	char *str;
-	char *token;
-
-	str = readstr();
-	if(str == NULL) return;
-	token = get_token(&str);
-	if(strcmp(token, "help") == 0)
-		help();
-	else if(strcmp(token, "reboot") == 0)
-		reboot_cmd();
-	else if (strcmp(token, "spi_test") == 0)
-		test_loopback(0xe1);
-	else if (strcmp(token, "led_demo") == 0)
-		flicker();
-	else if (strcmp(token, "test_message") == 0) {
-		uint16_t length = 4;
-		//uint8_t message[4] = {0x50, 0x49, 0x4e, 0x47}; //P I N G in hex 
-		uint8_t message[4] = {'P', 'I', 'N', 'G'}; 
-		if (!tx_message(length, message))
-			printf("Successful\n");
-		else
-			printf("Error Received\n");
-		
-	}
-		
-#ifdef CSR_LEDS_BASE
-
-#endif
-
-	prompt();
-}
-
-
-/*
-	Main Function
-*/
-int main(void){
-	time_init();
-	uart_init();
-	RadioInit();
-	SetConfiguration(&context);
-	ConfigureGeneralRadio(&context);
-	//help();
-	//prompt();
-	//int i = 0;
-	
-
-	while (1){
-		console_service();
-		//uint32_t btn = buttons_in_read();
-		leds_out_write(buttons_in_read());
-		//printf("Transmitting: %d\n", i++);
-		//PrepareBuffer(&context);
-		//ConfigureTx(&context);
-		//transmit(&context);
-
-		ConfigureTx(&context);
-		receive(&context);
-		get_payload(&context);
-		msleep(1000);
-		
-		
-		if (buttons_in_read() == 0x1) {
-			uint16_t length = 4;
-			//uint8_t message[4] = {0x50, 0x49, 0x4e, 0x47}; //P I N G in hex 
-			uint8_t message[4] = {'P', 'I', 'N', 'G'}; 
-			if (!tx_message(length, message))
-				printf("Successful\n");
-			else
-				printf("Error Received\n");
-			
-			prompt();
-			msleep(500);
-			
-		}
-
-
-		if (buttons_in_read() == 0x2) {		
-			//BufferReadWrite();
-			prompt();
-			msleep(500);
-		}
-
-		if (buttons_in_read() == 0x4) {
-			/** Testing the BUSY line, works if using GPIOIn class and not GPIOInOut, yet to figure out why
-			printf("\nlora config in: 0x%lx\n",lora_busy_in_read());
-			lora_config_out_write( lora_config_out_read() & ~(1 << 2) );  // set reset pin to 0
-			msleep(50);
-			if (lora_busy_in_read() == 0x1 )
-				printf("Radio Busy!\n");
-			printf("lora config in: 0x%lx\n",lora_busy_in_read());
-			lora_config_out_write(lora_config_out_read() | (1 << 2) );     // set reset pin to 1
-			**/
-
-			prompt();
-			msleep(500);
-		}
-
-		if (buttons_in_read() == 0x8) {
-			test_loopback(0xA5);
-			prompt();
-			msleep(500);
-		}
-	}
-
-	return 0;
-
-}
 
 // Sx126x Test Functions
-void RadioInit(void){
+void RadioInit(RadioConfig_t *config){
 	/*
 		From Nucleo Code:
 		calibration parameters #what is that? #TODO, only used with OPT apparently
@@ -299,15 +64,15 @@ RX_TIMEOUT_US
 		configure for public network/private network
 	*/
 
-	sx126x_reset(&context);
+	sx126x_reset(config);
 	
-	sx126x_wakeup(&context);
-	sx126x_set_standby(&context, 0x00); // hard coded but can be used as a variable
+	sx126x_wakeup(config);
+	sx126x_set_standby(config, 0x00); // hard coded but can be used as a variable
 
 	SetAntSW();
-	sx126x_set_dio2_as_rf_sw_ctrl(&context, true);  
+	sx126x_set_dio2_as_rf_sw_ctrl(config, true);  
 
-	sx126x_set_pkt_type(&context, SX126X_PKT_TYPE_LORA);
+	sx126x_set_pkt_type(config, SX126X_PKT_TYPE_LORA);
 }
 
 void SetConfiguration(RadioConfig_t *config){
@@ -387,11 +152,11 @@ void get_payload(RadioConfig_t *config){
 	uint8_t clear_message[1] = {""};
 	uint8_t *pWrite = clear_message;
 
-	sx126x_write_buffer(&context, buf_status.buffer_start_pointer, pWrite, buf_status.pld_len_in_bytes);
+	sx126x_write_buffer(config, buf_status.buffer_start_pointer, pWrite, buf_status.pld_len_in_bytes);
 
 }
 
-
+/*
 sx126x_status_t BufferReadWrite(void){
 	uint8_t offset = 0x2;
 	uint8_t size = 4;
@@ -422,7 +187,7 @@ sx126x_status_t BufferReadWrite(void){
 
 	return 0;
 }
-
+*/
 
 
 // these functions are temporarily here in case i need them, to turn on/off the pins
