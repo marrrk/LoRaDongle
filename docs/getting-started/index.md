@@ -12,9 +12,9 @@ The goal of this section is to build up to a working program on the SoC. The nec
 
 ### Hardware
 The current supported boards are the LoRaDongle which has the Lattice ICE40UP5k and the Arty A7 development board by Xilinx which has the Artix-7 100T.
-The SoC will build on the LoRaDongle, however programming it is still being debugged and therefore this guide will focus on the Arty/Nexys.
+To use the Arty A7, you would need to clone the `test/arty` branch of the repository.
 
 ### Software
-* LiteX (link)
+* [LiteX](https://github.com/enjoy-digital/litex)
 * Risc-v GCC Toolchain - Which can be installed with LiteX
-* The necessary synthesis and routing software for the FPGA in use. For the LoRaDongle (and other Lattice FPGAs), this is project icestorm (link). For Digilent boards, this is Vivado. (link)
+* The necessary synthesis and routing software for the FPGA in use. For the LoRaDongle (and other Lattice FPGAs), this is [Project Icestorm](https://clifford.at/icestorm). For Digilent boards, this is [Vivado](https://www.xilinx.com/support/download.html).

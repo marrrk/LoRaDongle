@@ -8,9 +8,9 @@ nav_order: 2
 # Installing prerequisites
 
 ## 1 Installing LiteX and Toolchain
-A more comprehensive steps for installing litex can be found on the [github page](https://github.com/enjoy-digital/litex). THis will focus on the core configuration needed to build the SoC.
+This section focuses on the core configuration required to build the SoC in use. A more comprehensive walkthrough of the installation process can be found on LiteX's [github page](https://github.com/enjoy-digital/litex).
 
-### 1.1 Make an empy directory and install the Litex files
+### 1.1 Make an empty directory and install the Litex files
 The following commands install litex in a directory of your choice:
 ```bash
 $ mkdir litex && cd litex
@@ -47,13 +47,10 @@ Note the command above only adds the toolchain to the path for the current termi
 
 ## 2. Installing Synthesis Tools
 
-### 2.1 Installing Vivado (Xilinx FPGA)
-Vivado is a large download and may take hours on slow/unreliable internet connections. The download process can be found [here](https://digilent.com/reference/vivado/installing-vivado/v2019.2). The latest version can be installed, however _**please note this project has only been tested with version 2021.2**_. 
-
-### 2.2 Installing project Icestorm (Lattice FPGA)
+### 2.1 Installing project Icestorm (Lattice FPGA)
 Lattice Semiconductors have their own propiertary software for synthesising and configuring their FPGAS, however there are also open source tools that can be used. [Project Icestorm](https://clifford.at/icestorm) is a mature and well doucumented open source tool that is used. Installiation steps can be found on the website linked, and a summary of the necessary steps is given here. The tools needed are Yosys, Arachne-PNR and Icestorm. Once installed, you can look at a nice and concise guide on using the tools, found [here](https://hedmen.org/icestorm-doc/icestorm.html).
 
-### 2.2.1 Intalling Icestorm
+### 2.1.1 Intalling Icestorm
 The repository needs to be cloned and installed: 
 
 ```bash
@@ -62,16 +59,17 @@ $ cd icestorm
 $ make -j$(nproc)
 $ sudo make install
 ```
-### 2.2.2 Installing Arachne-PNR
+### 2.1.2 Installing NEXT-PNR
 
 ```bash
-$ git clone https://github.com/cseed/arachne-pnr.git arachne-pnr
-$ cd arachne-pnr
+$ git clone https://github.com/YosysHQ/nextpnr nextpnr
+$ cd nextpnr
+$ cmake -DARCH=ice40 -DCMAKE_INSTALL_PREFIX=/usr/local .
 $ make -j$(nproc)
 $ sudo make install
 ```
 
-### 2.2.3 Installing Yosys
+### 2.1.3 Installing Yosys
 ```bash
 $ git clone https://github.com/YosysHQ/yosys.git yosys
 $ cd yosys
@@ -79,8 +77,8 @@ $ make -j$(nproc)
 $ sudo make install
 ```
 
-### 2.2.4 Creating UDEV Rules
-On Linux machines, if you have an error configureing the fpga, you'd need to create the udev rules to allow your user account to connect to the development board using `iceprog`. In order to do that, 
+### 2.1.4 Creating UDEV Rules
+On Linux machines, if you have an error configuring the fpga, you'd need to create the udev rules to allow your user account to connect to the development board using `iceprog`. In order to do that, 
 run the following commands:
 ```bash
 $ touch /etc/udev/rules.d/53-lattice-ftdi.rules
@@ -91,3 +89,5 @@ When inside the file, add the following text:
 ATTRS{idVendor}=="0403", ATTRS{idProduct}=="6010", MODE="0660", GROUP="plugdev", TAG+="uaccess"
 ```
 
+### 2.1 Installing Vivado (Xilinx FPGA)
+Vivado is a large download and may take hours on slow/unreliable internet connections. The download process can be found [here](https://digilent.com/reference/vivado/installing-vivado/v2019.2). The latest version can be installed, however _**please note this project has only been tested with version 2021.2**_. 
