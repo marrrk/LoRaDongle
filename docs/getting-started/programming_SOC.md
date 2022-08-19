@@ -19,7 +19,7 @@ The included makefile in the `firmware` directory is configured to look into thi
 ## File Structure
 Navigate to the `firmware` directory in the project, the current file structure is shown in the image below:
 <div>
-    <img src="../assets/images/firmware_structure.png" alt="File Structure" wifth="100%" height="auto">
+    <img src="../assets/images/firmware_structure.png" alt="File Structure" width="100%" height="auto">
 </div>
 
 The purpose of the subdirectories is as follows:
