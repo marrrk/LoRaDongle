@@ -30,12 +30,16 @@ The purpose of the subdirectories is as follows:
 The makefile reads all the source and linker files from these directories, in addition to assembly start up code found in the LiteX install and `main.c`. To create the executable, run the makefile command `make`. The compilation results in the binary file `demo.bin` that can be loaded onto LoRaDongle's SPI Flash at a specific memory address that the CPU reads from to execute the program. This is done with the command `make prog`. 
 
 The successful ouput of that is shown below:
-(image of make prog)
+<div>
+    <img src="../assets/images/make_prog.png" alt="make prog" width="100%" height="auto">
+</div>
 
 
 If successful, the two green LEDS on the board should flicker for about 3 seconds.
-You can then opena  serial terminal to interact with the SOC:
-(image of serial terminal)
+You can then opena  serial terminal to interact with the SOC. The baudrate needs to be set to 115200, for example `screen /dev/ttyUSB0 115200`. This is the prompt you should see when you open the serial terminal:
+<div>
+    <img src="../assets/images/loradongle_soc.png" alt="Serial Terminal" width="100%" height="auto">
+</div>
 
 # Building and running the Test Program - Arty Demo Test
 Navigate to `LoRaDongle/SOC/arty_test/firmware` and run `make`. This will create binary file titled `demo.bin` to be loaded to the SoC. Hopefully everything built successfully with no errors. 
