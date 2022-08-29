@@ -1,4 +1,5 @@
 # LoRaDongle
+
 LoRaDongle is a custom PCB that merges Risc-V with LoRa in a USB Dongle form factor. This repository contains all the project files required to build, utilise and modify the project. Documentation can be read from the website: [https://marrrk.github.io/LoRaDongle/](https://marrrk.github.io/LoRaDongle/)
 
 ## Cloning the repository
@@ -13,3 +14,5 @@ git clone --recurse-submodules https://github.com/marrrk/LoRaDongle.git
 - firmware/ -  SUpporting firmware that runs on the SoC
 - docs/ - Source files for the documentation website
 
+
+[![GitHub Super-Linter](https://github.com/marrrk/LoRaDongle/workflows/Lint%20Code%20Base/badge.svg)](https://github.com/marketplace/actions/super-linter)

@@ -56,4 +56,4 @@ Once loaded you will be greeted with the pompt `Arty-SoC-Test>` in which you can
 If however you did not get this, try pressing the cpu reset button on the development you are using to reboot the SoC.
 
 # Adding your own program
-Additional source files can be added to the program. You can place them in the `peripherals/` directory directly. ALternatively, you can create your own bespoke directory for the funcionality being added. More on this is available in [How to Add a program](dummy).
+Additional source files can be added to the program. You can place them in the `peripherals/` directory directly. ALternatively, you can create your own bespoke directory for the funcionality being added.
