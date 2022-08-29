@@ -5,7 +5,8 @@ parent: Getting Started
 nav_order: 4
 ---
 
-# Generated Files
+## Generated Files
+
 The softwate build directory contains a subdirectory `software/include/generated` that stores core files for the successful programming of the SOC. This includes linker scripts, makefile extensions and crucial header files.
 
 Specifically, important linker information is found in `output_format.ld` and `regions.ld`. These would need to be included in the linker script of your application such that the correct memory locations are utilised. `variables.mak` stores useful macros for use in the makefile of your application.
@@ -15,14 +16,17 @@ For example, including GPIO pins in the SOC creates a CSR register that needs to
 
 The included makefile in the `firmware` directory is configured to look into this folder for the necessary files during the compilation process.
 
-# Building and running the Test Program - LoRaDongle Demo Test
-## File Structure
+## Building and running the Test Program - LoRaDongle Demo Test
+
+### File Structure
+
 Navigate to the `firmware` directory in the project, the current file structure is shown in the image below:
 <div>
     <img src="../assets/images/firmware_structure.png" alt="File Structure" width="100%" height="auto">
 </div>
 
 The purpose of the subdirectories is as follows:
+
 * `ld/` - Contains the main linker script to link binaries together
 * `peripherals/` - Code and drivers that interact with the peripherals of the system.
 * `Radio/` - Driver code for the LoRa radio
@@ -41,19 +45,20 @@ You can then opena  serial terminal to interact with the SOC. The baudrate needs
     <img src="../assets/images/loradongle_soc.png" alt="Serial Terminal" width="100%" height="auto">
 </div>
 
-# Building and running the Test Program - Arty Demo Test
+## Building and running the Test Program - Arty Demo Test
+
 Navigate to `LoRaDongle/SOC/arty_test/firmware` and run `make`. This will create binary file titled `demo.bin` to be loaded to the SoC. Hopefully everything built successfully with no errors. 
 
 Then call `make run` to load the application code to the SoC. You should see the LiteX bios starting and then loading the application code onto the SoC. See below:
+
 <div>
     <img src="../assets/images/litex_term_running.png" alt="LiteX Term" width="100%" height="auto">
 </div>
 
-
 Once loaded you will be greeted with the pompt `Arty-SoC-Test>` in which you can run the two to three functions that have been implemented. See below
-
 
 If however you did not get this, try pressing the cpu reset button on the development you are using to reboot the SoC.
 
-# Adding your own program
+## Adding your own program
+
 Additional source files can be added to the program. You can place them in the `peripherals/` directory directly. ALternatively, you can create your own bespoke directory for the funcionality being added.
