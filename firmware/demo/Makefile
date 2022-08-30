@@ -1,4 +1,4 @@
-BUILD_DIR?=../../SOC/main/build/LoRaDongle
+BUILD_DIR?=../../SOC/main/build/LoRaDongleV2
 
 include $(BUILD_DIR)/software/include/generated/variables.mak
 include $(SOC_DIRECTORY)/software/common.mak

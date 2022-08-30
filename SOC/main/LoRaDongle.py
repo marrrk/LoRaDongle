@@ -30,7 +30,8 @@ from litex.soc.integration.doc import AutoDoc
 from litex.soc.integration.soc import SoCRegion
 
 
-from Platform.LoRaDongle import Platform
+#from Platform.LoRaDongleV1 import Platform
+from Platform.LoRaDongleV2 import Platform
 
 from litex.soc.cores.uart import UARTWishboneBridge
 from litex.soc.cores import gpio
@@ -60,7 +61,7 @@ class _CRG(Module, AutoDoc):
         if sys_clk_freq == 50e6:
             self.comb += self.cd_sys.clk.eq(clk)
         else:
-            self.submodules.pll = pll = iCE40PLL(primitive="SB_PLL40_PAD")
+            self.submodules.pll = pll = iCE40PLL(primitive="SB_PLL40_CORE")
             pll.register_clkin(clk, 50e6)
             pll.create_clkout(self.cd_sys, sys_clk_freq, with_reset=False)
         platform.add_period_constraint(self.cd_sys.clk, 1e9 / sys_clk_freq)
@@ -138,7 +139,8 @@ class BaseSoC(SoCCore):
 
 
         # SPI Flash --------------------------------------------------------------------------------
-        from litespi.modules import N25Q032A
+        #from litespi.modules import N25Q032A
+        from litespi.modules import W25Q128JV
         from litespi.opcodes import SpiNorFlashOpCodes as Codes
         #from litespi.phy.generic import LiteSPIPHY
         #spi_flash_pads = platform.request("spiflash")
@@ -146,7 +148,9 @@ class BaseSoC(SoCCore):
         #spiflash_phy = LiteSPIPHY(spi_flash_pads, N25Q032A(Codes.READ_1_1_1), device=self.platform.device, default_divisor=1)
         #setattr(self.submodules, name + "_phy",  spiflash_phy)
         #self.add_spi_flash(phy=spiflash_phy,mode="1x", module=N25Q032A(Codes.READ_1_1_1), with_master=False)
-        self.add_spi_flash(mode="1x", module=N25Q032A(Codes.READ_1_1_1), with_master=False)
+        #self.add_spi_flash(mode="1x", module=N25Q032A(Codes.READ_1_1_1), with_master=False)
+        self.add_spi_flash(mode="1x", module=W25Q128JV(Codes.READ_1_1_1), with_master=False)
+
 
 
         # Add ROM linker region --------------------------------------------------------------------
