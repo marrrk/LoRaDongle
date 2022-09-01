@@ -15,4 +15,6 @@ git clone --recurse-submodules https://github.com/marrrk/LoRaDongle.git
 - firmware/ -  SUpporting firmware that runs on the SoC
 - docs/ - Source files for the documentation website
 
+**License** Licensed under [CERN-OHL-P v2](https://cern-ohl.web.cern.ch/) permissive variant or later.
+
 [![GitHub Super-Linter](https://github.com/marrrk/LoRaDongle/workflows/Lint%20Code%20Base/badge.svg)](https://github.com/marketplace/actions/super-linter)
