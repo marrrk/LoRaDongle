@@ -1,6 +1,7 @@
 #include <generated/csr.h>
 #include <time.h>
 #include <libbase/console.h>
+#include <irq.h>
 #include <libbase/uart.h>
 #include <stdio.h>
 #include <string.h>
@@ -14,7 +15,21 @@
 
 RadioConfig_t context; 
 
+#define MESSAGE_SIZE  BUFFER_SIZE
+//uint8_t test_message[MESSAGE_SIZE] = {"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"};
+uint8_t send_message[MESSAGE_SIZE] = {"PING"};
+uint8_t receive_message[MESSAGE_SIZE] = {};
+uint8_t *send_message_ptr = send_message;
+uint8_t *receive_message_ptr = receive_message;
+
+uint8_t respond_message[MESSAGE_SIZE] = {"PONG"};
+uint8_t *respond_message_ptr = respond_message;
+
+const uint8_t mode = 0;  // 0 for master, 1 for slave. used in ping pong test
+
+// Function declarations
 void flicker(void);
+void PingPongTest(void);
 
 /*
 	Uart functions for interacting with Console
@@ -124,6 +139,11 @@ static void console_service(void) {
 
 
 int main(void) {
+	#ifdef CONFIG_CPU_HAS_INTERRUPT
+		irq_setmask(0);
+		irq_setie(1);
+	#endif
+
     time_init();
     uart_init();
 	RadioInit(&context);
@@ -134,23 +154,20 @@ int main(void) {
 
 	SetConfiguration(&context);
 	ConfigureGeneralRadio(&context);
-    int i = 0;
-
     while (1) {
         console_service();
+		PingPongTest();
+		printf("pingpong test\n");
 		/**** Transmitting Test ****/
-		printf("Transmitting: %d\n", i++);
-		leds_out_write(0b10);
-		PrepareBuffer(&context);
-		ConfigureTx(&context);
-		transmit(&context);
-		msleep(100);
-		leds_out_write(0b0);
+		//leds_out_write(0b10);
+		//transmit(&context, sizeof(send_message) , send_message_ptr);
+		//msleep(100);
+		//leds_out_write(0b0);
 		
 		/***Receiving Test*****/
-		//ConfigureRx(&context);
-		//receive(&context);
-		//get_payload(&context);
+		//uint8_t message_length = strlen((const char*)send_message);
+		//receive(&context, message_length, receive_message_ptr);
+		//printf("Message received: %s\n",receive_message);
 
 
 		msleep(1000);
@@ -173,4 +190,33 @@ void flicker(void) {
             leds_out_write(x | buf << 2);
         }
         leds_out_write(0);
+}
+
+
+
+void PingPongTest(void) {
+	uint8_t message_length = strlen((const char*)send_message);
+
+	if (mode == 0){
+		leds_out_write(0b10);
+		transmit(&context, sizeof(send_message) , send_message_ptr);
+		msleep(100);
+		leds_out_write(0b0);
+		//if radio receives message, should be the dio irq what what
+		while(strlen((const char*)receive_message) == 0){ //infinite loop, source of error
+			receive(&context, message_length, receive_message_ptr);
+			if (strcmp((const char*)receive_message, "PONG") == 0) {
+				printf("Receive messaged succesfully\n");
+			} else printf("Message received error\n");
+
+		}
+		msleep(500);
+	} 
+	else if (mode == 1) {
+		receive(&context, message_length, receive_message_ptr);
+		if (strcmp((const char*)receive_message, "PING") == 0){
+			transmit(&context, sizeof(respond_message) , respond_message_ptr);
+		}
+
+	}
 }

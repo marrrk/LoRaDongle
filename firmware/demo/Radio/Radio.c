@@ -33,7 +33,6 @@
 #endif
 
 #define RX_TIMEOUT_VALUE                                3500      // in ms
-#define BUFFER_SIZE                                     64        // Define the payload size here
 
 
 
@@ -42,14 +41,12 @@
 // Sx126x Test Functions
 void RadioInit(RadioConfig_t *config){
 	/*
-		From Nucleo Code:
 		calibration parameters #what is that? #TODO, only used with OPT apparently
 		
 		reset()
 		
 		irq init #TODO - initialises spi, sets busy as open drain pullnone (inverse logic), assigns dio1 callback
 		looks like irq_init just initiliasises the pins. Busy for busy stuff, dio1 for dio stuff, and also spi obvi
-RX_TIMEOUT_US
 
 		setPollingMode() //aookucaktion calls process irqs as opposed to driver automatically doing it.
 		
@@ -67,7 +64,7 @@ RX_TIMEOUT_US
 	sx126x_reset(config);
 	
 	sx126x_wakeup(config);
-	sx126x_set_standby(config, 0x00); // hard coded but can be used as a variable
+	sx126x_set_standby(config, SX126X_STANDBY_CFG_RC);
 
 	ClearAntSW();
 	sx126x_set_dio2_as_rf_sw_ctrl(config, true);  
@@ -89,9 +86,9 @@ void SetConfiguration(RadioConfig_t *config){
         config->modParams.cr = LORA_CODINGRATE;
         config->modParams.ldro = LORA_LOWDATARATEOPTIMIZE;
         config->modParams.sf = LORA_SPREADING_FACTOR;
-        config->packetParams.crc_is_on = LORA_CRC_MODE; //might be cause for error
+        config->packetParams.crc_is_on = LORA_CRC_MODE;
         config->packetParams.header_type = LORA_HEADER_TYPE;
-        config->packetParams.invert_iq_is_on = LORA_IQ; // might be cause for error
+        config->packetParams.invert_iq_is_on = LORA_IQ;
         config->packetParams.pld_len_in_bytes = BUFFER_SIZE;
         config->packetParams.preamble_len_in_symb = LORA_PREAMBLE_LENGTH;
 	#endif
@@ -116,24 +113,24 @@ void ConfigureRx(RadioConfig_t *config){
 	sx126x_set_dio_irq_params(config, config->irqRx, config->irqRx, SX126X_IRQ_NONE, SX126X_IRQ_NONE);
 }
 
-void PrepareBuffer(RadioConfig_t *context){
+void PrepareBuffer(RadioConfig_t *context, uint8_t size , uint8_t *message){
 	uint8_t offset = 0x0;
-	uint8_t size = 4;
-	uint8_t WriteMessage[4] = {'P', 'I', 'N', 'G'};
-	uint8_t *pWrite = WriteMessage;
+	//uint8_t size = 4;
+	//uint8_t WriteMessage[4] = {'P', 'I', 'N', 'G'};
+	//uint8_t *pWrite = WriteMessage;
 
-	sx126x_write_buffer(&context, offset, pWrite, size);
+	sx126x_write_buffer(&context, offset, message, size);
 
 }
 
-void transmit(RadioConfig_t *config){
+void set_to_transmit(RadioConfig_t *config){
 	//set fs first?
     ClearAntSW();
 	sx126x_set_tx(config, config->txTimeout);
 }
 
 
-void receive(RadioConfig_t *config){
+void set_to_receive(RadioConfig_t *config){
     SetAntSW();
 	sx126x_set_rx(config, config->rxTimeout);
 }
@@ -141,28 +138,51 @@ void receive(RadioConfig_t *config){
 
 
 
-void get_payload(RadioConfig_t *config){
-	uint8_t ReadMessage[4];
-	uint8_t *pRead = ReadMessage;
-
+void get_payload(RadioConfig_t *config, uint8_t size, uint8_t *message){
+	//uint8_t ReadMessage[BUFFER_SIZE];
+	//uint8_t *pRead = ReadMessage;
+	//int16_t rssi;
 	sx126x_rx_buffer_status_t buf_status;
 	sx126x_get_rx_buffer_status(config, &buf_status);
-	sx126x_read_buffer(config, buf_status.buffer_start_pointer, pRead, buf_status.pld_len_in_bytes);
+	if (buf_status.pld_len_in_bytes > 0) {
+		sx126x_read_buffer(config, buf_status.buffer_start_pointer, message, buf_status.pld_len_in_bytes);
 
-	printf("The read data is: \n");
-	
-	for (uint8_t i = 0; i < 4; i++) {
-        printf("%c\n" ,*pRead++);      // Might bring an error because i'm point to a pointer
-    }   
+		//sx126x_get_rssi_inst(config, &rssi);
+		//printf("Buffer start pointer: %d\n", buf_status.buffer_start_pointer);
+		//printf("The payload length is %d and data read is : \n", buf_status.pld_len_in_bytes);
+		
+		//for (uint8_t i = 0; i < size; i++) {
+		//	printf("%c" ,*pRead++);      // Might bring an error because i'm point to a pointer
+		//}   
 
+		//printf("\nRSSI: %d\n", rssi);
+
+	} //else {printf("Nothing Received\n");}
 	// clearing buffer because received message stays in buffer
-	uint8_t clear_message[1] = {""};
+	// don't need to clear buffer, just need to wait for rxTimeout has been reached then can do something else. probably done earlier
+	uint8_t clear_message[BUFFER_SIZE] = {""};
 	uint8_t *pWrite = clear_message;
 
 	sx126x_write_buffer(config, buf_status.buffer_start_pointer, pWrite, buf_status.pld_len_in_bytes);
 
 }
 
+
+//might want to take in a message length so not to send a random amount of messages?
+void transmit(RadioConfig_t *config, uint8_t size, uint8_t *message){
+		PrepareBuffer(config, size, message);
+		ConfigureTx(config);
+		set_to_transmit(config);
+}
+
+
+// For future: this should act like the transmit message and take in a pointer to where to store received message. 
+//then passed to get_payload for obvious reasons, that way get_payload doesn't need to initialize any nonsense of its own
+void receive(RadioConfig_t *config, uint8_t size, uint8_t *message){
+		ConfigureRx(config);
+		set_to_receive(config);
+		get_payload(config, size, message);
+}
 
 
 // Turn On/Off pins that interact with the RF Circuit, SX1261 Radio

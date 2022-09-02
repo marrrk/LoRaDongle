@@ -16,6 +16,9 @@ extern "C" {
 #include "sx126x.h"
 #include "sx126x_hal.h"
 
+#define BUFFER_SIZE                                     255        // Define the payload size here, change it for bandwidth testing?
+#define RX_BUFFER_OFFSET								0x00		// will be used later
+#define TX_BUFFER_OFFSER								0x80		// will be used later
 //SX126x Context Stuff :)  Need a configuration function obviously
 
 
@@ -39,10 +42,13 @@ void SetConfiguration(RadioConfig_t *config);
 void ConfigureGeneralRadio(RadioConfig_t *config);
 void ConfigureTx(RadioConfig_t *config);
 void ConfigureRx(RadioConfig_t *config);
-void PrepareBuffer(RadioConfig_t *config);
-void transmit(RadioConfig_t *config);
-void receive(RadioConfig_t *config);
-void get_payload(RadioConfig_t *config);
+void PrepareBuffer(RadioConfig_t *config, uint8_t size, uint8_t *message);
+void set_to_transmit(RadioConfig_t *config);
+void set_to_receive(RadioConfig_t *config);
+void get_payload(RadioConfig_t *config, uint8_t size, uint8_t *message);
+
+void transmit(RadioConfig_t *config, uint8_t size, uint8_t *message);
+void receive(RadioConfig_t *config, uint8_t size, uint8_t *message);
 
 
 void SetAntSW(void);

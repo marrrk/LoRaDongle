@@ -75,8 +75,8 @@ $(OBJ_DIR)/%.o: $(RADIO_DIR)/%.c
 %.o: %.S
 	$(assemble)
 
-run: demo.bin
-	litex_term /dev/ttyUSB1 --kernel=demo.bin
+screen: demo.bin
+	screen /dev/ttyUSB1 115200
 
 prog: demo.bin
 	iceprog -o 0x00020000 $<
@@ -85,4 +85,4 @@ clean:
 	$(RM) $(OBJECTS) $(OBJECTS:.o=.d) demo.elf demo.bin .*~ *~
 	$(RM) -r $(OBJ_DIR)
 
-.PHONY: all $(OBJ_DIR)/main.o clean run
+.PHONY: all $(OBJ_DIR)/main.o clean screen
