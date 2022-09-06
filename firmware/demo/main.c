@@ -30,6 +30,7 @@ const uint8_t mode = 0;  // 0 for master, 1 for slave. used in ping pong test
 // Function declarations
 void flicker(void);
 void PingPongTest(void);
+void ping_counter(void);
 
 /*
 	Uart functions for interacting with Console
@@ -150,27 +151,40 @@ int main(void) {
 
     //help();
     //prompt();
+	console_service();
     flicker();
 
 	SetConfiguration(&context);
 	ConfigureGeneralRadio(&context);
+	printf("Ping Pong test\n");
+
     while (1) {
-        console_service();
+        //console_service();
 		PingPongTest();
-		printf("pingpong test\n");
+		
 		/**** Transmitting Test ****/
-		//leds_out_write(0b10);
-		//transmit(&context, sizeof(send_message) , send_message_ptr);
-		//msleep(100);
-		//leds_out_write(0b0);
+		//transmit(&context, sizeof(send_message) , send_message_ptr); //send sizeof message which is 255 as opposed to strlen. for some reason strlen causes issues
+
 		
 		/***Receiving Test*****/
+		//printf("Value of receive message before receveing: %s\n", receive_message);
+		
 		//uint8_t message_length = strlen((const char*)send_message);
-		//receive(&context, message_length, receive_message_ptr);
-		//printf("Message received: %s\n",receive_message);
+		//printf("strlen(): %d,  sizeof():  %d\n",message_length, sizeof(send_message));
+		//receive(&context, sizeof(send_message), receive_message_ptr);
+		//printf("Received message: %s\n", receive_message);
+		//printf("strlen(): %d,  sizeof():  %d\n",strlen((char *)receive_message), sizeof(receive_message));
+		
+		//if (strcmp( (char*)receive_message, "PING") == 0) {
+		//	printf("Message received: %s\n",receive_message);
+			//printf("Value of receive message after conditional: %s\n", receive_message);
+		//	transmit(&context, sizeof(respond_message) , respond_message_ptr);
+		//	clear_buffer(&context);
+			//memset(receive_message,0,strlen((char*)receive_message));
+			//printf("Value of receive message after reseting memory : %s\n", receive_message);
+		//}
 
-
-		msleep(1000);
+		//msleep(1000);
     }
 
     return 0;
@@ -195,28 +209,40 @@ void flicker(void) {
 
 
 void PingPongTest(void) {
-	uint8_t message_length = strlen((const char*)send_message);
+	//uint8_t message_length = strlen((const char*)send_message);
+	//printf("%d\n",message_length);
 
 	if (mode == 0){
-		leds_out_write(0b10);
 		transmit(&context, sizeof(send_message) , send_message_ptr);
-		msleep(100);
-		leds_out_write(0b0);
-		//if radio receives message, should be the dio irq what what
-		while(strlen((const char*)receive_message) == 0){ //infinite loop, source of error
-			receive(&context, message_length, receive_message_ptr);
-			if (strcmp((const char*)receive_message, "PONG") == 0) {
-				printf("Receive messaged succesfully\n");
-			} else printf("Message received error\n");
+		//printf("Transmitting: %s\n", send_message);
+		//ConfigureRx(&context);		
 
+		//receive(&context, sizeof(send_message), receive_message_ptr);
+		//clear_buffer(&context);
+		if (strcmp((const char*)receive_message, "PONG") == 0) {
+			printf("Received!: %s\n", receive_message);
 		}
-		msleep(500);
+		//if (strlen((const char*)receive_message) == 0){ //infinite loop, source of error
+		//	receive(&context, message_length, receive_message_ptr);
+		//	if (strcmp((const char*)receive_message, "PONG") == 0) {
+		//		printf("Received:   %s\n", receive_message);
+			//} //else printf("Message received error\n");
+		
 	} 
 	else if (mode == 1) {
-		receive(&context, message_length, receive_message_ptr);
-		if (strcmp((const char*)receive_message, "PING") == 0){
+		receive(&context, sizeof(send_message), receive_message_ptr);
+		printf("%s\n", receive_message);
+		if (strcmp((char*)receive_message, "PING") == 0){
 			transmit(&context, sizeof(respond_message) , respond_message_ptr);
+			clear_buffer(&context);
 		}
 
 	}
+
+	msleep(1000);
+}
+
+void ping_counter(void){
+	receive(&context, MESSAGE_SIZE, receive_message_ptr);
+	printf("%s\n", receive_message);
 }

@@ -50,6 +50,8 @@ void get_payload(RadioConfig_t *config, uint8_t size, uint8_t *message);
 void transmit(RadioConfig_t *config, uint8_t size, uint8_t *message);
 void receive(RadioConfig_t *config, uint8_t size, uint8_t *message);
 
+void clear_buffer(RadioConfig_t *config);
+
 
 void SetAntSW(void);
 void ClearAntSW(void);

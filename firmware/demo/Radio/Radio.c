@@ -1,4 +1,5 @@
 #include "Radio.h"
+#include <time.h>
 
 // Radio Settings
 #define RX_TIMEOUT_US 200000
@@ -142,48 +143,52 @@ void get_payload(RadioConfig_t *config, uint8_t size, uint8_t *message){
 	//uint8_t ReadMessage[BUFFER_SIZE];
 	//uint8_t *pRead = ReadMessage;
 	//int16_t rssi;
+	
 	sx126x_rx_buffer_status_t buf_status;
 	sx126x_get_rx_buffer_status(config, &buf_status);
+	//printf("Buffer length: %d\n", buf_status.pld_len_in_bytes);
+	//printf("Buffer start: %d\n", buf_status.buffer_start_pointer);
+
 	if (buf_status.pld_len_in_bytes > 0) {
 		sx126x_read_buffer(config, buf_status.buffer_start_pointer, message, buf_status.pld_len_in_bytes);
 
 		//sx126x_get_rssi_inst(config, &rssi);
-		//printf("Buffer start pointer: %d\n", buf_status.buffer_start_pointer);
-		//printf("The payload length is %d and data read is : \n", buf_status.pld_len_in_bytes);
-		
-		//for (uint8_t i = 0; i < size; i++) {
-		//	printf("%c" ,*pRead++);      // Might bring an error because i'm point to a pointer
-		//}   
-
 		//printf("\nRSSI: %d\n", rssi);
 
 	} //else {printf("Nothing Received\n");}
-	// clearing buffer because received message stays in buffer
-	// don't need to clear buffer, just need to wait for rxTimeout has been reached then can do something else. probably done earlier
-	uint8_t clear_message[BUFFER_SIZE] = {""};
-	uint8_t *pWrite = clear_message;
 
-	sx126x_write_buffer(config, buf_status.buffer_start_pointer, pWrite, buf_status.pld_len_in_bytes);
+	// clearing buffer because received message stays in buffer
+	// might not need to clear buffer, just need to wait for rxTimeout has been reached then can do something else. probably done earlier
+	clear_buffer(config);
 
 }
 
 
 //might want to take in a message length so not to send a random amount of messages?
 void transmit(RadioConfig_t *config, uint8_t size, uint8_t *message){
+		leds_out_write(0b10);
 		PrepareBuffer(config, size, message);
 		ConfigureTx(config);
 		set_to_transmit(config);
+		//msleep(100);
+		leds_out_write(0b00);
+		//clear_buffer(config);
 }
 
 
-// For future: this should act like the transmit message and take in a pointer to where to store received message. 
-//then passed to get_payload for obvious reasons, that way get_payload doesn't need to initialize any nonsense of its own
 void receive(RadioConfig_t *config, uint8_t size, uint8_t *message){
 		ConfigureRx(config);
 		set_to_receive(config);
 		get_payload(config, size, message);
 }
 
+
+void clear_buffer(RadioConfig_t *config) {
+	uint8_t clear_message[BUFFER_SIZE] = {"\0"};
+	uint8_t *pWrite = clear_message;
+
+	sx126x_write_buffer(config, 0x00, pWrite, 255);
+}
 
 // Turn On/Off pins that interact with the RF Circuit, SX1261 Radio
 void ToggleAntSW(void){
