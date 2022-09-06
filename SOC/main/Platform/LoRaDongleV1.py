@@ -2,9 +2,6 @@ from litex.build.generic_platform import *
 from litex.build.lattice import LatticePlatform
 from litex.build.lattice.programmer import IceStormProgrammer
 
-#from litex.soc.cores.spi import SPIMaster #Gonna use this for the LoRA Chip
-#from litex.soc.cores.bitbang import I2CMaster
-
 # IOs--------------------------------------------------------------------------------
 
 _io = [

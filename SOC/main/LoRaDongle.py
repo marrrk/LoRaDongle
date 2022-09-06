@@ -36,6 +36,7 @@ from Platform.LoRaDongleV2 import Platform
 from litex.soc.cores.uart import UARTWishboneBridge
 from litex.soc.cores import gpio
 from litex.soc.cores.spi import SPIMaster
+from litex.soc.cores.bitbang import I2CMaster
 
 import litex.soc.doc as lxsocdoc
 
@@ -87,25 +88,25 @@ class BaseSoC(SoCCore):
         "sram":             0x10000000,
         "spiflash":         0x20000000,
         "csr":              0xf0000000,
-        "vexriscv_debug":   0xf00f0000,
     }
 
-    def __init__(self, debug, flash_offset, sys_clk_freq, **kwargs):
+    def __init__(self, cpu, debug, flash_offset, sys_clk_freq, **kwargs):
         """Create a basic SoC for LoRaDongle.
 
-        Create a basic SoC for LoRaDongle.  The `sys` frequency will run at 12 MHz.
+        Create a basic SoC for LoRaDongle.  The `sys` frequency will run at 21 MHz.
 
         Returns:
             Newly-constructed SoC
         """
         platform = Platform()
 
-        # Set cpu name and variant defaults when none are provided
-        if "cpu_variant" not in kwargs and "cpu_type" == "vexriscv":
-            if debug:
-                kwargs["cpu_variant"] = "lite+debug"
-            else:
-                kwargs["cpu_variant"] = "lite"
+        if cpu == "serv":
+            kwargs["cpu_type"] = "serv"
+        elif cpu == "picorv32":
+            kwargs["cpu_type"] = "picorv32"
+            #variant defaults when none are provided
+            if "cpu_variant" not in kwargs:
+                kwargs["cpu_variant"] = "minimal"
 
         # Force the SRAM size to 0, because we add our own SRAM with SPRAM
         kwargs["integrated_sram_size"] = 0
@@ -139,34 +140,41 @@ class BaseSoC(SoCCore):
 
 
         # SPI Flash --------------------------------------------------------------------------------
-        #from litespi.modules import N25Q032A
         from litespi.modules import W25Q128JV
         from litespi.opcodes import SpiNorFlashOpCodes as Codes
+        self.add_spi_flash(mode="1x", module=W25Q128JV(Codes.READ_1_1_1), with_master=False)
+
+
+        #from litespi.modules import N25Q032A
         #from litespi.phy.generic import LiteSPIPHY
+        
         #spi_flash_pads = platform.request("spiflash")
         #spi_flash_pads.clk = Signal()
         #spiflash_phy = LiteSPIPHY(spi_flash_pads, N25Q032A(Codes.READ_1_1_1), device=self.platform.device, default_divisor=1)
         #setattr(self.submodules, name + "_phy",  spiflash_phy)
+        
         #self.add_spi_flash(phy=spiflash_phy,mode="1x", module=N25Q032A(Codes.READ_1_1_1), with_master=False)
+        
         #self.add_spi_flash(mode="1x", module=N25Q032A(Codes.READ_1_1_1), with_master=False)
-        self.add_spi_flash(mode="1x", module=W25Q128JV(Codes.READ_1_1_1), with_master=False)
 
 
 
         # Add ROM linker region --------------------------------------------------------------------
         self.bus.add_region("rom", SoCRegion(
             origin = self.mem_map["spiflash"] + flash_offset,
-            size   = 8*1024*1024,  # size of rom currently too big for current flash
+            size   = 8*1024*1024, 
             linker = True)
         )
 
         # In debug mode, add a UART bridge.  This takes over from the normal UART bridge,
         # however you can use the "crossover" UART to communicate with this over the bridge.
         if debug:
-            self.submodules.uart_bridge = UARTWishboneBridge(platform.request("serial"), sys_clk_freq, baudrate=115200)
+            self.submodules.uart_bridge = UARTWishboneBridge(
+                platform.request("serial"), 
+                sys_clk_freq, 
+                baudrate=115200)
             self.add_wb_master(self.uart_bridge.wishbone)
 
-        #platform.add_extension(break_off_pmod)
 
         # Leds
         user_leds = Cat(*[platform.request("user_led", i) for i in range(2)])
@@ -186,17 +194,27 @@ class BaseSoC(SoCCore):
         self.add_csr("lora_config")
 
         # SPI
-        #spi_pads = platform.lookup_request("clk")
-        #spi_pads = platform.request("spi_bus", 0)
-        #spi_bus_pads = platform.request("spi_bus")
-        #spi_bus_pads.clk = Signal()
-        #self.submodules.SPI = SPIMaster(spi_bus_pads,
         self.submodules.SPI = SPIMaster(platform.request("spi_bus", 0),
             data_width = 8,
             sys_clk_freq = sys_clk_freq,
             spi_clk_freq = 8e6)
         self.add_csr("spi_bus")
 
+
+        ######### Gas Sensor ##############
+        #I2CMaster
+        self.submodules.i2c = I2CMaster(platform.request("i2c_bus"))
+        self.add_csr("i2c")
+
+        #spi_pads = platform.lookup_request("clk")
+        #spi_pads = platform.request("spi_bus", 0)
+        #spi_bus_pads = platform.request("spi_bus")
+        #spi_bus_pads.clk = Signal()
+        #self.submodules.SPI = SPIMaster(spi_bus_pads,
+            #data_width = 8,
+            #sys_clk_freq = sys_clk_freq,
+            #spi_clk_freq = 8e6)
+        #self.add_csr("spi_bus")
 
         #self.comb += spi_clk.eq(spi_flash_pads.clk | spi_bus_pads.clk) #Connecting SPI Clock to both SPIMaster and SPIFlash
         #self.comb += spi_clk.eq(spi_flash_pads.clk)
@@ -244,6 +262,7 @@ def flash(build_dir, build_name, bios_flash_offset):
 def main():
     parser = argparse.ArgumentParser(description="LiteX SoC on LoRaDongle")
     parser.add_argument("--build", action="store_true", help="Build SoC")
+    parser.add_argument("--cpu", default="serv", help="Select CPY type")
     parser.add_argument("--flash-offset", default=0x20000, help="Boot offset in SPI Flash")
     parser.add_argument("--sys-clk-freq", type=float, default=21e6, help="Select system clock frequency")
     parser.add_argument("--nextpnr-seed", default=0, help="Select nextpnr pseudo random seed")
@@ -256,7 +275,7 @@ def main():
     args = parser.parse_args()
 
     # Create the SOC
-    soc = BaseSoC(debug=args.debug, flash_offset=args.flash_offset, sys_clk_freq=int(args.sys_clk_freq), **soc_core_argdict(args))
+    soc = BaseSoC(cpu=args.cpu ,debug=args.debug, flash_offset=args.flash_offset, sys_clk_freq=int(args.sys_clk_freq), **soc_core_argdict(args))
     soc.set_yosys_nextpnr_settings(nextpnr_seed=args.nextpnr_seed, nextpnr_placer=args.nextpnr_placer)
 
     # Configure command line parameter defaults
@@ -272,10 +291,12 @@ def main():
     #    builder_kwargs["memory_x"] = "../rust/icebesoc-pac/memory.x"
 
     # Create and run the builder
+    builder_kwargs["csr_csv"] = "build/csr.csv"
     builder = Builder(soc, **builder_kwargs)
+
     if args.build:
         builder.build()
-        lxsocdoc.generate_docs(soc, "build/documentation/", project_name="LoRaDongle LiteX Riscv Example SOC")
+        lxsocdoc.generate_docs(soc, "build/documentation/", project_name="LoRaDongle SOC")
 
     # If requested load the resulting bitstream onto the LoRaDongle
     if args.flash:

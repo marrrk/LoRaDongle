@@ -2,8 +2,6 @@ from litex.build.generic_platform import *
 from litex.build.lattice import LatticePlatform
 from litex.build.lattice.programmer import IceStormProgrammer
 
-#from litex.soc.cores.spi import SPIMaster #Gonna use this for the LoRA Chip
-#from litex.soc.cores.bitbang import I2CMaster
 
 # IOs--------------------------------------------------------------------------------
 
@@ -25,15 +23,6 @@ _io = [
     #BusyPin
     ("lora_busy", 0, Pins("32"), IOStandard("LVCMOS33")),          #Busy, Input
     
-
-    #LoRa Configuration Pins - Test pins
-    #("lora_config", 0, Pins("39"), IOStandard("LVCMOS33")),           #DIO1 ,  Output
-    #("lora_config", 1, Pins("40"), IOStandard("LVCMOS33")),           #ANT_SW, Output
-    #("lora_config", 2, Pins("41"), IOStandard("LVCMOS33")),           #RESET, Output
-
-    #BusyPin
-    #("lora_busy", 0, Pins("42"), IOStandard("LVCMOS33")),          #Busy, Input
-
 
     #UART
     ("serial", 0,
@@ -57,17 +46,16 @@ _io = [
         Subsignal("cs_n", Pins("25")),                 
         Subsignal("mosi", Pins("27")),                 
         Subsignal("miso", Pins("28")),                 
-    IOStandard("LVCMOS33"),
+        IOStandard("LVCMOS33"),
     ),
 
-    #SPI Test bus
-    #("spi_bus",0,                   
-    #    Subsignal("clk", Pins("23")),                  
-    #    Subsignal("cs_n", Pins("20")),                 
-    #    Subsignal("mosi", Pins("11")),                 
-    #    Subsignal("miso", Pins("10")),                 
-    #IOStandard("LVCMOS33"),
-    #),
+
+    #I2C
+    ("i2c_bus",0,
+        Subsignal("sda", Pins("18")),
+        Subsignal("scl", Pins("19")),
+        IOStandard("LVCMOS33")
+    )
 
 ]
 
