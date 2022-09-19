@@ -8,7 +8,9 @@ from litex.build.lattice.programmer import IceStormProgrammer
 _io = [
     # Clk
     ("clk", 0, Pins("46"), IOStandard("LVCMOS33")),
-    ("cpu_reset", 0, Pins("21"), IOStandard("LVCMOS33")),
+    #("cpu_reset", 0, Pins("21"), IOStandard("LVCMOS33")),
+
+    ("btn", 0, Pins("21"), IOStandard("LVCMOS33")),     #Testing Input Button for interrupt!
 
 
     # Leds

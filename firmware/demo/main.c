@@ -25,7 +25,7 @@ uint8_t *receive_message_ptr = receive_message;
 uint8_t respond_message[MESSAGE_SIZE] = {"PONG"};
 uint8_t *respond_message_ptr = respond_message;
 
-const uint8_t mode = 0;  // 0 for master, 1 for slave. used in ping pong test
+const uint8_t mode = 1;  // 0 for master, 1 for slave. used in ping pong test
 
 // Function declarations
 void flicker(void);
@@ -113,6 +113,7 @@ static void help(void) {
 	puts("reboot			- Reboots CPU");
 	puts("spi_test		- SPI Loopback Test");
 	puts("led_demo		- Flickers LEDs");
+	puts("getmask			- prints irq mask");
 }
 
 static void console_service(void) {
@@ -130,6 +131,10 @@ static void console_service(void) {
 		flicker();
 	else if (strcmp(token, "spi_test") == 0)
 		test_loopback(0xa5);
+	else if (strcmp(token,"getmask") == 0) {
+		printf("%x\n", irq_getmask());
+		printf("The value of btn_ev_enable is: %lx\n", btn_ev_enable_read());
+	}
 
 #ifdef CSR_LEDS_BASE
 
@@ -147,30 +152,29 @@ int main(void) {
 
     time_init();
     uart_init();
-	RadioInit(&context);
+	//RadioInit(&context);
 
-    //help();
-    //prompt();
+    help();
+    prompt();
 	console_service();
     flicker();
 
-	SetConfiguration(&context);
-	ConfigureGeneralRadio(&context);
-	printf("Ping Pong test\n");
+	//SetConfiguration(&context);
+	//ConfigureGeneralRadio(&context);
+	//printf("Ping Pong test\n");
 
     while (1) {
-        //console_service();
-		PingPongTest();
+        console_service();
+		//PingPongTest();
 		
 		/**** Transmitting Test ****/
 		//transmit(&context, sizeof(send_message) , send_message_ptr); //send sizeof message which is 255 as opposed to strlen. for some reason strlen causes issues
 
 		
-		/***Receiving Test*****/
-		//printf("Value of receive message before receveing: %s\n", receive_message);
-		
+		/***Receiving Test*****/		
 		//uint8_t message_length = strlen((const char*)send_message);
 		//printf("strlen(): %d,  sizeof():  %d\n",message_length, sizeof(send_message));
+
 		//receive(&context, sizeof(send_message), receive_message_ptr);
 		//printf("Received message: %s\n", receive_message);
 		//printf("strlen(): %d,  sizeof():  %d\n",strlen((char *)receive_message), sizeof(receive_message));

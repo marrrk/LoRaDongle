@@ -99,7 +99,7 @@ class BaseSoC(SoCCore):
             Newly-constructed SoC
         """
         platform = Platform()
-
+        
         if cpu == "serv":
             kwargs["cpu_type"] = "serv"
         elif cpu == "picorv32":
@@ -107,7 +107,7 @@ class BaseSoC(SoCCore):
             #variant defaults when none are provided
             if "cpu_variant" not in kwargs:
                 kwargs["cpu_variant"] = "minimal"
-
+        
         # Force the SRAM size to 0, because we add our own SRAM with SPRAM
         kwargs["integrated_sram_size"] = 0
         kwargs["integrated_rom_size"]  = 0
@@ -180,6 +180,13 @@ class BaseSoC(SoCCore):
         user_leds = Cat(*[platform.request("user_led", i) for i in range(2)])
         self.submodules.leds = gpio.GPIOOut(user_leds)
         self.add_csr("leds")
+
+
+        #Input Button Interrupt
+        self.submodules.btn = gpio.GPIOIn(platform.request("btn"), with_irq = self.irq.enabled )
+        self.add_interrupt("btn")
+        self.add_csr("btn")
+
 
          
         #####LoRa Pins#####
