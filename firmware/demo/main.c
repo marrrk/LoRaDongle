@@ -7,9 +7,7 @@
 #include <string.h>
 #include <spi.h>
 #include "Radio.h"
-
-#define UART_EV_TX 0x1
-#define UART_EV_RX 0x2
+#include <btn.h>
 
 
 
@@ -134,6 +132,10 @@ static void console_service(void) {
 	else if (strcmp(token,"getmask") == 0) {
 		printf("%x\n", irq_getmask());
 		printf("The value of btn_ev_enable is: %lx\n", btn_ev_enable_read());
+		printf("The value of btn_mode is :    %lx\n", btn_mode_read());
+		printf("The value of btn_edge is:     %lx\n", btn_edge_read());
+		printf("The value of btn_ev_status is:   %lx\n", btn_ev_status_read());
+		printf("The value of btn_ev_pending is:   %lx\n", btn_ev_pending_read());
 	}
 
 #ifdef CSR_LEDS_BASE
@@ -153,7 +155,7 @@ int main(void) {
     time_init();
     uart_init();
 	//RadioInit(&context);
-
+	btn_init();
     help();
     prompt();
 	console_service();
@@ -165,6 +167,9 @@ int main(void) {
 
     while (1) {
         console_service();
+
+		//leds_out_write(!btn_in_read());
+
 		//PingPongTest();
 		
 		/**** Transmitting Test ****/
