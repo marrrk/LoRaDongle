@@ -11,6 +11,7 @@
 #include <stdio.h>
 #include "btn.h"
 #include "isr.h"
+#include "time.h"
 
 void isr(void)
 {
@@ -20,12 +21,25 @@ void isr(void)
 
 #ifdef CSR_UART_BASE
 #ifndef UART_POLLING
-	if(irqs & (1 << UART_INTERRUPT))
+	if(irqs & (1 << UART_INTERRUPT)){
 		uart_isr();
+	}
 #endif
 #endif
 
+#ifdef CSR_BTN_BASE
+#ifdef BTN_INTERRUPT
     if (irqs & (1 << BTN_INTERRUPT))
-        btn_isr();
+        {btn_isr();}
+#endif
+#endif
 
+#ifdef CSR_TIMER1_BASE
+#ifdef TIMER1_INTERRUPT
+	if (irqs & (1 << TIMER1_INTERRUPT)){
+		timer1_isr();
+		printf("Interrupt reached\n");
+	}
+#endif
+#endif
 }

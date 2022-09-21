@@ -6,6 +6,8 @@ extern "C" {
 #endif
 
 void time_init(void);
+void time1_init(void);
+void timer1_isr(void);
 int elapsed(int *last_event, int period);
 void msleep(int ms);
 

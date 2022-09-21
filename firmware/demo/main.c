@@ -130,7 +130,7 @@ static void console_service(void) {
 	else if (strcmp(token, "spi_test") == 0)
 		test_loopback(0xa5);
 	else if (strcmp(token,"getmask") == 0) {
-		printf("%x\n", irq_getmask());
+		printf("IRQ Mask Value: %d\n", irq_getmask());
 		printf("The value of btn_ev_enable is: %lx\n", btn_ev_enable_read());
 		printf("The value of btn_mode is :    %lx\n", btn_mode_read());
 		printf("The value of btn_edge is:     %lx\n", btn_edge_read());
@@ -153,6 +153,7 @@ int main(void) {
 	#endif
 
     time_init();
+	time1_init();
     uart_init();
 	//RadioInit(&context);
 	btn_init();

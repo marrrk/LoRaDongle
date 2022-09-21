@@ -175,6 +175,12 @@ class BaseSoC(SoCCore):
                 baudrate=115200)
             self.add_wb_master(self.uart_bridge.wishbone)
 
+        #Adding Timer for Tests
+        from litex.soc.cores.timer import Timer
+        self.submodules.timer1 = Timer()
+        self.add_interrupt("timer1")
+        self.add_csr("timer1")
+
 
         # Leds
         user_leds = Cat(*[platform.request("user_led", i) for i in range(2)])
@@ -269,7 +275,7 @@ def flash(build_dir, build_name, bios_flash_offset):
 def main():
     parser = argparse.ArgumentParser(description="LiteX SoC on LoRaDongle")
     parser.add_argument("--build", action="store_true", help="Build SoC")
-    parser.add_argument("--cpu", default="serv", help="Select CPY type")
+    parser.add_argument("--cpu", default="picorv32", help="Select CPY type")
     parser.add_argument("--flash-offset", default=0x20000, help="Boot offset in SPI Flash")
     parser.add_argument("--sys-clk-freq", type=float, default=21e6, help="Select system clock frequency")
     parser.add_argument("--nextpnr-seed", default=0, help="Select nextpnr pseudo random seed")
