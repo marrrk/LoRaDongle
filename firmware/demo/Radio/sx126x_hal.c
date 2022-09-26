@@ -9,8 +9,8 @@
 //// Constants
 #define LORA_BUSY 1
 #define LORA_DIO1 0
-#define LORA_ANT_SW 1
-#define LORA_RESET 2
+#define LORA_ANT_SW 0
+#define LORA_RESET 1
 
 
 /**

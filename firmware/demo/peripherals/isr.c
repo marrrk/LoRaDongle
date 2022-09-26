@@ -12,6 +12,7 @@
 #include "btn.h"
 #include "isr.h"
 #include "time.h"
+#include "dio1.h"
 
 void isr(void)
 {
@@ -39,6 +40,15 @@ void isr(void)
 	if (irqs & (1 << TIMER1_INTERRUPT)){
 		timer1_isr();
 		printf("Interrupt reached\n");
+	}
+#endif
+#endif
+
+#ifdef CSR_DIO1_BASE
+#ifdef DIO1_INTERRUPT
+	if (irqs &(1 << DIO1_INTERRUPT)) {
+		dio1_isr();
+		//printf("DIO Interrupt!");
 	}
 #endif
 #endif

@@ -1,6 +1,7 @@
 #include "Radio.h"
 #include <time.h>
 
+
 // Radio Settings
 #define RX_TIMEOUT_US 200000
 
@@ -42,7 +43,7 @@
 // Sx126x Test Functions
 void RadioInit(RadioConfig_t *config){
 	/*
-		calibration parameters #what is that? #TODO, only used with OPT apparently
+		calibration parameters #what is that? -  only used with OPT apparently
 		
 		reset()
 		
@@ -61,9 +62,12 @@ void RadioInit(RadioConfig_t *config){
 
 		configure for public network/private network
 	*/
-
 	sx126x_reset(config);
-	
+
+	// Initialising DIO Interrupt Pin in CPU
+	dio1_init();
+
+
 	sx126x_wakeup(config);
 	sx126x_set_standby(config, SX126X_STANDBY_CFG_RC);
 
@@ -192,18 +196,18 @@ void clear_buffer(RadioConfig_t *config) {
 
 // Turn On/Off pins that interact with the RF Circuit, SX1261 Radio
 void ToggleAntSW(void){
-	const uint8_t ANT_SW = 1;
+	const uint8_t ANT_SW = 0;
 	//lora_config_out_write(lora_config_out_read() | (1 << ANT_SW ) );  // setting to 1
 	lora_config_out_write(lora_config_out_read() ^ (1 << ANT_SW ) );
 }
 
 void SetAntSW(void){
-	const uint8_t ANT_SW = 1;
+	const uint8_t ANT_SW = 0;
 	lora_config_out_write(lora_config_out_read() | (1 << ANT_SW ) );  // setting to 1
 }
 
 void ClearAntSW(void){
-	const uint8_t ANT_SW = 1;
+	const uint8_t ANT_SW = 0;
 	lora_config_out_write( lora_config_out_read() & ~(1 << ANT_SW) );  // set reset pin to 0
 
 }

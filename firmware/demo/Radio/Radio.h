@@ -10,9 +10,11 @@ extern "C" {
  * --- DEPENDENCIES ------------------------------------------------------------
  */
 #include <generated/csr.h>
+#include <irq.h>
 #include <stdint.h>
 #include <stdbool.h>
 #include <stdio.h>
+#include <dio1.h>
 #include "sx126x.h"
 #include "sx126x_hal.h"
 

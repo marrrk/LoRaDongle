@@ -200,9 +200,14 @@ class BaseSoC(SoCCore):
         self.submodules.lora_busy = gpio.GPIOIn(platform.request("lora_busy"))
         self.add_csr("lora_busy")
 
+        #DIO Input Interrupt ptin
+        self.submodules.dio1 = gpio.GPIOIn(platform.request("dio1"), with_irq = self.irq.enabled )
+        self.add_interrupt("dio1")
+        self.add_csr("dio1")
+
         #Output Pins
         #Combined Register names - differentiation of pins in software
-        lora_config = Cat(*[platform.request("lora_config", i) for i in range(3)])
+        lora_config = Cat(*[platform.request("lora_config", i) for i in range(2)])
         self.submodules.lora_config = gpio.GPIOOut(lora_config)
         self.add_csr("lora_config")
 

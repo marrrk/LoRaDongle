@@ -153,28 +153,30 @@ int main(void) {
 	#endif
 
     time_init();
-	time1_init();
+	//time1_init();
     uart_init();
-	//RadioInit(&context);
+	RadioInit(&context);
 	btn_init();
     help();
-    prompt();
-	console_service();
-    flicker();
+    //prompt();
+	//console_service();
 
-	//SetConfiguration(&context);
-	//ConfigureGeneralRadio(&context);
+	SetConfiguration(&context);
+	ConfigureGeneralRadio(&context);
 	//printf("Ping Pong test\n");
 
+
+    flicker();
+
     while (1) {
-        console_service();
+        //console_service();
 
 		//leds_out_write(!btn_in_read());
 
 		//PingPongTest();
 		
 		/**** Transmitting Test ****/
-		//transmit(&context, sizeof(send_message) , send_message_ptr); //send sizeof message which is 255 as opposed to strlen. for some reason strlen causes issues
+		transmit(&context, sizeof(send_message) , send_message_ptr); //send sizeof message which is 255 as opposed to strlen. for some reason strlen causes issues
 
 		
 		/***Receiving Test*****/		
@@ -194,7 +196,7 @@ int main(void) {
 			//printf("Value of receive message after reseting memory : %s\n", receive_message);
 		//}
 
-		//msleep(1000);
+		msleep(1000);
     }
 
     return 0;

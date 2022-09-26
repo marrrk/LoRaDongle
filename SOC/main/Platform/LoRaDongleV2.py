@@ -17,10 +17,15 @@ _io = [
     ("user_led", 0, Pins("37"),  IOStandard("LVCMOS33")),           #RX LED
     ("user_led", 1, Pins("36"),  IOStandard("LVCMOS33")),           #TX LED
 
+
+    #### When changing config pins, make sure to change the firmware as well. sx126x_hal.c and Radio.c uses these pins to set up radio
     #LoRa Configuration Pins
-    ("lora_config", 0, Pins("34"), IOStandard("LVCMOS33")),           #DIO1 ,  Output
-    ("lora_config", 1, Pins("35"), IOStandard("LVCMOS33")),           #ANT_SW, Output
-    ("lora_config", 2, Pins("31"), IOStandard("LVCMOS33")),           #RESET, Output
+    ("lora_config", 0, Pins("35"), IOStandard("LVCMOS33")),           #ANT_SW, Output
+    ("lora_config", 1, Pins("31"), IOStandard("LVCMOS33")),           #RESET, Output
+
+    #Dio Interrupt Pin
+    ("dio1", 0, Pins("34"), IOStandard("LVCMOS33")),          #DIO1, Input
+
 
     #BusyPin
     ("lora_busy", 0, Pins("32"), IOStandard("LVCMOS33")),          #Busy, Input
