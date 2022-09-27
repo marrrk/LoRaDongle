@@ -10,9 +10,6 @@
 #include <btn.h>
 
 
-
-RadioConfig_t context; 
-
 #define MESSAGE_SIZE  BUFFER_SIZE
 //uint8_t test_message[MESSAGE_SIZE] = {"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"};
 uint8_t send_message[MESSAGE_SIZE] = {"PING"};
@@ -151,24 +148,29 @@ int main(void) {
 		irq_setmask(0);
 		irq_setie(1);
 	#endif
-
+	int last_event = 0;
     time_init();
 	//time1_init();
     uart_init();
-	RadioInit(&context);
-	btn_init();
-    help();
+	//RadioInit(&context);
+	//btn_init();
+    //help();
     //prompt();
 	//console_service();
 
-	SetConfiguration(&context);
-	ConfigureGeneralRadio(&context);
+	//SetConfiguration(&context);
+	//ConfigureGeneralRadio(&context);
 	//printf("Ping Pong test\n");
 
 
     flicker();
-
+	int led_value;
     while (1) {
+		if (elapsed(&last_event, (CONFIG_CLOCK_FREQUENCY * 0.5))){
+				//transmit(&context, sizeof(send_message) , send_message_ptr); //send sizeof message which is 255 as opposed to strlen. for some reason strlen causes issues
+				led_value = leds_out_read();
+				leds_out_write(led_value ^ 1);
+		}
         //console_service();
 
 		//leds_out_write(!btn_in_read());
@@ -176,7 +178,7 @@ int main(void) {
 		//PingPongTest();
 		
 		/**** Transmitting Test ****/
-		transmit(&context, sizeof(send_message) , send_message_ptr); //send sizeof message which is 255 as opposed to strlen. for some reason strlen causes issues
+		//transmit(&context, sizeof(send_message) , send_message_ptr); //send sizeof message which is 255 as opposed to strlen. for some reason strlen causes issues
 
 		
 		/***Receiving Test*****/		
@@ -196,7 +198,7 @@ int main(void) {
 			//printf("Value of receive message after reseting memory : %s\n", receive_message);
 		//}
 
-		msleep(1000);
+		//msleep(1000);
     }
 
     return 0;

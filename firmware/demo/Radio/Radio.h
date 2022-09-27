@@ -36,7 +36,7 @@ typedef struct{
     uint32_t txTimeout;
     uint32_t rxTimeout;
 }RadioConfig_t;
-
+RadioConfig_t context; 
 
 // Sx126x user function Declarations
 void RadioInit(RadioConfig_t *config);
@@ -48,6 +48,8 @@ void PrepareBuffer(RadioConfig_t *config, uint8_t size, uint8_t *message);
 void set_to_transmit(RadioConfig_t *config);
 void set_to_receive(RadioConfig_t *config);
 void get_payload(RadioConfig_t *config, uint8_t size, uint8_t *message);
+void get_radio_irq_status(void);
+
 
 void transmit(RadioConfig_t *config, uint8_t size, uint8_t *message);
 void receive(RadioConfig_t *config, uint8_t size, uint8_t *message);

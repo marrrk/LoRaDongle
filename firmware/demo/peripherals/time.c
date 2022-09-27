@@ -13,6 +13,8 @@ void time_init(void)
 	timer0_reload_write(t);
 	timer0_load_write(t);
 	timer0_en_write(1);
+
+	
 }
 
 void time1_init(void){

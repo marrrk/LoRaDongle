@@ -194,6 +194,14 @@ void clear_buffer(RadioConfig_t *config) {
 	sx126x_write_buffer(config, 0x00, pWrite, 255);
 }
 
+void get_radio_irq_status(void) {
+	sx126x_irq_mask_t status;
+	sx126x_get_irq_status(&context, &status);
+
+	//sx126x_clear_irq_status(&context, status);
+	//printf("Status: %d\n", status);
+}
+
 // Turn On/Off pins that interact with the RF Circuit, SX1261 Radio
 void ToggleAntSW(void){
 	const uint8_t ANT_SW = 0;
