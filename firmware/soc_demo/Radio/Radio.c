@@ -109,10 +109,15 @@ void ConfigureGeneralRadio(RadioConfig_t *config){
 	// set interrupt mode
 }
 
+void wait_for_available(void){
+	uint16_t irqcad_detect = SX126X_IRQ_CAD_DETECTED | SX126X_IRQ_TIMEOUT;
+	sx126x_set_dio_irq_params(&context, irqcad_detect, irqcad_detect , SX126X_IRQ_NONE, SX126X_IRQ_NONE);
+
+}
+
 void ConfigureTx(RadioConfig_t *config){
 	sx126x_set_dio_irq_params(config, config->irqTx, config->irqTx, SX126X_IRQ_NONE, SX126X_IRQ_NONE);
 }
-
 
 void ConfigureRx(RadioConfig_t *config){
 	sx126x_set_dio_irq_params(config, config->irqRx, config->irqRx, SX126X_IRQ_NONE, SX126X_IRQ_NONE);

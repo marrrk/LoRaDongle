@@ -148,13 +148,13 @@ int main(void) {
 		irq_setmask(0);
 		irq_setie(1);
 	#endif
-	int last_event = 0;
+
     time_init();
 	//time1_init();
     uart_init();
 	//RadioInit(&context);
-	//btn_init();
-    //help();
+	btn_init();
+    help();
     //prompt();
 	//console_service();
 
@@ -164,41 +164,20 @@ int main(void) {
 
 
     flicker();
-	int led_value;
     while (1) {
-		if (elapsed(&last_event, (CONFIG_CLOCK_FREQUENCY * 0.5))){
-				//transmit(&context, sizeof(send_message) , send_message_ptr); //send sizeof message which is 255 as opposed to strlen. for some reason strlen causes issues
-				led_value = leds_out_read();
-				leds_out_write(led_value ^ 1);
-		}
         //console_service();
-
-		//leds_out_write(!btn_in_read());
-
 		//PingPongTest();
+		wait_for_available();
 		
 		/**** Transmitting Test ****/
 		//transmit(&context, sizeof(send_message) , send_message_ptr); //send sizeof message which is 255 as opposed to strlen. for some reason strlen causes issues
 
 		
 		/***Receiving Test*****/		
-		//uint8_t message_length = strlen((const char*)send_message);
-		//printf("strlen(): %d,  sizeof():  %d\n",message_length, sizeof(send_message));
-
 		//receive(&context, sizeof(send_message), receive_message_ptr);
 		//printf("Received message: %s\n", receive_message);
-		//printf("strlen(): %d,  sizeof():  %d\n",strlen((char *)receive_message), sizeof(receive_message));
-		
-		//if (strcmp( (char*)receive_message, "PING") == 0) {
-		//	printf("Message received: %s\n",receive_message);
-			//printf("Value of receive message after conditional: %s\n", receive_message);
-		//	transmit(&context, sizeof(respond_message) , respond_message_ptr);
-		//	clear_buffer(&context);
-			//memset(receive_message,0,strlen((char*)receive_message));
-			//printf("Value of receive message after reseting memory : %s\n", receive_message);
-		//}
 
-		//msleep(1000);
+		//msleep(500);
     }
 
     return 0;

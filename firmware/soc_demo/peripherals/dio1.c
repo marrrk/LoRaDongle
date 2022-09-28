@@ -19,7 +19,7 @@ void dio1_isr(void) {
      *  Required function should clear the IRQ thing.
     **/
     //for now just read and clear.
-    get_radio_irq_status();
+    get_radio_irq_status(); //function that gets the dio_irq status and decides what to do!
 
     dio1_ev_enable_write(1);
 }

@@ -50,6 +50,7 @@ void set_to_receive(RadioConfig_t *config);
 void get_payload(RadioConfig_t *config, uint8_t size, uint8_t *message);
 void get_radio_irq_status(void);
 
+void wait_for_available(void);
 
 void transmit(RadioConfig_t *config, uint8_t size, uint8_t *message);
 void receive(RadioConfig_t *config, uint8_t size, uint8_t *message);
