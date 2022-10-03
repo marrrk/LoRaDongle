@@ -197,8 +197,9 @@ void get_radio_irq_status(void) {
 	sx126x_irq_mask_t status;
 	sx126x_get_irq_status(&context, &status);
 
-	sx126x_clear_irq_status(&context, 0xFF);
-	printf("Status: %d\n", status);
+	sx126x_irq_mask_t clear_mask = SX126X_IRQ_ALL;
+	sx126x_clear_irq_status(&context, clear_mask);
+	printf("Status: %x\n", status);
 }
 
 // Turn On/Off pins that interact with the RF Circuit, SX1261 Radio

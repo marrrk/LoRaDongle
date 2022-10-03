@@ -188,8 +188,12 @@ void clear_buffer(RadioConfig_t *config) {
 void get_radio_irq_status(void) {
 	sx126x_irq_mask_t status;
 	sx126x_get_irq_status(&context, &status);
-	printf("Status: %x\n", status);
+	//printf("Status: %x\n", status);
 	
+	sx126x_irq_mask_t clear_mask = SX126X_IRQ_ALL;
+	sx126x_clear_irq_status(&context, clear_mask);
+
+
 	if (status & SX126X_IRQ_RX_DONE) {
 		printf("Rx Done!\n");
 		sx126x_clear_irq_status(&context, SX126X_IRQ_RX_DONE);
@@ -198,9 +202,8 @@ void get_radio_irq_status(void) {
 
 	if (status & SX126X_IRQ_PREAMBLE_DETECTED) {
 		printf("Preamble detected\n");
-			sx126x_clear_irq_status(&context, SX126X_IRQ_PREAMBLE_DETECTED);
+		sx126x_clear_irq_status(&context, SX126X_IRQ_PREAMBLE_DETECTED);
 	}
-	sx126x_clear_irq_status(&context, 0xFF);
 }
 
 // Turn On/Off pins that interact with the RF Circuit, SX1261 Radio

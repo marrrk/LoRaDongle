@@ -161,6 +161,7 @@ int main(void) {
 	SetConfiguration(&context);
 	ConfigureGeneralRadio(&context);
 	//printf("Ping Pong test\n");
+	//receive(&context, sizeof(send_message), receive_message_ptr);
 
     flicker();
     while (1) {
@@ -169,7 +170,9 @@ int main(void) {
 		//wait_for_available();
 		
 		/***Receiving Test*****/		
-		receive(&context, sizeof(send_message), receive_message_ptr);
+		//receive(&context, sizeof(send_message), receive_message_ptr);
+		ConfigureRx(&context);
+		set_to_receive(&context);
 		//printf("Received message: %s\n", receive_message);
 
 		//msleep(500);
