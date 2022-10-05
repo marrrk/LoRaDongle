@@ -10,9 +10,10 @@ nav_order: 1
 
 LoRaDongle is a project that aims to merge the Open Source ISA Risc-V with the wireless modulation protocol LoRa.
 
-Currently, the first prototype is in development in which various different tools and systems are brought together to build the project. The prototype is executed on a custom PCB that is populated with a Low Power Lattice FPGA - the iCE40UP5k that houses a softcore SoC.  On the same board, a SX1261 LoRa transeiver is populated and configured to transmit at 868MHz.
+Currently, the second prototype is in development in which various different tools and systems are brought together to build the project.
+The project is executed on a custom PCB that is populated with a Low Power Lattice FPGA - the iCE40UP5k that houses a softcore SoC.  On the same board, a SX1261 LoRa transeiver is populated and configured to transmit at 868MHz.
 
-The two prototypes and therefore design evolution pictured below.
+The two prototypes and therefore design evolution are pictured below.
 <div>
     <img src="assets/images/LoRaDongle_Versions.JPG" alt="LoRaDongle Versions" width="100%">
 </div>
