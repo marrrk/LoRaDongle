@@ -279,7 +279,6 @@ def flash(build_dir, build_name, bios_flash_offset):
 
 def main():
     parser = argparse.ArgumentParser(description="LiteX SoC on LoRaDongle")
-    parser.add_argument("--build", action="store_true", help="Build SoC")
     parser.add_argument("--cpu", default="picorv32", help="Select CPY type")
     parser.add_argument("--flash-offset", default=0x20000, help="Boot offset in SPI Flash")
     parser.add_argument("--sys-clk-freq", type=float, default=21e6, help="Select system clock frequency")
@@ -312,9 +311,8 @@ def main():
     builder_kwargs["csr_csv"] = "build/csr.csv"
     builder = Builder(soc, **builder_kwargs)
 
-    if args.build:
-        builder.build()
-        lxsocdoc.generate_docs(soc, "build/documentation/", project_name="LoRaDongle SOC")
+    builder.build()
+    lxsocdoc.generate_docs(soc, "build/documentation/", project_name="LoRaDongle SOC")
 
     # If requested load the resulting bitstream onto the LoRaDongle
     if args.flash:
