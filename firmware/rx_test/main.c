@@ -9,9 +9,13 @@
 #include "Radio.h"
 #include <btn.h>
 
+typedef enum {
+	LISTEN,
+	READ_DATA,
+} receive_states_t;
+volatile receive_states_t state = LISTEN;
 
 #define MESSAGE_SIZE  BUFFER_SIZE
-//uint8_t test_message[MESSAGE_SIZE] = {"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"};
 uint8_t send_message[MESSAGE_SIZE] = {"PING"};
 uint8_t receive_message[MESSAGE_SIZE] = {};
 uint8_t *send_message_ptr = send_message;
@@ -154,28 +158,36 @@ int main(void) {
     uart_init();
 	RadioInit(&context);
 	btn_init();
-    help();
+    //help();
     //prompt();
 	//console_service();
 
 	SetConfiguration(&context);
 	ConfigureGeneralRadio(&context);
 	//printf("Ping Pong test\n");
-	//receive(&context, sizeof(send_message), receive_message_ptr);
 
     flicker();
     while (1) {
-        //console_service();
-		//PingPongTest();
-		//wait_for_available();
-		
-		/***Receiving Test*****/		
-		//receive(&context, sizeof(send_message), receive_message_ptr);
-		ConfigureRx(&context);
-		set_to_receive(&context);
-		//printf("Received message: %s\n", receive_message);
+		switch(state){
+			case LISTEN: {
+				ConfigureRx(&context);
+				set_to_receive(&context);
+				// check for a radio flag!
+				if (radioflags.rxDone == true) {
+					radioflags.rxDone = false;
+					state = READ_DATA;
+				}
+				break;
+			}
 
-		//msleep(500);
+			case READ_DATA: {
+				get_payload(&context, sizeof(send_message), receive_message_ptr);
+				printf("%s\n", receive_message);
+				state = LISTEN;
+				break;
+			}
+		}
+		
     }
 
     return 0;

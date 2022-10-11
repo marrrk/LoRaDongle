@@ -3,14 +3,10 @@
 # This file is Copyright (c) 2019 Sean Cross <sean@xobs.io>
 # This file is Copyright (c) 2018 David Shah <dave@ds0.me>
 # This file is Copyright (c) 2020 Piotr Esden-Tempski <piotr@esden.net>
+# This file is Copyright (c) 2022 Mark Njoroge <marksnjoroge@gmail.com>
 # License: BSD
 
-# This target was originally based on the Fomu target.
-
-# This variable defines all the external programs that this module
-# relies on.  lxbuildenv reads this variable in order to ensure
-# the build will finish without exiting due to missing third-party
-# programs.
+# This target was derived from the icebreaker-litex-examples SOC
 
 import argparse
 from os import path

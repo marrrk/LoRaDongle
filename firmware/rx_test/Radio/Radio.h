@@ -38,6 +38,13 @@ typedef struct{
 }RadioConfig_t;
 RadioConfig_t context; 
 
+typedef struct{
+	bool rxDone;
+	bool rxError;
+	bool rxTimeout;
+}RadioFlags_t;
+RadioFlags_t radioflags;
+
 // Sx126x user function Declarations
 void RadioInit(RadioConfig_t *config);
 void SetConfiguration(RadioConfig_t *config);

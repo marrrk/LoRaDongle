@@ -75,6 +75,11 @@ void RadioInit(RadioConfig_t *config){
 	sx126x_set_dio2_as_rf_sw_ctrl(config, true);  
 
 	sx126x_set_pkt_type(config, SX126X_PKT_TYPE_LORA);
+
+	radioflags.rxDone = false;
+	radioflags.rxError = false;
+	radioflags.rxTimeout = false;
+
 }
 
 void SetConfiguration(RadioConfig_t *config){
@@ -195,13 +200,14 @@ void get_radio_irq_status(void) {
 
 
 	if (status & SX126X_IRQ_RX_DONE) {
-		printf("Rx Done!\n");
+		//printf("Rx Done!\n");
 		sx126x_clear_irq_status(&context, SX126X_IRQ_RX_DONE);
 		//deal with received message
 	}
 
 	if (status & SX126X_IRQ_PREAMBLE_DETECTED) {
-		printf("Preamble detected\n");
+		radioflags.rxDone = true;
+		//printf("Preamble detected\n");
 		sx126x_clear_irq_status(&context, SX126X_IRQ_PREAMBLE_DETECTED);
 	}
 }
