@@ -13,7 +13,7 @@ void dio1_init(void){
 
 void dio1_isr(void) {
     dio1_ev_pending_write(1);
-    printf("DIO1 Interrupt!\n");
+    //printf("DIO1 Interrupt!\n");
     /** Want to clear interrupt in the LoRa radio
      *  Read the IRQ status register of the lora radio and call required function.
      *  Required function should clear the IRQ thing.

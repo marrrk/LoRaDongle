@@ -11,8 +11,7 @@
 
 
 #define MESSAGE_SIZE  BUFFER_SIZE
-//uint8_t test_message[MESSAGE_SIZE] = {"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"};
-uint8_t send_message[MESSAGE_SIZE] = {"PING"};
+uint8_t send_message[MESSAGE_SIZE] = {"PING "};
 uint8_t receive_message[MESSAGE_SIZE] = {};
 uint8_t *send_message_ptr = send_message;
 uint8_t *receive_message_ptr = receive_message;
@@ -149,33 +148,27 @@ int main(void) {
 		irq_setie(1);
 	#endif
 
+	int count = 0;
+	uint8_t str_count[100];
+	uint8_t *str_count_ptr = str_count;
     time_init();
 	//time1_init();
     uart_init();
 	RadioInit(&context);
 	btn_init();
-    help();
-    //prompt();
-	//console_service();
+	console_service();
 
 	SetConfiguration(&context);
 	ConfigureGeneralRadio(&context);
-	//printf("Ping Pong test\n");
-
 
     flicker();
     while (1) {
-        //console_service();
-		//PingPongTest();
-		//wait_for_available();
-		
 		/**** Transmitting Test ****/
-		transmit(&context, sizeof(send_message) , send_message_ptr); //send sizeof message which is 255 as opposed to strlen. for some reason strlen causes issues
-
+		//sprintf(str_count, "%d", count++);
+		//transmit(&context, sizeof(str_count) , str_count_ptr); //send sizeof message which is 255 as opposed to strlen. for some reason strlen causes issues
+		//printf("%s\n", str_count);
 		
-		/***Receiving Test*****/		
-		//receive(&context, sizeof(send_message), receive_message_ptr);
-		//printf("Received message: %s\n", receive_message);
+		transmit(&context, sizeof(send_message) , send_message_ptr); //send sizeof message which is 255 as opposed to strlen. for some reason strlen causes issues
 
 		msleep(500);
     }
