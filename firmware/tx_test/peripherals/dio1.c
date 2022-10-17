@@ -6,7 +6,7 @@
 #include <sx126x.h>
 #include <Radio.h>
 
-
+#ifdef DIO1_INTERRUPT
 void dio1_init(void){
 	irq_setmask(irq_getmask() | (1 << DIO1_INTERRUPT));
 	dio1_ev_enable_write(1);}
@@ -23,3 +23,4 @@ void dio1_isr(void) {
 
     dio1_ev_enable_write(1);
 }
+#endif

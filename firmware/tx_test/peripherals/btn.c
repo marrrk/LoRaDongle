@@ -4,7 +4,7 @@
 #include <btn.h>
 #include <time.h>   // for timing functions
 
-
+#ifdef BTN_INTERRUPT
 void btn_init(void){
     unsigned int mask; //can be done in one line, look at UART stuff
     mask = irq_getmask();
@@ -21,3 +21,4 @@ void btn_isr(void) {
 
     btn_ev_enable_write(1);
 }
+#endif

@@ -107,7 +107,6 @@ static void help(void) {
 	puts("reboot			- Reboots CPU");
 	puts("spi_test		- SPI Loopback Test");
 	puts("led_demo		- Flickers LEDs");
-	puts("getmask			- prints irq mask");
 }
 
 static void console_service(void) {
@@ -125,14 +124,6 @@ static void console_service(void) {
 		flicker();
 	else if (strcmp(token, "spi_test") == 0)
 		test_loopback(0xa5);
-	else if (strcmp(token,"getmask") == 0) {
-		printf("IRQ Mask Value: %d\n", irq_getmask());
-		printf("The value of btn_ev_enable is: %lx\n", btn_ev_enable_read());
-		printf("The value of btn_mode is :    %lx\n", btn_mode_read());
-		printf("The value of btn_edge is:     %lx\n", btn_edge_read());
-		printf("The value of btn_ev_status is:   %lx\n", btn_ev_status_read());
-		printf("The value of btn_ev_pending is:   %lx\n", btn_ev_pending_read());
-	}
 
 #ifdef CSR_LEDS_BASE
 
@@ -148,29 +139,45 @@ int main(void) {
 		irq_setie(1);
 	#endif
 
-	int count = 0;
-	uint8_t str_count[100];
-	uint8_t *str_count_ptr = str_count;
+	//int count = 0;
+	//uint8_t str_count[100];
+	//uint8_t *str_count_ptr = str_count;
     time_init();
-	//time1_init();
+	time1_init();
     uart_init();
 	RadioInit(&context);
-	btn_init();
+	//btn_init();
 	console_service();
 
 	SetConfiguration(&context);
 	ConfigureGeneralRadio(&context);
 
     flicker();
+
     while (1) {
 		/**** Transmitting Test ****/
 		//sprintf(str_count, "%d", count++);
 		//transmit(&context, sizeof(str_count) , str_count_ptr); //send sizeof message which is 255 as opposed to strlen. for some reason strlen causes issues
 		//printf("%s\n", str_count);
 		
-		transmit(&context, sizeof(send_message) , send_message_ptr); //send sizeof message which is 255 as opposed to strlen. for some reason strlen causes issues
+		//transmit(&context, sizeof(send_message) , send_message_ptr); //send sizeof message which is 255 as opposed to strlen. for some reason strlen causes issues
+		leds_out_write(0b10);
+		PrepareBuffer(&context, sizeof(send_message), send_message_ptr);
+		ConfigureTx(&context);
+		set_to_transmit(&context);
+		leds_out_write(0b00);
+		
+		if (radioflags.txDone == true) {
+			radioflags.txDone = false;
+		}
 
-		msleep(500);
+		msleep(1000);
+
+		/*if (elapsed(&last_event, (CONFIG_CLOCK_FREQUENCY * 0.5))){
+			led_value = leds_out_read();
+			leds_out_write(led_value ^ 1);
+		}*/
+
     }
 
     return 0;

@@ -12,6 +12,7 @@
 typedef enum {
 	LISTEN,
 	READ_DATA,
+	RESPOND,
 } receive_states_t;
 volatile receive_states_t state = LISTEN;
 
@@ -181,10 +182,27 @@ int main(void) {
 			}
 
 			case READ_DATA: {
-				get_payload(&context, sizeof(send_message), receive_message_ptr);
+				get_payload(&context, 4, receive_message_ptr);
 				printf("%s\n", receive_message);
+				if (strncmp((const char *)send_message, (const char *)receive_message, 4) == 0){
+					state = RESPOND;
+					//state = LISTEN;
+				} else {
+					state = LISTEN;
+				}
+				break;
+			}
+
+			case RESPOND: {
+				leds_out_write(0b10);
+				PrepareBuffer(&context, sizeof(respond_message), respond_message_ptr);
+				ConfigureTx(&context);
+				set_to_transmit(&context);
+				leds_out_write(0b00);
+				//clear_buffer(&context);
 				state = LISTEN;
 				break;
+
 			}
 		}
 		

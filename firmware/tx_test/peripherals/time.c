@@ -3,20 +3,8 @@
 #include <time.h>
 #include <irq.h>
 
-void time_init(void)
-{
-	int t;
-	t = 2 * CONFIG_CLOCK_FREQUENCY;
 
-	/** Initialising timer0, for system functions **/
-	timer0_en_write(0);
-	timer0_reload_write(t);
-	timer0_load_write(t);
-	timer0_en_write(1);
-
-	
-}
-
+#ifdef TIMER1_INTERRUPT
 void time1_init(void){
 	int t;
 	t = CONFIG_CLOCK_FREQUENCY;
@@ -31,9 +19,9 @@ void time1_init(void){
 	timer1_en_write(1);
 	
 	// Enabling the interrupt
-	timer1_ev_pending_write(timer1_ev_pending_read());
-	timer1_ev_enable_write(1);
-	irq_setmask(irq_getmask() | (1 << TIMER1_INTERRUPT));
+	//timer1_ev_pending_write(timer1_ev_pending_read());
+	//timer1_ev_enable_write(1);
+	//irq_setmask(irq_getmask() | (1 << TIMER1_INTERRUPT));
 }
 
 
@@ -41,6 +29,21 @@ void timer1_isr(void){
 	timer1_ev_pending_write(1);
 	//printf("Timer has elapsed!\n");
 	timer1_ev_enable_write(1);
+}
+#endif
+
+void time_init(void)
+{
+	int t;
+	t = 2 * CONFIG_CLOCK_FREQUENCY;
+
+	/** Initialising timer0, for system functions **/
+	timer0_en_write(0);
+	timer0_reload_write(t);
+	timer0_load_write(t);
+	timer0_en_write(1);
+
+	
 }
 
 int elapsed(int *last_event, int period)

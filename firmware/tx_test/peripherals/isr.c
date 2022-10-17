@@ -39,7 +39,7 @@ void isr(void)
 #ifdef TIMER1_INTERRUPT
 	if (irqs & (1 << TIMER1_INTERRUPT)){
 		//timer1_isr();
-		printf("Interrupt reached\n");
+		//printf("Interrupt reached\n");
 	}
 #endif
 #endif

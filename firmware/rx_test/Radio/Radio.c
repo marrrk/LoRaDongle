@@ -79,6 +79,8 @@ void RadioInit(RadioConfig_t *config){
 	radioflags.rxDone = false;
 	radioflags.rxError = false;
 	radioflags.rxTimeout = false;
+	radioflags.txDone = false;
+
 
 }
 

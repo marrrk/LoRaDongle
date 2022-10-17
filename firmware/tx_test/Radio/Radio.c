@@ -64,8 +64,10 @@ void RadioInit(RadioConfig_t *config){
 	*/
 	sx126x_reset(config);
 
+	#ifdef DIO1_INTERRUPT
 	// Initialising DIO Interrupt Pin in CPU
 	dio1_init();
+	#endif
 
 
 	sx126x_wakeup(config);
@@ -75,6 +77,11 @@ void RadioInit(RadioConfig_t *config){
 	sx126x_set_dio2_as_rf_sw_ctrl(config, true);  
 
 	sx126x_set_pkt_type(config, SX126X_PKT_TYPE_LORA);
+
+	radioflags.rxDone = false;
+	radioflags.rxError = false;
+	radioflags.rxTimeout = false;
+	radioflags.txDone = false;
 }
 
 void SetConfiguration(RadioConfig_t *config){
@@ -200,6 +207,19 @@ void get_radio_irq_status(void) {
 	sx126x_irq_mask_t clear_mask = SX126X_IRQ_ALL;
 	sx126x_clear_irq_status(&context, clear_mask);
 	//printf("Status: %x\n", status);
+
+	if (status & SX126X_IRQ_TX_DONE) {
+		sx126x_clear_irq_status(&context, SX126X_IRQ_TX_DONE);
+		radioflags.txDone = true;
+		printf("TX DONE\n");
+	}
+
+	if (status & SX126X_IRQ_TX_DONE) {
+		sx126x_clear_irq_status(&context, SX126X_IRQ_TX_DONE);
+		radioflags.txDone = true;
+		printf("TX DONE\n");
+	}
+
 }
 
 // Turn On/Off pins that interact with the RF Circuit, SX1261 Radio
@@ -220,7 +240,7 @@ void ClearAntSW(void){
 
 }
 
-void ToggleDio1(void){
+void ToggleDio1(void){ //UNUSED BC INPUT PIN
 	const uint8_t DIO1 = 0;
     //lora_config_out_write(lora_config_out_read() | (1 << DIO1) );  // setting to 1
 	lora_config_out_write(lora_config_out_read() ^ (1 << DIO1 ) );
