@@ -174,7 +174,8 @@ class BaseSoC(SoCCore):
         #Adding Timer for Tests
         from litex.soc.cores.timer import Timer
         self.submodules.timer1 = Timer()
-        self.add_interrupt("timer1")
+        if cpu != "serv":
+            self.add_interrupt("timer1")
         self.add_csr("timer1")
 
 
@@ -186,7 +187,8 @@ class BaseSoC(SoCCore):
 
         #Input Button Interrupt
         self.submodules.btn = gpio.GPIOIn(platform.request("btn"), with_irq = self.irq.enabled )
-        self.add_interrupt("btn")
+        if cpu != "serv":
+            self.add_interrupt("btn")
         self.add_csr("btn")
 
 
@@ -198,7 +200,8 @@ class BaseSoC(SoCCore):
 
         #DIO Input Interrupt ptin
         self.submodules.dio1 = gpio.GPIOIn(platform.request("dio1"), with_irq = self.irq.enabled )
-        self.add_interrupt("dio1")
+        if cpu != "serv":
+            self.add_interrupt("dio1")
         self.add_csr("dio1")
 
         #Output Pins
@@ -263,13 +266,6 @@ class BaseSoC(SoCCore):
         ]
 
 
-# Flash --------------------------------------------------------------------------------------------
-
-def flash(build_dir, build_name, bios_flash_offset):
-    #from litex.build.lattice.programmer import IceStormProgrammer
-    prog = IceStormProgrammer()
-    #prog.flash(bios_flash_offset, f"{build_dir}/software/bios/bios.bin")
-    prog.flash(0x00000000,        f"{build_dir}/gateware/{build_name}.bin")
 
 # Build --------------------------------------------------------------------------------------------
 
@@ -313,7 +309,6 @@ def main():
     # If requested load the resulting bitstream onto the LoRaDongle
     if args.flash:
         IceStormProgrammer().flash(0x00000000, path.join(builder.gateware_dir,"{}.bin".format(soc.build_name)))
-        #flash(builder.output_dir, soc.build_name, args.flash_offset)
 
 if __name__ == "__main__":
     main()
