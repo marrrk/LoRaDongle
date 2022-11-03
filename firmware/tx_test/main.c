@@ -10,8 +10,15 @@
 #include <btn.h>
 
 
+typedef enum {
+	SEND,
+	WAIT_SEND_DONE,
+	SLEEP
+} receive_states_t;
+volatile receive_states_t state = SEND;
+
 #define MESSAGE_SIZE  BUFFER_SIZE
-uint8_t send_message[MESSAGE_SIZE] = {"PING "};
+uint8_t send_message[MESSAGE_SIZE] = {"PING\0"};
 uint8_t receive_message[MESSAGE_SIZE] = {};
 uint8_t *send_message_ptr = send_message;
 uint8_t *receive_message_ptr = receive_message;
@@ -155,25 +162,49 @@ int main(void) {
     flicker();
 
     while (1) {
+		switch (state) {
+			case SEND: {
+				//printf("Size of message to send: %d\n", strlen((char *)send_message));
+				leds_out_write(0b10);
+				PrepareBuffer(&context, strlen((char *)send_message), send_message_ptr);
+				ConfigureTx(&context);
+				set_to_transmit(&context);
+				leds_out_write(0b00);
+				state = WAIT_SEND_DONE;
+				break;
+			}
+			case WAIT_SEND_DONE: {
+				if (RadioFlags.txDone == true) {
+					//printf("In state Done\n");
+					RadioFlags.txDone = false;
+					state = SEND;
+				}
+				break;			
+			}
+			case SLEEP: {
+					printf("In state sleep\n");
+					msleep(1000);			//sleep is lasting as expected, seems like time it takes to respond is kinda 
+					printf("Sleep stop\n");
+					state = SEND;
+					break;
+			}	
+		}
+
+
 		/**** Transmitting Test ****/
 		//sprintf(str_count, "%d", count++);
 		//transmit(&context, sizeof(str_count) , str_count_ptr); //send sizeof message which is 255 as opposed to strlen. for some reason strlen causes issues
 		//printf("%s\n", str_count);
 		
 		//transmit(&context, sizeof(send_message) , send_message_ptr); //send sizeof message which is 255 as opposed to strlen. for some reason strlen causes issues
-		leds_out_write(0b10);
-		PrepareBuffer(&context, sizeof(send_message), send_message_ptr);
-		ConfigureTx(&context);
-		set_to_transmit(&context);
-		leds_out_write(0b00);
+		//testing out the sleep function
 		
-		if (radioflags.txDone == true) {
-			radioflags.txDone = false;
-		}
 
-		msleep(1000);
+		
 
-		/*if (elapsed(&last_event, (CONFIG_CLOCK_FREQUENCY * 0.5))){
+
+
+		/*if (elapsed(&last_event, (CONFIG_CLOCK_FREQUENCY * 0.5))){ //doesn't work for some reason
 			led_value = leds_out_read();
 			leds_out_write(led_value ^ 1);
 		}*/

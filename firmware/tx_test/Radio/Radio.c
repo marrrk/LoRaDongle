@@ -78,10 +78,10 @@ void RadioInit(RadioConfig_t *config){
 
 	sx126x_set_pkt_type(config, SX126X_PKT_TYPE_LORA);
 
-	radioflags.rxDone = false;
-	radioflags.rxError = false;
-	radioflags.rxTimeout = false;
-	radioflags.txDone = false;
+	RadioFlags.rxDone = false;
+	RadioFlags.rxError = false;
+	RadioFlags.Timeout = false;
+	RadioFlags.txDone = false;
 }
 
 void SetConfiguration(RadioConfig_t *config){
@@ -210,14 +210,13 @@ void get_radio_irq_status(void) {
 
 	if (status & SX126X_IRQ_TX_DONE) {
 		sx126x_clear_irq_status(&context, SX126X_IRQ_TX_DONE);
-		radioflags.txDone = true;
-		printf("TX DONE\n");
+		RadioFlags.txDone = true;
+		//printf("TX DONE\n");
 	}
 
-	if (status & SX126X_IRQ_TX_DONE) {
-		sx126x_clear_irq_status(&context, SX126X_IRQ_TX_DONE);
-		radioflags.txDone = true;
-		printf("TX DONE\n");
+	if (status & SX126X_IRQ_TIMEOUT) {
+		sx126x_clear_irq_status(&context, SX126X_IRQ_TIMEOUT);
+		//printf("Timeout Occurred\n");
 	}
 
 }
