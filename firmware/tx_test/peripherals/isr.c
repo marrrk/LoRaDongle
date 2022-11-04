@@ -38,7 +38,7 @@ void isr(void)
 #ifdef CSR_TIMER1_BASE
 #ifdef TIMER1_INTERRUPT
 	if (irqs & (1 << TIMER1_INTERRUPT)){
-		//timer1_isr();
+		timer1_isr();
 		//printf("Interrupt reached\n");
 	}
 #endif

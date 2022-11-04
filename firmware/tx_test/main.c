@@ -150,7 +150,7 @@ int main(void) {
 	//uint8_t str_count[100];
 	//uint8_t *str_count_ptr = str_count;
     time_init();
-	time1_init();
+	timer1_init();
     uart_init();
 	RadioInit(&context);
 	//btn_init();
@@ -163,8 +163,10 @@ int main(void) {
 
     while (1) {
 		switch (state) {
+			//case IDLE: { waiting for an input, low_power() mode? . for now, input decided by timer isr.  }
 			case SEND: {
 				//printf("Size of message to send: %d\n", strlen((char *)send_message));
+				timer1_reset();
 				leds_out_write(0b10);
 				PrepareBuffer(&context, strlen((char *)send_message), send_message_ptr);
 				ConfigureTx(&context);
@@ -176,38 +178,24 @@ int main(void) {
 			case WAIT_SEND_DONE: {
 				if (RadioFlags.txDone == true) {
 					//printf("In state Done\n");
+					//get_time_elapsed();
 					RadioFlags.txDone = false;
-					state = SEND;
+					state = SLEEP;
 				}
 				break;			
 			}
 			case SLEEP: {
-					printf("In state sleep\n");
+					//printf("In state sleep\n");
+					//get_time_elapsed();
 					msleep(1000);			//sleep is lasting as expected, seems like time it takes to respond is kinda 
-					printf("Sleep stop\n");
+					get_time_elapsed();
+					//printf("Sleep stop\n");
 					state = SEND;
 					break;
 			}	
 		}
 
 
-		/**** Transmitting Test ****/
-		//sprintf(str_count, "%d", count++);
-		//transmit(&context, sizeof(str_count) , str_count_ptr); //send sizeof message which is 255 as opposed to strlen. for some reason strlen causes issues
-		//printf("%s\n", str_count);
-		
-		//transmit(&context, sizeof(send_message) , send_message_ptr); //send sizeof message which is 255 as opposed to strlen. for some reason strlen causes issues
-		//testing out the sleep function
-		
-
-		
-
-
-
-		/*if (elapsed(&last_event, (CONFIG_CLOCK_FREQUENCY * 0.5))){ //doesn't work for some reason
-			led_value = leds_out_read();
-			leds_out_write(led_value ^ 1);
-		}*/
 
     }
 
