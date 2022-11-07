@@ -156,7 +156,7 @@ void get_payload(RadioConfig_t *config, uint8_t size, uint8_t *message){
 	sx126x_get_rx_buffer_status(config, &buf_status);
 
 	if (buf_status.pld_len_in_bytes > 0) {
-		sx126x_read_buffer(config, buf_status.buffer_start_pointer, message, buf_status.pld_len_in_bytes);
+		sx126x_read_buffer(config, buf_status.buffer_start_pointer, message, size);
 
 	} //else {printf("Nothing Received\n");}
 

@@ -26,11 +26,9 @@ uint8_t *receive_message_ptr = receive_message;
 uint8_t respond_message[MESSAGE_SIZE] = {"PONG"};
 uint8_t *respond_message_ptr = respond_message;
 
-const uint8_t mode = 1;  // 0 for master, 1 for slave. used in ping pong test
 
 // Function declarations
 void flicker(void);
-void PingPongTest(void);
 void ping_counter(void);
 
 /*
@@ -178,7 +176,7 @@ int main(void) {
 			case WAIT_SEND_DONE: {
 				if (RadioFlags.txDone == true) {
 					//printf("In state Done\n");
-					//get_time_elapsed();
+					get_time_elapsed();
 					RadioFlags.txDone = false;
 					state = SLEEP;
 				}
@@ -188,7 +186,7 @@ int main(void) {
 					//printf("In state sleep\n");
 					//get_time_elapsed();
 					msleep(1000);			//sleep is lasting as expected, seems like time it takes to respond is kinda 
-					get_time_elapsed();
+					//get_time_elapsed();
 					//printf("Sleep stop\n");
 					state = SEND;
 					break;
@@ -216,42 +214,6 @@ void flicker(void) {
             leds_out_write(x | buf << 2);
         }
         leds_out_write(0);
-}
-
-
-
-void PingPongTest(void) {
-	//uint8_t message_length = strlen((const char*)send_message);
-	//printf("%d\n",message_length);
-
-	if (mode == 0){
-		transmit(&context, sizeof(send_message) , send_message_ptr);
-		//printf("Transmitting: %s\n", send_message);
-		//ConfigureRx(&context);		
-
-		//receive(&context, sizeof(send_message), receive_message_ptr);
-		//clear_buffer(&context);
-		if (strcmp((const char*)receive_message, "PONG") == 0) {
-			printf("Received!: %s\n", receive_message);
-		}
-		//if (strlen((const char*)receive_message) == 0){ //infinite loop, source of error
-		//	receive(&context, message_length, receive_message_ptr);
-		//	if (strcmp((const char*)receive_message, "PONG") == 0) {
-		//		printf("Received:   %s\n", receive_message);
-			//} //else printf("Message received error\n");
-		
-	} 
-	else if (mode == 1) {
-		receive(&context, sizeof(send_message), receive_message_ptr);
-		printf("%s\n", receive_message);
-		if (strcmp((char*)receive_message, "PING") == 0){
-			transmit(&context, sizeof(respond_message) , respond_message_ptr);
-			clear_buffer(&context);
-		}
-
-	}
-
-	msleep(1000);
 }
 
 void ping_counter(void){

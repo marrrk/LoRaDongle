@@ -30,21 +30,21 @@ sx126x_hal_status_t sx126x_hal_write( const void* context, const uint8_t* comman
     SPI_control_length_write(8);
     SPI_cs_mode_write(1);    
     SPI_cs_sel_write(1);
-    msleep(0.7);
+    msleep(1);
     
     for (uint16_t i; i<command_length; i++) {
         SPI_mosi_write((uint32_t)*command++);
         SPI_control_start_write(0x1);;
         //printf("MISO: 0x%lx\n",SPI_miso_read()); // check if transmission has been successful
 
-        msleep(0.5);
+        msleep(1);
     }
 
     for (uint16_t i; i<data_length; i++){
         SPI_mosi_write((uint32_t)*data++);
         SPI_control_start_write(0x1);;
         //printf("MISO: 0x%lx\n",SPI_miso_read()); // check if transmission has been successful
-        msleep(0.5);
+        msleep(1);
     }
 
     SPI_cs_sel_write(0);
@@ -63,18 +63,18 @@ sx126x_hal_status_t sx126x_hal_read( const void* context, const uint8_t* command
     SPI_control_length_write(8);
     SPI_cs_mode_write(1);    
     SPI_cs_sel_write(1);
-    msleep(0.7);
+    msleep(1);
     
     for (uint16_t i; i<command_length; i++) {
         SPI_mosi_write((uint32_t)*command++);
         SPI_control_start_write(0x1);;
         //printf("MISO: 0x%lx\n",SPI_miso_read()); // check if transmission has been successful
-        msleep(0.5);
+        msleep(1);
     }
 
     for (uint16_t i; i<data_length; i++){
         SPI_control_start_write(0x1);;
-        msleep(0.5);
+        msleep(1);
         *data++ = (uint8_t)SPI_miso_read();
         //printf("MISO: 0x%lx\n",SPI_miso_read()); // check if transmission has been successful
 

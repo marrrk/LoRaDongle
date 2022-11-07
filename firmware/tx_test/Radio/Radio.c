@@ -14,11 +14,9 @@
  
 #if USE_MODEM_LORA == 1
  
-    #define LORA_BANDWIDTH                              SX126X_LORA_BW_125         // [0: 125 kHz,
-                                                                  					//  1: 250 kHz,
-                                                                 				 //  2: 500 kHz,
-                                                                				  //  3: Reserved]
-    #define LORA_SPREADING_FACTOR                       SX126X_LORA_SF7         // [SF7..SF12]
+    #define LORA_BANDWIDTH                              SX126X_LORA_BW_125         
+
+    #define LORA_SPREADING_FACTOR                       SX126X_LORA_SF7         // [SF5..SF12]
     #define LORA_LOWDATARATEOPTIMIZE                    0
     #define LORA_CODINGRATE                             SX126X_LORA_CR_4_6         // [1: 4/5,
 																					//  2: 4/6,
@@ -50,7 +48,7 @@ void RadioInit(RadioConfig_t *config){
 		irq init #TODO - initialises spi, sets busy as open drain pullnone (inverse logic), assigns dio1 callback
 		looks like irq_init just initiliasises the pins. Busy for busy stuff, dio1 for dio stuff, and also spi obvi
 
-		setPollingMode() //aookucaktion calls process irqs as opposed to driver automatically doing it.
+		setPollingMode() //application calls process irqs as opposed to driver automatically doing it.
 		
 		turn on antenna switch (set pin to high basically), always high except in sleep mode
 		this is the use in the other switch though not mine. mine i'd need to set it 1 or 0 in order to choose the rf path to follow :)

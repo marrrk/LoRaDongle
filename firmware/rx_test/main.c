@@ -25,11 +25,8 @@ uint8_t *receive_message_ptr = receive_message;
 uint8_t respond_message[MESSAGE_SIZE] = {"PONG"};
 uint8_t *respond_message_ptr = respond_message;
 
-const uint8_t mode = 1;  // 0 for master, 1 for slave. used in ping pong test
-
 // Function declarations
 void flicker(void);
-void PingPongTest(void);
 void ping_counter(void);
 
 /*
@@ -183,8 +180,8 @@ int main(void) {
 
 			case READ_DATA: {
 				get_payload(&context, 4, receive_message_ptr);
-				printf("%s\n", receive_message);
 				if (strncmp((const char *)send_message, (const char *)receive_message, 4) == 0){
+					printf("Message received: %s\n", receive_message);
 					state = RESPOND;
 					//state = LISTEN;
 				} else {
@@ -199,6 +196,7 @@ int main(void) {
 				ConfigureTx(&context);
 				set_to_transmit(&context);
 				leds_out_write(0b00);
+				printf("Sending message: %s\n", respond_message);
 				//clear_buffer(&context);
 				state = LISTEN;
 				break;
@@ -227,41 +225,6 @@ void flicker(void) {
         leds_out_write(0);
 }
 
-
-
-void PingPongTest(void) {
-	//uint8_t message_length = strlen((const char*)send_message);
-	//printf("%d\n",message_length);
-
-	if (mode == 0){
-		transmit(&context, sizeof(send_message) , send_message_ptr);
-		//printf("Transmitting: %s\n", send_message);
-		//ConfigureRx(&context);		
-
-		//receive(&context, sizeof(send_message), receive_message_ptr);
-		//clear_buffer(&context);
-		if (strcmp((const char*)receive_message, "PONG") == 0) {
-			printf("Received!: %s\n", receive_message);
-		}
-		//if (strlen((const char*)receive_message) == 0){ //infinite loop, source of error
-		//	receive(&context, message_length, receive_message_ptr);
-		//	if (strcmp((const char*)receive_message, "PONG") == 0) {
-		//		printf("Received:   %s\n", receive_message);
-			//} //else printf("Message received error\n");
-		
-	} 
-	else if (mode == 1) {
-		receive(&context, sizeof(send_message), receive_message_ptr);
-		printf("%s\n", receive_message);
-		if (strcmp((char*)receive_message, "PING") == 0){
-			transmit(&context, sizeof(respond_message) , respond_message_ptr);
-			clear_buffer(&context);
-		}
-
-	}
-
-	msleep(1000);
-}
 
 void ping_counter(void){
 	receive(&context, MESSAGE_SIZE, receive_message_ptr);
