@@ -6,7 +6,7 @@
 void timer1_init(void){
 	int t;
 	t = CONFIG_CLOCK_FREQUENCY; 		//period should be 1 seconds
-	printf("Timer reload value: %d\n", t);
+	//printf("Timer reload value: %d\n", t);
 	/** Initialising timer1, for timing functions
 	 *  It is initialised in periodic mode in order to 
 	 * 	time longer than the wrap-around value
@@ -27,7 +27,7 @@ void timer1_init(void){
 }
 
 
-void timer1_reset(void){
+void tic(void){
 	// Disable Interrupt
 	timer1_ev_pending_write(0);
 	timer1_ev_enable_write(0);
@@ -50,16 +50,16 @@ void timer1_isr(void){
 }
 
 
-void get_time_elapsed(void){
+void toc(void){
 	if (timer1_loops > 0 ){
 		timer1_update_value_write(1);
 		uint32_t count_value = ((timer1_loops/2) * (CONFIG_CLOCK_FREQUENCY)) + (CONFIG_CLOCK_FREQUENCY - timer1_value_read()); //divide timer1_loops by two because ISR is called twice apparently
-		printf("Count value: %ld\n", count_value);
+		printf("%ld\n", count_value);
 
 	} else {
 		timer1_update_value_write(1);
 		uint32_t count_value = CONFIG_CLOCK_FREQUENCY - timer1_value_read();
-		printf("Count value: %ld\n", count_value);
+		printf("%ld\n", count_value);
 
 	}
 

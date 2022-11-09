@@ -10,11 +10,20 @@
 #include <btn.h>
 
 typedef enum {
+	IDLE,
 	LISTEN,
-	READ_DATA,
-	RESPOND,
+	READ_MESSAGE,
+	ANALYSE_DATA,
+	SEND,
+	WAIT_SEND_DONE,
 } receive_states_t;
-volatile receive_states_t state = LISTEN;
+volatile receive_states_t state = IDLE;
+
+typedef enum {
+	SLAVE,
+	MASTER
+ } dongle_mode_t;
+ dongle_mode_t mode = SLAVE;
 
 #define MESSAGE_SIZE  BUFFER_SIZE
 uint8_t send_message[MESSAGE_SIZE] = {"PING"};
@@ -27,7 +36,6 @@ uint8_t *respond_message_ptr = respond_message;
 
 // Function declarations
 void flicker(void);
-void ping_counter(void);
 
 /*
 	Uart functions for interacting with Console
@@ -152,55 +160,90 @@ int main(void) {
 	#endif
 
     time_init();
-	//time1_init();
+	timer1_init();
     uart_init();
 	RadioInit(&context);
-	btn_init();
+	//btn_init();
     //help();
     //prompt();
-	//console_service();
+	console_service();
 
 	SetConfiguration(&context);
 	ConfigureGeneralRadio(&context);
 	//printf("Ping Pong test\n");
 
     flicker();
+
     while (1) {
 		switch(state){
+			case IDLE: {
+				tic();
+				ConfigureRx(&context);
+				set_to_receive(&context);
+				// check for a radio flag!
+				if (RadioFlags.rxDone == true) {
+					RadioFlags.rxDone = false;
+					state = READ_MESSAGE;
+				}
+				break;
+			}
+			case SEND: {
+				//tic();
+				leds_out_write(0b10);
+				if (mode == MASTER){
+					PrepareBuffer(&context, strlen((char *)send_message), send_message_ptr);
+					printf("Sending message: %s\n", send_message);
+				} else {
+					PrepareBuffer(&context, strlen((char *)respond_message), respond_message_ptr);
+					printf("Sending message: %s\n", respond_message);
+				}
+				ConfigureTx(&context);
+				set_to_transmit(&context);
+				leds_out_write(0b00);
+				//clear_buffer(&context);
+				msleep(1);
+				state = IDLE;
+				break;
+			}
+			case WAIT_SEND_DONE: {				
+				if (RadioFlags.txDone == true) {
+					//printf("Time to send: ");
+					//toc();
+					RadioFlags.txDone = false;
+					state = IDLE;
+				}
+				break;		
+			}
 			case LISTEN: {
 				ConfigureRx(&context);
 				set_to_receive(&context);
 				// check for a radio flag!
-				if (radioflags.rxDone == true) {
-					radioflags.rxDone = false;
-					state = READ_DATA;
+				if (RadioFlags.rxDone == true) {
+					RadioFlags.rxDone = false;
+					state = READ_MESSAGE;
 				}
 				break;
 			}
 
-			case READ_DATA: {
+			case READ_MESSAGE: {
+				leds_out_write(0b01);
 				get_payload(&context, 4, receive_message_ptr);
+				printf("Time to receive: ");
+				toc();
+				leds_out_write(0b00);
+				state = ANALYSE_DATA;
+				break;
+			}
+
+			case ANALYSE_DATA: {
 				if (strncmp((const char *)send_message, (const char *)receive_message, 4) == 0){
 					printf("Message received: %s\n", receive_message);
-					state = RESPOND;
+					state = SEND;
 					//state = LISTEN;
 				} else {
-					state = LISTEN;
+					state = IDLE;
 				}
 				break;
-			}
-
-			case RESPOND: {
-				leds_out_write(0b10);
-				PrepareBuffer(&context, sizeof(respond_message), respond_message_ptr);
-				ConfigureTx(&context);
-				set_to_transmit(&context);
-				leds_out_write(0b00);
-				printf("Sending message: %s\n", respond_message);
-				//clear_buffer(&context);
-				state = LISTEN;
-				break;
-
 			}
 		}
 		
@@ -225,8 +268,3 @@ void flicker(void) {
         leds_out_write(0);
 }
 
-
-void ping_counter(void){
-	receive(&context, MESSAGE_SIZE, receive_message_ptr);
-	printf("%s\n", receive_message);
-}

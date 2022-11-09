@@ -44,7 +44,7 @@ typedef struct{
 	bool rxTimeout;
 	bool txDone;
 }RadioFlags_t;
-RadioFlags_t radioflags;
+RadioFlags_t RadioFlags;
 
 // Sx126x user function Declarations
 void RadioInit(RadioConfig_t *config);

@@ -64,9 +64,10 @@ void RadioInit(RadioConfig_t *config){
 	*/
 	sx126x_reset(config);
 
+	#ifdef DIO1_INTERRUPT
 	// Initialising DIO Interrupt Pin in CPU
 	dio1_init();
-
+	#endif
 
 	sx126x_wakeup(config);
 	sx126x_set_standby(config, SX126X_STANDBY_CFG_RC);
@@ -76,10 +77,10 @@ void RadioInit(RadioConfig_t *config){
 
 	sx126x_set_pkt_type(config, SX126X_PKT_TYPE_LORA);
 
-	radioflags.rxDone = false;
-	radioflags.rxError = false;
-	radioflags.rxTimeout = false;
-	radioflags.txDone = false;
+	RadioFlags.rxDone = false;
+	RadioFlags.rxError = false;
+	RadioFlags.rxTimeout = false;
+	RadioFlags.txDone = false;
 
 
 }
@@ -203,15 +204,28 @@ void get_radio_irq_status(void) {
 
 	if (status & SX126X_IRQ_RX_DONE) {
 		//printf("Rx Done!\n");
+		RadioFlags.rxDone = true;
 		sx126x_clear_irq_status(&context, SX126X_IRQ_RX_DONE);
 		//deal with received message
 	}
 
 	if (status & SX126X_IRQ_PREAMBLE_DETECTED) {
-		radioflags.rxDone = true;
+		//RadioFlags.rxDone = true;
 		//printf("Preamble detected\n");
 		sx126x_clear_irq_status(&context, SX126X_IRQ_PREAMBLE_DETECTED);
 	}
+
+	if (status & SX126X_IRQ_TX_DONE) {
+		sx126x_clear_irq_status(&context, SX126X_IRQ_TX_DONE);
+		RadioFlags.txDone = true;
+		printf("TX DONE\n");
+	}
+
+	if (status & SX126X_IRQ_TIMEOUT) {
+		sx126x_clear_irq_status(&context, SX126X_IRQ_TIMEOUT);
+		printf("Transmit/receive Timeout Occured\n");
+	}
+
 }
 
 // Turn On/Off pins that interact with the RF Circuit, SX1261 Radio

@@ -16,9 +16,9 @@ uint8_t timer1_loops;
 //functions
 void time_init(void);
 void timer1_init(void);
-void timer1_reset(void);
+void tic(void);
 void timer1_isr(void);
-void get_time_elapsed(void);
+void toc(void);
 int elapsed(int *last_event, int period);
 void msleep(int ms);
 

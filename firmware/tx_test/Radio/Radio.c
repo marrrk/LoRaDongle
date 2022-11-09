@@ -217,6 +217,13 @@ void get_radio_irq_status(void) {
 		//printf("Timeout Occurred\n");
 	}
 
+	if (status & SX126X_IRQ_PREAMBLE_DETECTED) {
+		RadioFlags.rxDone = true;
+		//printf("Preamble detected\n");
+		sx126x_clear_irq_status(&context, SX126X_IRQ_PREAMBLE_DETECTED);
+	}
+
+
 }
 
 // Turn On/Off pins that interact with the RF Circuit, SX1261 Radio

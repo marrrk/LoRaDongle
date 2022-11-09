@@ -6,7 +6,7 @@
 void timer1_init(void){
 	int t;
 	t = CONFIG_CLOCK_FREQUENCY; 		//period should be 1 seconds
-	printf("Timer reload value: %d\n", t);
+	//printf("Timer reload value: %d\n", t);
 	/** Initialising timer1, for timing functions
 	 *  It is initialised in periodic mode in order to 
 	 * 	time longer than the wrap-around value
