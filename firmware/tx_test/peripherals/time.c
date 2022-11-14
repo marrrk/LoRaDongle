@@ -1,4 +1,5 @@
 #include <time.h>
+#include <Radio.h>
 #include <generated/csr.h>
 
 
@@ -47,6 +48,12 @@ void timer1_isr(void){
 	timer1_ev_pending_write(1);
 	++timer1_loops;
 	timer1_ev_enable_write(1);
+
+	if (timer1_loops > 10) {
+		RadioFlags.in_tx = true;
+		//printf("Setting to transmit\n");
+		timer1_loops = 0;
+	}
 }
 
 

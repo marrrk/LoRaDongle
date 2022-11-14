@@ -43,6 +43,8 @@ typedef struct{
 	bool rxError;
 	bool Timeout;
 	bool txDone;
+	bool in_rx;
+	bool in_tx;
 }RadioFlags_t;
 RadioFlags_t RadioFlags;
 

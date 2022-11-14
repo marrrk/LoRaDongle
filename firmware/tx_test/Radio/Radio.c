@@ -80,6 +80,8 @@ void RadioInit(RadioConfig_t *config){
 	RadioFlags.rxError = false;
 	RadioFlags.Timeout = false;
 	RadioFlags.txDone = false;
+	RadioFlags.in_rx = false;
+	RadioFlags.in_tx = false;
 }
 
 void SetConfiguration(RadioConfig_t *config){
@@ -87,7 +89,7 @@ void SetConfiguration(RadioConfig_t *config){
     config->irqTx = SX126X_IRQ_TX_DONE | SX126X_IRQ_TIMEOUT;
     config->rfFrequency = RF_FREQUENCY;
     config->txTimeout = 0;
-    config->rxTimeout = (uint32_t)(RX_TIMEOUT_US / 15.625);
+    config->rxTimeout = 0x000000; //(uint32_t)(RX_TIMEOUT_US / 15.625);
     config->txPower = TX_OUTPUT_POWER;
     config->txRampTime = SX126X_RAMP_200_US;
 	#if USE_MODEM_LORA == 1
@@ -107,9 +109,10 @@ void SetConfiguration(RadioConfig_t *config){
 
 void ConfigureGeneralRadio(RadioConfig_t *config){
 	sx126x_set_pkt_type(config, config->packetType);
-	sx126x_set_lora_pkt_params(config, &config->packetParams);
-	sx126x_set_lora_mod_params(config, &config->modParams);
 	sx126x_set_rf_freq(config, config->rfFrequency);
+	sx126x_set_buffer_base_address(config, 0x00, 0x00);
+	sx126x_set_lora_mod_params(config, &config->modParams);
+	sx126x_set_lora_pkt_params(config, &config->packetParams);
 	sx126x_set_tx_params(config, config->txPower, config->txRampTime);
 	// set interrupt mode
 }
@@ -148,6 +151,7 @@ void set_to_transmit(RadioConfig_t *config){
 void set_to_receive(RadioConfig_t *config){
     SetAntSW();
 	sx126x_set_rx(config, config->rxTimeout);
+	//need to try SetRxDutyCycle
 }
 
 
@@ -217,10 +221,18 @@ void get_radio_irq_status(void) {
 		//printf("Timeout Occurred\n");
 	}
 
-	if (status & SX126X_IRQ_PREAMBLE_DETECTED) {
+	if (status & SX126X_IRQ_RX_DONE) {
+		printf("Rx Done!\n");
 		RadioFlags.rxDone = true;
+		sx126x_clear_irq_status(&context, SX126X_IRQ_RX_DONE);
+		//deal with received message
+	}
+
+	if (status & SX126X_IRQ_PREAMBLE_DETECTED) {
+		//RadioFlags.rxDone = true;
 		//printf("Preamble detected\n");
 		sx126x_clear_irq_status(&context, SX126X_IRQ_PREAMBLE_DETECTED);
+		
 	}
 
 

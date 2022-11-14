@@ -11,13 +11,22 @@
 
 
 typedef enum {
+	SLAVE,
+	MASTER,
+} dongle_mode_t;
+dongle_mode_t mode = MASTER;
+
+typedef enum {
 	SEND,
 	WAIT_SEND_DONE,
-	SLEEP
+	SLEEP,
+	LISTEN,
+	READ_MESSAGE,
+	ANALYSE_DATA,
 } receive_states_t;
-volatile receive_states_t state = SEND;
+volatile receive_states_t state = LISTEN;
 
-#define MESSAGE_SIZE  BUFFER_SIZE
+#define MESSAGE_SIZE  5
 uint8_t send_message[MESSAGE_SIZE] = {"PING\0"};
 uint8_t receive_message[MESSAGE_SIZE] = {};
 uint8_t *send_message_ptr = send_message;
@@ -160,13 +169,22 @@ int main(void) {
     flicker();
 
     while (1) {
+		if ((RadioFlags.in_tx == true) && (mode == MASTER) ) {
+			state = SEND;
+			RadioFlags.in_tx = false;
+		}
 		switch (state) {
 			//case IDLE: { waiting for an input, low_power() mode? . for now, input decided by timer isr.  }
 			case SEND: {
 				//printf("Size of message to send: %d\n", strlen((char *)send_message));
-				timer1_reset();
 				leds_out_write(0b10);
-				PrepareBuffer(&context, strlen((char *)send_message), send_message_ptr);
+				timer1_reset();
+				if (mode == MASTER){
+					PrepareBuffer(&context, strlen((char *)send_message), send_message_ptr);
+					printf("Sending : %s\n", send_message);
+				} else {
+					PrepareBuffer(&context, strlen((char *)respond_message), respond_message_ptr);
+				}
 				ConfigureTx(&context);
 				set_to_transmit(&context);
 				leds_out_write(0b00);
@@ -176,9 +194,9 @@ int main(void) {
 			case WAIT_SEND_DONE: {
 				if (RadioFlags.txDone == true) {
 					//printf("In state Done\n");
-					get_time_elapsed();
+					//get_time_elapsed();
 					RadioFlags.txDone = false;
-					state = SLEEP;
+					state = LISTEN;
 				}
 				break;			
 			}
@@ -190,7 +208,51 @@ int main(void) {
 					//printf("Sleep stop\n");
 					state = SEND;
 					break;
-			}	
+			}
+			 
+			case LISTEN: {
+				//printf("In state: Listen\n");
+				//timer1_reset();
+				if (RadioFlags.in_rx == true) {
+					// check for a radio flag!
+					if (RadioFlags.rxDone == true) {
+						RadioFlags.rxDone = false;
+						RadioFlags.in_rx = false;
+						state = READ_MESSAGE;
+						break;
+					}
+				} else {
+					RadioFlags.in_rx = true;
+					ConfigureRx(&context);
+					set_to_receive(&context);
+				}
+				break;
+			}
+
+			case READ_MESSAGE: {
+				printf("In state: Read Message\n");
+				leds_out_write(0b01);
+				//get_payload(&context, 4, receive_message_ptr); //cause for error
+				sx126x_read_buffer(&context, 0x00, receive_message_ptr, 4);
+				//printf("Time to receive: ");
+				//toc();
+				state = ANALYSE_DATA;
+				break;
+			}
+
+			case ANALYSE_DATA: {
+				printf("Message received: %s\n", receive_message);
+				if (strncmp((const char *)send_message, (const char *)receive_message, 4) == 0){
+					leds_out_write(0b00);
+					printf("Message received: %s\n", receive_message);
+					state = SEND;
+				} else if ((strncmp((const char *)respond_message, (const char *)receive_message, 4) == 0)) {
+					leds_out_write(0b00);
+					printf("Message received: %s\n", receive_message);
+					state = LISTEN;
+				}
+				break;
+			}
 		}
 
 
