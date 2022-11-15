@@ -222,7 +222,7 @@ void get_radio_irq_status(void) {
 	}
 
 	if (status & SX126X_IRQ_RX_DONE) {
-		printf("Rx Done!\n");
+		//printf("Rx Done!\n");
 		RadioFlags.rxDone = true;
 		sx126x_clear_irq_status(&context, SX126X_IRQ_RX_DONE);
 		//deal with received message

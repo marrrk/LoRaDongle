@@ -1,7 +1,11 @@
 .vscode/
 SOC/main/build/
 SOC/nexys/
+SOC/main/__pycache__/
 PCB/LoRaDongle_iCE40_USB/LoRaDongle_iCE40-backups
 PCB/LoRaDongle_iCE40_USB/_autosave-LoRaDongle_iCE40.kicad_prl
 PCB/LoRaDongle_iCE40_USB/_autosave-LoRaDongle_iCE40.kicad_pro
 firmware/blinky
+firmware/rx_test
+firmware/interrupt_test/
+

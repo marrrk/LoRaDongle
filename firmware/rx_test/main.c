@@ -238,7 +238,7 @@ int main(void) {
 			case ANALYSE_DATA: {
 				if (strncmp((const char *)send_message, (const char *)receive_message, 4) == 0){
 					printf("Message received: %s\n", receive_message);
-					state = SEND;
+					state = IDLE;
 					//state = LISTEN;
 				} else {
 					state = IDLE;

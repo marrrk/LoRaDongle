@@ -19,7 +19,6 @@ dongle_mode_t mode = MASTER;
 typedef enum {
 	SEND,
 	WAIT_SEND_DONE,
-	SLEEP,
 	LISTEN,
 	READ_MESSAGE,
 	ANALYSE_DATA,
@@ -173,17 +172,18 @@ int main(void) {
 			state = SEND;
 			RadioFlags.in_tx = false;
 		}
+
 		switch (state) {
-			//case IDLE: { waiting for an input, low_power() mode? . for now, input decided by timer isr.  }
 			case SEND: {
 				//printf("Size of message to send: %d\n", strlen((char *)send_message));
 				leds_out_write(0b10);
 				timer1_reset();
 				if (mode == MASTER){
 					PrepareBuffer(&context, strlen((char *)send_message), send_message_ptr);
-					printf("Sending : %s\n", send_message);
+					printf("Sending: %s\n", send_message);
 				} else {
 					PrepareBuffer(&context, strlen((char *)respond_message), respond_message_ptr);
+					printf("Sending : %s\n", respond_message);
 				}
 				ConfigureTx(&context);
 				set_to_transmit(&context);
@@ -191,25 +191,20 @@ int main(void) {
 				state = WAIT_SEND_DONE;
 				break;
 			}
+
 			case WAIT_SEND_DONE: {
+				//printf("In state: WAIT_SEND_DONE\n");
 				if (RadioFlags.txDone == true) {
 					//printf("In state Done\n");
-					//get_time_elapsed();
+					printf("Time to send: ");
+					get_time_elapsed();
 					RadioFlags.txDone = false;
+					RadioFlags.in_rx = false;
 					state = LISTEN;
 				}
 				break;			
 			}
-			case SLEEP: {
-					//printf("In state sleep\n");
-					//get_time_elapsed();
-					msleep(1000);			//sleep is lasting as expected, seems like time it takes to respond is kinda 
-					//get_time_elapsed();
-					//printf("Sleep stop\n");
-					state = SEND;
-					break;
-			}
-			 
+
 			case LISTEN: {
 				//printf("In state: Listen\n");
 				//timer1_reset();
@@ -222,6 +217,7 @@ int main(void) {
 						break;
 					}
 				} else {
+					//printf("Configuring Listen\n");
 					RadioFlags.in_rx = true;
 					ConfigureRx(&context);
 					set_to_receive(&context);
@@ -230,23 +226,25 @@ int main(void) {
 			}
 
 			case READ_MESSAGE: {
-				printf("In state: Read Message\n");
+				//printf("In state: Read Message\n");
 				leds_out_write(0b01);
 				//get_payload(&context, 4, receive_message_ptr); //cause for error
 				sx126x_read_buffer(&context, 0x00, receive_message_ptr, 4);
 				//printf("Time to receive: ");
 				//toc();
+				printf("Time to receive: ");
+				get_time_elapsed();
 				state = ANALYSE_DATA;
 				break;
 			}
 
 			case ANALYSE_DATA: {
-				printf("Message received: %s\n", receive_message);
-				if (strncmp((const char *)send_message, (const char *)receive_message, 4) == 0){
+				//printf("Message received: %s\n", receive_message);
+				if (strncmp((const char *)send_message, (const char *)receive_message, 4) == 0){ //PING Message Received
 					leds_out_write(0b00);
 					printf("Message received: %s\n", receive_message);
 					state = SEND;
-				} else if ((strncmp((const char *)respond_message, (const char *)receive_message, 4) == 0)) {
+				} else if ((strncmp((const char *)respond_message, (const char *)receive_message, 4) == 0)) { //Pong Message Received
 					leds_out_write(0b00);
 					printf("Message received: %s\n", receive_message);
 					state = LISTEN;

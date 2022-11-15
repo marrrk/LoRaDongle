@@ -61,12 +61,12 @@ void get_time_elapsed(void){
 	if (timer1_loops > 0 ){
 		timer1_update_value_write(1);
 		uint32_t count_value = ((timer1_loops/2) * (CONFIG_CLOCK_FREQUENCY)) + (CONFIG_CLOCK_FREQUENCY - timer1_value_read()); //divide timer1_loops by two because ISR is called twice apparently
-		printf("Count value: %ld\n", count_value);
+		printf("%ld\n", count_value);
 
 	} else {
 		timer1_update_value_write(1);
 		uint32_t count_value = CONFIG_CLOCK_FREQUENCY - timer1_value_read();
-		printf("Count value: %ld\n", count_value);
+		printf("%ld\n", count_value);
 
 	}
 
