@@ -166,7 +166,7 @@ int main(void) {
 	ConfigureGeneralRadio(&context);
 
     flicker();
-
+	sx126x_pkt_status_lora_t packet_info;
     while (1) {
 		if ((RadioFlags.in_tx == true) && (mode == MASTER) ) {
 			state = SEND;
@@ -180,10 +180,10 @@ int main(void) {
 				timer1_reset();
 				if (mode == MASTER){
 					PrepareBuffer(&context, strlen((char *)send_message), send_message_ptr);
-					printf("Sending: %s\n", send_message);
+					printf("Message Size:%d\n", sizeof((char *)send_message));
 				} else {
 					PrepareBuffer(&context, strlen((char *)respond_message), respond_message_ptr);
-					printf("Sending : %s\n", respond_message);
+					//printf("Sending : %s\n", respond_message);
 				}
 				ConfigureTx(&context);
 				set_to_transmit(&context);
@@ -196,7 +196,7 @@ int main(void) {
 				//printf("In state: WAIT_SEND_DONE\n");
 				if (RadioFlags.txDone == true) {
 					//printf("In state Done\n");
-					printf("Time to send: ");
+					printf("Time to Send:");
 					get_time_elapsed();
 					RadioFlags.txDone = false;
 					RadioFlags.in_rx = false;
@@ -211,6 +211,7 @@ int main(void) {
 				if (RadioFlags.in_rx == true) {
 					// check for a radio flag!
 					if (RadioFlags.rxDone == true) {
+						//sx126x_get_rssi_inst(&context, &received_rssi);
 						RadioFlags.rxDone = false;
 						RadioFlags.in_rx = false;
 						state = READ_MESSAGE;
@@ -230,10 +231,19 @@ int main(void) {
 				leds_out_write(0b01);
 				//get_payload(&context, 4, receive_message_ptr); //cause for error
 				sx126x_read_buffer(&context, 0x00, receive_message_ptr, 4);
-				//printf("Time to receive: ");
-				//toc();
-				printf("Time to receive: ");
+				//sx126x_get_rssi_inst(&context, &received_rssi);				
+				
+				printf("Time to Receive:");
 				get_time_elapsed();
+				if (mode == MASTER) {
+					//sx126x_get_rssi_inst(&context, &received_rssi);
+					sx126x_get_lora_pkt_status(&context, &packet_info);
+					printf("RSSI:%d\n", packet_info.rssi_pkt_in_dbm);
+					printf("RSSI Despread:%d\n", packet_info.signal_rssi_pkt_in_dbm);
+					printf("SNR:%d\n", packet_info.snr_pkt_in_db);
+					//printf("RSSI:%d\n", received_rssi);
+				}
+
 				state = ANALYSE_DATA;
 				break;
 			}
@@ -242,11 +252,11 @@ int main(void) {
 				//printf("Message received: %s\n", receive_message);
 				if (strncmp((const char *)send_message, (const char *)receive_message, 4) == 0){ //PING Message Received
 					leds_out_write(0b00);
-					printf("Message received: %s\n", receive_message);
+					//printf("Message received: %s\n", receive_message);
 					state = SEND;
 				} else if ((strncmp((const char *)respond_message, (const char *)receive_message, 4) == 0)) { //Pong Message Received
 					leds_out_write(0b00);
-					printf("Message received: %s\n", receive_message);
+					//printf("Message received: %s\n", receive_message);
 					state = LISTEN;
 				}
 				break;
