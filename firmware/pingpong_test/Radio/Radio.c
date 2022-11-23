@@ -14,9 +14,9 @@
  
 #if USE_MODEM_LORA == 1
  
-    #define LORA_BANDWIDTH                              SX126X_LORA_BW_500         
+    #define LORA_BANDWIDTH                              SX126X_LORA_BW_125         
 
-    #define LORA_SPREADING_FACTOR                       SX126X_LORA_SF7         // [SF5..SF12]
+    #define LORA_SPREADING_FACTOR                       SX126X_LORA_SF12         // [SF5..SF12]
     #define LORA_LOWDATARATEOPTIMIZE                    0
     #define LORA_CODINGRATE                             SX126X_LORA_CR_4_6         // [1: 4/5,
 																					//  2: 4/6,

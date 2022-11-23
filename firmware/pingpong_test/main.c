@@ -25,8 +25,8 @@ typedef enum {
 } receive_states_t;
 volatile receive_states_t state = LISTEN;
 
-#define MESSAGE_SIZE  5
-uint8_t send_message[MESSAGE_SIZE] = {"PING\0"};
+#define MESSAGE_SIZE  4
+uint8_t send_message[MESSAGE_SIZE] = {"PING"};
 uint8_t receive_message[MESSAGE_SIZE] = {};
 uint8_t *send_message_ptr = send_message;
 uint8_t *receive_message_ptr = receive_message;
@@ -180,7 +180,7 @@ int main(void) {
 				timer1_reset();
 				if (mode == MASTER){
 					PrepareBuffer(&context, strlen((char *)send_message), send_message_ptr);
-					printf("Message Size:%d\n", sizeof((char *)send_message));
+					printf("Message Size:%d\n", sizeof(send_message));
 				} else {
 					PrepareBuffer(&context, strlen((char *)respond_message), respond_message_ptr);
 					//printf("Sending : %s\n", respond_message);
@@ -230,7 +230,7 @@ int main(void) {
 				//printf("In state: Read Message\n");
 				leds_out_write(0b01);
 				//get_payload(&context, 4, receive_message_ptr); //cause for error
-				sx126x_read_buffer(&context, 0x00, receive_message_ptr, 4);
+				sx126x_read_buffer(&context, 0x00, receive_message_ptr, MESSAGE_SIZE);
 				//sx126x_get_rssi_inst(&context, &received_rssi);				
 				
 				printf("Time to Receive:");
@@ -250,13 +250,17 @@ int main(void) {
 
 			case ANALYSE_DATA: {
 				//printf("Message received: %s\n", receive_message);
-				if (strncmp((const char *)send_message, (const char *)receive_message, 4) == 0){ //PING Message Received
+				if (strncmp((const char *)send_message, (const char *)receive_message, MESSAGE_SIZE) == 0){ //PING Message Received
 					leds_out_write(0b00);
 					//printf("Message received: %s\n", receive_message);
 					state = SEND;
-				} else if ((strncmp((const char *)respond_message, (const char *)receive_message, 4) == 0)) { //Pong Message Received
+				} else if ((strncmp((const char *)respond_message, (const char *)receive_message, MESSAGE_SIZE) == 0)) { //Pong Message Received
 					leds_out_write(0b00);
 					//printf("Message received: %s\n", receive_message);
+					state = LISTEN;
+				} else {
+					printf("Error:Receiving\n");
+					printf("Received: %s\n", receive_message);
 					state = LISTEN;
 				}
 				break;
