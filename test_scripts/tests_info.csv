@@ -4,3 +4,13 @@ Test Number,Testing Factor,Location,Tx Power,Spreading Factor,Coding Rate,Bandwi
 3,"Latency, time to send and get response",On Desk,14dBm,7,4/8,125KHz
 4,"Latency, time to send and get response",On Desk,14dBm,7,4/6,31.25KHz
 5,"Latency, time to send and get response",On Desk,14dBm,7,4/6,500KHz
+6,"Latency, larger size of messages",Desk,14dBm,7,4/6,125KHz
+7,"Indoor, 6th floor down the hallway",Menzies,14dBm,7,4/6,125KHz
+8,"Indoor, 6th floor to 7th floor",Menzies,14dBm,7,4/6,125KHz
+9,"Indoor, 6th floor to 4th floor white lab",Menzies,14dBm,7,4/6,125KHz
+10,"Indoor, 6th floor to 3th floor glass house",Menzies,14dBm,7,4/6,125KHz
+11,"Indoor, 6th floor to 2nd floor outside CAE lab",Menzies,14dBm,7,4/6,125KHz
+12,Indoor 6th floor to 4nd floor white lab,Menzies,14dBm,10,4/6,125KHz
+13,Indoor 6th floor to 4nd floor white lab where signal gets weaker,Menzies,14dBm,12,4/6,125KHz
+13,Indoor 6th floor to 4nd floor white lab where signal gets weaker,Menzies,14dBm,12,4/6,125KHz
+13,Indoor 6th floor to 2nd floor,Menzies,14dBm,12,4/6,125KHz

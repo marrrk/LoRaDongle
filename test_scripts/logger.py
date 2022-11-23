@@ -28,11 +28,12 @@ class DongleReader():
             line = line.decode() # changing from bytes to string
             line = line.rstrip() #removing newline character
             line = line.replace('\r', '') # removing \r character
-            #print(line)
+            print(line)
 
             data = line[line.find(":")+1:] #extracting the data value, clock counts, rssi, etc
             key = line[:line.find(":")]     #extracting key for type of data
 
+            
             if (key in line_dict) and (key == 'Time to Send'): #if two pings have been received in a row, thats an error
                 line_dict['Success'] = False
                 print("Message not received")
@@ -44,7 +45,10 @@ class DongleReader():
                     line_dict[key] = int(data)/2            #From Datasheet
                 elif (key == "SNR"):                        
                     line_dict[key] = int(data)/4            #From Datasheet
-                else:
+                elif (key == "Error"):
+                    print("Packet received incorrectly")
+                    line_dict['Success'] = False
+                elif (key == "SNR"):
                     line_dict[key] = int(data)
 
 
@@ -59,17 +63,17 @@ class DongleReader():
 
 def main():
     ## File Information
-    test_num = 5;
-    spreading_factor = 7;
+    test_num = 13;
+    spreading_factor = 12;
     coding_rate = "4/6"
-    bandwidth = "500KHz"
+    bandwidth = "125KHz"
     
     data_filename = "Test_" + str(test_num) + ".csv"
     data_header = ['Success', 'Time to Send', 'Time to Receive', 'Message Size', 'RSSI', 'RSSI Despread', 'SNR']
 
     settings_filename = "tests_info.csv"
     settings_header= ["Test Number", "Testing Factor", "Location", "Tx Power", "Spreading Factor", "Coding Rate", "Bandwidth"]
-    settings_data = [str(test_num), "Latency, time to send and get response", "On Desk", "14dBm",str(spreading_factor), coding_rate, bandwidth]
+    settings_data = [str(test_num), "Indoor 6th floor to 2nd floor", "Menzies", "14dBm",str(spreading_factor), coding_rate, bandwidth]
 
     dongle = DongleReader() # instantiating dongle reader
 
@@ -104,6 +108,9 @@ def main():
             data_writer.writerow(read_line)
 
 
+#    while True:
+#        read_line = dongle.read_data()
+#        print(read_line)
 
 
 
