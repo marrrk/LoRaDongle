@@ -65,8 +65,9 @@ class DongleReader():
 def main():
     ## File Information
     directory = "parkade_tests/"
-    test_num = 1;
-    spreading_factor = 7;
+    test_num = 1
+    test_config = 1
+    spreading_factor = 7
     coding_rate = "4/6"
     bandwidth = "125KHz"
     
@@ -74,8 +75,8 @@ def main():
     data_header = ['Success', 'Time to Send', 'Time to Receive', 'Message Size', 'RSSI', 'RSSI Despread', 'SNR']
 
     settings_filename = directory + "tests_info.csv"
-    settings_header= ["Test Number", "Testing Factor", "Location", "Tx Power", "Spreading Factor", "Coding Rate", "Bandwidth"]
-    settings_data = [str(test_num), "Indoor 6th floor to 5th floor", "Parkade", "14dBm",str(spreading_factor), coding_rate, bandwidth]
+    settings_header= ["Test Number","Configuration", "Testing Factor", "Location"]
+    settings_data = [str(test_num), str(test_config), "Indoor 6th floor to 5th floor", "Parade"]
 
     dongle = DongleReader() # instantiating dongle reader
 
