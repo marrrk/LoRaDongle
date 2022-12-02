@@ -8,5 +8,5 @@ PCB/LoRaDongle_iCE40_USB/_autosave-LoRaDongle_iCE40.kicad_pro
 firmware/blinky
 firmware/rx_test
 firmware/interrupt_test/
-test_scripts/venv
-test_scripts/test_logs/
+testing/venv
+testing/menzies_tests/test_logs
