@@ -11,6 +11,4 @@ Test Number,Testing Factor,Location,Tx Power,Spreading Factor,Coding Rate,Bandwi
 10,"Indoor, 6th floor to 3th floor glass house",Menzies,14dBm,7,4/6,125KHz
 11,"Indoor, 6th floor to 2nd floor outside CAE lab",Menzies,14dBm,7,4/6,125KHz
 12,Indoor 6th floor to 4nd floor white lab,Menzies,14dBm,10,4/6,125KHz
-13,Indoor 6th floor to 4nd floor white lab where signal gets weaker,Menzies,14dBm,12,4/6,125KHz
-13,Indoor 6th floor to 4nd floor white lab where signal gets weaker,Menzies,14dBm,12,4/6,125KHz
 13,Indoor 6th floor to 2nd floor,Menzies,14dBm,12,4/6,125KHz
