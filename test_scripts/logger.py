@@ -1,11 +1,11 @@
-import serial, csv
+import serial, csv, time
 
 class DongleReader():
     #ser = serial.Serial()
 
-    def __init__(self, port='/dev/ttyUSB1', baud_rate=115200) -> None :
+    def __init__(self, port='/dev/ttyUSB1', baud_rate=115200, timeout=3) -> None :
         try:
-            self.ser = serial.Serial(port, baud_rate)    # open serial port at baudrate 115200
+            self.ser = serial.Serial(port, baud_rate, timeout=timeout)    # open serial port at baudrate 115200
             print('Opened port: ',self.ser.name)
         except:
             print('Could not open port, Exiting Program')
@@ -20,36 +20,60 @@ class DongleReader():
 
     def read_data(self):
         line_dict = {}
-        line_dict['Success'] = True
+        #line_dict['Success'] = True
 
         #loop that reads the messages from a ping cycle
-        for i in range(6):
+        #start_time = time.time()
+        new_ping = True
+        while True:
             line = self.ser.readline()
             line = line.decode() # changing from bytes to string
             line = line.rstrip() #removing newline character
             line = line.replace('\r', '') # removing \r character
             print(line)
 
-            data = line[line.find(":")+1:] #extracting the data value, clock counts, rssi, etc
-            key = line[:line.find(":")]     #extracting key for type of data
-
-            
-            if (key in line_dict) and (key == 'Time to Send'): #if two pings have been received in a row, thats an error
+            if line == "" and (not new_ping):
                 line_dict['Success'] = False
-                print("Message not received")
+                print("Timeout Occurred")
                 break
             else:
-                if (key == "Time to Send") or (key == "Time to Receive"):
-                    line_dict[key] = self.calculate_time_in_ms(int(data))
-                elif (key == "RSSI") or (key == "RSSI Despread"):
-                    line_dict[key] = int(data)/2            #From Datasheet
-                elif (key == "SNR"):                        
-                    line_dict[key] = int(data)/4            #From Datasheet
-                elif (key == "Error"):
-                    print("Packet received incorrectly")
-                    line_dict['Success'] = False
-                elif (key == "SNR"):
-                    line_dict[key] = int(data)
+                data = line[line.find(":")+1:] #extracting the data value, clock counts, rssi, etc
+                key = line[:line.find(":")]     #extracting key for type of data
+
+            #end_time = time.time()
+            #print(start_time)
+            #print(end_time)
+            #print(time.time() - start_time)
+            #if (end_time - start_time) > 4.0:
+            #    print("Time between sends: ",end_time - start_time)
+            #    line_dict['Success'] = False
+            #    print("Message not received, Timeout")
+            #    break
+            
+
+            #if (key in line_dict) and (key == 'Time to Send'): #if two pings have been received in a row, thats an error
+            #    line_dict['Success'] = False
+            #    print("Message not received")
+            #    break
+            #else:
+            if (key == "Time to Send") or (key == "Time to Receive"):
+                line_dict[key] = self.calculate_time_in_ms(int(data))
+                new_ping = False
+            elif (key == "RSSI") or (key == "RSSI Despread"):
+                line_dict[key] = int(data)/2            #From Datasheet
+                line_dict['Success'] = True
+            elif (key == "SNR"):                        
+                line_dict[key] = int(data)/4            #From Datasheet
+            elif (key == "Error"):
+                print("Packet received incorrectly")
+                line_dict['Success'] = False
+            elif (key == "Message Size"):
+                line_dict[key] = int(data)
+                new_ping = True
+                break
+            elif line == "":
+                pass        # timeout happened between last comm and just wait for new comm to be initiated
+
 
 
     
@@ -63,26 +87,27 @@ class DongleReader():
 
 def main():
     ## File Information
-    test_num = 13;
-    spreading_factor = 12;
+    directory = "parkade_tests/"
+    test_num = 1;
+    spreading_factor = 7;
     coding_rate = "4/6"
     bandwidth = "125KHz"
     
-    data_filename = "Test_" + str(test_num) + ".csv"
+    data_filename =  directory + "Test_" + str(test_num) + ".csv"
     data_header = ['Success', 'Time to Send', 'Time to Receive', 'Message Size', 'RSSI', 'RSSI Despread', 'SNR']
 
-    settings_filename = "tests_info.csv"
+    settings_filename = directory + "tests_info.csv"
     settings_header= ["Test Number", "Testing Factor", "Location", "Tx Power", "Spreading Factor", "Coding Rate", "Bandwidth"]
-    settings_data = [str(test_num), "Indoor 6th floor to 2nd floor", "Menzies", "14dBm",str(spreading_factor), coding_rate, bandwidth]
+    settings_data = [str(test_num), "Indoor 6th floor to 5th floor", "Parkade", "14dBm",str(spreading_factor), coding_rate, bandwidth]
 
     dongle = DongleReader() # instantiating dongle reader
 
 
     ### Open settings file and put the current info 
     # NB: for first run,  uncomment this section, it creates header row
-    #with open(settings_filename, mode='w') as settings_file:
-    #    settings_writer = csv.writer(settings_file, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
-    #    settings_writer.writerow(settings_header)
+    with open(settings_filename, mode='w') as settings_file:
+        settings_writer = csv.writer(settings_file, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
+        settings_writer.writerow(settings_header)
 
     with open(settings_filename, mode='a') as settings_file:
         settings_writer = csv.writer(settings_file, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
