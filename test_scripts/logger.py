@@ -1,11 +1,9 @@
 import serial, csv, time
 
 class DongleReader():
-    #ser = serial.Serial()
-
     def __init__(self, port='/dev/ttyUSB1', baud_rate=115200, timeout=3) -> None :
         try:
-            self.ser = serial.Serial(port, baud_rate, timeout=timeout)    # open serial port at baudrate 115200
+            self.ser = serial.Serial(port, baud_rate, timeout=timeout)    # open serial port at baudrate 115200, timeout value needs to change based on round trip time
             print('Opened port: ',self.ser.name)
         except:
             print('Could not open port, Exiting Program')
@@ -20,10 +18,8 @@ class DongleReader():
 
     def read_data(self):
         line_dict = {}
-        #line_dict['Success'] = True
 
         #loop that reads the messages from a ping cycle
-        #start_time = time.time()
         new_ping = True
         while True:
             line = self.ser.readline()
@@ -40,22 +36,7 @@ class DongleReader():
                 data = line[line.find(":")+1:] #extracting the data value, clock counts, rssi, etc
                 key = line[:line.find(":")]     #extracting key for type of data
 
-            #end_time = time.time()
-            #print(start_time)
-            #print(end_time)
-            #print(time.time() - start_time)
-            #if (end_time - start_time) > 4.0:
-            #    print("Time between sends: ",end_time - start_time)
-            #    line_dict['Success'] = False
-            #    print("Message not received, Timeout")
-            #    break
-            
 
-            #if (key in line_dict) and (key == 'Time to Send'): #if two pings have been received in a row, thats an error
-            #    line_dict['Success'] = False
-            #    print("Message not received")
-            #    break
-            #else:
             if (key == "Time to Send") or (key == "Time to Receive"):
                 line_dict[key] = self.calculate_time_in_ms(int(data))
                 new_ping = False
@@ -75,14 +56,10 @@ class DongleReader():
                 pass        # timeout happened between last comm and just wait for new comm to be initiated
 
 
-
-    
-
         return_dict = line_dict.copy()  # create copy to return to main function
         line_dict.clear()               # clear dictionary for next ping cycle
 
         return return_dict    
-
 
 
 def main():
