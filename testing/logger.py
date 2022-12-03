@@ -1,7 +1,7 @@
 import serial, csv, time
 
 class DongleReader():
-    def __init__(self, port='/dev/ttyUSB1', baud_rate=115200, timeout=3) -> None :
+    def __init__(self, port='/dev/ttyUSB1', baud_rate=115200, timeout=26) -> None :
         try:
             self.ser = serial.Serial(port, baud_rate, timeout=timeout)    # open serial port at baudrate 115200, timeout value needs to change based on round trip time
             print('Opened port: ',self.ser.name)
@@ -23,7 +23,12 @@ class DongleReader():
         new_ping = True
         while True:
             line = self.ser.readline()
-            line = line.decode() # changing from bytes to string
+            try:
+                line = line.decode() # changing from bytes to string
+            except:
+                line_dict['Success'] = False
+                print("problem decoding byte")
+                break
             line = line.rstrip() #removing newline character
             line = line.replace('\r', '') # removing \r character
             print(line)
@@ -47,7 +52,7 @@ class DongleReader():
                 line_dict[key] = int(data)/4            #From Datasheet
             elif (key == "Error"):
                 print("Packet received incorrectly")
-                line_dict['Success'] = False
+                line_dict['Success'] = False                
             elif (key == "Message Size"):
                 line_dict[key] = int(data)
                 new_ping = True
@@ -64,28 +69,28 @@ class DongleReader():
 
 def main():
     ## File Information
-    directory = "parkade_tests/"
-    test_num = 1
-    test_config = 1
-    spreading_factor = 7
-    coding_rate = "4/6"
-    bandwidth = "125KHz"
+    directory = "latency_tests/"
+    test_num = 6
+    test_config = 6
+    ldro_factor = 0
+    floor_difference=1
+
     
     data_filename =  directory + "Test_" + str(test_num) + ".csv"
     data_header = ['Success', 'Time to Send', 'Time to Receive', 'Message Size', 'RSSI', 'RSSI Despread', 'SNR']
 
     settings_filename = directory + "tests_info.csv"
-    settings_header= ["Test Number","Configuration", "Testing Factor", "Location"]
-    settings_data = [str(test_num), str(test_config), "Indoor 6th floor to 5th floor", "Parade"]
+    settings_header= ["Test Number","Configuration", "Floor Difference", "Location", "LDRO"]
+    settings_data = [str(test_num), str(test_config), str(floor_difference), "Parkade", str(ldro_factor)]
 
     dongle = DongleReader() # instantiating dongle reader
 
 
     ### Open settings file and put the current info 
     # NB: for first run,  uncomment this section, it creates header row
-    with open(settings_filename, mode='w') as settings_file:
-        settings_writer = csv.writer(settings_file, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
-        settings_writer.writerow(settings_header)
+    #with open(settings_filename, mode='w') as settings_file:
+    #    settings_writer = csv.writer(settings_file, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
+    #    settings_writer.writerow(settings_header)
 
     with open(settings_filename, mode='a') as settings_file:
         settings_writer = csv.writer(settings_file, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
@@ -98,7 +103,8 @@ def main():
     #### Read ping pong information from Dongle, append to data file
     
     # opening file
-    with open(data_filename, mode='w') as data_file:
+    count = 0
+    with open(data_filename, mode='a') as data_file:
         data_writer = csv.DictWriter(data_file, fieldnames=data_header)
         data_writer.writeheader()
 
@@ -106,7 +112,8 @@ def main():
         while True:
             read_line = dongle.read_data()
             print(read_line)
-
+            count+=1
+            print("Number of entries is: ", count)
             # writing to file
             data_writer.writerow(read_line)
 
