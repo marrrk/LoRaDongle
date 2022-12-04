@@ -1,7 +1,7 @@
 import serial, csv, time
 
 class DongleReader():
-    def __init__(self, port='/dev/ttyUSB1', baud_rate=115200, timeout=26) -> None :
+    def __init__(self, port='/dev/ttyUSB1', baud_rate=115200, timeout=27) -> None :
         try:
             self.ser = serial.Serial(port, baud_rate, timeout=timeout)    # open serial port at baudrate 115200, timeout value needs to change based on round trip time
             print('Opened port: ',self.ser.name)
@@ -69,11 +69,11 @@ class DongleReader():
 
 def main():
     ## File Information
-    directory = "latency_tests/"
-    test_num = 6
+    directory = "parkade_tests/"
+    test_num = 17
     test_config = 6
-    ldro_factor = 0
-    floor_difference=1
+    ldro_factor = 1
+    floor_difference=2
 
     
     data_filename =  directory + "Test_" + str(test_num) + ".csv"
@@ -89,8 +89,8 @@ def main():
     ### Open settings file and put the current info 
     # NB: for first run,  uncomment this section, it creates header row
     #with open(settings_filename, mode='w') as settings_file:
-    #    settings_writer = csv.writer(settings_file, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
-    #    settings_writer.writerow(settings_header)
+     #   settings_writer = csv.writer(settings_file, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
+      #  settings_writer.writerow(settings_header)
 
     with open(settings_filename, mode='a') as settings_file:
         settings_writer = csv.writer(settings_file, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
