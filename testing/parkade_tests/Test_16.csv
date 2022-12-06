@@ -1,7 +1,4 @@
 Success,Time to Send,Time to Receive,Message Size,RSSI,RSSI Despread,SNR
-False,14173.29342857143,,,,,
-True,,28504.752,4,-40.0,-40.5,2.25
-Success,Time to Send,Time to Receive,Message Size,RSSI,RSSI Despread,SNR
 True,,28507.357714285714,4,-46.0,-48.5,0.25
 True,14173.29342857143,28505.01257142857,4,-43.5,-44.5,1.0
 True,14173.29342857143,28507.357714285714,4,-44.0,-44.5,1.0
