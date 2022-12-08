@@ -70,18 +70,19 @@ class DongleReader():
 def main():
     ## File Information
     directory = "parkade_tests/"
-    test_num = 17
+    test_num = 36
     test_config = 6
     ldro_factor = 1
-    floor_difference=2
+    difference = 4
+    distance=50
 
     
     data_filename =  directory + "Test_" + str(test_num) + ".csv"
     data_header = ['Success', 'Time to Send', 'Time to Receive', 'Message Size', 'RSSI', 'RSSI Despread', 'SNR']
 
     settings_filename = directory + "tests_info.csv"
-    settings_header= ["Test Number","Configuration", "Floor Difference", "Location", "LDRO"]
-    settings_data = [str(test_num), str(test_config), str(floor_difference), "Parkade", str(ldro_factor)]
+    settings_header= ["Test Number","Configuration","FLoor Difference", "Location", "LDRO", "Horizontal Distance"]
+    settings_data = [str(test_num), str(test_config), str(difference), "Parkade", str(ldro_factor), str(distance)]
 
     dongle = DongleReader() # instantiating dongle reader
 
@@ -89,8 +90,8 @@ def main():
     ### Open settings file and put the current info 
     # NB: for first run,  uncomment this section, it creates header row
     #with open(settings_filename, mode='w') as settings_file:
-     #   settings_writer = csv.writer(settings_file, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
-      #  settings_writer.writerow(settings_header)
+    #    settings_writer = csv.writer(settings_file, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
+    #    settings_writer.writerow(settings_header)
 
     with open(settings_filename, mode='a') as settings_file:
         settings_writer = csv.writer(settings_file, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
