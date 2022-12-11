@@ -1,4 +1,4 @@
-import serial, csv, time
+import serial, csv, datetime
 
 class DongleReader():
     def __init__(self, port='/dev/ttyUSB1', baud_rate=115200, timeout=27) -> None :
@@ -60,6 +60,9 @@ class DongleReader():
             elif line == "":
                 pass        # timeout happened between last comm and just wait for new comm to be initiated
 
+        #time stamp 
+        timestamp = datetime.datetime.now()
+        line_dict['Timestamp'] = timestamp.strftime("%H:%M:%S")
 
         return_dict = line_dict.copy()  # create copy to return to main function
         line_dict.clear()               # clear dictionary for next ping cycle
@@ -69,20 +72,20 @@ class DongleReader():
 
 def main():
     ## File Information
-    directory = "parkade_tests/"
-    test_num = 36
+    directory = "outdoor_los/"
+    test_num = 6
     test_config = 6
     ldro_factor = 1
-    difference = 4
-    distance=50
+    #difference = 4
+    #distance=50
 
     
     data_filename =  directory + "Test_" + str(test_num) + ".csv"
-    data_header = ['Success', 'Time to Send', 'Time to Receive', 'Message Size', 'RSSI', 'RSSI Despread', 'SNR']
+    data_header = ['Success', 'Time to Send', 'Time to Receive', 'Message Size', 'RSSI', 'RSSI Despread', 'SNR', 'Timestamp']
 
     settings_filename = directory + "tests_info.csv"
-    settings_header= ["Test Number","Configuration","FLoor Difference", "Location", "LDRO", "Horizontal Distance"]
-    settings_data = [str(test_num), str(test_config), str(difference), "Parkade", str(ldro_factor), str(distance)]
+    settings_header= ["Test Number","Configuration", "Location", "LDRO"]
+    settings_data = [str(test_num), str(test_config), "Muizenberg", str(ldro_factor)]
 
     dongle = DongleReader() # instantiating dongle reader
 
@@ -90,8 +93,8 @@ def main():
     ### Open settings file and put the current info 
     # NB: for first run,  uncomment this section, it creates header row
     #with open(settings_filename, mode='w') as settings_file:
-    #    settings_writer = csv.writer(settings_file, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
-    #    settings_writer.writerow(settings_header)
+     #   settings_writer = csv.writer(settings_file, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
+      #  settings_writer.writerow(settings_header)
 
     with open(settings_filename, mode='a') as settings_file:
         settings_writer = csv.writer(settings_file, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
@@ -103,7 +106,7 @@ def main():
 
     #### Read ping pong information from Dongle, append to data file
     
-    # opening file
+    # opening data file
     count = 0
     with open(data_filename, mode='a') as data_file:
         data_writer = csv.DictWriter(data_file, fieldnames=data_header)
