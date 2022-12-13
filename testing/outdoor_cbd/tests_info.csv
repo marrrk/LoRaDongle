@@ -1,9 +1,10 @@
-Test Number,Configuration,Max Distance,Location,LDRO
-1,1,0,Claremont CBD,0
-2,2,0,Claremont CBD,0
-3,3,0,Claremont CBD,1
-4,4,0,Claremont CBD,0
-4,4,0,Claremont CBD,0
-5,5,0,Claremont CBD,0
-6,6,0,Claremont CBD,1
-7,6,0,Claremont CBD,1
+Test Number,Configuration,Location,LDRO
+1,1,Claremont CBD,0
+2,2,Claremont CBD,0
+3,3,Claremont CBD,1
+4,4,Claremont CBD,0
+5,5,Claremont CBD,0
+5,5,Claremont CBD,0
+5,5,Claremont CBD,0
+5,5,Claremont CBD,0
+5,5,Claremont CBD,0
