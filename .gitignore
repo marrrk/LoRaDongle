@@ -10,3 +10,6 @@ firmware/rx_test
 firmware/interrupt_test/
 testing/venv
 testing/menzies_tests/test_logs
+testing/los_notes
+testing/cbd_testing_notes
+testing/config_round_times
