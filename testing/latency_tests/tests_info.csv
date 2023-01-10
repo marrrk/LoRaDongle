@@ -1,7 +1,18 @@
-Test Number,Configuration,Testing Factor,Location,LDRO
-1,1,Indoor 6th floor to 5th floor,Parkade,
-2,2,Latency,Desk,
-3,3,Latency,Desk,
-4,4,Latency,Desk,0
-5,5,Latency,Desk,0
-6,6,Latency,Desk,0
+Test Number,Configuration,Testing Factor,Location,LDRO,Message Size
+1,1,Latency,Desk,0,4
+2,2,Latency,Desk,0,4
+3,3,Latency,Desk,0,4
+4,4,Latency,Desk,0,4
+5,5,Latency,Desk,0,4
+6,6,Latency,Desk,0,4
+7,3,Latency,Desk,1,4
+8,6,Latency,Desk,1,4
+9,1,Latency,Desk,0,15
+10,2,Latency,Desk,0,15
+11,3,Latency,Desk,0,15
+11,3,Latency,Desk,0,15
+12,3,Latency,Desk,1,15
+13,4,Latency,Desk,0,15
+14,5,Latency,Desk,0,15
+15,6,Latency,Desk,0,15
+16,6,Latency,Desk,1,15

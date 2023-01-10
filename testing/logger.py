@@ -1,7 +1,7 @@
 import serial, csv, datetime
 
 class DongleReader():
-    def __init__(self, port='/dev/ttyUSB1', baud_rate=115200, timeout=8) -> None :
+    def __init__(self, port='/dev/ttyUSB1', baud_rate=115200, timeout=29) -> None :
         try:
             self.ser = serial.Serial(port, baud_rate, timeout=timeout)    # open serial port at baudrate 115200, timeout value needs to change based on round trip time
             print('Opened port: ',self.ser.name)
@@ -72,10 +72,10 @@ class DongleReader():
 
 def main():
     ## File Information
-    directory = "outdoor_cbd/"
-    test_num = 5
-    test_config = 5
-    ldro_factor = 0
+    directory = "latency_tests/"
+    test_num = 16
+    test_config = 6
+    ldro_factor = 1
     #difference = 4
     #distance=50
 
@@ -84,8 +84,8 @@ def main():
     data_header = ['Success', 'Time to Send', 'Time to Receive', 'Message Size', 'RSSI', 'RSSI Despread', 'SNR', 'Timestamp']
 
     settings_filename = directory + "tests_info.csv"
-    settings_header= ["Test Number","Configuration", "Location", "LDRO"]
-    settings_data = [str(test_num), str(test_config), "Claremont CBD", str(ldro_factor)]
+    settings_header= ["Test Number","Configuration", "Testing Factor", "Location", "LDRO"]
+    settings_data = [str(test_num), str(test_config), "Latency", "Desk", str(ldro_factor)]
 
     dongle = DongleReader() # instantiating dongle reader
 
