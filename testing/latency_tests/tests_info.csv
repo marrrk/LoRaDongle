@@ -10,7 +10,6 @@ Test Number,Configuration,Testing Factor,Location,LDRO,Message Size
 9,1,Latency,Desk,0,15
 10,2,Latency,Desk,0,15
 11,3,Latency,Desk,0,15
-11,3,Latency,Desk,0,15
 12,3,Latency,Desk,1,15
 13,4,Latency,Desk,0,15
 14,5,Latency,Desk,0,15
