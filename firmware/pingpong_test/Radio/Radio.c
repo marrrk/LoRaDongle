@@ -17,8 +17,8 @@
     #define LORA_BANDWIDTH                              SX126X_LORA_BW_125         
 
     #define LORA_SPREADING_FACTOR                       SX126X_LORA_SF12         // [SF5..SF12]
-    #define LORA_LOWDATARATEOPTIMIZE                    0
-    #define LORA_CODINGRATE                             SX126X_LORA_CR_4_6         // [1: 4/5,
+    #define LORA_LOWDATARATEOPTIMIZE                    1
+    #define LORA_CODINGRATE                             SX126X_LORA_CR_4_8         // [1: 4/5,
 																					//  2: 4/6,
 																					//  3: 4/7,
 																					//  4: 4/8]

@@ -49,7 +49,7 @@ void timer1_isr(void){
 	++timer1_loops;
 	timer1_ev_enable_write(1);
 
-	if (timer1_loops > 42) {
+	if (timer1_loops > 56) { 		//use 42 for long transmit
 		RadioFlags.in_tx = true;
 		//printf("Setting to transmit\n");
 		timer1_loops = 0;

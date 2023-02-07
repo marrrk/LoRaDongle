@@ -180,7 +180,7 @@ int main(void) {
 				timer1_reset();
 				if (mode == MASTER){
 					PrepareBuffer(&context, strlen((char *)send_message), send_message_ptr);
-					printf("Message Size:%d\n", sizeof(send_message));
+					
 				} else {
 					PrepareBuffer(&context, strlen((char *)respond_message), respond_message_ptr);
 					//printf("Sending : %s\n", respond_message);
@@ -262,6 +262,9 @@ int main(void) {
 					printf("Error:Receiving\n");
 					printf("Received: %s\n", receive_message);
 					state = LISTEN;
+				}
+				if (mode == MASTER) {
+					printf("Message Size:%d\n", MESSAGE_SIZE);
 				}
 				break;
 			}
